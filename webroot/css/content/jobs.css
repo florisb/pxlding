@@ -1,0 +1,151 @@
+#page.jobs #case-image{
+	opacity: 1;
+	background-position: 50% 0px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#page.jobs #case{
+	height: 401px;
+}
+
+#page.jobs .case-header-wrapper{
+	height: 401px;
+}
+
+#page.jobs .jobs-content{
+	background: #fff;
+}
+
+#page.jobs h3{
+	font-weight: bold;
+	color: #2a2a2a;
+}
+
+#page.jobs .job{
+	overflow: hidden;
+	background: #fff;
+	padding: 105px 0;
+}
+
+#page.jobs .job.dark{
+	background: #f5f5f5;
+}
+
+#page.jobs .btn{
+	display: inline-block;
+	margin: 40px 0;
+}
+
+#page.jobs .job-items{
+	margin: 65px auto;
+	padding: 32px 0;
+	border-top: 1px solid #dadada;
+	border-bottom: 1px solid #dadada;
+	width: 750px;
+	overflow: hidden;
+}
+
+#page.jobs .job-items .item{
+	width: 33%;
+	float: left;
+}
+
+#page.jobs .job-items .item .head{
+	display: block;
+	width: 100%;
+	font-weight: bold;
+	color: #2a2a2a;
+}
+
+#page.jobs .job-items .item .body{
+	display: block;
+	width: 100%;
+}
+
+.hidden {
+	height:0px;
+	overflow:hidden;
+	-webkit-transition: linear 0.5s;
+    -moz-transition:  linear 0.5s;
+    -o-transition: linear 0.5s;
+    transition: linear 0.5s;
+}
+
+.btn{
+	border: 2px solid #2a2a2a;
+	color: #2a2a2a;
+}
+
+.btn:hover{
+	background: #d31145;
+	border: 2px solid #d31145;
+	color: #fff;
+}
+
+.btn.show:hover{
+	background: #000;
+	border: 2px solid #000;
+	color: #fff;
+}
+
+#page.jobs .block{
+	padding: 0 !important;
+}
+
+#page.jobs .close img {
+	float: right;
+	margin-top: -103px;
+	cursor: pointer;
+}
+
+#page.jobs .close {
+	display: none;
+}
+
+@media only screen and (max-width: 360px){
+
+	#page.jobs .job{
+			padding: 25px 0 !important;
+		}
+
+		#page .block h2{
+			max-width: 70%;
+			margin: 0 auto 14px auto;
+		}
+
+		#page.jobs .job-items{
+			margin: 18px auto;
+			width: 100%;
+		}
+
+		#page.jobs .job-items .item{
+			width: 100%;
+			margin: 0 0 14px 0;
+		}
+
+		#page.jobs .close img {
+			margin-top: -80px;
+		}
+
+		#page.jobs .btn {
+			margin: 0px 0;
+		}
+
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1024px){
+	#page.jobs .close {
+		margin-right: 9px;
+	}
+}

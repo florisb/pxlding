@@ -1,0 +1,46 @@
+<div id="page" class="contact">
+
+	<div class="case-header-wrapper">
+		<div id="case" data-height="401" class="animatedslow fadeIn">
+			<div id="case-image" style="background-image: url('<?=$_baseurl?>img/pxl_contact.jpg');"></div>
+		</div>
+		<div id="case-name"></div>
+	</div>
+
+	<? $this->partial('maps', array(), '_parts'); ?>
+
+	<div class="block maps">
+		<div class="inner">
+			<div class="contact">
+				<h2>Contact</h2>
+
+				 <div class="address">
+		             <a href="https://maps.google.com/maps?q=Pixelindustries+B.V.,+Prinsen+Bolwerk,+Oude+Stad,+Haarlem,+Nederland&hl=en&ll=52.388235,4.64299&spn=0.003618,0.006888&sll=37.0625,-95.677068&sspn=74.440576,112.851562&oq=pixelindustries&t=h&hq=pixelindustries+bv&hnear=Prinsen+Bolwerk,+Oude+Stad,+Haarlem,+Noord-Holland,+The+Netherlands&z=18" target="_blank">Pixelindustries B.V.</a><br/>
+		            Prinsen Bolwerk 5<br/>
+		            2011MA Haarlem<br/>
+		            +31 23 532 34 32<br/>
+		            <a href="mailto:info@pixelindustries.com">info@pixelindustries.com</a>
+		        </div>
+
+		        <form method="post" action="<?=$_baseurl.$_language?>/home/contact" id="contactform" onSubmit="_gaq.push(['_trackEvent', 'Contact', 'Submit']); return true;">
+		        	<input type="text" name="name" placeholder="<?=ML::label('contact name')?>" />
+					<input type="email" name="email" placeholder="<?=ML::label('contact mail')?>" />
+					<input type="text" name="phone" placeholder="<?=ML::label('contact phone')?>" />
+					
+					<textarea name="message" placeholder="<?=ML::label('contact message')?>"></textarea>
+
+					<button type="submit" class="btn black"><?=ML::label('contact submit'); ?></button>
+
+		            <input type="hidden" name="contact" value="1" />
+		        </form>
+
+		        <div class="thanks">
+	                <?=ML::label("contact thanks")?>
+	            </div>
+		       
+			</div>
+		</div>
+		<div class="thankyou"></div>
+	</div>
+
+</div>

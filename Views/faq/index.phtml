@@ -1,0 +1,21 @@
+<div id="page" class="overview white">
+	<div class="block white">
+		<div class="inner">
+			<h2><?=ML::label('faq title');?></h2>
+			<div id="accordion">
+				<? foreach ($faq as $question) : ?>
+					<h2><?=$question->question;?></h2>
+
+					<div class="content">
+						<div class="text-wrapper">
+							<?=$question->answer;?>
+						</div>
+					</div>
+					<div class="push"></div>
+				<? endforeach; ?>
+			</div>
+			<div class="push"></div>
+			<div class="push"></div>
+		</div>
+	</div>
+</div>

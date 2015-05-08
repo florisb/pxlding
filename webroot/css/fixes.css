@@ -1,0 +1,71 @@
+/**
+ * ClearFix
+ */
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.clear {
+	clear: both;
+}
+
+/**
+ * Vertical Alignment fix by Max van der Stam
+ *
+ * Child elements should displayed as inline-block
+ * elements, with a vertical-align value "middle".
+ *
+ * Cannot be used in combination with clearfix.
+ */
+.va:before {
+	content: " ";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+	width: 0;
+}
+
+.va > *:first-child {
+	margin-left: -2px;
+}
+
+.va > * {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/**
+ * Justify fix by Max van der Stam
+ *
+ * Child elements are considered justified and
+ * are evenly distributed among the available
+ * horizontal space.
+ *
+ * Cannot be used in combination with clearfix.
+ */
+.jf {
+	text-align: justify;
+	-ms-text-justify: distribute-all-lines;
+	text-justify: distribute-all-lines;
+	position: relative;
+}
+
+.jf:after {
+	content: " ";
+	width: 100%;
+	display: inline-block;
+	font-size: 0;
+	line-height: 0;
+}
+
+.jf > * {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: left;
+}

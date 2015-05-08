@@ -1,0 +1,1 @@
+define(['tools/imagelazyloader'],function(imagelazyloader){return new Class({initialize:function(){new imagelazyloader({injectPosition:'top'},$('page').getElements('figure'));$$('.offline')[0].getElements('a').addEvent('click',function(e){e.stop()})}})})

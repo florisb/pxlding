@@ -1,0 +1,24 @@
+<div id="page" class="overview">
+	<div class="block white animated fadeIn delay10">
+		<div class="inner" id="slider">
+			<? foreach ($blocks as $block) : ?>
+				<div class="item" style="background-image: url('<?=$_baseurl;?>cms_img/<?=$block->file;?>')">
+					<div class="inner-small">
+						<div class="text">
+							<h2><?=$block->title;?></h2>
+							<?=$block->content;?>
+						</div>
+					</div>
+				</div>
+			<? endforeach; ?>
+		</div>
+		<div class="inner-small controls">
+			<div id="controls" class="animated fadeIn delay10">
+	            <div class="prev_btn">&lt; prev</div>
+	            <div class="next_btn">next &gt;</div>
+	            <div class="play_btn"></div>       
+	            <div class="num_nav"><ul></ul></div>
+	        </div>
+		</div>
+	</div>
+</div>

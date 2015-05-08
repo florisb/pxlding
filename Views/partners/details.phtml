@@ -1,0 +1,58 @@
+<div id="page" class="case"> 
+	<div class="case-header-wrapper">
+		<div id="case" class="animatedslow fadeIn">
+			<div id="case-image" style="background-image: url('<?=$_baseurl.'cms_img/'.$partner->file?>');"></div>
+		</div>
+
+		<div id="case-name">
+			<h1 class="animatedslow fadeIn delay10"><?=$partner->partner_name?></h1>
+			<h2 class="animatedslow fadeIn delay12"><?=$partner->name?></h2>
+
+			<a class="btn case animatedslow fadeIn delay15" href=".">Lees meer</a>
+		</div>
+
+	</div>
+	<div id="case-content">
+		<div class="case-description">
+
+			<h2><?=$partner->name?></h2>
+
+			<div class="inner">
+				<div class="description-top">
+					<?=$partner->main_description?>
+				</div>
+				<div class="description-bottom">
+					<?=$partner->text?>
+				</div>
+				<div class="description-btn">
+					<a class="btn black" target="_blank" href="<?=$partner->url?>">Bekijk live</a>
+				</div>
+
+				<div class="share-btns">
+					<div class="txt"><?=ML::label('share')?></div>
+					<a href="http://twitter.com/share?url=<?=$_baseurl.$_language?>/partners/<?=$partner->slug?>&text=<?=$partner->name. '. '.$partner->partner_name?>" target="_blank" class="tw"></a>
+					<a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=<?=$_baseurl.$_language?>/partners/<?=$partner->slug?>&p[images][0]=<?=$_baseurl?>/cms_img/overview_<?=$partner->logo?>&p[title]=<?=$partner->name?>&p[summary]=<?=$partner->partner_name?>" target="_blank" class="fb"></a>				
+				</div>
+
+			</div>
+		</div>
+
+		<div id="more-cases" class="block">
+			<div class="inner">
+				<h2><?=ML::label('more partners')?></h2>
+
+				<?php $i = 0; ?>
+				<?php foreach($partners as $p){ ?>
+					<?php if($p->slug != $partner->slug){ ?>
+					<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
+						<a class="" href="<?=$_baseurl.$_language.'/partners/'.$p->slug?>"><figure data-img="<?=$_baseurl?>cms_img/overview_<?=$p->logo?>"></figure></a>
+					</div>
+					<?php $i++; ?>
+					<?php } ?>
+				<?php } ?>
+
+			</div>
+		</div>
+
+	</div>
+</div>

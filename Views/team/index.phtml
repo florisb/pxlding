@@ -1,0 +1,51 @@
+<div id="page" class="animated fadeIn delay10">
+	<div class="block grey team">
+		<div class="inner">
+			<h2><?=$_content->page_title?></h2>
+			<div class="text">
+				<?=$_content->page_text?>
+			</div>
+		</div>
+
+		<div class="team-wrapper">
+			<? /*
+			<div id="team">
+					
+				<div class="scrollarea anim">
+					<div>
+						<? foreach($employees as $e){ ?>
+							<figure data-img="<?=$_baseurl?>cms_img/<?=$isMobileTablet ? 'mobile_' : ''?><?=$e->file?>">
+								<div class="team-content">
+									<div class="name"><?=$e->name?></div>
+									<div class="role"><?=$e->role?></div>
+								</div>
+							</figure>
+						<? } ?>
+					</div>
+				</div>
+
+			</div>
+			*/ ?>
+			<div id="team">
+				<div id="viewport" class="anim">
+					<div id="wrapper">
+						<div id="scroller">
+							<? foreach($employees as $e){ ?>
+								<div class="slide">
+									<figure>
+										<img class="inner-slide" src="<?=$_baseurl?>cms_img/<?=$isMobile && !$isTablet ? 'mobile_' : ''?><?=$e->file?>">
+										<div class="team-content">
+											<div class="name"><?=$e->name?></div>
+											<div class="role"><?=$e->role?></div>
+										</div>
+									</figure>
+								</div>
+							<? } ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

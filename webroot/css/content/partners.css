@@ -1,0 +1,120 @@
+#case-gallery{
+	height: 440px;
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+}
+
+#case-gallery .wrapper{
+	position: absolute;
+	left: -50%;
+}
+
+#case-gallery .item{
+	float: left;
+	margin: 0 25px;
+}
+
+#page.overview h3{
+	color: #8b8b8b;
+	width: 520px;
+	margin: 0 auto;
+	padding: 0 0 50px 0;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+#page.overview h2{
+	line-height: 51px;
+}
+
+#page.white{
+	background: #fff;
+}
+
+#page.overview .block{
+	padding: 10% 0 0 0 !important;
+	overflow: hidden;
+}
+
+#page.case #more-cases .case,
+#page.overview .case{
+	float: left;
+	margin: 0 49px 0 0;
+}
+
+#page.case .case figure,
+#page.overview .case figure{
+	position: relative;
+}
+
+#page.case .case figure img,
+#page.overview .case figure img{
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	z-index: 10;
+	position: relative;
+}
+
+#page.case .case figure .btn,
+#page.overview .case figure .btn{
+	z-index: 100;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -110px;
+	margin-top: -27px;
+	opacity: 0;
+}
+
+#page.case .case:hover .btn,
+#page.overview .case:hover .btn{
+	opacity: 1;
+}
+
+#page.case .case.last,
+#page.overview .case.last{
+	margin-right: 0px !important;
+}
+
+#page.case .case .case-name,
+#page.overview .case .case-name{
+	padding: 20px 0 0 0;
+	font-size: 18px;
+}
+
+#page.case .case .case-name a,
+#page.overview .case .case-name a{
+	color: #343434;
+}
+
+#page.case .case .name,
+#page.overview .case .name{
+	padding: 0 0 50px 0;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+#page.case .case .name a,
+#page.overview .case .name a{
+	color: #8b8b8b;
+}
+
+#page.case .case-description h2,
+#page .case-description h2{
+	font-size: 48px;
+	text-shadow: none;
+	color: #2a2a2a;
+	margin: 0 0 45px 0;
+	text-align: center;
+}
+
+#more-cases{
+	overflow: hidden;
+}
+
+#more-cases .btn{
+	margin: 25px 0 0 0;
+	display: inline-block;
+}

@@ -1,0 +1,28 @@
+Options -Indexes
+
+# compress text, html, javascript, css, xml
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+# Output UTF-8
+AddDefaultCharset UTF-8
+
+# Add content type for m4v videos
+AddType video/mp4 .mp4
+AddType video/x-m4v .m4v
+AddType video/ogg .ogv
+AddType video/webm .webm
+
+# Enable rewrite engine
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^.*$ index.php [QSA,L]

@@ -1,0 +1,44 @@
+<div id="page" class="overview white">
+	<div class="block white">
+		<div class="inner">
+			<h2><?=$_content->page_title?></h2>
+			<h3><?=$_content->page_text?></h3>
+	
+			<div class="online-cases">
+			
+			<?php $i = 0; ?>
+			<?php foreach($cases as $c){ ?>
+				<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
+					<figure data-img="<?=$_baseurl?>cms_img/overview_<?=$c->file?>">
+			                <a class="btn" href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>">Bekijk case</a>
+					</figure>
+					
+					<div class="case-name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->case_name?></a></div>
+					<div class="name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->name?></a></div>
+				</div>
+				<?php $i++; ?>
+			<?php } ?>
+	
+			</div>
+
+			<div class="clear"></div>
+
+				<h2><?=ML::label('offline')?></h2>
+
+			<div class="offline">
+				<?php $i = 0; ?>
+				<?php foreach($offline as $c){ ?>
+					<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
+						<figure data-img="<?=$_baseurl?>cms_img/<?= $isTablet ? 'tablet' : 'overview' ?>_<?=$c->file?>">
+				                <a class="btn" href="."><?=ML::label('coming soon')?></a>
+						</figure>
+						
+						<div class="case-name"><a href="."><?=$c->case_name?></a></div>
+					</div>
+					<?php $i++; ?>
+				<?php } ?>
+
+			</div>
+		</div>
+	</div>
+</div>

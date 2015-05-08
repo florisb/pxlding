@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^(.*\.php)$ custom.php?p=$1 [QSA]

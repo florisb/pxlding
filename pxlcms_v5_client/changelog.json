@@ -1,0 +1,133 @@
+{
+	"5.59.13": [
+		"Destruction of Aloha editor instances is now even less prone to errors."
+	],
+	"5.59.12": [
+		"Destruction of Aloha editor instances is now less prone to errors."
+	],
+	"5.59.11": [
+		"Small fix in index.php to include correct version of Aloha editor."
+	],
+	"5.59.10": [
+		"Aloha editor is now loaded locally with more plugins by default."
+	],
+	"5.59.9": [
+		"Removed Aloha sidebar by default."
+	],
+	"5.59.8": [
+		"Updated ancient version of Prototype.js to recent version."
+	],
+	"5.59.7": [
+		"Added Aloha WYSIWYG editor as an alternative for FCK."
+	],
+	"5.59.6": [
+		"Fixed bug where duplicate button was not shown in Chrome"
+	],
+	"5.59.5": [
+		"Small fix for use-cases where (wrong) category ID got used when loading a single entry."
+	],
+	"5.59.4": [
+		"Fixed image upload hooks not firing."
+	],
+	"5.59.3" : [
+		"URI encode search string to make this fail-safe."
+	],
+	"5.59.2" : [
+		"Position is now copied with m_references on entry duplication"
+	],
+	"5.59.1" : [
+		"Made the loading of the google maps API protocol independant"
+	],
+	"5.59.0" : [
+		"Added postToggleToActive and postToggleToInactive hooks"
+	],
+	"5.58.1" : [
+		"Fixed a bug in searching through references while using identifiers."
+	],
+	"5.58.0" : [
+		"Change in cleanup: Now cleans a big part of the database before cleaning the files."
+	],
+	"5.57.0" : [
+		"Update in module overview: added location and updated display of date-fields.",
+		"Now renders references as links to directly update referenced entry."
+	],
+	"5.56.2" : [
+		"Fix in image cleanup to don't show pxl thumbs in list, while still removing them when parent is removed."
+	],
+	"5.56.1" : [
+		"Fix order of file-actions to match the order of image-actions (delete, download)"
+	],
+	"5.56.0" : [
+		"Allow module_id and entry_id to be passed by request, to redirect to a specific entry-edit page"
+	],
+	"5.55.4" : [
+		"Also search id if search is numeric"
+	],
+	"5.55.3" : [
+		"Removed explicit includes from meta.php when using autoloader"
+	],
+	"5.55.2" : [
+		"Made config-file optional to prevent breaking of updated CMSes"
+	],
+	"5.55.1" : [
+		"Fixed problem with incomplete path to autoloader config"
+	],
+	"5.55.0" : [
+		"Added autoloader config, so frontend classes may be included when needed (by choice of the developer)"
+	],
+	"5.54.0" : [
+		"Added preUploadImage and postUploadImage hooks",
+		"Added id to preSave / preUpdate hooks"
+	],
+	"5.53.1" : [
+		"Added support for Custom Hidden Input as identifier",
+		"Also added $overview to module_overview.php to differentiate between overview and add/edit entry"
+	],
+	"5.53.0" : [
+		"Made the code to search in referenced identifiers an option per module"
+	],
+	"5.52.4" : [
+		"Fixed code to save reference restrictions for users that were not created by admin"
+	],
+	"5.52.3" : [
+		"Bugfix for searches in CMS with multilingual identifier-fields using the wrong table-alias"
+	],
+	"5.52.2" : [
+		"Updated Datepicker to force timezone in order to deal with incomplete setup on some webservers"
+	],
+	"5.52.1" : [
+		"Added Event-class to be included in the frontend meta, so no errors will be thrown on XML-calls"
+	],
+	"5.52.0" : [
+		"Added posibility to define order of checkboxes"
+	],
+	"5.51.0" : [
+		"Added locationfield",
+		"Fixed bug in hooks where dot-files were included (mac-issue)"
+	],
+	"5.50.0" : [
+		"Modified module-wide searching to include references"
+	],
+	"5.49.3" : [
+		"Added new searching for references: Now uses complete identifier as shown",
+		"Important bugfix for new datafields. In some cases date was not saved correctly",
+		"Small bugfix for rendering identifiers that contain references",
+		"Expanded pxl_datefield to take over original style-attribute"
+	],
+	"5.49.1" : [
+		"Bug-fix for edge-case that created a circular reference"
+	],
+	"5.49.0" : [
+		"Refactoring of identifiers -> References worden nu netter weergegeven ipv alleen id"
+	],
+	"5.48.0" : [
+		"Event-hooks added"
+	],
+	"5.47.4" : [
+		"Slider-field added",
+		"Range-field added"
+	],
+	"5.47.3" : [
+		"Combined all different date-fields to 1"
+	]
+}

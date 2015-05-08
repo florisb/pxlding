@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^pxl_config.js$ pxl_config.php [QSA]

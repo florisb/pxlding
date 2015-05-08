@@ -1,0 +1,20 @@
+/* Image resize: Corners
+// ---------------------
+// v1.0
+// johan
+// 06-11-2008
+
+Your prefix will be used to check the following images:
+
+[prefix]_n.png   // placed along the top    (north) border (x-repeated)
+[prefix]_w.png   // placed along the left   (west)  border (y-repeated)
+[prefix]_e.png   // placed along the right  (east)  border (y-repeated)
+[prefix]_s.png   // placed along the bottom (south) border (x-repeated)
+
+[prefix]_nw.png  // placed in the top-left     corner (north-west)
+[prefix]_ne.png  // placed in the top-right    corner (north-east)
+[prefix]_sw.png  // placed in the bottom-left  corner (south-west)
+[prefix]_se.png  // placed in the bottom-right corner (south-east)
+
+If a corner image is not found, that corner will not be processed.
+*/

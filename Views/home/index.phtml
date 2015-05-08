@@ -1,0 +1,240 @@
+<? $rand = rand(0, ($cases->count() - 1)); ?>
+<div id="home"></div>
+<div id="page" class="home">
+	<div class="case-header-wrapper">
+		<div id="case" class="animatedslow fadeIn">
+			<div id="case-image" style="background-image: url(<?=$_baseurl?>cms_img/<?=$isMobileTablet ? 'tablet_' : ''?><?=$cases->get($rand)->file?>);"></div>
+		</div>
+
+		<div id="case-name" class="animatedslow">
+			<div class="animatedslow fadeIn delay10 button"><?=$cases->get($rand)->home_label?></div>
+			<h1 class="animatedslow fadeIn delay10"><?=$cases->get($rand)->case_name?></h1>
+			<h2 class="animatedslow fadeIn delay12"><?=$cases->get($rand)->name?></h2>
+
+			<a class="btn case animatedslow fadeIn delay15" href="<?=$_baseurl.$_language.'/cases/'.$cases->get($rand)->slug.''?>">Lees case</a>
+		</div>
+
+	</div>
+	<div class="block count">
+		<div class="inner">
+			<h2 class="tagline"><?=$_content->page_title?></h2>
+
+			<div class="numbers">
+				<div class="item">
+					<div class="image">
+						<img src="<?=$_baseurl;?>img/why/code.png"/>
+					</div>
+					<div class="total counter" data-number="20.000" data-decimals="3">
+						0
+					</div>
+					<div class="total-tagline">
+						<?=ML::label('regels code')?>
+					</div>
+				</div>
+				<div class="item">
+					<div class="image">
+						<img src="<?=$_baseurl;?>img/why/diamond.png"/>
+					</div>
+					<div class="total counter" data-number="35">
+						0
+					</div>
+					<div class="total-tagline">
+						<?=ML::label('briljante mensen'); ?>
+					</div>
+				</div>
+				<div class="item">
+					<div class="image">
+						<img src="<?=$_baseurl;?>img/why/websites.png"/>
+					</div>
+					<div class="total counter" data-number="634">
+						0
+					</div>
+					<div class="total-tagline">
+						<?=ML::label('websites'); ?>
+					</div>
+				</div>
+				<div class="item last">
+					<div class="image">
+						<img src="<?=$_baseurl;?>img/why/coffee.png"/>
+					</div>
+					<div class="total counter" data-number="62.012" data-decimals="3">
+						0
+					</div>
+					<div class="total-tagline">
+						<?=ML::label('kopjes koffie'); ?>
+					</div>
+				</div>
+			</div>
+
+			<p class="text">
+				<?=$_content->page_text?>
+			</p>
+		</div>
+	</div>
+
+	<div id="case-content">
+		<div id="case-gallery" class="<?=$isTablet ? 'tablet' : ''?> grey">
+
+			<h2>Cases</h2>
+	
+			<? if(!$isMobile): ?>
+			<div class="online-cases">
+			
+			<?php $i = 0; ?>
+			<?php foreach($cases as $c){ ?>
+				<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
+					<figure data-img="<?=$_baseurl?>cms_img/overview_<?=$c->file?>">
+			                <a class="btn" href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>">Bekijk case</a>
+					</figure>
+					
+					<div class="case-name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->case_name?></a></div>
+					<div class="name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->name?></a></div>
+				</div>
+				<?php $i++; ?>
+			<?php } ?>
+			
+			<div class="button_wrapper">
+				<a href="<?=$_baseurl.$_language?>/cases" class="btn black"><?=ML::label('view all cases')?></a>
+			</div>
+			
+			</div>
+
+			<? else: ?>
+				<div class="online-cases">
+				
+				<?php $i = 0; ?>
+				<?php foreach($cases as $c){ ?>
+					<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
+						<figure data-img="<?=$_baseurl?>cms_img/overview_<?=$c->file?>">
+				                <a class="btn" href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>">Bekijk case</a>
+						</figure>
+						
+						<div class="case-name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->case_name?></a></div>
+						<div class="name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->name?></a></div>
+					</div>
+					<?php $i++; ?>
+				<?php } ?>
+		
+				</div>
+				
+				<a href="<?=$_baseurl.$_language?>/cases" class="btn black"><?=ML::label('view all cases')?></a>
+
+			<? endif; ?>
+
+		</div>
+
+	</div>
+	<div class="block">
+		<? if(!$isMobile): ?>
+			<img class="<?=$isTablet ? 'tablet' : ''?>" src="<?=$_baseurl?>img/clients.jpg" />
+		<? else: ?>
+			<div class="clients"></div>
+		<? endif; ?>
+	</div>
+	<div class="block grey team">
+		<div class="inner">
+			<h2>Team</h2>
+			<div class="text">
+				<?=ML::label('team content')?>
+			</div>
+		</div>
+
+		<div id="team">
+			<div id="viewport" class="anim">
+				<div id="wrapper">
+					<div id="scroller">
+						<? foreach($employees as $e): ?>
+							<div class="slide">
+								<figure>
+									<img class="inner-slide" src="<?=$_baseurl?>cms_img/<?=$isMobile && !$isTablet ? 'mobile_' : ''?><?=$isTablet ? 'tablet_' : ''?><?=$e->file?>">
+									<div class="team-content">
+										<div class="name"><?=$e->name?></div>
+										<div class="role"><?=$e->role?></div>
+									</div>
+								</figure>
+							</div>
+						<? endforeach; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="block">
+		<div class="inner partners-block">
+			<h2>Partners</h2>
+			<div class="text">
+				<?=ML::label('partners content')?>
+			</div>
+			<? if(!$isMobile): ?>
+			<div class="partners">
+				<? foreach($partners as $p): ?>
+					<a href="<?=$_baseurl.$_language?>/partners/<?=$p->slug?>"><img class="partner" src="<?=$_baseurl?>cms_img/<?=$isMobile ? 'mobile_' : 'overview'?>_<?=$p->logo?>" /></a>
+				<? endforeach; ?>
+			</div>
+			<? else: ?>
+				<div class="partners"></div>
+			<? endif; ?>
+		</div>
+	</div>
+	<div class="block grey maps">
+
+		<div class="inner">
+
+			<div class="contact">
+				<div id="contact-inner-thank"></div>
+				<div id="contact-inner">
+					<h2><?=ML::label('contact us')?></h2>
+
+					 <div class="address">
+			        	<div class="left">    
+			            	Prinsen Bolwerk 5<br/>
+			            	2011MA Haarlem
+			            </div>
+			            <div class="right">	
+			            	+31 23 532 34 32<br/>
+			            	<a href="mailto:info@pixelindustries.com">info@pixelindustries.com</a>
+			        	</div>
+			        </div>
+
+			        <form method="post" action="<?=$_baseurl.$_language?>/home/contact" id="contactform" onSubmit="_gaq.push(['_trackEvent', 'Contact', 'Submit']);">
+			        	<input type="text" name="name" placeholder="<?=ML::label('contact name')?>" />
+						<input type="email" name="email" placeholder="<?=ML::label('contact mail')?>" />
+						<!-- <input type="text" name="phone" placeholder="<?=ML::label('contact phone')?>" /> -->
+						
+						<textarea name="message" placeholder="<?=ML::label('contact message')?>"></textarea>
+
+						<div class="custom-checkbox-wrap">
+							<input type="checkbox" name="newsletter" id="subscribe" />
+							<label for="subscribe"><?=ML::label('subscribe check');?></a></label>
+						</div>
+
+						<a class="btn black"><?= ML::label("contact submit")?></a>
+
+			            <input type="hidden" name="contact" value="1" />
+			        </form>
+				</div>
+			</div>
+		</div>
+		<div class="newsletter">
+			<div id="newsletter-inner-thank"></div>
+			<div id="newsletter-inner">
+				<h2><?=ML::label('newsletter')?></h2>
+
+				<div class="text">
+					<?=ML::label('subscribe now')?>				
+				</div>
+
+				<form action="<?=$_baseurl.$_language?>/home/newsletter"id="newsletterform">
+					<input type="hidden" name="newsletter" value="1">
+					<ul>
+						<li><input type="text" name="name" placeholder="<?=ML::label('contact name')?>"/></li>
+						<li><input type="email" name="email" placeholder="<?=ML::label('contact email')?>"/></li>
+						<li><button type="submit"><?=ML::label('contact subscribe')?></button>
+					</ul>
+				</form>
+			</div>
+		</div>
+		<div class="thankyou"></div>
+	</div>
+</div>

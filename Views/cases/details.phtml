@@ -1,0 +1,92 @@
+<div id="page" class="case"> 
+	<div class="case-header-wrapper">
+		<div id="case" class="animatedslow fadeIn">
+			<div id="case-image" style="background-image: url('<?=$_baseurl.'cms_img/'.$case->file?>');"></div>
+		</div>
+
+		<div id="case-name">
+			<h1 class="animatedslow fadeIn delay10"><?=$case->case_name?></h1>
+			<h2 class="animatedslow fadeIn delay12"><?=$case->name?></h2>
+
+			<a class="btn case animatedslow fadeIn delay15" href=".">Lees case</a>
+		</div>
+
+	</div>
+	<div id="case-content">
+		<div class="case-description">
+
+			<h2><?=$case->name?></h2>
+
+			<div class="inner">
+				<div class="description-top">
+					<?=$case->main_description?>
+				</div>
+				<div class="description-bottom">
+					<?=$case->text?>
+				</div>
+				<div class="description-btn">
+					<a class="btn black" target="_blank" href="<?=$case->url?>">Bekijk live</a>
+				</div>
+
+				<div class="share-btns">
+					<div class="txt"><?=ML::label('share')?></div>
+					<a href="http://twitter.com/share?url=<?=$_baseurl.$_language?>/cases/<?=$case->slug?>&text=<?=$case->name. '. '.$case->case_name?>" target="_blank" class="tw"></a>
+					<a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=<?=$_baseurl.$_language?>/cases/<?=$case->slug?>&p[images][0]=<?=$_baseurl?>/cms_img/overview_<?=$case->file?>&p[title]=<?=$case->name?>&p[summary]=<?=$case->case_name?>" target="_blank" class="fb"></a>
+				</div>
+
+			</div>
+		</div>
+
+		<? if($gallery->count() > 1 && !$isMobile): ?>
+			<div id="case-gallery">
+				<div id="project-detail-slideshow">
+					<div class="project-detail-slideshow-container" style=" margin: 0 auto;">
+						<ul class="slideshow-slides cf" style="width: <?= $gallery->count() * 595; ?>px">
+						<? foreach($gallery as $key => $g): ?>
+							<li<?= (1 === $key) ? ' class="active"' : ''; ?> style="background: url('<?= "{$_baseurl}cms_img/{$g->file}"; ?>') center center no-repeat;"></li>
+						<? endforeach; unset($g); ?>
+						</ul>
+					</div>
+					<span class="slide-prev">
+						<a href="javascript:void(0);"></a>
+					</span>
+					<span class="slide-next">
+						<a href="javascript:void(0);"></a>
+					</span>
+				</div>
+			</div>
+		<? elseif($gallery->count() > 1): ?>
+			<? foreach($gallery as $key => $g): ?>
+				<div class="case-img">
+					<figure data-img="<?=$_baseurl?>cms_img/mobile_<?=$g->file?>"></figure>
+				</div>
+			<? endforeach; ?>
+		<? endif; ?>
+
+
+		<div id="more-cases" class="block">
+			<div class="inner">
+				<h2><?=ML::label('more cases')?></h2>
+
+				<? $i = 0; ?>
+				<? foreach($cases as $c){ ?>
+					<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
+						<figure data-img="<?=$_baseurl?>cms_img/overview_<?=$c->file?>">
+				                <a class="btn" href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>">Take a look</a>
+						</figure>
+						
+						<div class="case-name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->case_name?></a></div>
+						<div class="name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->name?></a></div>
+					</div>
+					<? $i++; ?>
+				<? } ?>
+					
+				<div class="clear"></div>
+				
+				<a href="<?=$_baseurl.$_language?>/cases" class="btn black"><?=ML::label('view all cases')?></a>
+
+			</div>
+		</div>
+
+	</div>
+</div>

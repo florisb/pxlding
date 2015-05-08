@@ -1,0 +1,11 @@
+RewriteEngine on
+
+# cms images/files shortcut
+RewriteRule ^cms_img/(.*)$ pxlcms_v5_client/uploads/$1 [QSA,L]
+
+# PXLCMSV5 Interface
+RewriteRule ^pxlcms_v5_client/(.*)$ pxlcms_v5_client/$1 [QSA,L]
+
+# Everything else
+RewriteRule    ^$    webroot/  [L]
+RewriteRule    (.*) webroot/$1 [L]

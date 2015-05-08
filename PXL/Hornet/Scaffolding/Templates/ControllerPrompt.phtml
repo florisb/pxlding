@@ -1,0 +1,36 @@
+<style type="text/css">
+	.pxl-framework-prompt {
+		display: block;
+		border: 1px solid #556;
+		border-radius: 3px;
+		padding: 10px;
+		background: rgb(234, 234, 234);
+	}
+
+	.pxl-framework-prompt .pxl-title {
+		font: bold 20px/18px Arial;
+		color: #556;
+	}
+	
+	.pxl-framework-prompt .pxl-text {
+		font: 14px/12px Arial;
+		color: #556;
+	}
+	
+	.pxl-framework-prompt .pxl-text b {
+		font-weight: bold;
+	}
+	
+	.pxl-framework-prompt .pxl-text i {
+		font-style: italic;
+	}
+	
+</style>
+<div class="pxl-framework-prompt">
+	<h1 class="pxl-title">PXL Framework Scaffolding</h1>
+	<p class="pxl-text">
+		<b>Hey you developer, you!</b><br><br><br>
+		Looks like you were trying to run a non-existent controller called <i><?= $controllerName; ?></i>, as well as trying to execute the <i><?= $actionName; ?></i> action.<br><br>
+		Want me to <a href="<?= "$controllerName/$actionName?_scaffold=1"; ?>">create</a> it for you? :)
+	</p>
+</div>

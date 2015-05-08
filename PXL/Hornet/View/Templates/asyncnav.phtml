@@ -1,0 +1,26 @@
+<?php
+	header('Cache-Control: no-cache, must-revalidate');
+	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+	header('Content-type: application/json');
+	
+	if (!is_null($this->_resultData)) {
+		$variables = $this->_resultData;
+	} else {
+		$variables = array();
+		foreach(array_diff(array_keys($this->_variables), $this->_globalVariables) as $key) {
+			$variables[$key] = $this->_variables[$key];
+		}
+	}
+
+	ob_start();
+	$this->contents();
+
+	echo str_replace(array('"true"', '"false"'), array('true', 'false'), @json_encode(array(
+		'html'    => ob_get_clean(),
+		'modules' => $_requirejs_modules ?: array(),
+		'title'   => \PXL\Hornet\Seo\Seo::getTitle(),
+		'css'     => $this->_css,
+		'js'      => $this->_js,
+		'url'     => \PXL\Hornet\Application\Application::getInstance()->getRequest()->getFullRequestURL(),
+		'data'    => $variables
+	)));

@@ -1,0 +1,61 @@
+<div id="page" class="jobs"> 
+	<div class="case-header-wrapper">
+		<div id="case" data-height="401" class="animatedslow fadeIn">
+			<div id="case-image" style="background-image: url('<?=$_baseurl?>img/jobs.png');"></div>
+		</div>
+		<div id="case-name"></div>
+	</div>
+
+	<div class="jobs-content" id="jobs-content">
+		<div class="block">
+			<?php $color = 'dark'; ?>
+			<?php $i = 0; foreach($jobs as $j){ ?>
+				<div class="job <?=$color?>">
+					<div class="inner">
+						<h2><?=$j->name?></h2>
+						<div class="close"><img src="<?=$_baseurl;?>img/close_jobs.png"/></div>
+
+						<div id ="intro" class="text">
+							<h3><?=ML::label('jobs description header')?></h3>
+							<?=$j->intro?>
+						</div>
+						<br/>
+						<div class="hidden" data-id="<?=$i;?>">
+							<div class="text">
+								<?=$j->description?>
+							</div>
+
+							<div class="job-items">
+								<div class="item">
+									<span class="head"><?=ML::label('jobs hours')?></span>
+									<span class="body"><?=$j->hours?></span>
+								</div>
+								<div class="item">
+									<span class="head"><?=ML::label('jobs starting')?></span>
+									<span class="body"><?=$j->starting?></span>
+								</div>
+								<div class="item">
+									<span class="head"><?=ML::label('jobs contact')?></span>
+									<span class="body"><?=$j->contact?></span>
+								</div>
+							</div>
+
+							<div class="text">
+								<h3><?=ML::label('jobs company profile')?></h3>
+								<?=$j->company?>
+							</div>
+
+							<a href="mailto:<?=$j->contact?>" class="btn"><?=ML::label('jobs view application')?></a>
+
+						</div>
+
+						<a class="btn show" data-id="<?=$i;?>"><?=ML::label('jobs show application')?></a>	
+
+					</div>
+				</div>
+				<?php $color = $color == 'dark' ? 'light' : 'dark'; ?>
+			<?php $i++; } ?>
+		</div>
+	</div>
+
+</div>
