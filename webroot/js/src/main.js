@@ -43,8 +43,9 @@ window.pxl.settings     = require('./settings.js');
 	"use strict";
 
 	// import local main app modules
-	var _mainMenu            = require('modules/MainMenu.js'),
-		_newsletter          = require('modules/Newsletter.js');
+	var _mainMenu    = require('./modules/MainMenu.js'),
+		_newsletter  = require('./modules/Newsletter.js');
+
 
 	// init
 	$(function () {
