@@ -12,6 +12,8 @@ vendor/**
 composer.lock
 tests/coverage/*
 **/*.tap
+node_modules
+.sass-cache
 
 # Compiled source #
 ###################
