@@ -5,14 +5,18 @@ var gutil        = require('gulp-util');
 var minifycss    = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 var notify       = require('gulp-notify');
+var browserify   = require('gulp-browserify');
+var jshint       = require('gulp-jshint');
+var uglify       = require('gulp-uglify');
 var sass         = require('gulp-ruby-sass');
 
 
 var scssDir      = 'webroot/scss';
 var targetCssDir = 'webroot/css';
 
-var jsDir        = 'webroot/js/src';
-var targetJsDir  = 'webroot/js';
+var jsDir            = 'webroot/js/src';
+var targetJsDevDir   = 'webroot/js/_dev';
+var targetJsLiveDir  = 'webroot/js/_live';
 
 
 gulp.task('css', function () {
@@ -25,15 +29,32 @@ gulp.task('css', function () {
 });
 
 
-// gulp.task('js', function () {
-// 	// browserify
-// });
+gulp.task('js', function () {
 
+	// hint everything in src
+	gulp.src(jsDir + '/**/*.js')
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))
+		.pipe(jshint.reporter('fail'));
+
+	// first browserify to dev
+	gulp.src(jsDir + '/main.js')
+		.pipe(browserify({
+			// insertGlobals : true
+		})).on('error', gutil.log)
+		.pipe(gulp.dest(targetJsDevDir))
+
+	// then uglify the dev versions for live
+	gulp.src(targetJsDevDir + '/main.js')
+		.pipe(uglify())
+		.pipe(gulp.dest(targetJsLiveDir))
+});
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
 	gulp.watch(scssDir + '/**/*.scss', ['css']);
+	gulp.watch(jsDir + '/**/*.js', ['js']);
 });
 
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'js', 'css']);
