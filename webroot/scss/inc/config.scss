@@ -1,3 +1,61 @@
 
+// main dimensions
+$width-main:   	   1200px;
+$width-tablet: 	   1050px;
+$width-phone:      640px;
+$width-single-col: 480px;
+
+$height-cookiebar: 34px;
+$height-menu-pri: 50px;
+$height-menu-sec: 35px;
+
+// fonts
+$font-pri:  	'Raleway', sans-serif;
+$font-sec: 		Arial, sans-serif;
+$normal:        400;
+$bold:          700;
+
+// colors
 $color-pri: #fff;
 $color-sec: #eee;
+$color-ter: #eaeaea;
+
+
+$color-txt:      #6e6e6e;	// basic gray text
+$color-txt-soft: #8e8e8e;
+$color-err:      #ca2a2a;	// error red
+$color-err-bg:   #fff3f3;	// for backgrounds (of inputs etc)
+
+$color-bg-pri: 	$color-pri;	// revert blue
+$color-bg-sec: 	$color-sec;	// strong gray
+
+$color-brd: #d2d2d2;		// border
+$color-brd-light: $color-sec;
+
+
+// basic margins
+$margin-def:	20px;
+$margin-l:	    50px;
+$margin-col:    1.6%;		// must be %!
+
+$padding-def: 	20px;
+
+
+// media queries
+$media-max: 		"(min-width : #{$width-main})";
+$media-desktop: 	"(min-width : #{$width-tablet})";
+$media-tablet:  	"(min-width : #{$width-phone}) and (max-width : #{$width-tablet})";
+$media-phone:   	"(max-width : #{$width-phone})";
+$media-tablet-min:  "(max-width : #{$width-tablet})";
+$media-single-col:  "(max-width : #{$width-single-col})"; 	// switch to single column footer
+
+// z index
+$z-menu:    500;
+$z-content: 250;
+$z-overlay: 1000;
+
+
+// transitions
+$speed-fast:   0.25s;
+$speed-menu:   0.4s;
+$speed-slider: 0.5s;
