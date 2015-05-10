@@ -1,100 +1,105 @@
 <!DOCTYPE html>
-<html lang="<?=$_language;?>">
+<html lang="<?= $_language ?>">
+
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">	
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
 
-		<?php if (!empty($case->slug)) : ?>
-			<meta property="og:title" content="Pixelindustries | <?=$case->name;?>"/>
-			<meta property="og:type" content="website"/>
-			<meta property="og:url" content="<?=$_baseurl.$_language?>/cases/<?=$case->slug?>"/>
-			<meta property="og:image" content="<?=$_baseurl?>/cms_img/overview_<?=$case->file?>"/>
-			<meta property="og:site_name" content="Pixelindustries"/>
-			<meta property="og:description" content="<?=strip_tags($case->main_description)?>"/>	
-		<? endif;?>
+		<? if (!empty($case->slug)) : ?>
+			<meta property="og:title" content="Pixelindustries | <?= $case->name ?>">
+			<meta property="og:type" content="website">
+			<meta property="og:url" content="<?= $_baseurl . $_language?>/cases/<?= $case->slug ?>">
+			<meta property="og:image" content="<?= $_baseurl ?>/cms_img/overview_<?= $case->file ?>">
+			<meta property="og:site_name" content="Pixelindustries">
+			<meta property="og:description" content="<?= strip_tags($case->main_description) ?>">
+		<? endif ?>
 
-		<?php if(!empty($partner->slug)): ?>
-                <meta property="og:title" content="Pixelindustries | <?=$partner->name;?>"/>
-                <meta property="og:type" content="website"/>
-                <meta property="og:url" content="<?=$_baseurl.$_language?>/partners/<?=$partner->slug?>"/>
-                <meta property="og:image" content="<?=$_baseurl?>/cms_img/overview_<?=$partner->logo?>"/>
-                <meta property="og:site_name" content="Pixelindustries"/>
-                <meta property="og:description" content="<?=strip_tags($partner->main_description)?>"/>
-        <?php endif; ?>
+		<? if(!empty($partner->slug)): ?>
+            <meta property="og:title" content="Pixelindustries | <?= $partner->name ?>">
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="<?= $_baseurl . $_language?>/partners/<?= $partner->slug ?>">
+            <meta property="og:image" content="<?= $_baseurl?>/cms_img/overview_<?= $partner->logo ?>">
+            <meta property="og:site_name" content="Pixelindustries">
+            <meta property="og:description" content="<?= strip_tags($partner->main_description) ?>">
+        <? endif; ?>
 
-        <?php if(!empty($jobs)): ?>
-        	<meta property="og:title" content="Pixelindustries"/>
-            <meta property="og:type" content="website"/>
-            <meta property="og:url" content="<?=$_baseurl.$_language?>/jobs"/>
-            <meta property="og:image" content="http://www.pixelindustries.com/img/jobs.png"/>
-            <meta property="og:site_name" content="Pixelindustries"/>
-            <meta property="og:description" content="Werken bij een internet bureau iets voor jou? Het tofste internet bureau van Haarlem heeft nog vacatures open staan."/>
+        <? if(!empty($jobs)): ?>
+        	<meta property="og:title" content="Pixelindustries">
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="<?= $_baseurl . $_language ?>/jobs">
+            <meta property="og:image" content="http://www.pixelindustries.com/img/jobs.png">
+            <meta property="og:site_name" content="Pixelindustries">
+            <meta property="og:description" content="Werken bij een internet bureau iets voor jou? Het tofste internet bureau van Haarlem heeft nog vacatures open staan.">
 	    <? endif; ?>
-		
- 		<?php $this->seo(); ?>
-		
-		<base href="<?= $_baseurl; ?>" />
-		
-		<link rel="shortcut icon" href="img/favicon.ico" />
 
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" />
+ 		<? $this->seo(); ?>
 
-		<link rel="stylesheet" href="<?= $_baseurl . 'css/fixes.css'; ?>" />
-		<link rel="stylesheet" href="<?= $_baseurl . 'css/animate.css'; ?>" />
-		<link rel="stylesheet" href="<?= $_baseurl . 'css/fonts.css'; ?>" />
-		<link rel="stylesheet" href="<?= $_baseurl . 'css/controls.css'; ?>" />
-		<link rel="stylesheet" href="<?= $_baseurl . 'css/default.css'; ?>" />
+		<base href="<?= $_baseurl ?>">
+
+		<link rel="shortcut icon" href="img/favicon.ico">
+
+		<? /*
+		<link rel="stylesheet" href="<?= $_baseurl . 'css/fixes.css' ?>">
+		<link rel="stylesheet" href="<?= $_baseurl . 'css/animate.css' ?>">
+		<link rel="stylesheet" href="<?= $_baseurl . 'css/fonts.css' ?>">
+		<link rel="stylesheet" href="<?= $_baseurl . 'css/controls.css' ?>">
+		*/ ?>
+
+		<link rel="stylesheet" href="<?= $_baseurl . 'css/default.css' ?>">
 
 		<link href='//fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
 
-		<script src="//cdnjs.cloudflare.com/ajax/libs/mootools/1.4.5/mootools-core-full-compat-yc.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/mootools-more/1.4.0.1/mootools-more-yui-compressed.js"></script>
-		<script src="<?=$_baseurl;?>js/_tools/svgcheckbx.js"></script>
-		<script src="<?=$_baseurl;?>js/_tools/sl_slider_min.js"></script>
-		
-		<!--[if lt IE 9]>
-			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-		<![endif]-->
-		
-		<!--[if lte IE 9]>
-			<script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/2.1.0/placeholders.js"></script>
-		<![endif]-->
-		
-		<!--[if IE 9]>
-			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie9.css'; ?>" />
-		<![endif]-->
-		
-		<!--[if IE 8]>
-			<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
-			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie8.css'; ?>" />
-		<![endif]-->
-		
-		<!--[if IE 7]>
-			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie7.css'; ?>" />
-		<![endif]-->
-		
-		<?php $this->css(); ?>
-		
-		<script data-main="<?= $_baseurl; ?>js/main.js" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.1/require.min.js"></script>
 
-		<script type="text/javascript" src="<?= $_baseurl ?>js/_tools/iscroll.js"></script>
+		<!--[if IE 9]>
+			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie9.css'; ?>">
+		<![endif]-->
+
+		<!--[if IE 8]>
+			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie8.css'; ?>">
+		<![endif]-->
+
+		<!--[if IE 7]>
+			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie7.css'; ?>">
+		<![endif]-->
+
+		<? $this->css(); ?>
 
 	</head>
-	<body class="animatedsuperslow" data-js="<?= !empty($_requirejs_modules) ? str_replace('"', "'", json_encode($_requirejs_modules)) : '[]'; ?>" data-jsbasepath="<?= !empty($_requirejs_base) ? $_requirejs_base : ''; ?>">
-	
+	<body class="animatedsuperslow">
+
 		<div id="container">
 			<header class="animated wait">
 				<nav class="inner">
-					<span class="logo"><a href="<?=$_baseurl.$_language?>/home"><img src="img/<?=$isMobileTablet ? 'logo_mobile' : 'logo'?>.png" alt="PXL" /></a></span>
-					
+					<span class="logo">
+						<a href="<?= $_baseurl . $_language?>/home">
+							<img src="img/<?= $isMobileTablet ? 'logo_mobile' : 'logo' ?>.png" alt="PXL">
+						</a>
+					</span>
+
 					<span class="menu"></span>
-					
+
 					<div class="m_items">
-						<!-- <span class="m_item"><a class="<?=$_content->type_of_page == 'home' ? 'active' : ''?>" href="<?=$_baseurl.$_language?>/home">Pixelindustries</a></span> -->
-						<span class="m_item"><a class="<?=$_content->type_of_page == 'cases' ? 'active' : ''?>" href="<?=$_baseurl.$_language?>/cases">Cases</a></span>
-						<span class="m_item"><a class="<?=$_content->type_of_page == 'team' ? 'active' : ''?>" href="<?=$_baseurl.$_language?>/team">Team</a></span>
-						<span class="m_item"><a class="<?=$_content->type_of_page == 'jobs' ? 'active' : ''?>" href="<?=$_baseurl.$_language?>/jobs">Jobs</a></span>
-						<span class="m_item"><a class="<?=$_content->type_of_page == 'contact' ? 'active' : ''?>" href="<?=$_baseurl.$_language?>/contact">Contact</a></span>
+						<!-- <span class="m_item"><a class="<?= $_content->type_of_page == 'home' ? 'active' : '' ?>" href="<?= $_baseurl . $_language ?>/home">Pixelindustries</a></span> -->
+						<span class="m_item">
+							<a class="<?= $_content->type_of_page == 'cases' ? 'active' : '' ?>" href="<?= $_baseurl . $_language ?>/cases">
+								Cases
+							</a>
+						</span>
+						<span class="m_item">
+							<a class="<?= $_content->type_of_page == 'team' ? 'active' : '' ?>" href="<?= $_baseurl . $_language ?>/team">
+								Team
+							</a>
+						</span>
+						<span class="m_item">
+							<a class="<?= $_content->type_of_page == 'jobs' ? 'active' : '' ?>" href="<?= $_baseurl . $_language ?>/jobs">
+								Jobs
+							</a>
+						</span>
+						<span class="m_item">
+							<a class="<?= $_content->type_of_page == 'contact' ? 'active' : '' ?>" href="<?= $_baseurl . $_language ?>/contact">
+								Contact
+							</a>
+						</span>
 					</div>
 
 					<span class="right">
@@ -105,18 +110,18 @@
 					</span>
 				</nav>
 			</header>
-			<div id="main" class="<?=$isTablet ? 'page_tablet' : ''?>">
-				<?php $this->contents(); ?>
+			<div id="main" class="<?= $isTablet ? 'page_tablet' : '' ?>">
+				<?
+					$this->contents();
+				?>
 			</div>
 			<div id="cursor"></div>
 		</div>
 
-		<script>
-	        	var _gaq=[['_setAccount','UA-18721018-1'],['_trackPageview']];
-		        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-		        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-		        s.parentNode.insertBefore(g,s)}(document,'script'));
-		</script>
+
+		<?
+			$this->partial('__javascript_end', array(), '_parts');
+		?>
 
 	</body>
 </html>

@@ -1,0 +1,40 @@
+<?php
+
+	$_js_path = 'js/'
+			. ((APPLICATION_ENV === 'development') ? '_dev/' : '_live/');
+
+?>
+
+	<script src="<?= $_baseurl . $_js_path ?>main.js"></script>
+
+	<? if (file_exists(APPLICATION_PATH . $_js_path . 'content/' . $controllerName . '.js')): ?>
+		<script src="<?= $_baseurl . $_js_path . $controllerName ?>.js"></script>
+	<? endif; ?>
+
+	<? /*
+	<script type="text/javascript" src="<?= $_baseurl ?>js/_tools/iscroll.js"></script>
+	*/ ?>
+
+	<!--[if lt IE 9]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+	<![endif]-->
+
+	<!--[if lte IE 9]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/2.1.0/placeholders.js"></script>
+	<![endif]-->
+
+	<!--[if IE 8]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+	<![endif]-->
+
+
+	<? if (APPLICATION_ENV === 'production'): ?>
+
+		<script>
+        	var _gaq=[['_setAccount','UA-18721018-1'],['_trackPageview']];
+	        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	        s.parentNode.insertBefore(g,s)}(document,'script'));
+		</script>
+
+	<? endif; ?>
