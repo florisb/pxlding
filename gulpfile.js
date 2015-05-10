@@ -2,13 +2,17 @@ process.env.DISABLE_NOTIFIER = true;
 
 var gulp         = require('gulp');
 var gutil        = require('gulp-util');
+var notify       = require('gulp-notify');
+var sourcemaps   = require('gulp-sourcemaps');
+
+var jshint       = require('gulp-jshint');
+var browserify   = require('gulp-browserify');
+var uglify       = require('gulp-uglify');
+
+var sass         = require('gulp-ruby-sass');
 var minifycss    = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
-var notify       = require('gulp-notify');
-var browserify   = require('gulp-browserify');
-var jshint       = require('gulp-jshint');
-var uglify       = require('gulp-uglify');
-var sass         = require('gulp-ruby-sass');
+// var concat       = require('gulp-concat');
 
 
 var scssDir      = 'webroot/scss';
@@ -46,7 +50,9 @@ gulp.task('js', function () {
 
 	// then uglify the dev versions for live
 	gulp.src(targetJsDevDir + '/main.js')
+		.pipe(sourcemaps.init())
 		.pipe(uglify())
+		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(targetJsLiveDir))
 });
 
