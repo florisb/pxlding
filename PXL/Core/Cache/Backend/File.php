@@ -263,7 +263,7 @@
 			foreach($options as $k => $v) {
 				switch($k) {
 					case 'cache_directory':
-						$this->_cache_directory = rtrim($v, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+						$this->_cache_directory = APPLICATION_PATH . rtrim($v, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 						break;
 						
 					case 'lifetime':
