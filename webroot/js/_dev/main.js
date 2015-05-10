@@ -114,9 +114,8 @@ module.exports = (function() {
         _initSearchToggle();
         _initSearchSubmit();
         _initSubmenuToggle();
-        _initShoppingCartToggle();
-        _initLanguageSelectorToggle();
-        _initLanguageSwitch();
+        // _initLanguageSelectorToggle();
+        // _initLanguageSwitch();
 
         // mobile
         _initMobileMenuToggle();
