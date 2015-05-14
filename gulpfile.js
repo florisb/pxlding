@@ -9,7 +9,7 @@ var jshint       = require('gulp-jshint');
 var browserify   = require('gulp-browserify');
 var uglify       = require('gulp-uglify');
 
-var sass         = require('gulp-ruby-sass');
+var sass         = require('gulp-sass');
 var minifycss    = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 // var concat       = require('gulp-concat');
@@ -24,12 +24,25 @@ var targetJsLiveDir  = 'webroot/js/_live';
 
 
 gulp.task('css', function () {
-	return sass(scssDir + '/default.scss', { style: 'compressed' })
-			// .on('error', gutil.log))
+	gulp.src([
+			scssDir + '/default.scss',
+			scssDir + '/content/**/*.scss'
+		])
+		.pipe(sourcemaps.init())
+		.pipe(sass({
+			style: 'compressed',
+			errLogToConsole: true
+		}))
+		// Catch any SCSS errors and prevent them from crashing gulp
+        .on('error', function (error) {
+            console.error(error);
+            this.emit('end');
+        })
 		.pipe(autoprefixer('last 15 version'))
 		.pipe(minifycss())
+		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(targetCssDir))
-		.pipe(notify('done.'));
+		.pipe(notify('CSS done.'));
 });
 
 
