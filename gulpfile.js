@@ -33,7 +33,6 @@ gulp.task('css', function () {
 			style: 'compressed',
 			errLogToConsole: true
 		}))
-		// Catch any SCSS errors and prevent them from crashing gulp
         .on('error', function (error) {
             console.error(error);
             this.emit('end');
