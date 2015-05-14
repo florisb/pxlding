@@ -49,7 +49,7 @@
 
 		<link href='//fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
 
-
+		<?php /*
 		<!--[if IE 9]>
 			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie9.css'; ?>">
 		<![endif]-->
@@ -61,69 +61,32 @@
 		<!--[if IE 7]>
 			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie7.css'; ?>">
 		<![endif]-->
+		*/ ?>
 
 		<? $this->css(); ?>
 
 	</head>
 	<body class="animatedsuperslow">
 
-		<div id="container">
-			<header class="animated wait">
-				<nav class="inner">
-					<span class="logo">
-						<a href="<?= $_baseurl . $_language?>/home">
-							<img src="img/<?= $isMobileTablet ? 'logo_mobile' : 'logo' ?>.png" alt="PXL">
-						</a>
-					</span>
+		<div class="main-container">
 
-					<span class="menu"></span>
+			<?
+				$this->partial('__header', array(), '_parts');
+			?>
 
-					<div class="m_items">
-						<!-- <span class="m_item"><a class="<?= $_content->type_of_page == 'home' ? 'active' : '' ?>" href="<?= $_baseurl . $_language ?>/home">Pixelindustries</a></span> -->
-						<span class="m_item">
-							<a class="<?= $_content->type_of_page == 'cases' ? 'active' : '' ?>" href="<?= $_baseurl . $_language ?>/cases">
-								Cases
-							</a>
-						</span>
-						<span class="m_item">
-							<a class="<?= $_content->type_of_page == 'team' ? 'active' : '' ?>" href="<?= $_baseurl . $_language ?>/team">
-								Team
-							</a>
-						</span>
-						<span class="m_item">
-							<a class="<?= $_content->type_of_page == 'jobs' ? 'active' : '' ?>" href="<?= $_baseurl . $_language ?>/jobs">
-								Jobs
-							</a>
-						</span>
-						<span class="m_item">
-							<a class="<?= $_content->type_of_page == 'contact' ? 'active' : '' ?>" href="<?= $_baseurl . $_language ?>/contact">
-								Contact
-							</a>
-						</span>
-					</div>
 
-					<span class="right">
-						<span class="txt">
-							<?= ML::label('follow us') ?>
-						</span>
-						<a target="_blank" href="https://www.facebook.com/Pixelindustries">
-							<span class="social fb"></span>
-						</a>
-						<a target="_blank" href="https://twitter.com/pxl_nl">
-							<span class="social tw"></span>
-						</a>
-						<a target="_blank" href="http://instagram.com/pixelindustries">
-							<span class="social in"></span>
-						</a>
-					</span>
-				</nav>
-			</header>
 			<div id="main" class="<?= $isTablet ? 'page_tablet' : '' ?>">
 				<?
 					$this->contents();
 				?>
 			</div>
+
 			<div id="cursor"></div>
+
+			<?
+				$this->partial('__footer', array(), '_parts');
+			?>
+
 		</div>
 
 		<?
