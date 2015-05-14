@@ -53,6 +53,31 @@ body {
 	// @include debug;
 }
 
+
+
+@import "inc/basic_elements";
+@import "inc/header";
+@import "inc/footer";
+
+
+// basic responsive
+
+@media #{$media-tablet-min} {
+
+	.main-container {
+		padding-top: $height-header-mobile-bar + $margin-header-mobile * 2;
+	}
+
+	header.main {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: $height-header-mobile-bar + $margin-header-mobile * 2;
+	}
+}
+
+
 @media #{$media-tablet}, #{$media-desktop-small} {
 	.main-container {
 		width: 100%;
@@ -64,8 +89,3 @@ body {
 		width: 100%;
 	}
 }
-
-
-@import "inc/basic_elements";
-@import "inc/header";
-@import "inc/footer";

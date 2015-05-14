@@ -1,4 +1,38 @@
 
+// basic responsive
+
+@media #{$media-phone} {
+	.r-no-phone {
+		display: none;
+	}
+}
+
+@media #{$media-tablet} {
+	.r-no-tablet {
+		display: none;
+	}
+}
+
+@media #{$media-desktop} {
+	.r-no-desktop {
+		display: none;
+	}
+}
+
+@media #{$media-tablet}, #{$media-phone} {
+	.r-only-desktop {
+		display: none;
+	}
+}
+
+@media #{$media-tablet}, #{$media-desktop} {
+	.r-only-phone {
+		display: none;
+	}
+}
+
+
+
 // social buttons
 
 .social-buttons {
@@ -20,8 +54,8 @@
 			position: absolute;
 			width: $sizeIcon;
 			height: $sizeIcon;
-			margin-top: ($size - $sizeIcon) / 2;
-			margin-left: ($size - $sizeIcon) / 2;
+			top: ($size - $sizeIcon) / 2;
+			left: ($size - $sizeIcon) / 2;
 		}
 
 		&::after {

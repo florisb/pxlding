@@ -1,0 +1,56 @@
+
+// collapse footer when too small
+@media #{$media-phone} {
+
+	nav.main-footer {
+
+		height: auto;
+
+		ul {
+			margin-top: $margin-def;
+		}
+
+		li {
+			display: block;
+			float: none;
+			clear: both;
+			margin-left: 0;
+			margin-right: 0;
+			line-height: 1em;
+			margin-bottom: 1em;
+		}
+
+		li a {
+			line-height: 1em;
+		}
+
+
+	}
+
+	footer.main {
+
+		.social-menu-floater {
+			position: relative;
+			display: block;
+			top: 0;
+			left: 0;
+			width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+			height: $heightMenu;
+			text-align: center;
+
+			margin-top: $margin-def;
+			margin-bottom: $margin-def * 1.5;
+
+			a {
+				position: relative;
+				margin-right: 5px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+}

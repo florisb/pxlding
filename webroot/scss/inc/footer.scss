@@ -17,6 +17,7 @@ footer.main {
 		height: $heightMenu;
 
 		a {
+			position: relative;
 			vertical-align: middle;
 			margin-left: $margin-def / 2;
 
@@ -74,3 +75,5 @@ nav.main-footer {
 		}
 	}
 }
+
+@import "footer_r";

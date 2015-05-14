@@ -7,6 +7,7 @@ header.main {
 	height: $height-header;
 	padding-top: 30px;
 	padding-bottom: 30px;
+	background-color: $color-bg-pri;
 
 	.top-bar {
 		height: $heightTop;
@@ -18,7 +19,7 @@ header.main {
 		position: absolute;
 		top: 0;
 		right: $margin-def * 1.5;
-		height: 100%;
+		height: $heightTop;
 
 		a {
 			vertical-align: middle;
@@ -32,15 +33,24 @@ header.main {
 }
 
 .main-logo {
+	$widthLogo  : 66px;
+	$heightLogo : 25px;
+
+	z-index: $z-menu + 10;
+	position: relative;
 	display: block;
-	width: 120px;
+	width: $widthLogo;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 
 	img {
-		display: inline-block;
-		vertical-align: middle;
+		position: absolute;
+		display: block;
+		top: ($heightTop - $heightLogo) / 2;
+		left: 0;
+		width: $widthLogo;
+		height: $heightLogo;
 	}
 }
 
@@ -91,4 +101,20 @@ nav.main {
 		}
 	}
 }
+
+div.mobile-menu {
+	display: none;
+}
+
+div.mobile-menu-header-overlay {
+	display: none;
+}
+
+div.mobile-menu-burger {
+	display: none;
+}
+
+
+@import "header_r";
+@import "header_mobile_menu";
 

@@ -1,0 +1,64 @@
+
+$heightBar : $height-header-mobile-bar;
+$height    : $heightBar + $margin-header-mobile * 2;
+
+// mobile menu for tablet and smaller
+@media #{$media-tablet-min} {
+
+	header.main {
+		padding-top: ($height - $heightBar) / 2;
+		padding-bottom: ($height - $heightBar) / 2;
+
+		.top-bar {
+			height: $heightBar;
+			line-height: $heightBar;
+		}
+
+		.social-menu-floater {
+			display: none;
+		}
+	}
+
+	.main-logo {
+		$widthLogo  : 66px;
+		$heightLogo : 25px;
+
+		img, &::after {
+			top: ($heightBar - $heightLogo) / 2;
+		}
+	}
+
+	div.mobile-menu-header-overlay {
+		z-index: $z-menu + 10;
+		position: fixed;
+		display: block;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: $height;
+		padding-top: $margin-header-mobile;
+	}
+
+	nav.main {
+		// just for testing
+		display: none;
+	}
+
+	div.mobile-menu-burger {
+		display: block;
+	}
+
+	div.mobile-menu {
+		.phone-number {
+			position: fixed;
+			left: 0;
+			bottom: $margin-def * 2.5;
+			width: 100%;
+			height: $margin-def;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+			font-size: pem(22);
+		}
+	}
+}
