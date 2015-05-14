@@ -50,20 +50,28 @@ gulp.task('js', function () {
 	// hint everything in src
 	gulp.src(jsDir + '/**/*.js')
 		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
-		.pipe(jshint.reporter('fail'));
+		.pipe(jshint.reporter('default'));
+		// .pipe(jshint.reporter('fail'));
 
 	// first browserify to dev
 	gulp.src(jsDir + '/main.js')
 		.pipe(browserify({
 			// insertGlobals : true
-		})).on('error', gutil.log)
+		}))
+		.on('error', function (error) {
+            console.error(error);
+            this.emit('end');
+        })
 		.pipe(gulp.dest(targetJsDevDir))
 
 	// then uglify the dev versions for live
 	gulp.src(targetJsDevDir + '/main.js')
 		.pipe(sourcemaps.init())
 		.pipe(uglify())
+		.on('error', function (error) {
+            console.error(error);
+            this.emit('end');
+        })
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(targetJsLiveDir))
 });
