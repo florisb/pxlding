@@ -25,6 +25,8 @@ $color-ter: #eaeaea;
 $color-txt:      	#d1d1d1;	// basic gray text
 $color-txt-dark:    #1d1d1d;	// titles & links
 $color-txt-soft: 	#8e8e8e;
+$color-txt-menu:    #959595;
+$color-txt-dark:    #212121;
 $color-err:      	#ca2a2a;	// error red
 $color-err-bg:   	#fff3f3;	// for backgrounds (of inputs etc)
 
@@ -32,11 +34,13 @@ $color-icon:        #d1d1d1;
 
 
 $color-bg-pri: 	white;
-$color-bg-sec: 	$color-ter;
+$color-bg-sec: 	$color-sec;
 
 $color-brd: #d2d2d2;
 $color-brd-light: $color-sec;
 
+
+$height-header: 190px;
 
 // basic margins
 $margin-def:	20px;
@@ -47,12 +51,13 @@ $padding-def: 	20px;
 
 
 // media queries
-$media-max: 		"(min-width : #{$width-main})";
-$media-desktop: 	"(min-width : #{$width-tablet})";
-$media-tablet:  	"(min-width : #{$width-phone}) and (max-width : #{$width-tablet})";
-$media-phone:   	"(max-width : #{$width-phone})";
-$media-tablet-min:  "(max-width : #{$width-tablet})";
-$media-single-col:  "(max-width : #{$width-single-col})"; 	// switch to single column footer
+$media-max: 		  "(min-width : #{$width-main})";
+$media-desktop: 	  "(min-width : #{$width-tablet})";
+$media-desktop-small: "(min-width : #{$width-tablet}) and (max-width : #{$width-main})";
+$media-tablet:  	  "(min-width : #{$width-phone}) and (max-width : #{$width-tablet})";
+$media-phone:   	  "(max-width : #{$width-phone})";
+$media-tablet-min:    "(max-width : #{$width-tablet})";
+$media-single-col:    "(max-width : #{$width-single-col})"; 	// switch to single column footer
 
 // z index
 $z-menu:    500;

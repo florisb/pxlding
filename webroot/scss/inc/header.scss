@@ -1,22 +1,92 @@
+$heightTop: 70px;
+$heightBottom: 60px;
 
 header.main {
 
-	.top-bar {
+	position: relative;
+	height: $height-header;
+	padding-top: 30px;
+	padding-bottom: 30px;
 
+	.top-bar {
+		height: $heightTop;
+		line-height: $heightTop;
+		position: relative;
 	}
 
 	.social-menu-floater {
+		position: absolute;
+		top: 0;
+		right: $margin-def * 1.5;
+		height: 100%;
 
-		float: right;
+		a {
+			vertical-align: middle;
+			margin-left: $margin-def / 2;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
 	}
-
 }
 
 .main-logo {
+	display: block;
+	width: 120px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 
+	img {
+		display: inline-block;
+		vertical-align: middle;
+	}
 }
 
 nav.main {
+	height: $heightBottom;
+	text-align: center;
 
+	ul {
+		@include cf;
+		display: inline-block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	li {
+		float: left;
+		line-height: $heightBottom;
+		font-size: pem(16);
+		margin-left: $margin-def / 2;
+		margin-right: $margin-def / 2;
+
+		@include link-menu;
+
+		&:first-child {
+			margin-left: 0;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+
+		a {
+			display: block;
+			padding-left: $margin-def;
+			padding-right: $margin-def;
+			line-height: $heightBottom;
+		}
+
+		&.active {
+			a {
+				color: $color-txt-dark;
+
+				&:hover, &:active {
+					color: lighten($color-txt-dark, 20);
+				}
+			}
+		}
+	}
 }
 

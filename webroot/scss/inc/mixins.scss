@@ -44,6 +44,23 @@ $baseFontSize: 16;
 	}
 }
 
+// menu links
+@mixin link-menu {
+	a {
+		color: $color-txt-menu;
+		transition: all $speed-menu;
+		text-decoration: none;
+
+		&:hover, &:active {
+			color: $color-pri;
+		}
+
+		&.active {
+			color: $color-txt-dark;
+		}
+	}
+}
+
 // basic text formatting -- set for cms-settable content blocks
 @mixin text-formatting {
 

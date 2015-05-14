@@ -53,6 +53,19 @@ body {
 	// @include debug;
 }
 
+@media #{$media-tablet}, #{$media-desktop-small} {
+	.main-container {
+		width: 100%;
+	}
+}
+
+@media #{$media-phone} {
+	.main-container {
+		width: 100%;
+	}
+}
+
+
 @import "inc/basic_elements";
 @import "inc/header";
 @import "inc/footer";

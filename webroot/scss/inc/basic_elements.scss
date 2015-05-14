@@ -1,0 +1,16 @@
+
+// social buttons
+
+.social-buttons {
+
+	$size: 30px;
+
+	@include cf;
+
+	a {
+		display: inline-block;
+		width: $size;
+		height: $size;
+	}
+
+}
