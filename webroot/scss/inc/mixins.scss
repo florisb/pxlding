@@ -1,0 +1,79 @@
+// help during debugging
+@mixin debug() {
+	outline: 3px dashed red;
+}
+
+// image-url compass replacement hack
+$image-url-path: "../img/" !default;
+
+@function image-url($url) {
+  @return url("#{$image-url-path}#{$url}");
+}
+
+// shorter version of cf include
+@mixin cf() {
+	@include pie-clearfix();
+}
+
+
+// font size
+$baseFontSize: 16;
+
+// Convert PX units to EMs.
+@function pem($pxval, $base: $baseFontSize) {
+  @return #{$pxval / $base}em;
+}
+
+
+// placeholder (input attribute)
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content }
+  &:-moz-placeholder           { @content }
+  &::-moz-placeholder          { @content }
+  &:-ms-input-placeholder      { @content }
+}
+
+// main link
+@mixin link-default {
+	a {
+		color: $color-pri;
+
+		&:hover, &:active {
+			color: lighten($color-pri, 10);
+		}
+	}
+}
+
+// basic text formatting -- set for cms-settable content blocks
+@mixin text-formatting {
+
+	strong, b {
+		font-weight: $bold;
+	}
+
+	em, i {
+		font-style: italic;
+	}
+
+	u {
+		text-decoration: underline;
+	}
+}
+
+// set background image
+@mixin bg-image($image, $inline: '') {
+	// @if $inline == 'inline' {
+	// 	background-image: inline-image($image);
+	// } @else {
+		background-image: image-url($image);
+	// }
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+// basics for standard use of pseudo after/before blocks
+@mixin pseudo-basic() {
+	content: "";
+	display: inline-block;
+}

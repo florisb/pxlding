@@ -1,8 +1,58 @@
 
+// compass mixins library
+// @import "lib/_animate";
+@import "lib/_compass";
+
+// custom imports
 @import "inc/config";
 @import "inc/reset";
+@import "inc/init";
 
+@import "inc/fonts";
+
+
+// debug
+.xdebug-error {
+	font-size: pem(25);
+	color: black;
+	line-height: 1.5em;
+}
+
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+	font-family: $font-sec;
+	-webkit-font-smoothing: antialiased;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
 
 body {
-	background-color: white;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+
+	font-size: pem(16);
+	color: $color-txt;
+	background-color: $color-bg-sec;
 }
+
+// main structure: center column
+.main-container {
+	width: $width-main;
+	margin-left: auto;
+	margin-right: auto;
+
+	background-color: $color-bg-pri;
+
+	// @include debug;
+}
+
+@import "inc/basic_elements";
+@import "inc/header";
+@import "inc/footer";

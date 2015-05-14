@@ -1,6 +1,7 @@
 
 // main dimensions
-$width-main:   	   1200px;
+$width-main:   	   1300px;
+
 $width-tablet: 	   1050px;
 $width-phone:      640px;
 $width-single-col: 480px;
@@ -16,20 +17,24 @@ $normal:        400;
 $bold:          700;
 
 // colors
-$color-pri: #fff;
-$color-sec: #eee;
+$color-pri: #d41046;	// pixel red
+$color-sec: #f5f5f5;
 $color-ter: #eaeaea;
 
 
-$color-txt:      #6e6e6e;	// basic gray text
-$color-txt-soft: #8e8e8e;
-$color-err:      #ca2a2a;	// error red
-$color-err-bg:   #fff3f3;	// for backgrounds (of inputs etc)
+$color-txt:      	#d1d1d1;	// basic gray text
+$color-txt-dark:    #1d1d1d;	// titles & links
+$color-txt-soft: 	#8e8e8e;
+$color-err:      	#ca2a2a;	// error red
+$color-err-bg:   	#fff3f3;	// for backgrounds (of inputs etc)
 
-$color-bg-pri: 	$color-pri;	// revert blue
-$color-bg-sec: 	$color-sec;	// strong gray
+$color-icon:        #d1d1d1;
 
-$color-brd: #d2d2d2;		// border
+
+$color-bg-pri: 	white;
+$color-bg-sec: 	$color-ter;
+
+$color-brd: #d2d2d2;
 $color-brd-light: $color-sec;
 
 
