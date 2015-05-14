@@ -1,0 +1,75 @@
+
+$height: 80px;
+$heightMenu: 40px;
+
+footer.main {
+
+	position: relative;
+	height: $height;
+	padding-top: ($height - $heightMenu) / 2;
+	background-color: $color-bg-sec;
+	font-family: $font-pri;
+
+	.social-menu-floater {
+		position: absolute;
+		top: ($height - $heightMenu) / 2 + 5; // adjust because icons are only 30px high
+		right: $margin-def * 1.5;
+		height: 100%;
+
+		a {
+			vertical-align: middle;
+			margin-left: $margin-def / 2;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+nav.main-footer {
+
+	height: $heightMenu;
+	text-align: center;
+
+	ul {
+		@include cf;
+		display: inline-block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	li {
+		float: left;
+		line-height: $heightMenu;
+		font-size: pem(14);
+		margin-left: $margin-def / 2;
+		margin-right: $margin-def / 2;
+
+		@include link-menu;
+
+		&:first-child {
+			margin-left: 0;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+
+		a {
+			display: block;
+			padding-left: $margin-def;
+			padding-right: $margin-def;
+			line-height: $heightMenu;
+		}
+
+		&.active {
+			a {
+				color: $color-txt-dark;
+
+				&:hover, &:active {
+					color: lighten($color-txt-dark, 20);
+				}
+			}
+		}
+	}
+}

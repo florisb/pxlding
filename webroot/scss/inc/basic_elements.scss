@@ -3,14 +3,51 @@
 
 .social-buttons {
 
-	$size: 30px;
+	$size     : 30px;
+	$sizeIcon : 20px;
 
 	@include cf;
 
 	a {
+		position: relative;
 		display: inline-block;
 		width: $size;
 		height: $size;
+
+		&::after, &::before {
+			@include bg-image('facebook.svg');
+			@include pseudo-basic;
+			position: absolute;
+			width: $sizeIcon;
+			height: $sizeIcon;
+			margin-top: ($size - $sizeIcon) / 2;
+			margin-left: ($size - $sizeIcon) / 2;
+		}
+
+		&::after {
+			opacity: 0;
+			transition: opacity $speed-menu;
+			@include bg-image('facebook_dark.svg');
+		}
+
+		&:hover, &:active {
+			&::after {
+				opacity: 1;
+			}
+		}
+	}
+
+	// .facebook {
+	// }
+
+	.twitter {
+		&::before {
+			@include bg-image('twitter.svg');
+		}
+
+		&::after {
+			@include bg-image('twitter_dark.svg');
+		}
 	}
 
 }

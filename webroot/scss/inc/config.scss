@@ -11,10 +11,15 @@ $height-menu-pri: 50px;
 $height-menu-sec: 35px;
 
 // fonts
-$font-pri:  	'Raleway', sans-serif;
+$font-pri:    	"helveticaneue-medium", sans-serif;
+$font-bold:     "helveticaneue-bold", sans-serif;
+$font-light:    "helveticaneue-light", sans-serif;
 $font-sec: 		Arial, sans-serif;
 $normal:        400;
 $bold:          700;
+
+$font-upshift:  0.2em; 	// annoying property of helvetica neue is that it is shifted up for no good reason
+						// this upshift value should help using mixins to auto-shift it down where needed
 
 // colors
 $color-pri: #d41046;	// pixel red

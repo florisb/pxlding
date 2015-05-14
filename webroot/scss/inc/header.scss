@@ -47,6 +47,7 @@ header.main {
 nav.main {
 	height: $heightBottom;
 	text-align: center;
+	font-family: $font-pri;
 
 	ul {
 		@include cf;
