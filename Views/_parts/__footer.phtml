@@ -1,0 +1,22 @@
+
+			<footer class="main">
+
+				<nav class="main-footer">
+					<ul>
+						<? foreach ($footerMenu as $item): ?>
+
+						<li class="<?= $item->active ? 'active' : null ?>">
+							<a href="<?= $item->url ?>">
+								<?= $item->title ?>
+							</a>
+						</li>
+
+						<? endforeach; ?>
+					</ul>
+				</nav>
+
+				<div class="social social-menu-floater">
+
+				</div>
+
+			</footer>

@@ -1,0 +1,41 @@
+			<header class="main animated wait">
+
+				<div class="top-bar">
+
+					<a class="main-logo" href="<?= $_baseurl . $_language?>/home">
+						<img src="img/<?= $isMobileTablet ? 'logo_mobile' : 'logo' ?>.png" alt="PXL">
+					</a>
+
+					<div class="social social-menu-floater">
+
+						<a target="_blank" href="https://www.facebook.com/Pixelindustries">
+							<span class="social fb"></span>
+						</a>
+
+						<a target="_blank" href="https://twitter.com/pxl_nl">
+							<span class="social tw"></span>
+						</a>
+
+						<a target="_blank" href="http://instagram.com/pixelindustries">
+							<span class="social in"></span>
+						</a>
+
+					</div>
+
+				</div>
+
+				<nav class="main">
+					<ul>
+						<? foreach ($headerMenu as $item): ?>
+
+						<li class="<?= $item->active ? 'active' : null ?>">
+							<a href="<?= $item->url ?>">
+								<?= $item->title ?>
+							</a>
+						</li>
+
+						<? endforeach; ?>
+					</ul>
+				</nav>
+
+			</header>
