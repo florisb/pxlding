@@ -14,7 +14,7 @@ footer.main {
 		position: absolute;
 		top: ($height - $heightMenu) / 2 + 5; // adjust because icons are only 30px high
 		right: $margin-def * 1.5;
-		height: 100%;
+		height: $heightMenu;
 
 		a {
 			vertical-align: middle;
@@ -60,6 +60,7 @@ nav.main-footer {
 			padding-left: $margin-def;
 			padding-right: $margin-def;
 			line-height: $heightMenu;
+			margin-top: $font-upshift;
 		}
 
 		&.active {
