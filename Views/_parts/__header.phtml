@@ -34,3 +34,41 @@
 				</nav>
 
 			</header>
+
+
+			<div class="mobile-menu-bg"></div>
+
+			<div class="mobile-menu">
+				<ul>
+					<? foreach ($headerMenu as $item): ?>
+
+					<li class="<?= $item->active ? 'active' : null ?>">
+						<a href="<?= $item->url ?>">
+							<?= $item->title ?>
+							<? /*
+							<span class="splitL"><?= $item->title ?></span>
+							<span class="splitR"><?= $item->title ?></span>
+							*/ ?>
+						</a>
+					</li>
+
+					<? endforeach; ?>
+				</ul>
+
+				<div class="phone-number">
+					+31 (0)23 532 34 32
+				</div>
+			</div>
+
+			<div class="mobile-menu-header-overlay">
+
+				<a class="main-logo" href="<?= $this->route('') ?>">
+					<img src="img/logo_white.svg" alt="PXL">
+				</a>
+
+				<div class="mobile-menu-burger">
+					<div class="x"></div>
+					<div class="y"></div>
+	                <div class="z"></div>
+				</div>
+			</div>
