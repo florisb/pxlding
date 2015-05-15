@@ -98,23 +98,38 @@ class Home extends BaseController
 
 	public function contactAction() {
 
-        if (isset($_POST['contact']) && $_GET["send"] == "1") {
+        // why the _GET['send'] == 1 check?
+
+        if (isset($_POST['contact'])) {
 
             $msg      = '';
             $empty    = true;
             $response = array();
 
             foreach ($_POST as $key => $value) {
-                if ($key == 'contact' || $key == 'phone') continue;
 
-                if ($key == 'email') {
-                   if (filter_var($value, FILTER_VALIDATE_EMAIL) == true) {
-                        $empty = false;
-                   } else {
-                       $response['errors'][] = array(
-                        "element" => $key
-                    );
-                   }
+                switch ($key) {
+
+                    // may be empty (or irrelevant)
+                    case 'contact':
+                    case 'website':
+                        continue 2;
+
+                    case 'email':
+                        if (filter_var($value, FILTER_VALIDATE_EMAIL) == true) {
+                            $empty = false;
+                        } else {
+                            $response['errors'][$key] = true;
+                        }
+                        break;
+
+                    case 'message':
+                        if ( ! empty($value)) {
+                            $empty = false;
+                        } else {
+                            $response['errors'][$key] = true;
+                        }
+                        break;
                 }
 
                 if ( ! empty($value)) {
@@ -124,10 +139,7 @@ class Home extends BaseController
 
 
                 if (empty($value)) {
-                    $response['errors'][] = array(
-                        "element" => $key
-                    );
-
+                    $response['errors'][$key] = true;  //ML::label('contact form error empty ' . $key);
                     //pr($response['errors']);
                 }
 
@@ -135,31 +147,35 @@ class Home extends BaseController
 
             if ( ! count($response['errors'])) {
 
-                if ($_POST['newsletter'] === 'on') {
+                // if ($_POST['newsletter'] === 'on') {
 
-                    $contact = (Object) null;
+                //     $contact = (Object) null;
 
-                    $contact->email    = (string) pxl_db_safe($_POST['email']);
-                    $contact->voornaam = (string) pxl_db_safe($_POST['name']);
+                //     $contact->email    = (string) pxl_db_safe($_POST['email']);
+                //     $contact->voornaam = (string) pxl_db_safe($_POST['name']);
 
-                    $ch = curl_init();
+                //     $ch = curl_init();
 
-                    curl_setopt($ch, CURLOPT_URL,
-                        "https://app.klantenbinder2.nl/api/contacts?token=265b71d0f3466efa1566591a24927194");
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($contact));
-                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                //     curl_setopt($ch, CURLOPT_URL,
+                //         "https://app.klantenbinder2.nl/api/contacts?token=265b71d0f3466efa1566591a24927194");
+                //     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+                //     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($contact));
+                //     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-                    $responseKb = curl_exec($ch);
+                //     $responseKb = curl_exec($ch);
 
-                    curl_close($ch);
-                }
+                //     curl_close($ch);
+                // }
 
                 $email = new Tools\Emailer();
 
-                // $email->addressee('coen@pixelindustries.com');
-                $email->addressee('info@pixelindustries.com');
+                if (APPLICATION_ENV !== 'production') {
+                    $email->addressee('coen@pixelindustries.com');
+                } else {
+                    $email->addressee('info@pixelindustries.com');
+                }
+
                 $email->sender('info@pixelindustries.com');
                 $email->subject('Pixelindustries website contact');
                 $email->messageHtml($msg);
@@ -172,7 +188,6 @@ class Home extends BaseController
             }
 
             $this->set('response', $response);
-
         }
 
 
