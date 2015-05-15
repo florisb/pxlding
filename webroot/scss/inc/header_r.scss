@@ -6,6 +6,7 @@ $height    : $heightBar + $margin-header-mobile * 2;
 @media #{$media-tablet-min} {
 
 	header.main {
+		z-index: $z-menu + 5;
 		padding-top: ($height - $heightBar) / 2;
 		padding-bottom: ($height - $heightBar) / 2;
 
@@ -44,7 +45,8 @@ $height    : $heightBar + $margin-header-mobile * 2;
 		display: none;
 	}
 
-	div.mobile-menu-burger {
+	div.mobile-menu-bg,
+	 div.mobile-menu-burger {
 		display: block;
 	}
 

@@ -250,3 +250,10 @@ div.mobile-menu-header-overlay {
 	}
 }
 
+@media #{$media-desktop} {
+
+	div.mobile-menu.animate {
+		display: none;
+	}
+
+}

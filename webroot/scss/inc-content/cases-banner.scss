@@ -1,0 +1,156 @@
+
+section.cases-banner {
+
+	@include cf;
+	position: relative;
+	width: 100%;
+
+	.block-group {
+		@include cf;
+		position: relative;
+		float: left;
+		width: 50%;
+	}
+
+	.caseblock {
+		position: relative;
+		float: left;
+		width: 100%;
+		height: 0;
+		padding-top: 100%;
+
+		&.wide {
+			padding-top: 50%;
+		}
+
+		&.small {
+			width: 50%;
+			padding-top: 50%;
+		}
+
+		&.large {
+			background-color: $color-bg-sec;
+		}
+		&.wide {
+			background-color: darken($color-bg-sec, 10);
+		}
+		&.small {
+			background-color: darken($color-bg-sec, 14);
+			&:last-child {
+				background-color: darken($color-bg-sec, 12);
+			}
+		}
+
+		.subtitle {
+			font-size: pem(17);
+			font-family: $font-sec;
+			font-style: italic;
+			margin-bottom: $margin-def;
+		}
+
+		.title {
+			font-size: pem(24);
+			font-family: $font-pri;
+		}
+
+		.subtitle, .title {
+			z-index: $z-content + 2;
+			// transition: text-shadow $speed-fast;
+			color: white;
+			@include adjusted-lh(1.3);
+			// text-shadow: 0 0 1px rgba(0,0,0, 0.25);
+		}
+
+
+		// contains titles
+		> a {
+			@include absolute-cover;
+			z-index: $z-content + 1;
+			display: block;
+			overflow: hidden;
+
+			.content, .background {
+				@include absolute-cover;
+			}
+
+			.content {
+				padding: $margin-def * 2;
+			}
+
+			.background {
+				@include absolute-cover;
+				@include bg-cover;
+
+				transition: transform $speed-intensely-slow;
+
+				&::before {
+					@include pseudo-basic;
+					@include absolute-cover;
+					background-color: rgba(0,0,0, 0.2);
+					transition: background-color $speed-intensely-slow;
+				}
+			}
+
+			&:hover, &:active {
+
+				.background {
+					transform: scale(1.1);
+
+					&::before {
+						background-color: rgba(0,0,0, 0.1);
+					}
+				}
+
+				// .subtitle, .title {
+				// 	text-shadow: 0 0 10px rgba(0,0,0, 0.25);
+				// }
+			}
+
+		}
+
+		&.text-dark {
+			.subtitle, .title {
+				color: $color-txt-dark;
+			}
+		}
+	}
+
+}
+
+
+/*
+ * Responsive
+ */
+
+
+// smaller fonts for smaller bits
+@media #{$media-tablet} and (max-width: 880px) {
+	section.cases-banner .caseblock {
+		.subtitle {
+			font-size: pem(15);
+		}
+		.title {
+			font-size: pem(20);
+		}
+	}
+}
+
+@media #{$media-phone} {
+	section.cases-banner {
+
+		.block-group {
+			width: 100%;
+			float: none;
+			clear: both;
+		}
+
+		.caseblock {
+			float: none;
+			clear: both;
+
+			&.small {
+				width: 100%;
+			}
+		}
+	}
+}

@@ -14,7 +14,7 @@ $height-menu-sec: 35px;
 $font-pri:    	"helveticaneue-medium", sans-serif;
 $font-bold:     "helveticaneue-bold", sans-serif;
 $font-light:    "helveticaneue-light", sans-serif;
-$font-sec: 		Georgia, serif;
+$font-sec: 		Georgia, Times, "Times New Roman", serif;
 $normal:        400;
 $bold:          700;
 
@@ -29,7 +29,8 @@ $color-sec: #f5f5f5;
 $color-ter: #eaeaea;
 
 
-$color-txt:      	#d1d1d1;	// basic gray text
+$color-txt:      	#747474;	// basic blackish text
+$color-txt-light:   #d1d1d1;	// basic gray text
 $color-txt-dark:    #1d1d1d;	// titles & links
 $color-txt-soft: 	#8e8e8e;
 $color-txt-menu:    #959595;
@@ -76,6 +77,10 @@ $z-overlay: 1000;
 
 
 // transitions
-$speed-fast:   0.25s;
-$speed-menu:   0.4s;
-$speed-slider: 0.5s;
+$speed-fast           : 0.25s;
+$speed-menu           : 0.4s;
+$speed-slider         : 0.5s;
+$speed-intensely-slow : 5s;
+
+// special stuff
+$home-service-text-min-height: 9em;			// set minimum text block height for vertical lineup of service links

@@ -102,17 +102,14 @@ nav.main {
 	}
 }
 
-div.mobile-menu {
+div.mobile-menu,
+ div.mobile-menu-bg,
+ div.mobile-menu-header-overlay,
+ div.mobile-menu-burger {
 	display: none;
 }
 
-div.mobile-menu-header-overlay {
-	display: none;
-}
 
-div.mobile-menu-burger {
-	display: none;
-}
 
 
 @import "header_r";

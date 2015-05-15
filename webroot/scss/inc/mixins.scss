@@ -3,6 +3,14 @@
 	outline: 3px dashed red;
 }
 
+
+// simple offset adjustment calculation shorthand:
+// inner element in outer element, both with fixed height,
+// calculates top / margin-top pixel adjustment to center
+@function c-off($outer, $inner) {
+	@return ($outer - $inner) / 2;
+}
+
 // image-url compass replacement hack
 $image-url-path: "../img/" !default;
 
@@ -23,6 +31,30 @@ $baseFontSize: 16;
 @function pem($pxval, $base: $baseFontSize) {
   @return #{$pxval / $base}em;
 }
+
+// lineheight top margin adjustment so text aligns to design margins
+@function adjust-top-lh($lineHeight) {
+	// margin-top: -1px * ($fontSize * $lineHeight - $fontSize) / 2;
+	@return #{-1 * ($lineHeight - 1) / 2}em;
+}
+
+@mixin adjusted-lh($lineHeight) {
+	line-height: #{$lineHeight}em;
+	margin-top: adjust-top-lh($lineHeight);
+}
+
+
+// column calculations
+
+// absolute margin column calc: % result
+@function col-width-abs($columns, $margin) {
+	@return calc(#{100% / $columns} - #{$margin * 2 / 3})
+}
+// percentage margin column calc
+@function col-width-prc($columns, $margin) {
+	@return (100% - $margin) / $columns;
+}
+
 
 
 // placeholder (input attribute)
@@ -77,6 +109,17 @@ $baseFontSize: 16;
 	}
 }
 
+// absolutely positioned object that fully covers parent
+@mixin absolute-cover() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	// bottom: 0;
+	// right: 0;
+	width: 100%;
+	height: 100%;
+}
+
 // set background image
 @mixin bg-image($image, $inline: '') {
 	// @if $inline == 'inline' {
@@ -85,6 +128,28 @@ $baseFontSize: 16;
 		background-image: image-url($image);
 	// }
 	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+// standard contain rules for background images
+@mixin bg-contain($image: '') {
+
+	@if $image != '' {
+		background-image: image-url($image);
+	}
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+// standard conver rules for background images
+@mixin bg-cover($image: '') {
+
+	@if $image != '' {
+		background-image: image-url($image);
+	}
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 }

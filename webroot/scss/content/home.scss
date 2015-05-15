@@ -5,8 +5,92 @@
 
 // custom imports
 @import "../inc/config";
+@import "../inc/init";
 
 
-test {
+$widthVideo  : 1300px;
+$heightVideo : 592px;
 
+section.home-video {
+
+	width: 100%;
+	height: 0;
+	padding-top: percentage($heightVideo / $widthVideo);
+
+	background-color: $color-bg-sec;
 }
+
+
+section.home-services {
+
+	$sizeIcon: 34px;
+	$heightLink: 20px;
+	$marginColumn: $margin-def * 4;
+
+	@include cf;
+
+	padding-top: $margin-def * 4;
+	border-top: 4px solid $color-brd-light;
+
+	section.service {
+		float: left;
+		width: col-width-abs(3, $marginColumn);
+		margin-right: $marginColumn;
+		margin-bottom: $margin-def * 4;
+
+		.h2 {
+			display: inline-block;
+			color: $color-txt-dark;
+			font-family: $font-pri;
+			// font-weight: $bold;
+			font-size: pem(24);
+			line-height: $sizeIcon;
+			margin-top: $font-upshift;
+		}
+
+		header {
+
+			> * {
+				vertical-align: middle;
+			}
+
+			margin-bottom: $margin-def * 1.5;
+
+			.icon {
+				display: inline-block;
+				width: $sizeIcon;
+				height: $sizeIcon;
+				margin-right: $margin-def;
+				@include bg-image('service-strategie.svg');
+			}
+		}
+
+		.icon {
+			// &.service-strategie        { background-image: image-url('service-strategie.svg'); }
+			&.service-design           { background-image: image-url('service-design.svg'); margin-top: -8px; }
+			&.service-development      { background-image: image-url('service-development.svg'); }
+			&.service-campagnes        { background-image: image-url('service-campagnes.svg'); margin-top: -4px; }
+			&.service-online-marketing { background-image: image-url('service-online-marketing.svg'); }
+			&.service-emailmarketing   { background-image: image-url('service-emailmarketing.svg'); margin-top: -8px; }
+		}
+
+		section {
+			font-size: pem(17);
+			@include adjusted-lh(1.85);
+		}
+
+		footer {
+			margin-top: $margin-def * 2;
+			line-height: $heightLink;
+
+		}
+	}
+}
+
+section.cases {
+	margin-bottom: $margin-def * 4;
+}
+
+@import "../inc-content/home_r";
+
+@import "../inc-content/cases-banner";

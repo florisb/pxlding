@@ -1,0 +1,99 @@
+$mediaSwitchTwoCol: 940px;
+
+@media #{$media-desktop}, #{$media-tablet} {
+
+	section.home-services {
+		section.service {
+
+			&:nth-child(3n+3) {
+				margin-right: 0;
+			}
+			&:nth-child(3n+1) {
+				clear: left;
+			}
+
+			section {
+				min-height: $home-service-text-min-height;
+			}
+		}
+	}
+}
+
+@media #{$media-tablet} {
+
+	$marginColumn: $margin-def * 2;
+
+	section.home-services {
+
+		section.service {
+			width: col-width-abs(3, $marginColumn);
+			margin-right: $marginColumn;
+
+			&:nth-child(3n+3) {
+				margin-right: 0;
+			}
+			&:nth-child(3n+1) {
+				clear: left;
+			}
+		}
+	}
+
+}
+
+@media #{$media-tablet} and (max-width: $mediaSwitchTwoCol) {
+
+	$marginColumn: $margin-def * 2;
+
+	section.home-services {
+
+		section.service {
+			width: col-width-abs(2, $marginColumn);
+			margin-right: $marginColumn;
+
+			&:nth-child(3n+3) {
+				margin-right: $marginColumn;
+			}
+			&:nth-child(3n+1) {
+				clear: none;
+			}
+
+			&:nth-child(2n+2) {
+				margin-right: 0;
+			}
+			&:nth-child(2n+1) {
+				clear: none;
+			}
+
+			section {
+				min-height: $home-service-text-min-height + 1em;
+			}
+		}
+	}
+}
+
+
+@media #{$media-phone} {
+
+	section.home-services {
+
+		section.service {
+			float: none;
+			clear: both;
+			width: 100%;
+			margin-right: 0;
+			min-height: 0;
+		}
+	}
+}
+
+// tweaks for some text not fitting in services titles
+@media #{$media-desktop} and (max-width: 1120px) {
+	section.home-services section.service .h2 {
+		font-size: pem(20);
+	}
+}
+@media (min-width: $mediaSwitchTwoCol) and (max-width: 960px) {
+	section.home-services section.service .h2 {
+		font-size: pem(20);
+	}
+}
