@@ -89,79 +89,97 @@
 </section>
 
 
+<section class="home-contact-and-location large-margin-column">
 
-<section class="home-contact">
-
-	<h3 class="h2">
-		<?= ML::label('work with us') ?>
-	</h3>
-
-	<p>
-		<?= ML::label('work with us paragraph') ?>
-	</p>
-
-	<hr>
-
-	<div id="contact-form-thank"></div>
-
-	<div id="contact-form">
-
-        <form method="post" action="<?=$_baseurl.$_language?>/home/contact" id="contactform" onSubmit="_gaq.push(['_trackEvent', 'Contact', 'Submit']);">
-        	<input type="text" name="name" placeholder="<?=ML::label('contact name')?>" />
-			<input type="email" name="email" placeholder="<?=ML::label('contact mail')?>" />
-			<!-- <input type="text" name="phone" placeholder="<?=ML::label('contact phone')?>" /> -->
-
-			<textarea name="message" placeholder="<?=ML::label('contact message')?>"></textarea>
-
-			<div class="custom-checkbox-wrap">
-				<input type="checkbox" name="newsletter" id="subscribe" />
-				<label for="subscribe"><?=ML::label('subscribe check');?></a></label>
-			</div>
-
-			<a class="btn black"><?= ML::label("contact submit")?></a>
-
-            <input type="hidden" name="contact" value="1" />
-        </form>
-	</div>
-</div>
-		</div>
-
-</section>
-
-<section class="home-location">
-
-	<?
-		// get distance if avaible... how?
-	?>
-	<section class="address">
+	<section class="home-contact">
 
 		<h3 class="h2">
-			<?= ML::label('We are just %DISTANCE% away') ?>
+			<?= ML::label('work with us') ?>
 		</h3>
 
-		<div class="address">
+		<p>
+			<?= ML::label('work with us paragraph') ?>
+		</p>
 
-	    	<p class="with-marker">
-	        	Prinsen Bolwerk 5<br/>
-	        	2011MA Haarlem
-	        </p>
-			<p>
-	        	+31 23 532 34 32<br/>
-	        	<a href="mailto:info@pixelindustries.com">info@pixelindustries.com</a>
-	        </p>
-	    </div>
+		<hr>
+
+		<div id="contact-form-thank"></div>
+
+		<div id="contact-form-container" class="basic-form contact-form">
+
+	        <form method="post" action="<?= $_baseurl . $_language?>/home/contact" id="contact-form" onSubmit="_gaq.push(['_trackEvent', 'Contact', 'Submit']);">
+	            <input type="hidden" name="contact" value="1">
+
+				<div class="row">
+	        		<input type="text" name="name" placeholder="<?= ML::label('contact name') ?>">
+	        	</div>
+
+				<div class="row">
+					<input type="email" name="email" placeholder="<?= ML::label('contact mail') ?>">
+				</div>
+
+				<div class="row">
+					<!-- <input type="text" name="phone" placeholder="<?=ML::label('contact phone')?>" /> -->
+				</div>
+
+				<div class="row">
+					<input type="text" name="website" placeholder="<?= ML::label('contact website') ?>">
+				</div>
+
+				<div class="row">
+					<textarea name="message" placeholder="<?= ML::label('contact message') ?>"></textarea>
+
+					<? /*
+					<div class="custom-checkbox-wrap">
+						<input type="checkbox" name="newsletter" id="subscribe">
+						<label for="subscribe"><?= ML::label('subscribe check') ?></a></label>
+					</div>
+					*/ ?>
+
+					<a id="contact-form-submit" class="button-submit" title="<?= ML::label("contact submit")?>" href="javascript:;"></a>
+				</div>
+
+	        </form>
+		</div>
 
 	</section>
 
-	<section class="video">
+	<section class="home-location">
 
-		<h3 class="h2">
-			<?= ML::label('Get an inside view...') ?>
-		</h3>
+		<?
+			// get distance if avaible... how?
+		?>
+		<section class="home-location-address">
 
-		<div class="video">
+			<h3 class="h2">
+				<?= ML::label('We are just %DISTANCE% away') ?>
+			</h3>
 
-		</div>
+			<div class="address">
+
+		    	<p class="with-marker">
+		        	Prinsen Bolwerk 5<br/>
+		        	2011MA Haarlem
+		        </p>
+				<p>
+		        	+31 23 532 34 32<br/>
+		        	<a href="mailto:info@pixelindustries.com">info@pixelindustries.com</a>
+		        </p>
+		    </div>
+
+		</section>
+
+		<section class="home-location-video">
+
+			<h3 class="h2">
+				<?= ML::label('Get an inside view...') ?>
+			</h3>
+
+			<div class="video">
+
+			</div>
+
+		</section>
 
 	</section>
 
