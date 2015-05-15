@@ -69,7 +69,7 @@
 				$this->partial('__header', array(), '_parts');
 			?>
 
-			<div id="main" class="<?= $isTablet ? 'page_tablet' : '' ?>">
+			<div id="main" class="content-container <?= $isTablet ? 'page_tablet' : '' ?>">
 				<?
 					$this->contents();
 				?>
