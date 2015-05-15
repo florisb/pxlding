@@ -67,7 +67,20 @@ gulp.task('js', function () {
         })
 		.pipe(gulp.dest(targetJsDevDir))
 
+	gulp.src(jsDir + '/content/**/*.js')
+		.pipe(browserify({
+			// insertGlobals : true
+		}))
+		.on('error', function (error) {
+            console.error(error);
+            notify().write(error)
+            this.emit('end');
+        })
+		.pipe(gulp.dest(targetJsDevDir + '/content'))
+
+
 	// then uglify the dev versions for live
+
 	gulp.src(targetJsDevDir + '/main.js')
 		.pipe(sourcemaps.init())
 		.pipe(uglify())
@@ -78,6 +91,17 @@ gulp.task('js', function () {
         })
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(targetJsLiveDir))
+
+	gulp.src(targetJsDevDir + '/content/**/*.js')
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.on('error', function (error) {
+            console.error(error);
+            notify().write(error)
+            this.emit('end');
+        })
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(targetJsLiveDir + '/content'))
 });
 
 // Rerun the task when a file changes
