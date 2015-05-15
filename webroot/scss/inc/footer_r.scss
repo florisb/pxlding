@@ -54,3 +54,29 @@
 		}
 	}
 }
+
+$footerSmallSizeA: 1060px;
+$footerSmallSizeB: 920px;
+
+// shift footer menu left a bit
+@media (max-width: $footerSmallSizeA) and (min-width: $footerSmallSizeB) {
+
+	nav.main-footer {
+		padding-right: 100px;
+	}
+
+}
+
+@media (max-width: $footerSmallSizeB) and (min-width: $width-phone) {
+
+	// split items over two rows
+	nav.main-footer {
+		li:nth-child(3) {
+			margin-right: 0;
+		}
+		li:nth-child(4) {
+			clear: left;
+			margin-left: 0;
+		}
+	}
+}
