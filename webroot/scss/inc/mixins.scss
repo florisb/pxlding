@@ -3,6 +3,10 @@
 	outline: 3px dashed red;
 }
 
+@function strip-units($number) {
+	@return $number / ($number * 0 + 1);
+}
+
 
 // simple offset adjustment calculation shorthand:
 // inner element in outer element, both with fixed height,
@@ -39,6 +43,8 @@ $baseFontSize: 16;
 }
 
 @mixin adjusted-lh($lineHeight) {
+	$lineHeight: strip-units($lineHeight);
+
 	line-height: #{$lineHeight}em;
 	margin-top: adjust-top-lh($lineHeight);
 }

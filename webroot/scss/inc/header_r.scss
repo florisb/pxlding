@@ -61,6 +61,7 @@ $height    : $heightBar + $margin-header-mobile * 2;
 			margin-right: auto;
 			text-align: center;
 			font-size: pem(22);
+			color: $color-txt-menu-mobile;
 		}
 	}
 }

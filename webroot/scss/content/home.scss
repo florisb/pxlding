@@ -30,7 +30,9 @@ section.home-services {
 	@include cf;
 
 	padding-top: $margin-def * 4;
-	border-top: 4px solid $color-brd-light;
+
+	// looks a bit weird, but is in design:
+	// border-top: 4px solid $color-brd-light;
 
 	section.service {
 		float: left;
@@ -91,6 +93,71 @@ section.cases {
 	margin-bottom: $margin-def * 4;
 }
 
-@import "../inc-content/home_r";
 
+section.home-blog {
+
+	$heightLink: 20px;
+	$marginColumn: $margin-def * 4;
+
+	@include cf;
+
+	margin-bottom: $margin-def * 4;
+
+	article.blog {
+		float: left;
+		width: col-width-abs(3, $marginColumn);
+		margin-right: $marginColumn;
+
+		.h2 {
+			display: inline-block;
+			color: $color-txt-dark;
+			font-family: $font-pri;
+			font-size: pem(24);
+			@include adjusted-lh(1.2);
+		}
+
+		header {
+			position: relative;
+			margin-bottom: $margin-def * 1.5;
+
+			> * {
+				vertical-align: middle;
+			}
+
+			.image {
+				margin-bottom: $margin-def * 1.5;
+				width: 100%;
+				height: 0;
+				padding-top: 100%;
+				background-color: $color-bg-sec;
+			}
+		}
+
+		section {
+			font-size: pem(17);
+			@include adjusted-lh(1.85);
+		}
+
+		footer {
+			margin-top: $margin-def;
+			line-height: $heightLink;
+
+		}
+	}
+}
+
+
+section.home-contact {
+	float: left;
+	width: 50%;
+}
+
+section.home-location {
+	float: left;
+	width: 50%;
+}
+
+
+@import "../inc-content/home_r";
 @import "../inc-content/cases-banner";
+@import "../inc-content/social-banner";

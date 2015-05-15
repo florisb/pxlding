@@ -160,7 +160,7 @@ div.mobile-menu {
 		a {
 			display: inline-block;
 			width: $widthMenuItem;
-			color: white;
+			color: $color-txt-menu-mobile;
 			text-decoration: none;
 			font-family: $font-pri;
 			margin-top: $font-upshift;
