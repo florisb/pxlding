@@ -1,4 +1,4 @@
-process.env.DISABLE_NOTIFIER = true;
+// process.env.DISABLE_NOTIFIER = false;
 
 var gulp         = require('gulp');
 var gutil        = require('gulp-util');
@@ -24,6 +24,7 @@ var targetJsLiveDir  = 'webroot/js/_live';
 
 
 gulp.task('css', function () {
+
 	gulp.src([
 			scssDir + '/default.scss',
 			scssDir + '/content/**/*.scss'
@@ -35,13 +36,14 @@ gulp.task('css', function () {
 		}))
         .on('error', function (error) {
             console.error(error);
+        	notify().write(error)
             this.emit('end');
         })
 		.pipe(autoprefixer('last 15 version'))
 		.pipe(minifycss())
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(targetCssDir))
-		.pipe(notify('CSS done.'));
+		.pipe(gulp.dest(targetCssDir));
+		// .pipe(notify('CSS done.'));
 });
 
 
@@ -60,6 +62,7 @@ gulp.task('js', function () {
 		}))
 		.on('error', function (error) {
             console.error(error);
+            notify().write(error)
             this.emit('end');
         })
 		.pipe(gulp.dest(targetJsDevDir))
@@ -70,6 +73,7 @@ gulp.task('js', function () {
 		.pipe(uglify())
 		.on('error', function (error) {
             console.error(error);
+            notify().write(error)
             this.emit('end');
         })
 		.pipe(sourcemaps.write())
