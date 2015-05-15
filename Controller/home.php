@@ -158,8 +158,8 @@ class Home extends BaseController
 
                 $email = new Tools\Emailer();
 
-                $email->addressee('wouter@pixelindustries.com');
-                //$email->addressee('info@pixelindustries.com');
+                // $email->addressee('coen@pixelindustries.com');
+                $email->addressee('info@pixelindustries.com');
                 $email->sender('info@pixelindustries.com');
                 $email->subject('Pixelindustries website contact');
                 $email->messageHtml($msg);
