@@ -1,4 +1,6 @@
 <?php
+
+
 	/**
 	 * Hooks.php
 	 *
@@ -7,7 +9,7 @@
 	 *
 	 * @author Max van der Stam <max@pixelindustries.com>
 	 */
-	 
+
 	function toAscii($str, $replace=array(), $delimiter='-') {
 			setlocale(LC_ALL, 'en_US.UTF8');
 			if( !empty($replace) ) {
@@ -24,7 +26,7 @@
 
 	/**
 	 * updateSlugs function.
-	 * 
+	 *
 	 * Updates the slugs table accordingly, by using a field
 	 * named "name" as data to generate the slug.
 	 *
@@ -37,7 +39,7 @@
 		//Determine current module ID and language
 		$language_id   = $_SESSION['cms_v5_session']['language']['id'];
 		$ref_module_id = $_SESSION['cms_v5_session']['module_id'];
-	
+
 		//Fetch ML table name
 		$sMLModule = getModuleNameML($ref_module_id);
 
@@ -54,7 +56,7 @@
 		if (!$sMLModule) {
 			//Try and fetch regular table name
 			$sModule = getModuleName($ref_module_id);
-			
+
 			if (!$sModule) {
 				return;
 			}
@@ -71,26 +73,26 @@
 				$language_id = 116;
 			}
 		}
-		
+
 		if (!$sName) {
 			return; //No name value found
 		}
-		
+
 		//Determine slug
 		$sSlug = toAscii(trim($sName));
-		
+
 		//Fetch latest slug that exists for this entry, module and language
 		$sCurrentSlug = getCurrentSlug($ref_module_id, $language_id, $entry_id);
-		
+
 		//If the current slug differs from the one we've just generated, insert it into the Slugs table as the newest entry
 		if ($sSlug !== $sCurrentSlug || empty($sCurrentSlug)) {
 			insertSlug($ref_module_id, $language_id, $entry_id, $sSlug);
 		}
 	}
-	
+
 	/**
 	 * cleanupSlugs function.
-	 * 
+	 *
 	 * Cleans up entries in the Slugs table after an entry has been
 	 * removed from the database.
 	 *
@@ -101,7 +103,7 @@
 	function cleanupSlugs($entry_id) {
 		//Determine current module ID
 		$ref_module_id = $_SESSION['cms_v5_session']['module_id'];
-		
+
 		$q = <<<SQL
 			DELETE FROM
 				`cms_m3_slugs`
@@ -114,10 +116,10 @@ SQL;
 		$q = sprintf($q, $ref_module_id, $entry_id);
 		mysql_query($q);
 	}
-	
+
 	function getModuleName($ref_module_id) {
 		global $CMS_DB;
-	
+
 		$q = <<<SQL
 			SHOW TABLES
 				WHERE
@@ -129,11 +131,11 @@ SQL;
 		$q        = sprintf($q, pxl_db_safe($CMS_DB['db_name']), $ref_module_id);
 		$result   = mysql_query($q);
 		$rows     = mysql_num_rows($result);
-		
+
 		if (!$result) {
 			return false;
 		}
-		
+
 		if ($rows === 0) {
 			return null;
 		} else {
@@ -141,10 +143,10 @@ SQL;
 			return $row[0];
 		}
 	}
-	
+
 	/**
 	 * getModuleNameML function.
-	 * 
+	 *
 	 * Fetches the ML module (table) name of a
 	 * certain module ID.
 	 *
@@ -160,11 +162,11 @@ SQL;
 		 $q      = sprintf($q, $ref_module_id);
 		 $result = mysql_query($q);
 		 $rows   = mysql_num_rows($result);
-		 
+
 		 if (!$result) {
 			 return false; //This shouldn't run
 		 }
-		 
+
 		 if ($rows === 0) {
 			 return null;
 		 } else {
@@ -193,9 +195,9 @@ SQL;
 		if (!$result) {
 			return false; //This will happen if there isn't a column named "name"
 		}
-		
+
 		$row = mysql_fetch_assoc($result);
-		
+
 		if ($row) {
 			return $row[$field];
 		} else {
@@ -221,16 +223,16 @@ SQL;
 		if (!$result) {
 			return false;
 		}
-		
+
 		$row = mysql_fetch_assoc($result);
-		
+
 		if ($row) {
 			return $row[$field];
 		} else {
 			return null;
 		}
 	}
-	
+
 	function getCurrentSlug($ref_module_id, $language_id, $entry_id) {
 		$q = <<<SQL
 			SELECT
@@ -251,16 +253,16 @@ SQL;
 
 		$q      = sprintf($q, $ref_module_id, $language_id, $entry_id);
 		$result = mysql_query($q);
-		
+
 		$row = mysql_fetch_assoc($result);
-		
+
 		if ($row) {
 			return $row['slug'];
 		} else {
 			return null;
 		}
 	}
-	
+
 	function insertSlug($ref_module_id, $language_id, $entry_id, $slug) {
 		//Determine new position ID
 		$q = <<<SQL
@@ -272,16 +274,16 @@ SQL;
 
 		$result = mysql_query($q);
 		$row    = mysql_fetch_assoc($result);
-		
+
 		if (!$row['position']) {
 			$position = 1;
 		} else {
 			$position = ((int) $row['position']) + 1;
 		}
-		
+
 		//Check if there if there already exists a slug with this name for the current combination of ID's
 		$slug = checkDuplicateSlug($language_id, $slug);
-		
+
 		//Generate INSERT SQL and run query
 		$q = <<<SQL
 			INSERT INTO `cms_m3_slugs`
@@ -291,10 +293,10 @@ SQL;
 SQL;
 
 		$q = sprintf($q, $ref_module_id, $language_id, $entry_id, $slug, $position);
-		
+
 		mysql_query($q);
 	}
-	
+
 	/**
 	 * checkDuplicateSlug function.
 	 *
@@ -317,7 +319,7 @@ SQL;
 
 		$q      = sprintf($q, pxl_db_safe($slug));
 		$result = mysql_query($q);
-		
+
 		$aSlugs = array();
 		while($row = mysql_fetch_assoc($result)) {
 			$aSlugs[] = $row['slug'];
@@ -330,10 +332,9 @@ SQL;
 			$_slug = $slug . '-' . $duplicateCounter;
 			$duplicateCounter++;
 		}
-		
+
 		return $_slug;
 	}
-	
 
 
 	// Register postSave events to the updateSlugs routine for modules containing a (ML or non-ML) field called "name"
@@ -345,11 +346,12 @@ SQL;
 		Event::register('updateSlugs',  'postSave',   $moduleId);
 		Event::register('cleanupSlugs', 'postDelete', $moduleId);
 	}
-	
+
+
 	// Run cache-related hooks
 	include_once(dirname(__FILE__) . '/HornetCache/HornetCache.php');
 	$hornetCache = HornetCache::getInstance();
-	
+
 	if ($hornetCache->hasCache()) {
 		$cache = $hornetCache->getCache();
 
@@ -376,7 +378,7 @@ SQL;
 					default:
 						break;
 				}
-				
+
 			}, 'postSave', $moduleId);
 		}
 	}
