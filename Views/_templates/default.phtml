@@ -39,8 +39,7 @@
 		<link rel="shortcut icon" href="img/favicon.ico">
 
 		<link rel="stylesheet" href="<?= $_baseurl . 'css/default.css' ?>">
-
-		<?php /*
+		<? /*
 		<!--[if IE 9]>
 			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie9.css'; ?>">
 		<![endif]-->
@@ -53,8 +52,13 @@
 			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie7.css'; ?>">
 		<![endif]-->
 		*/ ?>
+<?
+			if (file_exists(APPLICATION_PATH . 'webroot/css/' . $controllerName . '.css')) {
+				$this->includeCss('css/' . $controllerName . '.css');
+			}
 
-		<? $this->css(); ?>
+			$this->css();
+		?>
 
 	</head>
 	<body class="animatedsuperslow">
