@@ -14,6 +14,7 @@ class Home extends BaseController
         $cases    = Factory\Cases::getShowCased();
 
         // blog posts
+        $blog     = Factory\Blog::getLatest(3);
 
         // photo's
 
