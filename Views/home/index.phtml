@@ -1,5 +1,57 @@
-<? $rand = rand(0, ($cases->count() - 1)); ?>
+<?
+	$rand = rand(0, ($cases->count() - 1));
+?>
+
+
+
+<section class="banner-video home-video no-margin-column">
+</section>
+
+
+<section class="home-services large-margin-column">
+
+	<? foreach ($services as $service): ?>
+
+	<section class="service">
+
+		<header>
+			<div class="icon service-<?= $service->icon ?>"></div>
+			<h2 class="h2">
+				<?= $service->title ?>
+			</h2>
+		</header>
+
+		<section>
+			<?= $service->intro ?>
+		</section>
+
+		<footer>
+			<a class="arrow-link" href="<?= $this->route('services', $service->slug) ?>">
+				<span class="arrow"></span>
+				<?= $service->title ?>
+			</a>
+		</footer>
+
+	</section>
+
+
+	<? endforeach; ?>
+
+</section>
+
+
+
+<section class="cases cases-banner no-margin-column">
+
+<?
+	$this->partial('cases-banner-content', array('cases' => $cases), '_parts');
+?>
+
+</section>
+
+<? /*
 <div id="home"></div>
+
 <div id="page" class="home">
 	<div class="case-header-wrapper">
 		<div id="case" class="animatedslow fadeIn">
@@ -76,47 +128,47 @@
 		<div id="case-gallery" class="<?=$isTablet ? 'tablet' : ''?> grey">
 
 			<h2>Cases</h2>
-	
+
 			<? if(!$isMobile): ?>
 			<div class="online-cases">
-			
+
 			<?php $i = 0; ?>
 			<?php foreach($cases as $c){ ?>
 				<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
 					<figure data-img="<?=$_baseurl?>cms_img/overview_<?=$c->file?>">
 			                <a class="btn" href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>">Bekijk case</a>
 					</figure>
-					
+
 					<div class="case-name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->case_name?></a></div>
 					<div class="name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->name?></a></div>
 				</div>
 				<?php $i++; ?>
 			<?php } ?>
-			
+
 			<div class="button_wrapper">
 				<a href="<?=$_baseurl.$_language?>/cases" class="btn black"><?=ML::label('view all cases')?></a>
 			</div>
-			
+
 			</div>
 
 			<? else: ?>
 				<div class="online-cases">
-				
+
 				<?php $i = 0; ?>
 				<?php foreach($cases as $c){ ?>
 					<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
 						<figure data-img="<?=$_baseurl?>cms_img/overview_<?=$c->file?>">
 				                <a class="btn" href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>">Bekijk case</a>
 						</figure>
-						
+
 						<div class="case-name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->case_name?></a></div>
 						<div class="name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->name?></a></div>
 					</div>
 					<?php $i++; ?>
 				<?php } ?>
-		
+
 				</div>
-				
+
 				<a href="<?=$_baseurl.$_language?>/cases" class="btn black"><?=ML::label('view all cases')?></a>
 
 			<? endif; ?>
@@ -187,11 +239,11 @@
 					<h2><?=ML::label('contact us')?></h2>
 
 					 <div class="address">
-			        	<div class="left">    
+			        	<div class="left">
 			            	Prinsen Bolwerk 5<br/>
 			            	2011MA Haarlem
 			            </div>
-			            <div class="right">	
+			            <div class="right">
 			            	+31 23 532 34 32<br/>
 			            	<a href="mailto:info@pixelindustries.com">info@pixelindustries.com</a>
 			        	</div>
@@ -201,7 +253,7 @@
 			        	<input type="text" name="name" placeholder="<?=ML::label('contact name')?>" />
 						<input type="email" name="email" placeholder="<?=ML::label('contact mail')?>" />
 						<!-- <input type="text" name="phone" placeholder="<?=ML::label('contact phone')?>" /> -->
-						
+
 						<textarea name="message" placeholder="<?=ML::label('contact message')?>"></textarea>
 
 						<div class="custom-checkbox-wrap">
@@ -222,7 +274,7 @@
 				<h2><?=ML::label('newsletter')?></h2>
 
 				<div class="text">
-					<?=ML::label('subscribe now')?>				
+					<?=ML::label('subscribe now')?>
 				</div>
 
 				<form action="<?=$_baseurl.$_language?>/home/newsletter"id="newsletterform">
@@ -238,3 +290,4 @@
 		<div class="thankyou"></div>
 	</div>
 </div>
+*/?>

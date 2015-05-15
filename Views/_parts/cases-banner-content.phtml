@@ -1,0 +1,77 @@
+<?
+	/*
+	 * Expecting 4 blocks
+	 *
+	 * 1st should be large
+	 * 2rd should be wide
+	 */
+
+	$caseLarge   = array_peek($cases);
+	$caseWide    = array_peek($cases, 1);
+	$caseSmallA  = array_peek($cases, 2);
+	$caseSmallB  = array_peek($cases, 3);
+?>
+
+	<?
+		$case  = $caseLarge;
+		$image = ($isMobileTablet ? 'tablet_' : '') . $case->file;
+	?>
+
+	<div class="block-group left">
+		<div class="caseblock large<?= $case->text_dark ? ' text-dark' : null ?>">
+			<a href="<?= $this->route('cases', $case->slug) ?>">
+				<div class="background" style="background-image: url('<?= $_baseurl . 'cms_img/' . $image ?>')"></div>
+				<div class="content">
+					<div class="subtitle"><?= $case->name ?></div>
+					<div class="title"><?= $case->case_name ?></div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<?
+		$case  = $caseWide;
+		$image = ($isMobileTablet ? 'tablet_' : '') . $case->file;
+	?>
+
+	<div class="block-group right">
+		<div class="caseblock wide<?= $case->text_dark ? ' text-dark' : null ?>">
+			<a href="<?= $this->route('cases', $case->slug) ?>">
+				<div class="background" style="background-image: url('<?= $_baseurl . 'cms_img/' . $image ?>')"></div>
+				<div class="content">
+					<div class="subtitle"><?= $case->name ?></div>
+					<div class="title"><?= $case->case_name ?></div>
+				</div>
+			</a>
+		</div>
+
+		<?
+			$case  = $caseSmallA;
+			$image = ($isMobileTablet ? 'tablet_' : '') . $case->file;
+		?>
+
+		<div class="caseblock small<?= $case->text_dark ? ' text-dark' : null ?>">
+			<a href="<?= $this->route('cases', $case->slug) ?>">
+				<div class="background" style="background-image: url('<?= $_baseurl . 'cms_img/' . $image ?>')"></div>
+				<div class="content">
+					<div class="subtitle"><?= $case->name ?></div>
+					<div class="title"><?= $case->case_name ?></div>
+				</div>
+			</a>
+		</div>
+
+		<?
+			$case  = $caseSmallB;
+			$image = ($isMobileTablet ? 'tablet_' : '') . $case->file;
+		?>
+
+		<div class="caseblock small<?= $case->text_dark ? ' text-dark' : null ?>">
+			<a href="<?= $this->route('cases', $case->slug) ?>">
+				<div class="background" style="background-image: url('<?= $_baseurl . 'cms_img/' . $image ?>')"></div>
+				<div class="content">
+					<div class="subtitle"><?= $case->name ?></div>
+					<div class="title"><?= $case->case_name ?></div>
+				</div>
+			</a>
+		</div>
+	</div>
