@@ -82,11 +82,15 @@
 <? endif; ?>
 
 
+<? if ( ! $isMobile): ?>
+
 <section class="home-social social-banner no-margin-column">
 <?
 	$this->partial('social-banner-content', array('social' => $social), '_parts');
 ?>
 </section>
+
+<? endif; ?>
 
 
 <section class="home-contact-and-location large-margin-column">
