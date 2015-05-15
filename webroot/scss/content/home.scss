@@ -158,8 +158,9 @@ section.home-contact-and-location {
 
 section.home-contact {
 	float: left;
-	width: 50%;
 	margin-top: $margin-def * 4;
+	width: col-width-abs(2, $margin-def * 4);
+	margin-right: $margin-def * 4;
 
 	p {
 		font-size: pem(17);
@@ -174,12 +175,19 @@ section.home-contact {
 		margin: $margin-def * 2 0;
 	}
 
+	#contact-form-thanks {
+		display: none;
+		font-size: pem(17);
+		@include adjusted-lh( 34 / 17 );
+		margin-bottom: $margin-def * 2;
+		max-width: 320px;
+	}
 }
 
 section.home-location {
 	float: left;
-	width: 50%;
 	margin-top: $margin-def * 4;
+	width: col-width-abs(2, $margin-def * 4);
 }
 
 section.home-location-address {
@@ -191,6 +199,15 @@ section.home-location-address {
 		font-size: pem(17);
 		@include adjusted-lh( 34 / 17 );
 		padding-left: 54px;
+
+		a {
+			transition: color $speed-fast;
+			color: $color-txt-dark;
+
+			&:hover, &:active {
+				color: $color-pri;
+			}
+		}
 	}
 
 	p.with-marker {

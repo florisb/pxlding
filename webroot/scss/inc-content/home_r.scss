@@ -124,6 +124,19 @@ $mediaSwitchTwoCol: 940px;
 	}
 }
 
+// special for location/address: too small? change ratio
+@media #{$media-tablet} and (max-width: 840px) {
+	section.home-contact {
+		margin-top: $margin-def * 2;
+		width: col-width-abs(2, $margin-def * 2);
+		margin-right: $margin-def * 2;
+	}
+	section.home-location {
+		margin-top: $margin-def * 2;
+		width: col-width-abs(2, $margin-def * 2);
+	}
+}
+
 
 @media #{$media-phone} {
 
@@ -151,6 +164,27 @@ $mediaSwitchTwoCol: 940px;
 				display: none;
 			}
 		}
+	}
+
+	section.home-social {
+		display: none;
+	}
+
+	section.home-contact,
+	 section.home-location {
+		float: none;
+		clear: both;
+		width: 100%;
+	}
+
+	section.home-contact {
+		.contact-form {
+			max-width: none;
+		}
+	}
+
+	section.home-location {
+		margin-top: $margin-def * 4;
 	}
 }
 

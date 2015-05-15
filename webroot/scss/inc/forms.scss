@@ -23,7 +23,7 @@ input, button {
 	&[type=email],
 	&[type=number],
 	&[type=search] {
-		transition: border-color $speed-fast;
+		transition: all $speed-fast;
 		-webkit-appearance: none;
 		outline: none;
 
@@ -56,7 +56,7 @@ input, button {
 
 //select,
 textarea {
-	transition: border-color $speed-fast;
+	transition: all $speed-fast;
 	-webkit-appearance: none;
 	outline: none;
 
@@ -78,6 +78,16 @@ textarea {
 		border-color: $color-pri !important;
 	}
 }
+
+// error states
+
+input, textarea {
+	&.error {
+		border-color: $color-err !important;
+		background-color: $color-err-bg;
+	}
+}
+
 
 // label {
 // 	@include user-select(none);
@@ -152,5 +162,10 @@ textarea {
 			top: c-off($sizeButton, $sizeIcon);
 			left: c-off($sizeButton, $sizeIcon) - 1;
 		}
+	}
+
+	.form-errors {
+		font-size: pem(15);
+		color: $color-err;
 	}
 }
