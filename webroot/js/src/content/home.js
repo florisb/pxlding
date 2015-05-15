@@ -8,7 +8,7 @@
 (function() {
 	"use strict";
 
-	// var slider = require('../modules/SliderHome.js');
+	var contactForm = require('../modules/ContactForm.js');
 
 
 	$(function() {
