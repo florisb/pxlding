@@ -147,14 +147,83 @@ section.home-blog {
 }
 
 
+section.home-contact-and-location {
+	@include cf;
+	margin-bottom: $margin-def * 4;
+
+	.h2 {
+		margin-bottom: $margin-def * 2;
+	}
+}
+
 section.home-contact {
 	float: left;
 	width: 50%;
+	margin-top: $margin-def * 4;
+
+	p {
+		font-size: pem(17);
+		@include adjusted-lh( 34 / 17 );
+	}
+
+	hr {
+		width: 90px;
+		border: 0;
+		border-bottom: 4px solid $color-brd;
+		text-align: left;
+		margin: $margin-def * 2 0;
+	}
+
 }
 
 section.home-location {
 	float: left;
 	width: 50%;
+	margin-top: $margin-def * 4;
+}
+
+section.home-location-address {
+
+	$widthMarker  : 30px;
+	$heightMarker : 46px;
+
+	p {
+		font-size: pem(17);
+		@include adjusted-lh( 34 / 17 );
+		padding-left: 54px;
+	}
+
+	p.with-marker {
+		position: relative;
+		margin-bottom: $margin-def * 1.5;
+
+		&::before {
+			@include pseudo-basic;
+			@include bg-cover('map-marker.svg');
+			position: absolute;
+			top: 0.5em;
+			left: 0;
+			width: $widthMarker;
+			height: $heightMarker;
+		}
+
+	}
+}
+
+section.home-location-video {
+	margin-top: $margin-def * 3;
+
+	$widthVideo  : 530px;
+	$heightVideo : 265px;
+	$sizeIcon    : 90px; // play icon
+
+	div.video {
+		width: 100%;
+		height: 0;
+		padding-top: percentage($heightVideo / $widthVideo);
+		background-color: $color-sec;
+		border-radius: 6px;
+	}
 }
 
 

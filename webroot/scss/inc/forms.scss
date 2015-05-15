@@ -1,0 +1,156 @@
+
+/*
+ * Input fields etc
+ */
+
+$heightInput       : 44px;
+$borderRadiusInput : 5px;
+
+input, button {
+
+	// hide webkit crap, such as the input x / hourglass etc
+	&[type=search] {
+		&::-webkit-search-decoration,
+		&::-webkit-search-cancel-button,
+		&::-webkit-search-results-button,
+		&::-webkit-search-results-decoration {
+	  		display: none;
+		}
+	}
+
+	&[type=text],
+	&[type=password],
+	&[type=email],
+	&[type=number],
+	&[type=search] {
+		transition: border-color $speed-fast;
+		-webkit-appearance: none;
+		outline: none;
+
+		border: 1px solid $color-brd-input;
+		border-radius: $borderRadiusInput;
+		height: $heightInput;
+		line-height: $heightInput;
+		font-family: $font-ter;
+		font-size: pem(17);
+		color: $color-txt-input;
+		padding: 0 $margin-def;
+
+		&:hover {
+			border-color: darken($color-brd-input, 15);
+		}
+
+		&:focus {
+			border-color: $color-pri;
+		}
+	}
+
+	&[type=submit],
+	&[type=reset] {
+		@include border-radius(0);
+		-webkit-appearance: none;
+		outline: none;
+		cursor: pointer;
+	}
+}
+
+//select,
+textarea {
+	transition: border-color $speed-fast;
+	-webkit-appearance: none;
+	outline: none;
+
+	border: 1px solid $color-brd-input;
+	border-radius: $borderRadiusInput;
+	min-height: $heightInput;
+	line-height: 1.4em;
+	font-family: $font-ter;
+	font-size: pem(17);
+	padding: $margin-def * 0.75 $margin-def;
+	color: $color-txt-input;
+
+	&:hover {
+		border-color: darken($color-brd-input, 10);
+	}
+
+	&:focus {
+		// don't know why this won't overrule hover without !, but okay.
+		border-color: $color-pri !important;
+	}
+}
+
+// label {
+// 	@include user-select(none);
+// }
+
+
+/*
+ * Default form
+ */
+
+.basic-form {
+
+	.row {
+		margin-bottom: $margin-def * 0.75;
+	}
+
+}
+
+/*
+ * Contact form
+ */
+
+.contact-form {
+
+
+	max-width: 320px;
+
+	.row {
+		position: relative;
+	}
+
+	input, textarea {
+		width: 100%;
+	}
+
+	textarea {
+		height: 154px;
+		max-width: 100%;
+		max-height: 400px;
+	}
+
+	// special e-mail submit button
+	// should hover over textarea
+	.button-submit {
+		$sizeButton : 46px;
+		$sizeIcon   : 22px;
+
+		display: block;
+		position: absolute;
+		width: $sizeButton;
+		height: $sizeButton;
+		bottom: $margin-def / 2 + 3;	// optical adjustment
+		right: $margin-def / 2;
+
+		border-radius: 5px;
+		background-color: $color-pri-darker;
+		transition: background $speed-fast;
+
+		&:hover {
+			background-color: lighten($color-pri, 10);
+		}
+		&:active {
+			background-color: darken($color-pri, 5);
+		}
+
+		&::before {
+			@include pseudo-basic;
+			@include bg-cover('send.svg');
+			position: absolute;
+			width: $sizeIcon;
+			height: $sizeIcon;
+			top: c-off($sizeButton, $sizeIcon);
+			left: c-off($sizeButton, $sizeIcon) - 1;
+		}
+	}
+}

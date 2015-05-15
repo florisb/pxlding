@@ -33,6 +33,10 @@
 
 // standard elements
 
+.clear {
+	clear: both;
+}
+
 a {
 	text-decoration: none;
 	color: $color-txt;
@@ -42,6 +46,17 @@ a {
 		color: $color-txt-dark;
 	}
 }
+
+.content-container {
+
+	.h2 {
+		font-size: pem(24);
+		font-family: $font-pri;
+		@include adjusted-lh(1.3);
+		color: $color-txt-dark;
+	}
+}
+
 
 
 // standard double arrow link

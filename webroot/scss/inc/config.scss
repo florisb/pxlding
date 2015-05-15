@@ -15,6 +15,7 @@ $font-pri:    	"helveticaneue-medium", sans-serif;
 $font-bold:     "helveticaneue-bold", sans-serif;
 $font-light:    "helveticaneue-light", sans-serif;
 $font-sec: 		Georgia, Times, "Times New Roman", serif;
+$font-ter: 		Arial, ;
 $normal:        400;
 $bold:          700;
 
@@ -24,9 +25,10 @@ $bold:          700;
 $font-upshift:  (2.5 / 14) + em;
 
 // colors
-$color-pri: #d41046;	// pixel red
-$color-sec: #f5f5f5;
-$color-ter: #eaeaea;
+$color-pri        : #d41046;	// pixel red
+$color-pri-darker : #d31145;	// WHY!?
+$color-sec        : #f5f5f5;
+$color-ter        : #eaeaea;
 
 
 $color-txt:      	#747474;	// basic blackish text
@@ -35,18 +37,20 @@ $color-txt-dark:    #1d1d1d;	// titles & links
 $color-txt-soft: 	#8e8e8e;
 $color-txt-menu:    #959595;
 $color-txt-dark:    #212121;
+$color-txt-input:   #898989;
 $color-err:      	#ca2a2a;	// error red
 $color-err-bg:   	#fff3f3;	// for backgrounds (of inputs etc)
 $color-txt-menu-mobile: #e8e7e7;
 
-$color-icon:        #d1d1d1;
+$color-icon:        $color-txt-light;
 
 
 $color-bg-pri: 	white;
 $color-bg-sec: 	$color-sec;
 
-$color-brd: #d2d2d2;
-$color-brd-light: $color-sec;
+$color-brd       : #e1e1e1;
+$color-brd-light : $color-sec;
+$color-brd-input : #d5d5d5;
 
 
 $height-header: 190px;
