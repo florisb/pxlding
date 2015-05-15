@@ -42,12 +42,132 @@
 
 
 <section class="cases cases-banner no-margin-column">
-
 <?
 	$this->partial('cases-banner-content', array('cases' => $cases), '_parts');
 ?>
+</section>
+
+
+<? if ( ! empty($blog)): ?>
+
+<section class="home-blog large-margin-column">
+
+	<? foreach ($blog as $post): ?>
+
+	<article class="blog">
+		<header>
+			<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->file ?>')"></div>
+
+			<h2 class="h2">
+				<?= $post->title ?>
+			</h2>
+		</header>
+
+		<section>
+			<?= $post->intro ?>
+		</section>
+
+		<footer>
+			<a class="arrow-link" href="<?= $this->route('blog', $post->slug) ?>">
+				<span class="arrow"></span>
+				<?= $post->read_more ?>
+			</a>
+		</footer>
+	</article>
+
+	<? endforeach; ?>
 
 </section>
+
+<? endif; ?>
+
+
+<section class="home-social social-banner no-margin-column">
+<?
+	$this->partial('social-banner-content', array('social' => $social), '_parts');
+?>
+</section>
+
+
+
+<section class="home-contact">
+
+	<h3 class="h2">
+		<?= ML::label('work with us') ?>
+	</h3>
+
+	<p>
+		<?= ML::label('work with us paragraph') ?>
+	</p>
+
+	<hr>
+
+	<div id="contact-form-thank"></div>
+
+	<div id="contact-form">
+
+        <form method="post" action="<?=$_baseurl.$_language?>/home/contact" id="contactform" onSubmit="_gaq.push(['_trackEvent', 'Contact', 'Submit']);">
+        	<input type="text" name="name" placeholder="<?=ML::label('contact name')?>" />
+			<input type="email" name="email" placeholder="<?=ML::label('contact mail')?>" />
+			<!-- <input type="text" name="phone" placeholder="<?=ML::label('contact phone')?>" /> -->
+
+			<textarea name="message" placeholder="<?=ML::label('contact message')?>"></textarea>
+
+			<div class="custom-checkbox-wrap">
+				<input type="checkbox" name="newsletter" id="subscribe" />
+				<label for="subscribe"><?=ML::label('subscribe check');?></a></label>
+			</div>
+
+			<a class="btn black"><?= ML::label("contact submit")?></a>
+
+            <input type="hidden" name="contact" value="1" />
+        </form>
+	</div>
+</div>
+		</div>
+
+</section>
+
+<section class="home-location">
+
+	<?
+		// get distance if avaible... how?
+	?>
+	<section class="address">
+
+		<h3 class="h2">
+			<?= ML::label('We are just %DISTANCE% away') ?>
+		</h3>
+
+		<div class="address">
+
+	    	<p class="with-marker">
+	        	Prinsen Bolwerk 5<br/>
+	        	2011MA Haarlem
+	        </p>
+			<p>
+	        	+31 23 532 34 32<br/>
+	        	<a href="mailto:info@pixelindustries.com">info@pixelindustries.com</a>
+	        </p>
+	    </div>
+
+	</section>
+
+	<section class="video">
+
+		<h3 class="h2">
+			<?= ML::label('Get an inside view...') ?>
+		</h3>
+
+		<div class="video">
+
+		</div>
+
+	</section>
+
+</section>
+
+
 
 <? /*
 <div id="home"></div>
