@@ -117,6 +117,10 @@
                     `cms_m14_cases_showcase` `shc`
                 ON
                     `shc`.`case` = `c`.`id`
+				INNER JOIN
+                    `cms_m3_slugs` `s`
+                ON
+                    (`s`.`entry_id` = `c`.`id` AND `s`.`language_id` = :language AND `s`.`ref_module_id` = 6)
                 WHERE
                     `shc`.`e_active` = 1
                 ORDER BY
