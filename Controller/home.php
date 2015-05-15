@@ -11,12 +11,11 @@ class Home extends BaseController
         // main video
 
         $services = Factory\Services::getAll(true);
-        $cases    = Factory\Cases::getAll(true);
+        $cases    = Factory\Cases::getShowCased();
 
         // blog posts
 
         // photo's
-
 
         $employees = Factory\Employees::getAll(true);
         $partners  = Factory\Partners::getAll(true);
