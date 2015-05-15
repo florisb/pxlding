@@ -109,7 +109,11 @@
 
 			// self::SHOWCASED_REF_FIELD
 
-			$extra = '`shc`.`text_dark`';
+			$extra = "
+				`shc`.`text_dark`,
+				`c_ml`.`name` AS `name`,
+				`shc`.`name`  AS `showcase_name`
+			";
 
 			$q = "
 				%s
@@ -138,8 +142,6 @@
 		}
 
 		protected function _getSql($extra = '') {
-
-
 
 			$q = "
 				SELECT
