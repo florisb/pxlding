@@ -53,9 +53,9 @@ $color-brd-light : $color-sec;
 $color-brd-input : #d5d5d5;
 
 
-$height-header: 190px;
-$height-header-mobile-bar: 60px;
-$margin-header-mobile: 20px;
+$height-header            : 190px;
+$height-header-mobile-bar : 60px;
+$margin-header-mobile     : 20px;
 
 
 // basic margins
@@ -86,6 +86,7 @@ $speed-fast           : 0.25s;
 $speed-menu           : 0.4s;
 $speed-slider         : 0.5s;
 $speed-intensely-slow : 5s;
+$speed-collapse       : $speed-fast; // top menu collapse
 
 // special stuff
 $home-service-text-min-height: 9em;			// set minimum text block height for vertical lineup of service links

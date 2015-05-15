@@ -1,14 +1,17 @@
 
-$heightBar : $height-header-mobile-bar;
-$height    : $heightBar + $margin-header-mobile * 2;
+$heightBar    : $height-header-mobile-bar;
+$height       : $heightBar + $margin-header-mobile * 2;
+$heightSmall  : $heightBar;
+
+$heightBurger : 30px;
 
 // mobile menu for tablet and smaller
 @media #{$media-tablet-min} {
 
 	header.main {
 		z-index: $z-menu + 5;
-		padding-top: ($height - $heightBar) / 2;
-		padding-bottom: ($height - $heightBar) / 2;
+		padding-top: c-off($height, $heightBar);
+		padding-bottom: c-off($height, $heightBar);
 
 		.top-bar {
 			height: $heightBar;
@@ -25,7 +28,7 @@ $height    : $heightBar + $margin-header-mobile * 2;
 		$heightLogo : 25px;
 
 		img, &::after {
-			top: ($heightBar - $heightLogo) / 2;
+			top: c-off($heightBar, $heightLogo);
 		}
 	}
 
@@ -38,6 +41,9 @@ $height    : $heightBar + $margin-header-mobile * 2;
 		width: 100%;
 		height: $height;
 		padding-top: $margin-header-mobile;
+
+		transition: height $speed-collapse,
+				    padding-top $speed-collapse;
 	}
 
 	nav.main {
@@ -62,6 +68,29 @@ $height    : $heightBar + $margin-header-mobile * 2;
 			text-align: center;
 			font-size: pem(22);
 			color: $color-txt-menu-mobile;
+		}
+	}
+
+	// collapsed top menu bar
+	body.collapsed-top {
+
+		header.main {
+			padding-top: 0; //c-off($heightSmall, $heightBar);
+			padding-bottom: 0; //c-off($heightSmall, $heightBar);
+			height: $height-header-mobile-bar + $margin-def / 4;
+		}
+
+		div.mobile-menu-header-overlay {
+			padding-top: 0;
+			height: $height-header-mobile-bar + $margin-def / 4;
+		}
+
+		div.mobile-menu-burger {
+			top: ($height-header-mobile-bar - $heightBurger) / 2 - ($heightBurger - 5);
+		}
+
+		div.mobile-menu {
+			top: $height-header-mobile-bar + $margin-def * 2;
 		}
 	}
 }

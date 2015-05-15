@@ -9,6 +9,9 @@ header.main {
 	padding-bottom: 30px;
 	background-color: $color-bg-pri;
 
+	transition: height $speed-collapse,
+				padding-top $speed-collapse;
+
 	.top-bar {
 		height: $heightTop;
 		line-height: $heightTop;

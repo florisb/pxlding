@@ -199,3 +199,8 @@ $mediaSwitchTwoCol: 940px;
 		font-size: pem(20);
 	}
 }
+@media (min-width: $width-phone) and (max-width: 670px) {
+	section.home-services section.service .h2 {
+		font-size: pem(22);
+	}
+}

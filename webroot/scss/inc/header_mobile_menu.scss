@@ -45,10 +45,12 @@ div.mobile-menu-burger {
 	position: absolute;
 	height: $heightBurger * 2;
 	width: $widthBurger;
-	top: ($margin-header-mobile + $height-header-mobile-bar - $heightBurger) / 2 - ($heightBurger - 5);
+	top: ($margin-header-mobile * 2 + $height-header-mobile-bar - $heightBurger) / 2 - ($heightBurger - 5);
 	right: $margin-def * 1.5;
 	cursor: pointer;
 	user-select: none;
+
+	transition: top $speed-collapse;
 
 	div.x, div.y, div.z {
 		position: absolute;
