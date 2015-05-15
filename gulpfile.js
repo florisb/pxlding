@@ -82,25 +82,25 @@ gulp.task('js', function () {
 	// then uglify the dev versions for live
 
 	gulp.src(targetJsDevDir + '/main.js')
-		.pipe(sourcemaps.init())
+		// .pipe(sourcemaps.init())
 		.pipe(uglify())
 		.on('error', function (error) {
             console.error(error);
             notify().write(error)
             this.emit('end');
         })
-		.pipe(sourcemaps.write())
+		// .pipe(sourcemaps.write())
 		.pipe(gulp.dest(targetJsLiveDir))
 
 	gulp.src(targetJsDevDir + '/content/**/*.js')
-		.pipe(sourcemaps.init())
+		// .pipe(sourcemaps.init())
 		.pipe(uglify())
 		.on('error', function (error) {
             console.error(error);
             notify().write(error)
             this.emit('end');
         })
-		.pipe(sourcemaps.write())
+		// .pipe(sourcemaps.write())
 		.pipe(gulp.dest(targetJsLiveDir + '/content'))
 });
 
