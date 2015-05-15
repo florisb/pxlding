@@ -10,8 +10,8 @@
 
 	<script src="<?= $_baseurl . $_js_path ?>main.js"></script>
 
-	<? if (file_exists(APPLICATION_PATH . $_js_path . 'content/' . $controllerName . '.js')): ?>
-		<script src="<?= $_baseurl . $_js_path . $controllerName ?>.js"></script>
+	<? if (file_exists(APPLICATION_PATH . 'webroot/' . $_js_path . 'content/' . $controllerName . '.js')): ?>
+		<script src="<?= $_baseurl . $_js_path . 'content/' . $controllerName ?>.js"></script>
 	<? endif; ?>
 
 	<? /*
