@@ -107,11 +107,13 @@
 
 		<hr>
 
-		<div id="contact-form-thank"></div>
+		<div id="contact-form-thanks">
+			<?= ML::label('contact thanks') ?>
+		</div>
 
 		<div id="contact-form-container" class="basic-form contact-form">
 
-	        <form method="post" action="<?= $_baseurl . $_language?>/home/contact" id="contact-form" onSubmit="_gaq.push(['_trackEvent', 'Contact', 'Submit']);">
+	        <form method="post" action="<?= $_baseurl . $_language?>/home/contact" id="contact-form" <? /* onSubmit="_gaq.push(['_trackEvent', 'Contact', 'Submit']);" */ ?>>
 	            <input type="hidden" name="contact" value="1">
 
 				<div class="row">
@@ -142,6 +144,8 @@
 
 					<a id="contact-form-submit" class="button-submit" title="<?= ML::label("contact submit")?>" href="javascript:;"></a>
 				</div>
+
+				<div class="form-errors"></div>
 
 	        </form>
 		</div>
