@@ -40,8 +40,17 @@
 	
 		//Fetch ML table name
 		$sMLModule = getModuleNameML($ref_module_id);
-		
-		
+
+		// use different field than name?
+		$nameField = 'name';
+		switch ($ref_module_id) {
+
+			case 13: // services
+			case 15: // blog
+				$nameField = 'slug';
+				break;
+		}
+
 		if (!$sMLModule) {
 			//Try and fetch regular table name
 			$sModule = getModuleName($ref_module_id);
@@ -49,17 +58,17 @@
 			if (!$sModule) {
 				return;
 			}
-			
-			$sName       = getNameValue($sModule, $entry_id);
-			$language_id = null;
+
+			$sName       = getNameValue($sModule, $entry_id, $nameField);
+			$language_id = 116;
 		} else {
-			$sName       = getNameMLValue($sMLModule, $entry_id, $language_id);
-			
+			$sName       = getNameMLValue($sMLModule, $entry_id, $language_id, $nameField);
+
 			if (!$sName) {
 				//Try and fetch regular table name
 				$sModule = getModuleName($ref_module_id);
-				$sName   = getNameValue($sModule, $entry_id);
-				$language_id = null;
+				$sName   = getNameValue($sModule, $entry_id, $nameField);
+				$language_id = 116;
 			}
 		}
 		
@@ -163,11 +172,11 @@ SQL;
 			 return $row[0];
 		 }
 	}
-	
-	function getNameMLValue($sMLModule, $entry_id, $language_id) {
+
+	function getNameMLValue($sMLModule, $entry_id, $language_id, $field = 'name') {
 		$q = <<<SQL
 			SELECT
-				`name`
+				`%s`
 			FROM
 				`%s`
 			WHERE
@@ -178,7 +187,7 @@ SQL;
 				0,1
 SQL;
 
-		$q      = sprintf($q, $sMLModule, $entry_id, $language_id);
+		$q      = sprintf($q, $field, $sMLModule, $entry_id, $language_id);
 		$result = mysql_query($q);
 
 		if (!$result) {
@@ -188,16 +197,16 @@ SQL;
 		$row = mysql_fetch_assoc($result);
 		
 		if ($row) {
-			return $row['name'];
+			return $row[$field];
 		} else {
 			return null;
 		}
 	}
-	
-	function getNameValue($sModule, $entry_id) {
+
+	function getNameValue($sModule, $entry_id, $field = 'name') {
 		$q = <<<SQL
 			SELECT
-				`name`
+				`%s`
 			FROM
 				`%s`
 			WHERE
@@ -206,7 +215,7 @@ SQL;
 				0,1
 SQL;
 
-		$q        = sprintf($q, $sModule, $entry_id);
+		$q        = sprintf($q, $field, $sModule, $entry_id);
 		$result   = mysql_query($q);
 
 		if (!$result) {
@@ -216,7 +225,7 @@ SQL;
 		$row = mysql_fetch_assoc($result);
 		
 		if ($row) {
-			return $row['name'];
+			return $row[$field];
 		} else {
 			return null;
 		}
@@ -326,8 +335,13 @@ SQL;
 	}
 	
 
-	//Register postSave events to the updateSlugs routine for modules containing a (ML or non-ML) field called "name"
-	foreach(array(4, 6, 7) as $moduleId) {
+
+	// Register postSave events to the updateSlugs routine for modules containing a (ML or non-ML) field called "name"
+	foreach(array(
+		4, 6, 7,
+		13, // services
+		15, // blog
+	) as $moduleId) {
 		Event::register('updateSlugs',  'postSave',   $moduleId);
 		Event::register('cleanupSlugs', 'postDelete', $moduleId);
 	}
