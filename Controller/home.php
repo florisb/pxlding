@@ -9,9 +9,9 @@ class Home extends BaseController
 	public function indexAction() {
 
         // main video
-        // services
 
-        $cases     = Factory\Cases::getAll(true);
+        $services = Factory\Services::getAll(true);
+        $cases    = Factory\Cases::getAll(true);
 
         // blog posts
 
@@ -23,6 +23,7 @@ class Home extends BaseController
 
 
 
+        $this->set('services', $services);
 		$this->set('cases', $cases);
         $this->set('employees', $employees);
         $this->set('partners', $partners);
