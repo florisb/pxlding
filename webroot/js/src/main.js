@@ -43,22 +43,23 @@ window.pxl.settings     = require('./settings.js');
 	"use strict";
 
 	// import local main app modules
-	var _mainMenu    = require('./modules/MainMenu.js'),
-		_newsletter  = require('./modules/Newsletter.js');
+	var _mainMenu     = require('./modules/MainMenu.js'),
+		_newsletter   = require('./modules/Newsletter.js'),
+		_collapseMenu = require('./modules/CollapseMenu.js');
 
 
 	// init
 	$(function () {
 
 
-		// styled select: focus class on styled container
-		$('.styled-select select').focus(function() {
-			$(this).closest('.styled-select').addClass('focus');
-		});
+		// // styled select: focus class on styled container
+		// $('.styled-select select').focus(function() {
+		// 	$(this).closest('.styled-select').addClass('focus');
+		// });
 
-		$('.styled-select select').blur(function() {
-			$(this).closest('.styled-select').removeClass('focus');
-		});
+		// $('.styled-select select').blur(function() {
+		// 	$(this).closest('.styled-select').removeClass('focus');
+		// });
 
 	});
 })();
