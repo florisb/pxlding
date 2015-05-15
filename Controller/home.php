@@ -12,26 +12,26 @@ class Home extends BaseController
 
         $services = Factory\Services::getAll(true);
         $cases    = Factory\Cases::getShowCased();
-
-        // blog posts
         $blog     = Factory\Blog::getLatest(3);
 
         // photo's
 
-        $employees = Factory\Employees::getAll(true);
-        $partners  = Factory\Partners::getAll(true);
+        // $employees = Factory\Employees::getAll(true);
+        // $partners  = Factory\Partners::getAll(true);
 
 
 
         $this->set('services', $services);
 		$this->set('cases', $cases);
-        $this->set('employees', $employees);
-        $this->set('partners', $partners);
+        $this->set('blog', $blog);
+        // $this->set('employees', $employees);
+        // $this->set('partners', $partners);
 	}
 
 
     public function newsletterAction() {
-         if(isset($_POST['newsletter']) && $_GET["send"] == "1") {
+
+         if (isset($_POST['newsletter']) && $_GET["send"] == "1") {
 
             $empty    = true;
             $response = array();
@@ -62,7 +62,7 @@ class Home extends BaseController
 
             }
 
-            if(!count($response['errors'])){
+            if ( ! count($response['errors'])){
 
                 if ($_POST['newsletter'] === 'on') {
 
@@ -75,19 +75,14 @@ class Home extends BaseController
 
                     curl_setopt($ch, CURLOPT_URL,
                         "https://app.klantenbinder2.nl/api/contacts?token=265b71d0f3466efa1566591a24927194");
-
                     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-
                     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($contact));
-
                     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                     $responseKb = curl_exec($ch);
 
                     curl_close($ch);
-
                 }
 
                 $response['result'] = true;
@@ -103,7 +98,7 @@ class Home extends BaseController
 
 	public function contactAction() {
 
-        if(isset($_POST['contact']) && $_GET["send"] == "1") {
+        if (isset($_POST['contact']) && $_GET["send"] == "1") {
 
             $msg      = '';
             $empty    = true;
@@ -113,7 +108,7 @@ class Home extends BaseController
                 if ($key == 'contact' || $key == 'phone') continue;
 
                 if ($key == 'email') {
-                   if(filter_var($value, FILTER_VALIDATE_EMAIL) == true) {
+                   if (filter_var($value, FILTER_VALIDATE_EMAIL) == true) {
                         $empty = false;
                    } else {
                        $response['errors'][] = array(
@@ -122,13 +117,13 @@ class Home extends BaseController
                    }
                 }
 
-                if(!empty($value)){
+                if ( ! empty($value)) {
                     $empty = false;
-                    $msg  .= "<strong>".ucfirst(str_replace("_", " ", $key))."</strong>:<br/>".$value."<br/><br/>";
+                    $msg  .= "<strong>" . ucfirst(str_replace("_", " ", $key)) . "</strong>:<br/>" . $value . "<br/><br/>";
                 }
 
 
-                if( empty( $value ) ){
+                if (empty($value)) {
                     $response['errors'][] = array(
                         "element" => $key
                     );
@@ -138,32 +133,27 @@ class Home extends BaseController
 
             }
 
-            if(!count($response['errors'])){
+            if ( ! count($response['errors'])) {
 
                 if ($_POST['newsletter'] === 'on') {
 
                     $contact = (Object) null;
 
-                    $contact->email         = (string) pxl_db_safe($_POST['email']);
-                    $contact->voornaam      = (string) pxl_db_safe($_POST['name']);
+                    $contact->email    = (string) pxl_db_safe($_POST['email']);
+                    $contact->voornaam = (string) pxl_db_safe($_POST['name']);
 
                     $ch = curl_init();
 
                     curl_setopt($ch, CURLOPT_URL,
                         "https://app.klantenbinder2.nl/api/contacts?token=265b71d0f3466efa1566591a24927194");
-
                     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-
                     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($contact));
-
                     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                     $responseKb = curl_exec($ch);
 
                     curl_close($ch);
-
                 }
 
                 $email = new Tools\Emailer();
@@ -171,7 +161,7 @@ class Home extends BaseController
                 $email->addressee('wouter@pixelindustries.com');
                 //$email->addressee('info@pixelindustries.com');
                 $email->sender('info@pixelindustries.com');
-                $email->subject('pixelindustries website contact');
+                $email->subject('Pixelindustries website contact');
                 $email->messageHtml($msg);
                 $email->send();
 
