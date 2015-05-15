@@ -33,8 +33,6 @@ module.exports = (function() {
 
             if ($(document).scrollTop() > _offset) {
 
-                console.log('test');
-
                 if ($(_mainId).data('top-bar') == 'big') {
                     $(_mainId).data('top-bar', 'small');
                     $(_mainId).addClass('collapsed-top');

@@ -44,7 +44,6 @@ window.pxl.settings     = require('./settings.js');
 
 	// import local main app modules
 	var _mainMenu     = require('./modules/MainMenu.js'),
-		_newsletter   = require('./modules/Newsletter.js'),
 		_collapseMenu = require('./modules/CollapseMenu.js');
 
 
