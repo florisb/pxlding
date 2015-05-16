@@ -4,6 +4,7 @@
 	class Cases extends BaseFactory {
 
 		const SHOWCASED_REF_FIELD = 63;
+		const SERVICES_REF_FIELD  = 62;
 
 
 		public function getAll($shuffle = false, $offline = false) {
@@ -140,6 +141,43 @@
 
 			return self::db()->matrix($stmt, 'Model\Entity\PCase');
 		}
+
+		/**
+		 * Get related cases for service
+		 */
+		public function getByService($service) {
+
+			if ($service instanceof \Model\Entity\PCase) {
+				$serviceId = $service->id;
+			} else {
+				$serviceId = (int) $service;
+			}
+
+			$q = "
+				%s
+                INNER JOIN
+                    `cms_m_references` `ref`
+                ON
+                    (`ref`.`to_entry_id` = `c`.`id` AND `ref`.`from_field_id` = " . self::SERVICES_REF_FIELD . ")
+                WHERE
+                    `c`.`e_active` = 1
+                AND
+                	`ref`.`from_entry_id` = :serviceid
+                ORDER BY
+                    `ref`.`position`
+			";
+
+			$q = sprintf($q, self::_getSql());
+
+			$stmt = self::stmt($q, array(
+				':language'  => array(self::session('_language_id'), 'i'),
+				':serviceid' => array($serviceId, 'i'),
+			));
+
+			return self::db()->matrix($stmt, 'Model\Entity\PCase');
+		}
+
+
 
 		protected function _getSql($extra = '') {
 

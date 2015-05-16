@@ -3,7 +3,8 @@
 
 	class Services extends BaseFactory {
 
-		const SERVICE_BANNER_FIELD = 57;
+		const SERVICE_BANNER_FIELD        = 57;
+		const SERVICE_BANNER_FIELD_MOBILE = 77;
 
 		public function getAll() {
 
@@ -57,7 +58,9 @@
 					*,
 					`svc`.`id` AS `cid`,
 					`i`.`file` AS `banner`,
-					`i`.`caption` AS `banner_caption`
+					`i`.`caption` AS `banner_caption`,
+					`i`.`file` AS `banner_mobile`,
+					`i`.`caption` AS `banner_caption_mobile`
 				FROM
 					`cms_m13_services` `svc`
 				INNER JOIN
@@ -68,6 +71,10 @@
 					`cms_m_images` `i`
 				ON
 					(`svc`.`id` = `i`.`entry_id` AND `i`.`field_id` = '" . self::SERVICE_BANNER_FIELD . "')
+				LEFT JOIN
+					`cms_m_images` `im`
+				ON
+					(`svc`.`id` = `im`.`entry_id` AND `im`.`field_id` = '" . self::SERVICE_BANNER_FIELD_MOBILE . "')
 			";
 
 			return $q;
