@@ -1,24 +1,27 @@
+
+<section class="banner-video home-video no-margin-column appear-effect<?= ($isMobile) ? ' mobile' : null ?>">
 <?
-	$rand = rand(0, ($cases->count() - 1));
+	$this->partial('home-video-content', array(), '_parts');
 ?>
-
-
-
-<section class="banner-video home-video no-margin-column">
 </section>
 
 
 <section class="home-services large-margin-column">
 
 	<? foreach ($services as $service): ?>
+	<?
+		$url = $this->route('services', $service->slug);
+	?>
 
-	<section class="service">
+	<section class="service appear-effect">
 
 		<header>
-			<div class="icon service-<?= $service->icon ?>"></div>
-			<h2 class="h2">
-				<?= $service->title ?>
-			</h2>
+			<a href="<?= $url ?>">
+				<div class="icon service-<?= $service->icon ?>"></div>
+				<h2 class="h2">
+					<?= $service->title ?>
+				</h2>
+			</a>
 		</header>
 
 		<section>
@@ -26,7 +29,7 @@
 		</section>
 
 		<footer>
-			<a class="arrow-link" href="<?= $this->route('services', $service->slug) ?>">
+			<a class="arrow-link" href="<?= $url ?>">
 				<span class="arrow"></span>
 				<?= $service->title ?>
 			</a>
@@ -50,19 +53,24 @@
 
 <? if ( ! empty($blog)): ?>
 
-<section class="home-blog large-margin-column">
+<section class="home-blog large-margin-column appear-effect">
 
 	<div class="owl-carousel">
 
 		<? foreach ($blog as $post): ?>
+		<?
+			$url = $this->route('blog', $post->slug);
+		?>
 
 		<article class="blog">
 			<header>
-				<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->file ?>')"></div>
+				<a href="<?= $url ?>">
+					<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->file ?>')"></div>
 
-				<h2 class="h2">
-					<?= $post->title ?>
-				</h2>
+					<h2 class="h2">
+						<?= $post->title ?>
+					</h2>
+				</a>
 			</header>
 
 			<section>
@@ -70,7 +78,7 @@
 			</section>
 
 			<footer>
-				<a class="arrow-link" href="<?= $this->route('blog', $post->slug) ?>">
+				<a class="arrow-link" href="<?= $url ?>">
 					<span class="arrow"></span>
 					<?= $post->read_more ?>
 				</a>
@@ -100,7 +108,7 @@
 
 <section class="home-contact-and-location large-margin-column">
 
-	<section class="home-contact">
+	<section class="home-contact appear-effect">
 
 		<h3 class="h2">
 			<?= ML::label('work with us') ?>
@@ -157,7 +165,7 @@
 
 	</section>
 
-	<section class="home-location">
+	<section class="home-location appear-effect">
 
 		<?
 			// get distance if avaible... how?
