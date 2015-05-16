@@ -1,0 +1,23 @@
+
+<nav class="service-categories">
+
+	<? foreach ($services as $serviceCat): ?>
+	<?
+		$url = $this->route('services', $serviceCat->slug);
+	?>
+
+		<a class="service-cat <?= $serviceCat->name ?><?= ($serviceCat->name == $service->name) ? ' active' : null
+			?>" href="<?= $url ?>" title="<?= $serviceCat->title ?>">
+
+			<div>
+				<div class="icon service-<?= $serviceCat->icon ?>"></div>
+				<div class="h3">
+					<?= $serviceCat->title ?>
+				</div>
+			</div>
+
+		</a>
+
+	<? endforeach; ?>
+
+</nav>
