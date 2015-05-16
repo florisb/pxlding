@@ -1,0 +1,99 @@
+
+<section class="banner-video mission-video no-margin-column appear-effect<?= ($isMobile) ? ' mobile' : null ?>">
+<?
+	$this->partial('mission-video-content', array(), '_parts');
+?>
+</section>
+
+
+<section class="mission large-margin-column">
+
+	<h1 class="h1">
+		<?= $missionContent->page_title ?>
+	</h1>
+
+	<section class="text custom-text-content">
+		<?= $missionContent->page_text ?>
+	</section>
+
+</section>
+
+
+<hr class="mission">
+
+
+<section class="people large-margin-column">
+
+	<h2 class="h1">
+		<?= $peopleContent->page_title ?>
+	</h2>
+
+	<section class="text custom-text-content">
+		<?= $missionContent->page_text ?>
+	</section>
+
+</section>
+
+
+<?
+	if ( ! empty($employees)):
+
+		$bst = array(
+				'collega', 'chef lege dozen', 'held', 'pillaar', 'kapitein', 'diva', 'vreemdeling',
+				'work-a-holic', 'stoelendanser', 'wonderkind', 'genie', 'schuinsmarcheerder', 'money-maker',
+				'prinses-op-de-erwt', 'granol-van-de-muren', 'wizz-kid', 'krasse-knar', 'werknemer',
+		);
+
+		$direction = array(
+			'left', 'top', 'right', 'bottom',
+		);
+?>
+
+<section class="people-matrix no-margin-column">
+
+	<? foreach ($employees as $employee): ?>
+
+		<div class="person">
+			<div class="<?= $bst[rand(0, count($bst) - 1)] ?>">
+
+				<div class="mug <?= $direction[rand(0, 3)] ?>">
+					<img src="<?= $_baseurl . 'cms_img/' .  ($isMobile ? 'small' : 'large')  . $employee->file ?>" alt="<?= $employee->name ?>">
+				</div>
+
+				<div class="buns <?= $direction[rand(0, 3)] ?>">
+					<div class="text">
+
+						<div class="name">
+							<?= $employee->name ?>
+						</div>
+						<div class="role">
+							<?= $employee->role ?>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<? endforeach; ?>
+
+</section>
+
+<? endif; ?>
+
+
+<section class="join-us large-margin-column">
+
+	<h2 class="h2">
+		<?= ML::label('join us') ?>
+	</h2>
+
+	<p>
+		<?= ML::label('zin om te joinen?') ?>
+	</p>
+
+	<a href="<?= $_baseurl . $_language ?>/jobs">
+		<?= ML::label('vacatures') ?>
+	</a>
+
+</section>
