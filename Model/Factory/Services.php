@@ -3,6 +3,8 @@
 
 	class Services extends BaseFactory {
 
+		const SERVICE_BANNER_FIELD = 57;
+
 		public function getAll() {
 
 			$q = "
@@ -54,7 +56,8 @@
 				SELECT
 					*,
 					`svc`.`id` AS `cid`,
-					`i`.`file` AS `file`
+					`i`.`file` AS `banner`,
+					`i`.`caption` AS `banner_caption`
 				FROM
 					`cms_m13_services` `svc`
 				INNER JOIN
@@ -64,7 +67,7 @@
 				LEFT JOIN
 					`cms_m_images` `i`
 				ON
-					(`svc`.`id` = `i`.`entry_id` AND `i`.`field_id` = '57')
+					(`svc`.`id` = `i`.`entry_id` AND `i`.`field_id` = '" . self::SERVICE_BANNER_FIELD . "')
 			";
 
 			return $q;
