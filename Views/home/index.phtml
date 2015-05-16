@@ -24,7 +24,7 @@
 			</a>
 		</header>
 
-		<section>
+		<section class="custom-text-content">
 			<?= $service->intro ?>
 		</section>
 
@@ -73,7 +73,7 @@
 				</a>
 			</header>
 
-			<section>
+			<section class="custom-text-content">
 				<?= $post->intro ?>
 			</section>
 
@@ -212,20 +212,7 @@
 <div id="home"></div>
 
 <div id="page" class="home">
-	<div class="case-header-wrapper">
-		<div id="case" class="animatedslow fadeIn">
-			<div id="case-image" style="background-image: url(<?=$_baseurl?>cms_img/<?=$isMobileTablet ? 'tablet_' : ''?><?=$cases->get($rand)->file?>);"></div>
-		</div>
 
-		<div id="case-name" class="animatedslow">
-			<div class="animatedslow fadeIn delay10 button"><?=$cases->get($rand)->home_label?></div>
-			<h1 class="animatedslow fadeIn delay10"><?=$cases->get($rand)->case_name?></h1>
-			<h2 class="animatedslow fadeIn delay12"><?=$cases->get($rand)->name?></h2>
-
-			<a class="btn case animatedslow fadeIn delay15" href="<?=$_baseurl.$_language.'/cases/'.$cases->get($rand)->slug.''?>">Lees case</a>
-		</div>
-
-	</div>
 	<div class="block count">
 		<div class="inner">
 			<h2 class="tagline"><?=$_content->page_title?></h2>
@@ -283,58 +270,7 @@
 		</div>
 	</div>
 
-	<div id="case-content">
-		<div id="case-gallery" class="<?=$isTablet ? 'tablet' : ''?> grey">
 
-			<h2>Cases</h2>
-
-			<? if(!$isMobile): ?>
-			<div class="online-cases">
-
-			<?php $i = 0; ?>
-			<?php foreach($cases as $c){ ?>
-				<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
-					<figure data-img="<?=$_baseurl?>cms_img/overview_<?=$c->file?>">
-			                <a class="btn" href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>">Bekijk case</a>
-					</figure>
-
-					<div class="case-name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->case_name?></a></div>
-					<div class="name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->name?></a></div>
-				</div>
-				<?php $i++; ?>
-			<?php } ?>
-
-			<div class="button_wrapper">
-				<a href="<?=$_baseurl.$_language?>/cases" class="btn black"><?=ML::label('view all cases')?></a>
-			</div>
-
-			</div>
-
-			<? else: ?>
-				<div class="online-cases">
-
-				<?php $i = 0; ?>
-				<?php foreach($cases as $c){ ?>
-					<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
-						<figure data-img="<?=$_baseurl?>cms_img/overview_<?=$c->file?>">
-				                <a class="btn" href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>">Bekijk case</a>
-						</figure>
-
-						<div class="case-name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->case_name?></a></div>
-						<div class="name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->name?></a></div>
-					</div>
-					<?php $i++; ?>
-				<?php } ?>
-
-				</div>
-
-				<a href="<?=$_baseurl.$_language?>/cases" class="btn black"><?=ML::label('view all cases')?></a>
-
-			<? endif; ?>
-
-		</div>
-
-	</div>
 	<div class="block">
 		<? if(!$isMobile): ?>
 			<img class="<?=$isTablet ? 'tablet' : ''?>" src="<?=$_baseurl?>img/clients.jpg" />

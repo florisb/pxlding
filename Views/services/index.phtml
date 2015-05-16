@@ -1,5 +1,5 @@
 
-<nav class="service-categories">
+<nav class="service-categories no-margin-column">
 
 	<? foreach ($services as $serviceCat): ?>
 	<?
@@ -7,7 +7,7 @@
 	?>
 
 		<a class="service-cat <?= $serviceCat->name ?><?= ($serviceCat->name == $service->name) ? ' active' : null
-			?>" href="<?= $url ?>" title="<?= $serviceCat->title ?>">
+			?>" href="<?= $url ?>" <? /* title="<?= $serviceCat->title ?>" */ ?>>
 
 			<div>
 				<div class="icon service-<?= $serviceCat->icon ?>"></div>
@@ -21,3 +21,105 @@
 	<? endforeach; ?>
 
 </nav>
+
+
+
+<section class="service-banner no-margin-column" style="background-image: url('<?= $_baseurl . 'cms_img/' . $service->banner ?>')">
+	<div class="container">
+
+		<div class="title">
+			<?= $service->title ?>
+		</div>
+
+		<div class="super bold-and-light">
+			<?= $service->banner_text ?>
+		</div>
+
+		<div class="caption">
+			<?= $service->banner_caption ?>
+		</div>
+
+	</div>
+</section>
+
+
+
+<section class="service-content large-margin-column">
+
+	<section class="main-text">
+
+		<h1 class="h1">
+			<?= $service->title ?>
+		</h1>
+
+		<div class="text custom-text-content">
+			<?= $service->content ?>
+		</div>
+
+	</section>
+
+	<aside class="aside-text">
+
+		<h2 class="h2">
+			<?= $service->aside_title ?>
+		</h2>
+
+		<div class="bullet-list custom-text-content">
+			<?=
+				App\ViewHelper::formatServiceAsideBullets( $service->aside_bullets )
+			?>
+		</div>
+
+
+		<? if (!empty($service->aside_quote_source)): ?>
+
+			<div class="quotation">
+
+				<div class="quote custom-text-content">
+					&quot;<?= $service->aside_quote ?>&quot;
+				</div>
+
+				<? if ( ! empty($service->aside_quote_source)): ?>
+					<div class="source">
+						&ndash; <?= $service->aside_quote_source ?>
+					</div>
+				<? endif; ?>
+
+			</div>
+
+		<? endif; ?>
+
+	</aside>
+
+</section>
+
+
+<? if ( ! empty($cases)): ?>
+
+<section class="service-cases large-margin-column">
+
+	<div class="owl-carousel">
+
+	<? foreach ($cases as $case): ?>
+
+		<div class="case">
+
+			<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $case->file ?>')"></div>
+
+			<div class="caption">
+				<div class="subtitle">
+					<?= $case->name ?>
+				</div>
+				<div class="title">
+					<?= $case->case_name ?>
+				</div>
+			</div>
+		</div>
+
+	<? endforeach; ?>
+
+	</div>
+
+</section>
+
+<? endif; ?>
