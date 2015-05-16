@@ -105,8 +105,8 @@ section.home-blog {
 
 	article.blog {
 		float: left;
-		width: col-width-abs(3, $marginColumn);
-		margin-right: $marginColumn;
+		// width: col-width-abs(3, $marginColumn);
+		// margin-right: $marginColumn;
 
 		.h2 {
 			display: inline-block;
@@ -143,6 +143,10 @@ section.home-blog {
 			line-height: $heightLink;
 
 		}
+	}
+
+	.owl-controls {
+		margin-top: $margin-def * 3;
 	}
 }
 

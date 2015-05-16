@@ -1,5 +1,17 @@
 $mediaSwitchTwoCol: 940px;
 
+
+@media #{$media-desktop} {
+
+	// hide owl-carousel dots when all 3 blog posts are/should be visible
+	section.home-blog {
+		.owl-controls {
+			display: none;
+		}
+	}
+}
+
+
 @media #{$media-desktop}, #{$media-tablet} {
 
 	section.home-services {
@@ -18,17 +30,17 @@ $mediaSwitchTwoCol: 940px;
 		}
 	}
 
-	section.home-blog {
-		article.blog {
+	// section.home-blog {
+	// 	article.blog {
 
-			&:nth-child(3n+3) {
-				margin-right: 0;
-			}
-			&:nth-child(3n+1) {
-				clear: left;
-			}
-		}
-	}
+	// 		&:nth-child(3n+3) {
+	// 			margin-right: 0;
+	// 		}
+	// 		&:nth-child(3n+1) {
+	// 			clear: left;
+	// 		}
+	// 	}
+	// }
 
 }
 
@@ -51,19 +63,19 @@ $mediaSwitchTwoCol: 940px;
 		}
 	}
 
-	section.home-blog {
-		article.blog {
-			width: col-width-abs(3, $marginColumn);
-			margin-right: $marginColumn;
+	// section.home-blog {
+	// 	article.blog {
+	// 		width: col-width-abs(3, $marginColumn);
+	// 		margin-right: $marginColumn;
 
-			&:nth-child(3n+3) {
-				margin-right: 0;
-			}
-			&:nth-child(3n+1) {
-				clear: left;
-			}
-		}
-	}
+	// 		&:nth-child(3n+3) {
+	// 			margin-right: 0;
+	// 		}
+	// 		&:nth-child(3n+1) {
+	// 			clear: left;
+	// 		}
+	// 	}
+	// }
 
 }
 
@@ -97,31 +109,31 @@ $mediaSwitchTwoCol: 940px;
 		}
 	}
 
-	section.home-blog {
-		article.blog {
-			width: col-width-abs(2, $marginColumn);
-			margin-right: $marginColumn;
+	// section.home-blog {
+	// 	article.blog {
+	// 		width: col-width-abs(2, $marginColumn);
+	// 		margin-right: $marginColumn;
 
-			&:nth-child(3n+3) {
-				margin-right: $marginColumn;
-			}
-			&:nth-child(3n+1) {
-				clear: none;
-			}
+	// 		&:nth-child(3n+3) {
+	// 			margin-right: $marginColumn;
+	// 		}
+	// 		&:nth-child(3n+1) {
+	// 			clear: none;
+	// 		}
 
-			&:nth-child(2n+2) {
-				margin-right: 0;
-			}
-			&:nth-child(2n+1) {
-				clear: none;
-			}
+	// 		&:nth-child(2n+2) {
+	// 			margin-right: 0;
+	// 		}
+	// 		&:nth-child(2n+1) {
+	// 			clear: none;
+	// 		}
 
-			// hide 3rd post for now
-			&:nth-child(3) {
-				display: none;
-			}
-		}
-	}
+	// 		// hide 3rd post for now
+	// 		&:nth-child(3) {
+	// 			display: none;
+	// 		}
+	// 	}
+	// }
 }
 
 // special for location/address: too small? change ratio
@@ -153,15 +165,19 @@ $mediaSwitchTwoCol: 940px;
 
 	section.home-blog {
 		article.blog {
-			float: none;
-			clear: both;
-			width: 100%;
-			margin-right: 0;
+	// 		float: none;
+	// 		clear: both;
+	// 		width: 100%;
+	// 		margin-right: 0;
 
-			// hide 2nd & 3rd post for now
-			&:nth-child(2),
-			&:nth-child(3) {
-				display: none;
+	// 		// hide 2nd & 3rd post for now
+	// 		&:nth-child(2),
+	// 		&:nth-child(3) {
+	// 			display: none;
+	// 		}
+
+			header .image {
+				padding-top: 50%;
 			}
 		}
 	}
