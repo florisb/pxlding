@@ -19,6 +19,7 @@ window.pxl = {
 window.pxl._jquery._typing         = require('../lib/typing/jquery.typing-0.2.0.min.js');
 window.pxl._jquery._dotdotdot      = require('../lib/dotdotdot/jquery.dotdotdot.min.js');
 window.pxl._jquery._owlcarousel    = require('../lib/owl-carousel/owl.carousel.min.js');
+window.pxl._jquery._appear         = require('../lib/appear/jquery.appear.js');
 // window.pxl._jquery._scrollintoview = require('../lib/scrollintoview/jquery.scrollintoview.min.js');
 // window.pxl._jquery._touchswipe     = require('../lib/touchswipe/touchswipe.min.js');
 // window.pxl._jquery._zebradate      = require('../lib/zebradatepicker/zebra_datepicker.js');
