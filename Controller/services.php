@@ -17,10 +17,11 @@
 
 			$services = Factory\Services::getAll();
 			$service  = Factory\Services::getBySlug($slug);
-
+			$cases    = Factory\Cases::getByService($service);
 
 			$this->set('services', $services);
 			$this->set('service', $service);
+			$this->set('cases', $cases);
 		}
 
 	}
