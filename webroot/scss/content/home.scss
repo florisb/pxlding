@@ -13,11 +13,31 @@ $heightVideo : 592px;
 
 section.home-video {
 
+	position: relative;
 	width: 100%;
 	height: 0;
 	padding-top: percentage($heightVideo / $widthVideo);
 
 	background-color: $color-bg-sec;
+
+	&.mobile {
+		$widthVideo  : 400px;
+		$heightVideo : 300px;
+
+		padding-top: percentage($heightVideo / $widthVideo);
+	}
+
+	.video-container {
+		@include absolute-cover;
+	}
+
+	video {
+		@include absolute-cover;
+		z-index: $z-content - 1;
+		min-width: 100%;
+		min-height: 100%;
+	}
+
 }
 
 
@@ -48,12 +68,29 @@ section.home-services {
 			font-size: pem(24);
 			line-height: $sizeIcon;
 			margin-top: $font-upshift;
+			transition: color $speed-menu;
 		}
 
 		header {
 
-			> * {
-				vertical-align: middle;
+			a {
+				display: block;
+				position: relative;
+
+				> * {
+					vertical-align: middle;
+				}
+
+				&:hover, &:active {
+
+					.h2 {
+						color: $color-pri;
+					}
+
+					.icon {
+						opacity: 0.75;
+					}
+				}
 			}
 
 			margin-bottom: $margin-def * 1.5;
@@ -64,6 +101,8 @@ section.home-services {
 				height: $sizeIcon;
 				margin-right: $margin-def;
 				@include bg-image('service-strategie.svg');
+				opacity: 0.5;
+				transition: opacity $speed-menu;
 			}
 		}
 
@@ -114,11 +153,22 @@ section.home-blog {
 			font-family: $font-pri;
 			font-size: pem(24);
 			@include adjusted-lh(1.2);
+			transition: color $speed-menu;
 		}
 
 		header {
 			position: relative;
 			margin-bottom: $margin-def * 1.5;
+
+			> a {
+				display: block;
+
+				&:hover, &:active {
+					.h2 {
+						color: $color-pri;
+					}
+				}
+			}
 
 			> * {
 				vertical-align: middle;
@@ -128,7 +178,7 @@ section.home-blog {
 				margin-bottom: $margin-def * 1.5;
 				width: 100%;
 				height: 0;
-				padding-top: 100%;
+				padding-top: 50%;
 				background-color: $color-bg-sec;
 			}
 		}

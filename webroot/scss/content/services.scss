@@ -1,0 +1,134 @@
+
+// compass mixins library
+// @import "lib/_animate";
+@import "../lib/_compass";
+
+// custom imports
+@import "../inc/config";
+@import "../inc/init";
+
+
+nav.service-categories {
+
+	$sizeIconContainer : 38px;
+	$sizeIcon          : 32px;
+	$height            : 100px;
+	$heightTitle       : 26px;
+	// $delayBack         : 0.5s;		// delay time before hover effect disappears
+
+	height: $height;
+	border-top: 1px solid $color-brd-light;
+	position: relative;
+	@include cf;
+
+	a.service-cat {
+		position: relative;
+		display: block;
+		float: left;
+		width: percentage(1 / 6);
+		height: 100%;
+		border-left: 1px solid $color-brd-light;
+		line-height: $height;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		> div {
+			position: relative;
+			width: 100%;
+			height: $sizeIconContainer;
+			display: inline-block;
+			text-align: center;
+			vertical-align: middle;
+			overflow: hidden;
+			line-height: 1em;
+
+			transition: height $speed-menu;
+		}
+
+		&:hover, &:active {
+
+			> div {
+				height: $sizeIconContainer + $heightTitle;
+			}
+
+			.icon {
+				opacity: 1;
+			}
+
+			.h3 {
+				color: $color-txt-menu;
+				bottom: $font-upshift-neg;	// adjust for helvneue crap
+				opacity: 1;
+
+				transition: bottom $speed-menu,
+		                    opacity $speed-menu / 2 0.2s;
+			}
+		}
+
+		&.active {
+			.icon {
+				opacity: 1;
+				background-image: none;
+
+				&::after {
+					display: inline-block;
+				}
+			}
+		}
+	}
+
+	.icon {
+		position: relative;
+		display: inline-block;
+		line-height: $sizeIcon;
+		margin: c-off($sizeIconContainer, $sizeIcon);
+		width: $sizeIcon;
+		height: $sizeIcon;
+		opacity: 0.5;
+		transition: opacity $speed-menu;
+		@include bg-image('service-strategie.svg');
+
+		&::after {
+			@include pseudo-basic;
+			@include absolute-cover;
+			@include bg-image('service-strategie-pink.svg');
+			display: none;
+		}
+
+		// &.service-strategie        { background-image: image-url('service-strategie.svg'); }
+		&.service-design           { background-image: image-url('service-design.svg'); margin-top: c-off($sizeIconContainer, $sizeIcon) - 4; }
+		&.service-development      { background-image: image-url('service-development.svg'); }
+		&.service-campagnes        { background-image: image-url('service-campagnes.svg'); margin-top: c-off($sizeIconContainer, $sizeIcon) - 2; }
+		&.service-online-marketing { background-image: image-url('service-online-marketing.svg'); }
+		&.service-emailmarketing   { background-image: image-url('service-emailmarketing.svg'); margin-top: c-off($sizeIconContainer, $sizeIcon) - 4; }
+
+		// &.service-strategie::after        { background-image: image-url('service-strategie-pink.svg'); }
+		&.service-design::after           { background-image: image-url('service-design-pink.svg'); }
+		&.service-development::after      { background-image: image-url('service-development-pink.svg'); }
+		&.service-campagnes::after        { background-image: image-url('service-campagnes-pink.svg'); }
+		&.service-online-marketing::after { background-image: image-url('service-online-marketing-pink.svg'); }
+		&.service-emailmarketing::after   { background-image: image-url('service-emailmarketing-pink.svg'); }
+	}
+
+	.h3 {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: $heightTitle;
+		line-height: $heightTitle;
+		padding-top: $font-upshift;
+
+		font-size: pem(14);
+		font-family: $font-pri;
+		font-weight: $normal;
+		color: $color-txt-menu;
+
+		bottom: -1 * $heightTitle;
+		opacity: 0;
+
+		transition: bottom $speed-menu,
+		            opacity $speed-menu / 3;
+	}
+}

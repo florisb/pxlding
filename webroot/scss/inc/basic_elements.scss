@@ -176,3 +176,16 @@ a.arrow-link {
 	}
 
 }
+
+
+// appear effect (fade in as you scroll down)
+
+.appear-effect {
+	transition: opacity $speed-appear;
+	transition-delay: 0.05s;
+}
+.appear-hide {
+	opacity: 0.01;
+	transition: opacity 0;
+	transition-delay: 0;
+}

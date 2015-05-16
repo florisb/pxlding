@@ -22,7 +22,8 @@ $bold:          700;
 // annoying property of helvetica neue is that it is shifted up for no good reason
 // this upshift value should help using mixins to auto-shift it down where needed
 // this was measured with a 14 px font
-$font-upshift:  (2.5 / 14) + em;
+$font-upshift     :  (2.5 / 14) + em;
+$font-upshift-neg :  (-2.5 / 14) + em;	// because you cannot calculate with this
 
 // colors
 $color-pri        : #d41046;	// pixel red
@@ -87,6 +88,7 @@ $speed-menu           : 0.4s;
 $speed-slider         : 0.5s;
 $speed-intensely-slow : 5s;
 $speed-collapse       : $speed-fast; // top menu collapse
+$speed-appear         : 0.75s;
 
 // special stuff
 $home-service-text-min-height: 9em;			// set minimum text block height for vertical lineup of service links
