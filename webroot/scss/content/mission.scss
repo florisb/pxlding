@@ -1,0 +1,202 @@
+
+// compass mixins library
+// @import "lib/_animate";
+@import "../lib/_compass";
+
+// custom imports
+@import "../inc/config";
+@import "../inc/init";
+
+
+$widthVideo  : 1300px;
+$heightVideo : 470px;
+
+section.mission-video {
+
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-top: percentage($heightVideo / $widthVideo);
+
+	background-color: $color-bg-sec;
+
+	&.mobile {
+		$widthVideo  : 400px;
+		$heightVideo : 300px;
+
+		padding-top: percentage($heightVideo / $widthVideo);
+	}
+
+	.video-container {
+		@include absolute-cover;
+	}
+
+	video {
+		@include absolute-cover;
+		z-index: $z-content - 1;
+		min-width: 100%;
+		min-height: 100%;
+	}
+
+}
+
+
+section.mission,
+ section.people {
+ 	text-align: center;
+
+	.h1, section.text {
+		width: percentage(700px / ($width-main - $margin-def * 8));
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.h1 {
+		font-size: pem(34);
+		@include adjusted-lh(1.3);
+		margin-bottom: $margin-def * 1.5;
+	}
+
+
+}
+
+section.mission {
+	margin-top: $margin-def * 4;
+}
+
+section.people {
+	margin-bottom: $margin-def * 3;
+}
+
+section.people-matrix {
+
+	@include cf;
+	margin-bottom: $margin-def * 4;
+
+	.person {
+		position: relative;
+		float: left;
+
+		> div {
+			position: relative;
+			width: 100%;
+			height: 0;
+			padding-top: 100%;
+			overflow: hidden;
+		}
+
+		.mug, .buns {
+			@include absolute-cover;
+			transition: top $speed-slider,
+						left $speed-slider,
+						opacity $speed-slider * 1.5;
+		}
+
+		.mug {
+			z-index: $z-content;
+			top: 0;
+
+			img {
+				width: 100%;
+				filter: grayscale(1);
+			}
+
+			// &.top    { top: 0; }
+			// &.right  { left: 0; }
+			// &.bottom { top: 0; }
+			// &.left   { left: 0; }
+		}
+
+		.buns {
+			z-index: $z-content + 1;
+			// left: 100%;
+			// top: 100%;
+			background-color: $color-pri;
+			color: white;
+			font-size: 0;
+			text-align: center;
+
+			opacity: 0;
+			&.top    { top: -100%; }
+			&.right  { left: -100%; }
+			&.bottom { top: 100%; }
+			&.left   { left: 100%; }
+
+			&:before {
+				@include pseudo-basic;
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+				// margin-right: -0.25em; // adjusts for spacing
+				font-size: pem(17);
+			}
+
+			.text {
+				font-size: 16px;
+				position: relative;
+				display: inline-block;
+				vertical-align: middle;
+				padding: $margin-def;
+
+			}
+
+			.name {
+				font-size: pem(24);
+				font-family: $font-pri;
+				margin-bottom: $margin-def / 2;
+				line-height: 1.1;
+			}
+			.role {
+				font-size: pem(17);
+				font-family: $font-sec;
+				line-height: 1.3;
+			}
+		}
+
+		&:hover {
+			.mug {
+				// &.top    { top: -100%; }
+				// &.right  { left: -100%; }
+				// &.bottom { top: 100%; }
+				// &.left   { left: 100%; }
+			}
+			.buns {
+				opacity: 1;
+				&.top    { top: 0; }
+				&.right  { left: 0; }
+				&.bottom { top: 0; }
+				&.left   { left: 0; }
+			}
+		}
+
+	}
+}
+
+section.join-us {
+	margin-bottom: $margin-def * 4;
+	text-align: center;
+
+	.h2 {
+		margin-bottom: $margin-def * 1.5;
+	}
+
+
+	@include link-default;
+
+	p, a {
+		font-size: pem(17);
+		@include adjusted-lh($lineheight-def);
+	}
+
+}
+
+
+hr.mission {
+	margin: $margin-def * 3 auto;
+	width: 90px;
+	border: 0;
+	border-bottom: 4px solid $color-brd;
+}
+
+
+@import "../inc-content/mission_r";

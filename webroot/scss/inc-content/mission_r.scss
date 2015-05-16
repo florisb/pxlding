@@ -1,0 +1,82 @@
+
+// content column
+
+@media #{$media-tablet-min} {
+
+	section.mission,
+	 section.people {
+
+		.h1, section.text {
+			width: percentage(900px / ($width-main - $margin-def * 4));
+		}
+
+		.h1 {
+			font-size: pem(28);
+		}
+	}
+
+	section.people {
+
+		section.roster {
+
+		}
+	}
+}
+
+@media (max-width: 520px) {
+
+	section.mission,
+	 section.people {
+
+		.h1, section.text {
+			width: 100%;
+		}
+	}
+}
+
+
+/*
+ * People matrix
+ */
+
+@mixin people-matrix-width($perRow) {
+
+	section.people-matrix {
+		.person {
+			width: percentage(1 / $perRow);
+		}
+	}
+}
+
+@media #{$media-desktop} {
+	@include people-matrix-width(7);
+}
+
+@media (max-width: 1150px) {
+	@include people-matrix-width(6);
+}
+
+@media #{$media-tablet} {
+	@include people-matrix-width(5);
+}
+
+@media (max-width: 900px) {
+	@include people-matrix-width(4);
+}
+
+@media (max-width: 800px) {
+	@include people-matrix-width(3);
+}
+
+@media (max-width: 500px) {
+	@include people-matrix-width(2);
+
+	section.people-matrix {
+		.person {
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	@include people-matrix-width(2);
+}
