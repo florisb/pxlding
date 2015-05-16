@@ -52,30 +52,35 @@
 
 <section class="home-blog large-margin-column">
 
-	<? foreach ($blog as $post): ?>
+	<div class="owl-carousel">
 
-	<article class="blog">
-		<header>
-			<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->file ?>')"></div>
+		<? foreach ($blog as $post): ?>
 
-			<h2 class="h2">
-				<?= $post->title ?>
-			</h2>
-		</header>
+		<article class="blog">
+			<header>
+				<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->file ?>')"></div>
 
-		<section>
-			<?= $post->intro ?>
-		</section>
+				<h2 class="h2">
+					<?= $post->title ?>
+				</h2>
+			</header>
 
-		<footer>
-			<a class="arrow-link" href="<?= $this->route('blog', $post->slug) ?>">
-				<span class="arrow"></span>
-				<?= $post->read_more ?>
-			</a>
-		</footer>
-	</article>
+			<section>
+				<?= $post->intro ?>
+			</section>
 
-	<? endforeach; ?>
+			<footer>
+				<a class="arrow-link" href="<?= $this->route('blog', $post->slug) ?>">
+					<span class="arrow"></span>
+					<?= $post->read_more ?>
+				</a>
+			</footer>
+		</article>
+
+		<? endforeach; ?>
+
+
+	</div>
 
 </section>
 
