@@ -6,7 +6,7 @@
 	class Content extends BaseFactory {
 		
 		public function getSettingsForPage($page) {
-			if (!($content = $this->_buffer->get($page))) {
+			// if (!($content = $this->_buffer->get($page))) {
 				$q = "
 					%s
 					WHERE
@@ -26,14 +26,14 @@
 				if (is_null($content)) {
 					$content = (object) null;
 				}
-				
-				if (!empty($content->id)) {
-					$this->_buffer->put($content->id, $content);
-				}
-				
-				$this->_buffer->put($content->type_of_page, $content);
-			};
-		
+
+				// if (!empty($content->id)) {
+				// 	$this->_buffer->put($content->id, $content);
+				// }
+
+			// 	$this->_buffer->put($content->type_of_page, $content);
+			// };
+
 			return $content;
 		}
 		
