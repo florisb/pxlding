@@ -41,6 +41,11 @@ $baseFontSize: 16;
 	// margin-top: -1px * ($fontSize * $lineHeight - $fontSize) / 2;
 	@return #{-1 * ($lineHeight - 1) / 2}em;
 }
+// same, but in px
+@function adjust-top-lh-px($lineHeight, $fontSize: 17) {
+	// margin-top: -1px * ($fontSize * $lineHeight - $fontSize) / 2;
+	@return -1 * $fontSize * ($lineHeight - 1) / 2;
+}
 
 @mixin adjusted-lh($lineHeight) {
 	$lineHeight: strip-units($lineHeight);

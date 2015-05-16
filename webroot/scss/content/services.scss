@@ -132,3 +132,155 @@ nav.service-categories {
 		            opacity $speed-menu / 3;
 	}
 }
+
+
+
+section.service-banner {
+
+	$width: 1300px;
+	$height: 470px;
+
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-top: percentage($height / $width);
+	background-color: #999;
+	margin-bottom: $margin-def * 4;
+
+	@include bg-cover;
+
+	.container {
+		@include absolute-cover;
+		@include cf;
+		padding: $margin-def * 4;
+		padding-bottom: $margin-def * 2;
+		transition: padding $speed-fast;
+	}
+
+	.title, .super, .caption {
+		color: white;
+		transition: font-size $speed-fast,
+					margin $speed-fast;
+	}
+
+	.title {
+		font-family: $font-sec;
+		font-size: pem(24);
+	}
+
+	.super {
+		margin-top: $margin-def * 2;
+		font-size: pem(82);
+		line-height: 0.8em;
+	}
+
+	.caption {
+		font-family: $font-sec;
+		font-size: pem(15);
+		position: absolute;
+		left: $margin-def * 4;
+		bottom: $margin-def * 2;
+	}
+
+}
+
+
+section.service-content {
+
+	@include cf;
+	margin-bottom: $margin-def * 4;
+
+	.main-text {
+		float: left;
+		width: col-width-abs(2, $margin-def * 4);
+		margin-right: $margin-def * 4;
+
+		.text {
+			font-size: pem(17);
+			@include adjusted-lh($lineheight-def);
+		}
+
+		.h1 {
+			margin-bottom: $margin-def * 1.5;
+		}
+	}
+
+	.aside-text {
+		float: left;
+		width: col-width-abs(2, $margin-def * 4);
+
+		.bullet-list {
+			font-size: pem(17);
+			@include adjusted-lh(2);
+			margin-bottom: $margin-def * 2 + adjust-top-lh-px($lineheight-def);
+		}
+
+		.h2 {
+			padding-top: 8px; // to get baseline equal to .h1
+			padding-bottom: 3px; // make same height as .h1
+			margin-bottom: $margin-def * 1.5;
+		}
+
+		.content-checkmark {
+			margin-right: $margin-def * 0.75;
+			margin-top: -3px;
+		}
+	}
+
+	.quotation {
+		border-top: 1px dotted #bdbdbd;
+		padding-top: $margin-def * 2;
+		padding-bottom: $margin-def * 2;
+
+		.quote {
+			@include adjusted-lh(34 / 24);
+			font-size: pem(24);
+			font-family: $font-light;
+		}
+
+		.source {
+			padding-top: $margin-def;
+			font-size: pem(17);
+			@include adjusted-lh($lineheight-def);
+		}
+	}
+}
+
+
+section.service-cases {
+	margin-bottom: $margin-def * 4;
+
+	.case {
+		position: relative;
+
+		.image {
+			width: 100%;
+			height: 0;
+			padding-top: 100%;
+			@include bg-cover;
+			margin-bottom: $margin-def;
+		}
+
+		.caption {
+			text-align: center;
+		}
+
+		.subtitle {
+			font-size: pem(17);
+			font-family: $font-sec;
+			font-style: italic;
+			line-height: $lineheight-def;
+			margin-bottom: $margin-def / 4;
+		}
+
+		.title {
+			font-size: pem(20);
+			@include adjusted-lh(1.3);
+			font-family: $font-pri;
+			color: $color-txt-dark;
+		}
+	}
+}
+
+@import "../inc-content/services_r";
+

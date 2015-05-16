@@ -195,6 +195,11 @@ $mediaSwitchTwoCol: 940px;
 	}
 
 	section.home-contact {
+
+		.h2 {
+			font-size: pem(30);
+		}
+
 		.contact-form {
 			max-width: none;
 		}
@@ -206,7 +211,7 @@ $mediaSwitchTwoCol: 940px;
 }
 
 // tweaks for some text not fitting in services titles
-@media #{$media-desktop} and (max-width: 1120px) {
+@media #{$media-desktop} and (max-width: 1150px) {
 	section.home-services section.service .h2 {
 		font-size: pem(20);
 	}

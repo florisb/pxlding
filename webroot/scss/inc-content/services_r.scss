@@ -1,0 +1,160 @@
+
+/*
+ * Content blocks
+ */
+
+// @media #{$media-phone} {
+@media (max-width: 800px) {
+	section.service-content {
+
+		.main-text {
+			float: none;
+			clear: both;
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: $margin-def * 4;
+		}
+
+		.aside-text {
+			width: 100%;
+			float: none;
+			clear: both;
+		}
+	}
+}
+
+@media (max-width: 460px) {
+	section.service-content {
+		.main-text .h1 {
+			font-size: pem(24);
+		}
+	}
+
+}
+
+/*
+ * Cases
+ */
+
+@media #{$media-desktop} {
+
+	// hide owl-carousel dots when all visible
+	section.service-cases {
+		.owl-controls {
+			display: none;
+		}
+	}
+}
+
+
+/*
+ * Response for banner
+ * Font sizes mainly
+ */
+
+@media #{$media-phone} {
+
+	$height: 300px;
+
+	section.service-banner {
+		padding-top: 0;
+		height: $height;
+
+		.container {
+			padding-top: $margin-def * 2;
+			padding-left: $margin-def * 2;
+			padding-right: $margin-def * 2;
+		}
+
+		.title, .super, .caption {
+			text-align: center;
+		}
+
+		.super {
+			font-size: pem(40);
+		}
+
+		.caption {
+			width: calc(100% - #{$margin-def * 8});
+		}
+	}
+}
+
+@media (max-width: 460px) {
+	section.service-banner {
+		.container {
+			padding-left: $margin-def;
+			padding-right: $margin-def;
+		}
+
+		.super {
+			margin-top: $margin-def * 1.5;
+			font-size: pem(34);
+		}
+	}
+}
+
+
+@media (min-width: #{$width-phone}) and (max-width: 1200px) {
+	section.service-banner {
+		.super {
+			margin-top: $margin-def * 1.5;
+			font-size: pem(70);
+		}
+	}
+}
+@media (min-width: #{$width-phone}) and (max-width: 1100px) {
+	section.service-banner {
+		.super {
+			margin-top: $margin-def;
+			font-size: pem(60);
+		}
+	}
+}
+@media (min-width: #{$width-phone}) and (max-width: 1000px) {
+	section.service-banner {
+		.super {
+			font-size: pem(50);
+		}
+	}
+}
+@media (min-width: #{$width-phone}) and (max-width: 900px) {
+	section.service-banner {
+
+		.container {
+			padding-top: $margin-def * 3;
+		}
+		.super {
+			font-size: pem(40);
+		}
+	}
+}
+@media (min-width: #{$width-phone}) and (max-width: 800px) {
+	section.service-banner {
+		.super {
+			font-size: pem(24);
+		}
+	}
+}
+// @media (min-width: #{$width-phone}) and (max-width: 640px) {
+// 	section.service-banner {
+// 		.container {
+// 			padding-top: $margin-def * 2;
+// 		}
+// 		.title, .caption {
+// 			font-size: pem(15);
+// 		}
+// 		.super {
+// 			font-size: pem(17);
+// 		}
+// 	}
+// }
+// @media (min-width: #{$width-phone}) and (max-width: 520px) {
+// 	section.service-banner {
+// 		.caption {
+// 			display: none;
+// 		}
+// 	}
+// }
+
+

@@ -9,7 +9,7 @@
 
 
 $widthVideo  : 1300px;
-$heightVideo : 592px;
+$heightVideo : 600px;
 
 section.home-video {
 
@@ -117,7 +117,7 @@ section.home-services {
 
 		section {
 			font-size: pem(17);
-			@include adjusted-lh(1.85);
+			@include adjusted-lh($lineheight-def);
 		}
 
 		footer {
@@ -185,7 +185,7 @@ section.home-blog {
 
 		section {
 			font-size: pem(17);
-			@include adjusted-lh(1.85);
+			@include adjusted-lh($lineheight-def);
 		}
 
 		footer {

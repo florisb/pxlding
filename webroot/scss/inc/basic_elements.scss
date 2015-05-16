@@ -49,11 +49,18 @@ a {
 
 .content-container {
 
-	.h2 {
-		font-size: pem(24);
+	.h1, .h2 {
 		font-family: $font-pri;
 		@include adjusted-lh(1.3);
 		color: $color-txt-dark;
+	}
+
+	.h1 {
+		font-size: pem(34);
+	}
+
+	.h2 {
+		font-size: pem(24);
 	}
 }
 
@@ -176,6 +183,45 @@ a.arrow-link {
 	}
 
 }
+
+// custom text content editable through cms
+.custom-text-content {
+
+	@include link-default;
+	line-height: $lineheight-def;
+
+	strong, b {
+		font-weight: $bold;
+	}
+
+	em, i {
+		font-style: italic;
+	}
+
+	u {
+		text-decoration: underline;
+	}
+
+	.content-checkmark {
+		display: inline-block;
+		width: 17px;
+		height: 17px;
+		@include bg-contain('check.svg');
+		vertical-align: middle;
+	}
+}
+
+
+// bold and light text based on <strong> tags
+.bold-and-light {
+	font-family: $font-thin;
+
+	strong {
+		font-family: $font-bold;
+		font-weight: $normal;
+	}
+}
+
 
 
 // appear effect (fade in as you scroll down)
