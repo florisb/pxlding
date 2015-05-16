@@ -209,21 +209,36 @@ module.exports = (function() {
     };
 
 
+    /**
+     * Initialize hamburger menu clickage
+     */
     var _initMobileMenuWithAnimation = function() {
+
 
         var click = 'click';
 
-        if ('ontouchstart' in window) {
-            click = 'touchstart';
-        }
+        // doesn't play well with chrome / dev
+        // if ('ontouchstart' in window) {
+        //     click = 'touchstart';
+        // }
 
         $('div.mobile-menu-burger').on(click, function () {
+
             if (!$(this).hasClass('open')) {
                 openMenu();
             }  else {
                 closeMenu();
             }
         });
+
+        // $('div.mobile-menu-burger').on('touchstart', function () {
+
+        //     if (!$(this).hasClass('open')) {
+        //         openMenu();
+        //     }  else {
+        //         closeMenu();
+        //     }
+        // });
 
 
         var openMenu = function () {
