@@ -1,10 +1,10 @@
 <?php
 	namespace Model\Factory;
-	
+
 	use PXL\Core\Collection;
-	
+
 	class Content extends BaseFactory {
-		
+
 		public function getSettingsForPage($page) {
 			// if (!($content = $this->_buffer->get($page))) {
 				$q = "
@@ -16,13 +16,13 @@
 					LIMIT
 						0,1
 				";
-		
+
 				$q          = sprintf($q, self::_getSql());
 				$languageId = self::session('_language_id');
 				$stmt       = self::stmt($q, array(':language' => array($languageId, 'i'), ':page' => $page));
-				
+
 				$content = self::db()->row($stmt, 'Model\Entity\Content');
-				
+
 				if (is_null($content)) {
 					$content = (object) null;
 				}
@@ -36,7 +36,7 @@
 
 			return $content;
 		}
-		
+
 		public function getAll() {
 			$q = "
 				SELECT
@@ -48,13 +48,13 @@
 				ORDER BY
 					`e_position` ASC
 			";
-			
+
 			$stmt = self::stmt($q);
 			$ids  = self::db()->matrix($stmt, null, 'id');
-			
+
 			return $this->getByIds($ids->keySet()->toArray());
 		}
-		
+
 		public function getRoutingInformation($id) {
 			$q = "
 				SELECT
@@ -70,12 +70,12 @@
 				LIMIT
 					0,1
 			";
-			
+
 			$stmt = self::stmt($q, array(array($id, 'i')));
-			
+
 			return self::db()->row($stmt);
 		}
-		
+
 		public function getBySlug($slug) {
 
 			$q = "
@@ -97,16 +97,16 @@
 			$q           = sprintf($q, self::_getSql());
 			$languageId  = self::session('_language_id');
 			$stmt        = self::stmt($q, array(':language' => array($languageId, 'i'), ':slug' => array($slug, 's')));
-			
+
 			return self::db()->row($stmt, 'Model\Entity\Content');
 		}
 
 		public function getSectionsByPageSlug($slug) {
 
 			$q = "
-				SELECT 
+				SELECT
 					*
-				FROM 
+				FROM
 					`cms_m4_content` `c`
 				INNER JOIN
 					`cms_m3_slugs` `s`
@@ -114,7 +114,7 @@
 					(`s`.`ref_module_id`='6' AND `s`.`entry_id`=`c`.`id` AND `s`.`language_id` = :language)
 				LEFT JOIN
 					`cms_m_references` `r`
-				ON 
+				ON
 					(`r`.`from_entry_id` = `c`.`id` AND `r`.`from_field_id` = '25')
 				LEFT JOIN `cms_m4_section` `p`
 				ON
@@ -123,9 +123,9 @@
 					`cms_m4_section_ml` `p_ml`
 				ON
 					(`p_ml`.`entry_id`=`p`.`id` AND `p_ml`.`language_id` = :language)
-				WHERE 
+				WHERE
 					`s`.`slug` = :slug
-				AND	
+				AND
 					`c`.`e_active`=1
 				ORDER BY
 					`r`.`position` ASC
@@ -145,7 +145,7 @@
 			switch ($sectionStructure) {
 				case 'structure1':
 					$q = "
-						SELECT 
+						SELECT
 							`i1`.`file` AS `s1_step1_image`,
 							`i2`.`file` AS `s1_step2_image`,
 							`i3`.`file` AS `s1_step3_image`,
@@ -159,22 +159,22 @@
 						LEFT JOIN
 							`cms_m_images` `i2`
 						ON
-							(`i2`.`entry_id`=`c`.`id` AND `i2`.`field_id`='34') 
+							(`i2`.`entry_id`=`c`.`id` AND `i2`.`field_id`='34')
 						LEFT JOIN
 							`cms_m_images` `i3`
 						ON
-							(`i3`.`entry_id`=`c`.`id` AND `i3`.`field_id`='38') 
+							(`i3`.`entry_id`=`c`.`id` AND `i3`.`field_id`='38')
 						LEFT JOIN
 							`cms_m_images` `i4`
 						ON
-							(`i4`.`entry_id`=`c`.`id` AND `i4`.`field_id`='42') 
+							(`i4`.`entry_id`=`c`.`id` AND `i4`.`field_id`='42')
 						WHERE
 							`c`.`id` = :id
 					";
 					break;
 				case 'structure2':
 					$q = "
-						SELECT 
+						SELECT
 							`i1`.`file` AS `s2_background_image`,
 							`i2`.`file` AS `s2_box1_image`,
 							`i3`.`file` AS `s2_box2_image`,
@@ -189,26 +189,26 @@
 						LEFT JOIN
 							`cms_m_images` `i2`
 						ON
-							(`i2`.`entry_id`=`c`.`id` AND `i2`.`field_id`='49') 
+							(`i2`.`entry_id`=`c`.`id` AND `i2`.`field_id`='49')
 						LEFT JOIN
 							`cms_m_images` `i3`
 						ON
-							(`i3`.`entry_id`=`c`.`id` AND `i3`.`field_id`='55') 
+							(`i3`.`entry_id`=`c`.`id` AND `i3`.`field_id`='55')
 						LEFT JOIN
 							`cms_m_images` `i4`
 						ON
-							(`i4`.`entry_id`=`c`.`id` AND `i4`.`field_id`='52') 
+							(`i4`.`entry_id`=`c`.`id` AND `i4`.`field_id`='52')
 						LEFT JOIN
 							`cms_m_images` `i5`
 						ON
-							(`i5`.`entry_id`=`c`.`id` AND `i5`.`field_id`='58') 
+							(`i5`.`entry_id`=`c`.`id` AND `i5`.`field_id`='58')
 						WHERE
 							`c`.`id` = :id
 					";
 					break;
 				case 'structure3':
 					$q = "
-						SELECT 
+						SELECT
 							`i1`.`file` AS `s3_prices_image`
 						FROM
 							`cms_m4_section` `c`
@@ -222,7 +222,7 @@
 					break;
 				case 'structure4':
 					$q = "
-						SELECT 
+						SELECT
 							`i1`.`file` AS `s4_background_image`
 						FROM
 							`cms_m4_section` `c`
@@ -236,7 +236,7 @@
 					break;
 				case 'structure5':
 					$q = "
-						SELECT 
+						SELECT
 							`i1`.`file` AS `s5_step1_image`,
 							`i2`.`file` AS `s5_step2_image`,
 							`i3`.`file` AS `s5_step3_image`,
@@ -250,15 +250,15 @@
 						LEFT JOIN
 							`cms_m_images` `i2`
 						ON
-							(`i2`.`entry_id`=`c`.`id` AND `i2`.`field_id`='104') 
+							(`i2`.`entry_id`=`c`.`id` AND `i2`.`field_id`='104')
 						LEFT JOIN
 							`cms_m_images` `i3`
 						ON
-							(`i3`.`entry_id`=`c`.`id` AND `i3`.`field_id`='107') 
+							(`i3`.`entry_id`=`c`.`id` AND `i3`.`field_id`='107')
 						LEFT JOIN
 							`cms_m_images` `i4`
 						ON
-							(`i4`.`entry_id`=`c`.`id` AND `i4`.`field_id`='110') 
+							(`i4`.`entry_id`=`c`.`id` AND `i4`.`field_id`='110')
 						WHERE
 							`c`.`id` = :id
 					";
@@ -274,12 +274,12 @@
 			// echo $stmt;
 
 			return self::db()->row($stmt, 'Model\Entity\Content');
-			
+
 		}
-		
+
 		public function getById($id) {
 			$id = (int) $id;
-			
+
 			if (!($content = $this->_buffer->get($id))) {
 				$q = "
 					%s
@@ -288,28 +288,28 @@
 					AND
 					`c`.`e_active`=1
 				";
-			
+
 				$q = sprintf($q, self::_getSql());
-			
+
 				$stmt = self::stmt($q, array(
 					':language' => array(self::session('_language_id'), 'i'),
 					':id'       => array($id, 'i')
 				));
-				
+
 				$content = self::db()->row($stmt, 'Model\Entity\Content');
 				$this->_buffer->put($content->id,           $content);
 				$this->_buffer->put($content->type_of_page, $content);
 			}
-		
+
 			return $content;
 		}
-		
+
 		public function getByIds(array $ids) {
 			$ids       = array_map('intval', $ids);
 			$result    = new Collection\SimpleMap();
 			$storedIds = array_filter($this->_buffer->keySet()->toArray(), function($key) { return is_numeric($key); });
 			$fetchIds  = array_diff($ids, $storedIds);
-			
+
 			if (count($fetchIds)) {
 				$q = "
 					%s
@@ -320,7 +320,7 @@
 					ORDER BY
 						FIND_IN_SET(`c`.`id`, :idset)
 				";
-			
+
 				$q = sprintf($q, self::_getSql());
 				$stmt = self::stmt($q, array(
 					':language' => array(self::session('_language_id'), 'i'),
@@ -329,7 +329,7 @@
 				));
 
 				$contents = self::db()->matrix($stmt, 'Model\Entity\Content');
-			
+
 				foreach($contents as $content) {
 					$this->_buffer->put((int) $content->id, $content);
 					$this->_buffer->put($content->type_of_page, $content);
@@ -341,10 +341,10 @@
 					$result->put($id, $content);
 				}
 			}
-			
+
 			return $result;
 		}
-		
+
 		protected function _getSql() {
 			$q = "
 				SELECT DISTINCT
