@@ -59,7 +59,7 @@ $baseFontSize: 16;
 
 // absolute margin column calc: % result
 @function col-width-abs($columns, $margin) {
-	@return calc(#{100% / $columns} - #{$margin * 2 / 3})
+	@return calc(#{100% / $columns} - #{$margin * ($columns - 1) / $columns})
 }
 // percentage margin column calc
 @function col-width-prc($columns, $margin) {

@@ -107,6 +107,59 @@ input, textarea {
 }
 
 /*
+ * Search 'form' for blogs
+ */
+
+.blog-search-form {
+
+	$sizeIcon : 24px;
+	$width    : 380px;
+
+	.input-container {
+		position: relative;
+		width: $width;
+
+		.input-icon {
+			@include bg-contain('search.svg');
+			position: absolute;
+			top: c-off($heightInput, $sizeIcon);
+			left: $margin-def * 0.75;
+			width: $sizeIcon;
+			height: $sizeIcon;
+			opacity: 0.5;
+			transition: opacity $speed-fast;
+
+			&::after {
+				@include pseudo-basic;
+				@include absolute-cover;
+				@include bg-contain('search-pink.svg');
+				opacity: 0;
+				transition: opacity $speed-fast;
+			}
+		}
+
+		&:hover {
+			.input-icon {
+				opacity: 0.75;
+			}
+		}
+	}
+
+	input[type=search] {
+		width: 100%;
+		padding-left: $margin-def * 1.5 + $sizeIcon;
+	}
+
+	input[type=search]:focus + .input-icon {
+		opacity: 1;
+
+		&::after {
+			opacity: 1;
+		}
+	}
+}
+
+/*
  * Contact form
  */
 

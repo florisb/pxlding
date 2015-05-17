@@ -77,6 +77,13 @@ body {
 
 // basic responsive
 
+@media #{$media-desktop} {
+	// make sure we can scroll if no menu set
+	body.no-scroll {
+		overflow: visible;
+	}
+}
+
 @media #{$media-tablet-min} {
 
 	.main-container {

@@ -259,3 +259,32 @@ div.mobile-menu-header-overlay {
 	}
 
 }
+
+// not high enough to neatly fit menu vertically
+@media (max-device-height: 660px) {
+	div.mobile-menu {
+
+		li {
+			margin-bottom: $margin-def;
+		}
+	}
+}
+
+@media (max-device-height: 580px) {
+	div.mobile-menu {
+
+		li {
+			margin-bottom: $margin-def / 2;
+		}
+	}
+}
+
+// landscape ugliness
+@media (max-device-width: 540px) and (orientation: landscape) {
+	div.mobile-menu {
+
+		li {
+			font-size: pem($fontSizeMenu * 0.75);
+		}
+	}
+}
