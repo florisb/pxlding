@@ -37,6 +37,10 @@
 	clear: both;
 }
 
+.no-scroll {
+	overflow: hidden;
+}
+
 a {
 	text-decoration: none;
 	color: $color-txt;
