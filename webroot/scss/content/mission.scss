@@ -92,13 +92,22 @@ section.people-matrix {
 						opacity $speed-slider * 1.5;
 		}
 
+		// face, front side
 		.mug {
 			z-index: $z-content;
 			top: 0;
 
 			img {
 				width: 100%;
-				filter: grayscale(1);
+				transition: opacity $speed-slider * 0.75;
+
+				&.bot {
+					filter: grayscale(1);
+				}
+				&.top {
+					opacity: 0;
+					@include absolute-cover;
+				}
 			}
 
 			// &.top    { top: 0; }
@@ -107,6 +116,7 @@ section.people-matrix {
 			// &.left   { left: 0; }
 		}
 
+		// 'rearside' of person
 		.buns {
 			z-index: $z-content + 1;
 			// left: 100%;
@@ -117,10 +127,6 @@ section.people-matrix {
 			text-align: center;
 
 			opacity: 0;
-			&.top    { top: -100%; }
-			&.right  { left: -100%; }
-			&.bottom { top: 100%; }
-			&.left   { left: 100%; }
 
 			&:before {
 				@include pseudo-basic;
@@ -136,7 +142,7 @@ section.people-matrix {
 				position: relative;
 				display: inline-block;
 				vertical-align: middle;
-				padding: $margin-def;
+				padding: $margin-def / 2;
 
 			}
 
@@ -153,20 +159,29 @@ section.people-matrix {
 			}
 		}
 
+		&.top .buns    { top: -100%; }
+		&.right .buns  { left: -100%; }
+		&.bottom .buns { top: 100%; }
+		&.left .buns   { left: 100%; }
+
 		&:hover {
 			.mug {
 				// &.top    { top: -100%; }
 				// &.right  { left: -100%; }
 				// &.bottom { top: 100%; }
 				// &.left   { left: 100%; }
+				img.top {
+					opacity: 1;
+				}
 			}
 			.buns {
-				opacity: 1;
-				&.top    { top: 0; }
-				&.right  { left: 0; }
-				&.bottom { top: 0; }
-				&.left   { left: 0; }
+				opacity: 0.9;
 			}
+
+			&.top .buns    { top: 0; }
+			&.right .buns  { left: 0; }
+			&.bottom .buns { top: 0; }
+			&.left .buns   { left: 0; }
 		}
 
 	}

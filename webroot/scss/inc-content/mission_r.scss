@@ -64,19 +64,26 @@
 	@include people-matrix-width(4);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 750px) {
 	@include people-matrix-width(3);
 }
 
 @media (max-width: 500px) {
 	@include people-matrix-width(2);
 
-	section.people-matrix {
-		.person {
-		}
-	}
 }
 
-@media (max-width: 400px) {
+@media (max-width: 350px) {
 	@include people-matrix-width(2);
+
+	section.people-matrix {
+		.person .buns {
+			.name {
+				font-size: pem(20);
+			}
+			.role {
+				font-size: pem(15);
+			}
+		}
+	}
 }
