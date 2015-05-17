@@ -18,16 +18,20 @@
 
 	$(function() {
 
-		// strip margin for correct calculation by masonry
-		$(containerId + ' article.blog').css('margin-right', 0);
+		// only do for index
+		if ($(containerId).length) {
 
-		// initialize masonry
-		$(containerId).masonry({
-			itemSelector    : 'article.blog',
-			percentPosition : true,
-			columnWidth     : 'article.blog',
-			gutter          : 80	// cannot be variable or element based apparently, too bad
-		});
+			// strip margin for correct calculation by masonry
+			$(containerId + ' article.blog').css('margin-right', 0);
+
+			// initialize masonry
+			$(containerId).masonry({
+				itemSelector    : 'article.blog',
+				percentPosition : true,
+				columnWidth     : 'article.blog',
+				gutter          : 80	// cannot be variable or element based apparently, too bad
+			});
+		}
 
 	});
 
