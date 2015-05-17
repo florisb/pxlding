@@ -11,37 +11,14 @@
 </section>
 
 
+<div id="blog-list-gutter-size">&nbsp;</div>
 <section id="blog-list-container" class="blog-list large-margin-column">
 
-	<? foreach ($blog as $post): ?>
 	<?
-		$url = $this->route('blog', $post->slug);
+		foreach ($blog as $post) {
+			$this->partial('_post', array( 'post' => $post ));
+		}
 	?>
-
-		<article class="blog">
-			<header>
-				<a href="<?= $url ?>">
-					<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->file ?>')"></div>
-
-					<h2 class="h2">
-						<?= $post->title ?>
-					</h2>
-				</a>
-			</header>
-
-			<section class="custom-text-content">
-				<?= $post->intro ?>
-			</section>
-
-			<footer>
-				<a class="arrow-link" href="<?= $url ?>">
-					<span class="arrow"></span>
-					<?= $post->read_more ?>
-				</a>
-			</footer>
-		</article>
-
-	<? endforeach; ?>
 
 </section>
 
@@ -49,8 +26,9 @@
 
 	<hr>
 
-	<a href="javascript:;" class="button default">
+	<a id="blog-next-page-load" href="javascript:;" class="button default" data-current-page="<?= $currentPage ?>">
 		<?= ML::label('blog more link') ?>
+		<span id="blog-next-is-loading" class="loading-indicator"></span>
 	</a>
 
 </section>

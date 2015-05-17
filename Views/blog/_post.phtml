@@ -1,0 +1,26 @@
+<?
+	$url = $this->route('blog', $post->slug);
+?>
+
+		<article class="blog appear-effect">
+			<header>
+				<a href="<?= $url ?>">
+					<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->file ?>')"></div>
+
+					<h2 class="h2">
+						<?= $post->title ?>
+					</h2>
+				</a>
+			</header>
+
+			<section class="custom-text-content">
+				<?= $post->intro ?>
+			</section>
+
+			<footer>
+				<a class="arrow-link" href="<?= $url ?>">
+					<span class="arrow"></span>
+					<?= $post->read_more ?>
+				</a>
+			</footer>
+		</article>
