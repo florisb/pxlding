@@ -1,0 +1,47 @@
+
+<section class="blog-detail-banner parallax-banner no-margin-column" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')">
+
+	<div class="back-link">
+		<a class="arrow-back-link" href="<?= $this->route('blog', '', array($currentPage)) ?>" title="<?= ML::label('blog return') ?>">
+			<?= ML::label('blog return') ?>
+			<span class="arrow"></span>
+		</a>
+	</div>
+
+	<div class="title" title="<?= $post->title ?>">
+		<h1 class="h1 bold-and-light">
+			<?= $post->fancy_title ?>
+		</h1>
+	</div>
+
+</section>
+
+<section class="blog-detail-content large-margin-column">
+
+	<div class="text custom-text-content">
+		<?
+			// fix up content
+			//
+			// it may contain
+			// 		image placeholders: [[img<number>]] which should correspond to images in the gallery
+			// 		headers
+			// 		normal formatting
+
+			echo $post->content;
+		?>
+	</div>
+
+</section>
+
+<footer class="blog-detail large-margin-column">
+
+	<div class="author">
+		<?= ML::label('blog written by') ?>
+		<?= $post->author ?>
+	</div>
+
+	<div class="share">
+
+	</div>
+
+</footer>
