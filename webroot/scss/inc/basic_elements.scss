@@ -51,6 +51,14 @@ a {
 	}
 }
 
+hr {
+	width: 90px;
+	border: 0;
+	border-bottom: 4px solid $color-brd;
+	text-align: center;
+	margin: $margin-def * 2 0;
+}
+
 .content-container {
 
 	.h1, .h2 {

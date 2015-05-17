@@ -144,8 +144,6 @@ section.home-blog {
 
 	article.blog {
 		float: left;
-		// width: col-width-abs(3, $marginColumn);
-		// margin-right: $marginColumn;
 
 		.h2 {
 			display: inline-block;
@@ -222,11 +220,7 @@ section.home-contact {
 	}
 
 	hr {
-		width: 90px;
-		border: 0;
-		border-bottom: 4px solid $color-brd;
 		text-align: left;
-		margin: $margin-def * 2 0;
 	}
 
 	#contact-form-thanks {
