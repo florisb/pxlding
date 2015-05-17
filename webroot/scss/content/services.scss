@@ -251,17 +251,27 @@ section.service-cases {
 	margin-bottom: $margin-def * 4;
 
 	.case {
+		display: block;
 		position: relative;
 
 		.image {
+			position: relative;
 			width: 100%;
 			height: 0;
 			padding-top: 100%;
 			@include bg-cover;
-			margin-bottom: $margin-def;
+
+			&::before {
+				@include pseudo-basic;
+				@include absolute-cover;
+				background-color: rgba(0,0,0, 0.15);
+				opacity: 1;
+				transition: opacity $speed-slider;
+			}
 		}
 
 		.caption {
+			margin-top: $margin-def;
 			text-align: center;
 		}
 
@@ -271,6 +281,7 @@ section.service-cases {
 			font-style: italic;
 			line-height: $lineheight-def;
 			margin-bottom: $margin-def / 4;
+			color: $color-txt;
 		}
 
 		.title {
@@ -279,6 +290,23 @@ section.service-cases {
 			font-family: $font-pri;
 			color: $color-txt-dark;
 		}
+
+		&:hover, &:active {
+
+			.image {
+				&::before {
+					opacity: 0;
+				}
+			}
+
+			.subtitle, .title {
+				color: $color-pri;
+			}
+		}
+	}
+
+	.owl-controls {
+		margin-top: $margin-def * 2;
 	}
 }
 

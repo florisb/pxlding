@@ -77,6 +77,12 @@ section.people-matrix {
 		position: relative;
 		float: left;
 
+		&.bg-a { background-color: lighten($color-sec, 2); }
+		&.bg-b { background-color: lighten($color-sec, 10); }
+		&.bg-c { background-color: lighten($color-sec, 5); }
+		&.bg-d { background-color: darken($color-sec, 5); }
+		&.bg-e { background-color: darken($color-sec, 10); }
+
 		> div {
 			position: relative;
 			width: 100%;

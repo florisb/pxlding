@@ -1,0 +1,92 @@
+
+// compass mixins library
+// @import "lib/_animate";
+@import "../lib/_compass";
+
+// custom imports
+@import "../inc/config";
+@import "../inc/init";
+
+
+section.cases-showcase {
+	margin-bottom: $margin-def * 4;
+}
+
+section.cases {
+
+	@include cf;
+
+	.case {
+		display: block;
+		float: left;
+		position: relative;
+		margin-bottom: $margin-def * 3.5;
+
+		.image-container {
+			position: relative;
+			background-color: $color-sec;
+		}
+
+		.image {
+			width: 100%;
+			height: 0;
+			padding-top: 100%;
+			@include bg-cover;
+
+			&::before {
+				@include pseudo-basic;
+				@include absolute-cover;
+				background-color: rgba(0,0,0, 0.15);
+				opacity: 1;
+				transition: opacity $speed-slider;
+			}
+		}
+
+		.size-helper {
+			display: none;
+		}
+
+		.caption {
+			margin-top: $margin-def;
+			text-align: center;
+		}
+
+		.subtitle, .title {
+			transition: color $speed-fast;
+		}
+
+		.subtitle {
+			font-size: pem(17);
+			font-family: $font-sec;
+			font-style: italic;
+			line-height: $lineheight-def;
+			margin-bottom: $margin-def / 4;
+			color: $color-txt;
+		}
+
+		.title {
+			font-size: pem(20);
+			font-family: $font-pri;
+			color: $color-txt-dark;
+			@include adjusted-lh(1.3);
+		}
+
+		&:hover, &:active {
+
+			.image {
+				&::before {
+					opacity: 0;
+				}
+			}
+
+			.subtitle, .title {
+				color: $color-pri;
+			}
+		}
+	}
+}
+
+
+
+@import "../inc-content/cases_r";
+@import "../inc-content/cases-banner";
