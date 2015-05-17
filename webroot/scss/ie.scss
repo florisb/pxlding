@@ -1,0 +1,9 @@
+/*
+ * IE tweaks and fixes
+ */
+
+
+// transform effect looks terrible in IE, so don't use it
+section.cases-banner .background {
+	transform: none !important;
+}
