@@ -56,11 +56,11 @@
 			$q = "
 				SELECT
 					*,
-					`svc`.`id` AS `cid`,
-					`i`.`file` AS `banner`,
-					`i`.`caption` AS `banner_caption`,
-					`i`.`file` AS `banner_mobile`,
-					`i`.`caption` AS `banner_caption_mobile`
+					`svc`.`id`     AS `cid`,
+					`i`.`file`     AS `banner`,
+					`i`.`caption`  AS `banner_caption`,
+					`im`.`file`    AS `banner_mobile`,
+					`im`.`caption` AS `banner_caption_mobile`
 				FROM
 					`cms_m13_services` `svc`
 				INNER JOIN

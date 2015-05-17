@@ -159,6 +159,10 @@
                     `cms_m_references` `ref`
                 ON
                     (`ref`.`to_entry_id` = `c`.`id` AND `ref`.`from_field_id` = " . self::SERVICES_REF_FIELD . ")
+				INNER JOIN
+                    `cms_m3_slugs` `s`
+                ON
+                    (`s`.`entry_id` = `c`.`id` AND `s`.`language_id` = :language AND `s`.`ref_module_id` = 6)
                 WHERE
                     `c`.`e_active` = 1
                 AND
