@@ -1,0 +1,43 @@
+
+<section class="blog-search large-margin-column">
+
+	<form id="blog-search-form" class="blog-search-form">
+		<div class="input-container">
+			<input type="search" value="" placeholder="<?= ML::label('search for something') ?>">
+			<span class="input-icon"></span>
+		</div>
+	</form>
+
+</section>
+
+
+<section class="blog-list large-margin-column">
+
+	<? foreach ($blog as $post): ?>
+
+		<article class="blog">
+			<header>
+				<a href="<?= $url ?>">
+					<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->file ?>')"></div>
+
+					<h2 class="h2">
+						<?= $post->title ?>
+					</h2>
+				</a>
+			</header>
+
+			<section class="custom-text-content">
+				<?= $post->intro ?>
+			</section>
+
+			<footer>
+				<a class="arrow-link" href="<?= $url ?>">
+					<span class="arrow"></span>
+					<?= $post->read_more ?>
+				</a>
+			</footer>
+		</article>
+
+	<? endforeach; ?>
+
+</section>
