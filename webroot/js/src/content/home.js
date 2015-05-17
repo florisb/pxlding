@@ -51,26 +51,6 @@
 			}
 		});
 
-
-		/*
-		 * Animate fadein for page elements while scrolling
-		 */
-
-		$('.appear-effect').addClass('appear-hide');
-		$('.appear-effect').appear();
-
-		$(document.body).on('appear', '.appear-effect', function(e, $affected) {
-    		$(this).removeClass('appear-hide');
-  		});
-
-		// don't do anything after stuff has appeared
-  		// $(document.body).on('disappear', '.appear-effect', function(e, $affected) {
-		//
-  		// });
-
-		// force check, otherwise stuff stays hidden sometimes
-		$.force_appear();
-
 	});
 
 })();
