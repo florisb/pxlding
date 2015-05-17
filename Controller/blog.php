@@ -14,6 +14,9 @@
 			$blog = Factory\Blog::getAll($page);
 
 			$this->set('blog', $blog);
+
+			// masonry js stuff going on here
+			$this->set('includeJsMasonry', true, true);
 		}
 
 

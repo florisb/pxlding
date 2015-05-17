@@ -11,9 +11,12 @@
 </section>
 
 
-<section class="blog-list large-margin-column">
+<section id="blog-list-container" class="blog-list large-margin-column">
 
 	<? foreach ($blog as $post): ?>
+	<?
+		$url = $this->route('blog', $post->slug);
+	?>
 
 		<article class="blog">
 			<header>
@@ -39,5 +42,15 @@
 		</article>
 
 	<? endforeach; ?>
+
+</section>
+
+<section id="blog-next-page" class="blog-next large-margin-column">
+
+	<hr>
+
+	<a href="javascript:;" class="button default">
+		<?= ML::label('blog more link') ?>
+	</a>
 
 </section>

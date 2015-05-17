@@ -1,0 +1,53 @@
+
+/*
+ * Blog list columns
+ */
+
+@media #{$media-desktop} {
+
+	section.blog-list {
+
+		$columns: 3;
+		$marginColumn: $margin-def * 4;
+
+		article.blog {
+			width: col-width-abs($columns, $marginColumn);
+			margin-right: $marginColumn;
+			margin-bottom: $marginColumn;
+
+			&:nth-child(3n+3) {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+@media #{$media-tablet} {
+
+	section.blog-list {
+
+		$columns: 2;
+		$marginColumn: $margin-def * 2;
+
+		article.blog {
+
+			width: col-width-abs($columns, $marginColumn);
+			margin-right: $marginColumn;
+
+			&:nth-child(2n+2) {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+@media #{$media-phone} {
+
+	section.blog-list {
+
+		article.blog {
+			width: 100%;
+			margin-right: 0;
+		}
+	}
+}
