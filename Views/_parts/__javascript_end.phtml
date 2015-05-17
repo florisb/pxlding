@@ -14,6 +14,11 @@
 		<script src="<?= $_baseurl . $_js_path . 'content/' . $controllerName ?>.js"></script>
 	<? endif; ?>
 
+	<? if ($includeJsMasonry): ?>
+		<script src="<?= $_baseurl ?>js/lib/masonry/masonry.pkgd.min.js"></script>
+	<? endif; ?>
+
+
 	<!--[if lt IE 9]>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
 	<![endif]-->
