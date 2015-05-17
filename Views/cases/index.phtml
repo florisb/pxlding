@@ -1,44 +1,64 @@
-<div id="page" class="overview white">
-	<div class="block white">
-		<div class="inner">
-			<h2><?=$_content->page_title?></h2>
-			<h3><?=$_content->page_text?></h3>
-	
-			<div class="online-cases">
-			
-			<?php $i = 0; ?>
-			<?php foreach($cases as $c){ ?>
-				<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
-					<figure data-img="<?=$_baseurl?>cms_img/overview_<?=$c->file?>">
-			                <a class="btn" href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>">Bekijk case</a>
-					</figure>
-					
-					<div class="case-name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->case_name?></a></div>
-					<div class="name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->name?></a></div>
+
+<section class="cases-showcase cases-banner no-margin-column">
+<?
+	$this->partial('cases-banner-content', array('cases' => $showCases), '_parts');
+?>
+</section>
+
+
+<section class="cases large-margin-column">
+
+	<?
+		/*
+		 * The pattern to display these in will be managed by CSS
+		 *
+		 * Default/desktop is:
+		 * 			[x] [x] [x]
+		 * 			[xxxxx] [x]
+		 * 			[x] [x] [x]
+		 * 			[x] [xxxxx]
+		 */
+		$pattern = array(
+			'', '', '',
+			'wide', '',
+			'', '', '',
+			'', 'wide',
+		);
+
+		$maxToShow = 9;
+	?>
+
+
+	<?
+		$c = 0;
+
+		foreach ($cases as $case):
+			if ($c > $maxToShow) break;
+	?>
+
+		<a class="case<?= isset($pattern[$c]) ? ' ' . $pattern[$c] : null ?>" href="<?= $this->route('cases', $case->slug) ?>">
+			<?
+				$img = $_baseurl . 'cms_img/' . $case->file;
+			?>
+
+			<div class="image-container">
+				<div class="image" style="background-image: url('<?= $img ?>')"></div>
+				<div class="size-helper"></div>
+			</div>
+
+			<div class="caption">
+				<div class="subtitle">
+					<?= $case->name ?>
 				</div>
-				<?php $i++; ?>
-			<?php } ?>
-	
+				<div class="title">
+					<?= $case->case_name ?>
+				</div>
 			</div>
+		</a>
 
-			<div class="clear"></div>
+	<?
+			$c++;
+		endforeach;
+	?>
 
-				<h2><?=ML::label('offline')?></h2>
-
-			<div class="offline">
-				<?php $i = 0; ?>
-				<?php foreach($offline as $c){ ?>
-					<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
-						<figure data-img="<?=$_baseurl?>cms_img/<?= $isTablet ? 'tablet' : 'overview' ?>_<?=$c->file?>">
-				                <a class="btn" href="."><?=ML::label('coming soon')?></a>
-						</figure>
-						
-						<div class="case-name"><a href="."><?=$c->case_name?></a></div>
-					</div>
-					<?php $i++; ?>
-				<?php } ?>
-
-			</div>
-		</div>
-	</div>
-</div>
+</section>
