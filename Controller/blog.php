@@ -23,12 +23,12 @@
 
 		public function detailsAction() {
 
-			$slug     = $this->getParam('slugparam');
+			$slug    = $this->getParam('slug');
 
-			$blogpost = Factory\Blog::getBySlug($slug);
-			$gallery  = Factory\Cases::getGalleryById($blogpost->id);
+			$post    = Factory\Blog::getBySlug($slug);
+			$gallery = Factory\Blog::getGalleryById($post->bid);
 
-			$this->set('blogpost', $blogpost);
+			$this->set('post',     $post);
 			$this->set('gallery',  $gallery);
 		}
 	}

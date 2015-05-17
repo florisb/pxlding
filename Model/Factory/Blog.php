@@ -3,6 +3,10 @@
 
 	class Blog extends BaseFactory {
 
+		const BANNER_IMAGE_FIELD_ID   = 72;
+		const IMAGES_FIELD_ID         = 73;
+		const OVERVIEW_IMAGE_FIELD_ID = 78;
+
 		public function getAll() {
 
 			$q = "
@@ -68,6 +72,7 @@
 			";
 
 			$q = sprintf($q, self::_getSql());
+
 			$stmt = self::stmt($q, array(
 				':language' => array(self::session('_language_id'), 'i'),
 				':slug'     => array($slug, 's')
@@ -76,11 +81,35 @@
 			return self::db()->row($stmt, 'Model\Entity\Blog');
 		}
 
+		public function getGalleryById($id) {
+
+			$q = "
+				SELECT
+					`i`.`file`
+				FROM
+					`cms_m15_blog` `blg`
+				LEFT JOIN
+					`cms_m_images` `i`
+				ON
+					(`blg`.`id` = `i`.`entry_id` AND `i`.`field_id` = " . (int) self::IMAGES_FIELD_ID . ")
+				WHERE
+					`blg`.`id` = :id
+				ORDER BY
+					`i`.`position` ASC
+			";
+
+			$stmt = self::stmt($q, array(
+				':id'     => array($id, 'i')
+			));
+
+			return self::db()->matrix($stmt, 'Model\Entity\PCase');
+		}
+
 		protected function _getSql() {
 			$q = "
 				SELECT
 					*,
-					`blg`.`id` AS `cid`,
+					`blg`.`id` AS `bid`,
 					`i`.`file` AS `file`,
 					`i2`.`file` AS `banner`
 				FROM
@@ -92,11 +121,11 @@
 				LEFT JOIN
 					`cms_m_images` `i`
 				ON
-					(`blg`.`id` = `i`.`entry_id` AND `i`.`field_id` = '73')
+					(`blg`.`id` = `i`.`entry_id` AND `i`.`field_id` = '" . (int) self::OVERVIEW_IMAGE_FIELD_ID . "')
 				LEFT JOIN
 					`cms_m_images` `i2`
 				ON
-					(`blg`.`id` = `i2`.`entry_id` AND `i2`.`field_id` = '72')
+					(`blg`.`id` = `i2`.`entry_id` AND `i2`.`field_id` = '" . (int) self::BANNER_IMAGE_FIELD_ID . "')
 			";
 
 			return $q;
