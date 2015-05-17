@@ -1,5 +1,5 @@
 
-<section class="cases-showcase cases-banner no-margin-column">
+<section class="cases-showcase cases-banner no-margin-column appear-effect">
 <?
 	$this->partial('cases-banner-content', array('cases' => $showCases), '_parts');
 ?>
@@ -36,7 +36,7 @@
 			if ($c > $maxToShow) break;
 	?>
 
-		<a class="case<?= isset($pattern[$c]) ? ' ' . $pattern[$c] : null ?>" href="<?= $this->route('cases', $case->slug) ?>">
+		<a class="case<?= isset($pattern[$c]) ? ' ' . $pattern[$c] : null ?> appear-effect" href="<?= $this->route('cases', $case->slug) ?>">
 			<?
 				$img = $_baseurl . 'cms_img/' . $case->file;
 			?>
