@@ -2,6 +2,7 @@
 	namespace Controller;
 
 	use Model\Factory;
+	use PXL\Core\Session\Session;
 
 	class Blog extends BaseController {
 
@@ -10,6 +11,8 @@
 			if (empty($page)) {
 				$page = 1;
 			}
+
+			Session::set('blog-page', $page);
 
 			$blog = Factory\Blog::getAll($page);
 
@@ -30,5 +33,7 @@
 
 			$this->set('post',     $post);
 			$this->set('gallery',  $gallery);
+
+			$this->set('currentPage', Session::get('blog-page'));
 		}
 	}
