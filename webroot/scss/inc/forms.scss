@@ -113,11 +113,9 @@ input, textarea {
 .blog-search-form {
 
 	$sizeIcon : 24px;
-	$width    : 380px;
 
 	.input-container {
 		position: relative;
-		width: $width;
 
 		.input-icon {
 			@include bg-contain('search.svg');

@@ -4,11 +4,11 @@
  */
 
 @media #{$media-desktop} {
+	$columns: 3;
+	$marginColumn: $margin-def * 4;
 
 	section.blog-list {
 
-		$columns: 3;
-		$marginColumn: $margin-def * 4;
 
 		article.blog {
 			width: col-width-abs($columns, $marginColumn);
@@ -20,17 +20,35 @@
 			}
 		}
 	}
+
+	#blog-list-gutter-size {
+		width: $marginColumn;
+	}
+}
+
+// smaller text to make it fit
+@media #{$media-tablet} and (max-width: 880px),
+		#{$media-desktop} and (max-width: 1180px),
+		(max-width: 350px) {
+	section.blog-list {
+		article.blog {
+			.h2 {
+				font-size: pem(20);
+			}
+		}
+	}
 }
 
 @media #{$media-tablet} {
+	$columns: 2;
+	// $marginColumn: $margin-def * 2;	// to set this, fix the 'gutter' stuff first...
+	$marginColumn: $margin-def * 4;
 
 	section.blog-list {
-
-		$columns: 2;
-		$marginColumn: $margin-def * 2;
+		font-size: 0;
 
 		article.blog {
-
+			font-size: 16px;
 			width: col-width-abs($columns, $marginColumn);
 			margin-right: $marginColumn;
 
@@ -38,6 +56,10 @@
 				margin-right: 0;
 			}
 		}
+	}
+
+	#blog-list-gutter-size {
+		width: $marginColumn;
 	}
 }
 
@@ -48,6 +70,28 @@
 		article.blog {
 			width: 100%;
 			margin-right: 0;
+		}
+	}
+
+	#blog-list-gutter-size {
+		width: 0;
+	}
+}
+
+// make search bar fit
+@media (max-width: 450px) {
+	section.blog-search {
+		.input-container {
+			width: 100%;
+			min-width: 0;
+		}
+	}
+}
+@media (max-width: 350px) {
+	section.blog-search {
+		input[type=search] {
+			padding-left: $margin-def * 2;
+			padding-right: $margin-def;
 		}
 	}
 }

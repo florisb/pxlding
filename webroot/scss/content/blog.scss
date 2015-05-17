@@ -10,9 +10,13 @@
 
 section.blog-search {
 
+	$widthInput: 380px;
+
 	margin-bottom: $margin-def * 2.5;
 
 	.input-container {
+		min-width: $widthInput;
+		width: $widthInput;
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -25,6 +29,14 @@ section.blog-search {
 
 }
 
+#blog-list-gutter-size {
+	position: absolute;
+	opacity: 0;
+	top: -1px;
+	left: -1px;
+	width: 1px;
+	heigth: 1px;
+}
 
 section.blog-list {
 
@@ -96,9 +108,11 @@ section.blog-next {
 	hr {
 		margin-left: auto;
 		margin-right: auto;
+		margin-bottom: $margin-def * 4;
 	}
 
 	.button {
+		min-width: 340px;
 	}
 }
 

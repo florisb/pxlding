@@ -77,6 +77,56 @@ hr {
 }
 
 
+$sizeLoadingIndicator: 20px;
+
+
+// standard link button
+.button {
+	$height: 44px;
+
+	position: relative;
+	display: inline-block;
+	line-height: $height;
+	background-color: $color-pri;
+	font-family: $font-ter;
+	font-size: pem(17);
+	font-weight: $normal;
+	text-align: center;
+	border-radius: 5px;
+	color: white;
+	transition: background $speed-fast;
+
+	&:hover {
+		color: white;
+		background-color: lighten($color-pri, 5);
+	}
+	&:active {
+		color: white;
+		background-color: darken($color-pri, 1);
+	}
+
+	&.disabled {
+		color: transparentize(white, 0.5);
+		background-color: darken($color-pri, 10);
+		cursor: default;
+	}
+
+
+	.loading-indicator {
+		position: absolute;
+		top: c-off($height, $sizeLoadingIndicator);
+		right: $margin-def;
+	}
+}
+
+// basic loading indicator
+.loading-indicator {
+	display: none;
+	@include bg-contain('loading-spin.svg');
+	width: $sizeLoadingIndicator;
+	height: $sizeLoadingIndicator;
+}
+
 
 // standard double arrow link
 a.arrow-link {
