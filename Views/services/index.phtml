@@ -2,9 +2,9 @@
 <nav class="service-categories no-margin-column">
 
 	<? foreach ($services as $serviceCat): ?>
-	<?
-		$url = $this->route('services', $serviceCat->slug);
-	?>
+		<?
+			$url = $this->route('services', $serviceCat->slug);
+		?>
 
 		<a class="service-cat <?= $serviceCat->name ?><?= ($serviceCat->name == $service->name) ? ' active' : null
 			?>" href="<?= $url ?>" <? /* title="<?= $serviceCat->title ?>" */ ?>>
@@ -24,7 +24,14 @@
 
 
 
-<section class="service-banner no-margin-column" style="background-image: url('<?= $_baseurl . 'cms_img/' . $service->banner ?>')">
+<?
+	$img = $_baseurl . 'cms_img/' . $service->banner;
+
+	if ($isMobile && ! empty($service->banner_mobile)) {
+		$img = $_baseurl . 'cms_img/' . $service->banner_mobile;
+	}
+?>
+<section class="service-banner no-margin-column" style="background-image: url('<?= $img ?>')">
 	<div class="container">
 
 		<div class="title">
@@ -102,7 +109,7 @@
 
 	<? foreach ($cases as $case): ?>
 
-		<div class="case">
+		<a class="case" href="<?= $this->route('cases', $case->slug) ?>">
 
 			<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $case->file ?>')"></div>
 
@@ -114,7 +121,7 @@
 					<?= $case->case_name ?>
 				</div>
 			</div>
-		</div>
+		</a>
 
 	<? endforeach; ?>
 
