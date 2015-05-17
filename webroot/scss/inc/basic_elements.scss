@@ -74,6 +74,16 @@ hr {
 	.h2 {
 		font-size: pem(24);
 	}
+
+	// bold and light text based on <strong> tags
+	.bold-and-light {
+		font-family: $font-thin;
+
+		strong {
+			font-family: $font-bold;
+			font-weight: $normal;
+		}
+	}
 }
 
 
@@ -192,6 +202,57 @@ a.arrow-link {
 	}
 }
 
+a.arrow-back-link {
+	$lineHeight : 20px;
+	$sizeIcon   : 16px;
+	$shiftLeft  : 10px;
+
+	position: relative;
+	display: block;
+	// overflow: hidden;
+	padding-left: $sizeIcon + $margin-def / 2 + $shiftLeft;
+	line-height: $lineHeight;
+	font-size: pem(17);
+	color: $color-txt-dark;
+	transition: padding-left $speed-fast cubic-bezier(.18,.03,.08,1.06),
+				color $speed-fast cubic-bezier(.18,.03,.08,1.06);
+
+	&::before , &::after {
+		position: absolute;
+		@include pseudo-basic;
+		width: $sizeIcon;
+		height: $sizeIcon;
+		top: c-off($lineHeight, $sizeIcon);
+		transition: left $speed-fast cubic-bezier(.18,.03,.08,1.06),
+					opacity $speed-fast linear;
+	}
+
+	&::before, &::after {
+		left: $shiftLeft;
+		opacity: 1;
+		@include bg-image('arrow-left.svg');
+	}
+	&::after {
+		left: $shiftLeft;
+		opacity: 0;
+		@include bg-image('arrow-left.svg');
+	}
+
+	&:hover, &:active {
+		color: $color-pri;
+		padding-left: $sizeIcon + $margin-def / 2;
+
+		&::before {
+			left: 0;
+			// opacity: 0.25;
+		}
+		&::after {
+			left: -1 * $shiftLeft;
+			opacity: 1;
+		}
+	}
+}
+
 
 // social buttons
 
@@ -272,18 +333,6 @@ a.arrow-link {
 		vertical-align: middle;
 	}
 }
-
-
-// bold and light text based on <strong> tags
-.bold-and-light {
-	font-family: $font-thin;
-
-	strong {
-		font-family: $font-bold;
-		font-weight: $normal;
-	}
-}
-
 
 
 // appear effect (fade in as you scroll down)
