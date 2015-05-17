@@ -243,6 +243,7 @@ module.exports = (function() {
 
         var openMenu = function () {
 
+            $('body').addClass('no-scroll');
             $('div.mobile-menu').addClass('animate');
             $('div.mobile-menu-bg').addClass('animate');
             $('div.mobile-menu-header-overlay').addClass('animate');
@@ -264,6 +265,7 @@ module.exports = (function() {
 
         var closeMenu = function () {
 
+            $('body').removeClass('no-scroll');
             $('.mobile-menu li').removeClass('animate');
 
             setTimeout(function(){
