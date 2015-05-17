@@ -43,10 +43,6 @@
 				'work-a-holic', 'stoelendanser', 'wonderkind', 'genie', 'schuinsmarcheerder', 'money-maker',
 				'prinses-op-de-erwt', 'granol-van-de-muren', 'wizz-kid', 'krasse-knar', 'werknemer',
 		);
-
-		$direction = array(
-			'left', 'top', 'right', 'bottom',
-		);
 ?>
 
 <section class="people-matrix no-margin-column">
@@ -56,11 +52,12 @@
 		<div class="person">
 			<div class="<?= $bst[rand(0, count($bst) - 1)] ?>">
 
-				<div class="mug <?= $direction[rand(0, 3)] ?>">
-					<img src="<?= $_baseurl . 'cms_img/' .  ($isMobile ? 'small' : 'large')  . $employee->file ?>" alt="<?= $employee->name ?>">
+				<div class="mug">
+					<img class="bot" src="<?= $_baseurl . 'cms_img/' .  ($isMobile ? 'small' : 'large')  . $employee->file ?>" alt="<?= $employee->name ?>">
+					<img class="top" src="<?= $_baseurl . 'cms_img/' .  ($isMobile ? 'small' : 'large')  . $employee->file ?>" alt="<?= $employee->name ?>">
 				</div>
 
-				<div class="buns <?= $direction[rand(0, 3)] ?>">
+				<div class="buns hoverdir">
 					<div class="text">
 
 						<div class="name">
