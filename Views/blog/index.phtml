@@ -12,7 +12,7 @@
 
 
 <div id="blog-list-gutter-size">&nbsp;</div>
-<section id="blog-list-container" class="blog-list large-margin-column">
+<section id="blog-list-container" class="blog-list large-margin-column"<?= (empty($blog) || !count($blog)) ? ' style="display: none;"' : null ?>>
 
 	<?
 		foreach ($blog as $post) {
@@ -22,13 +22,27 @@
 
 </section>
 
+<section id="blog-list-empty" class="blog-list blog-list-empty large-margin-column"<?= !( empty($blog) || !count($blog)) ? ' style="display: none;"' : null ?>>
+
+	<div class="warning">
+		<?= ML::label('blog empty') ?>
+	</div>
+
+</section>
+
+
+
+<? if ( ! $noAjaxPages): ?>
+
 <section id="blog-next-page" class="blog-next large-margin-column">
 
 	<hr>
 
-	<a id="blog-next-page-load" href="javascript:;" class="button default" data-current-page="<?= $currentPage ?>">
+	<a id="blog-next-page-load" href="javascript:;" class="button default" data-current-page="<?= $currentPage ?>" data-final-page="<?= $finalPage ?>" data-url-base="<?= $_baseurl . $this->route('blog') ?>">
 		<?= ML::label('blog more link') ?>
 		<span id="blog-next-is-loading" class="loading-indicator"></span>
 	</a>
 
 </section>
+
+<? endif; ?>

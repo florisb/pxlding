@@ -1,0 +1,7 @@
+<div class="page-data-container hidden" data-current-page="<?= $currentPage ?>" data-more-pages="<?= ($isLastPage) ? 0 : 1 ?>"></div>
+
+<?
+	foreach ($blog as $post) {
+		$this->partial('_post', array( 'post' => $post ));
+	}
+?>

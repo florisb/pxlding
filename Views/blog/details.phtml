@@ -1,5 +1,22 @@
 
-<section class="blog-detail-banner parallax-banner no-margin-column" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')">
+<? /*
+<div class="test-banner">
+
+	<div class="outer">
+		<div class="inner">
+			test
+		</div>
+	</div>
+
+</div>
+*/ ?>
+
+<section id="blog-detail-banner" class="blog-detail-banner parallax-banner no-margin-column" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')"
+		<? /*
+		data-0="background-position: 50% 0px"
+        data-190="background-position: 50% 100px"
+        data-anchor-target="#blog-detail-banner"*/ ?>
+>
 
 	<div class="back-link">
 		<a class="arrow-back-link" href="<?= $this->route('blog', '', array($currentPage)) ?>" title="<?= ML::label('blog return') ?>">
@@ -47,12 +64,31 @@
 
 <footer class="blog-detail large-margin-column">
 
-	<div class="author">
-		<?= ML::label('blog written by') ?>
-		<?= $post->author ?>
-	</div>
+	<div class="container">
 
-	<div class="share">
+		<div class="author">
+			<?= ML::label('blog written by') ?>
+			<?= $post->author ?>
+		</div>
+
+		<div class="share">
+			<span class="text">
+				<?= ML::label('blog share') ?>
+			</span>
+
+			<div class="share-links">
+				<a href="//twitter.com/share?text=<?= \App\ViewHelper::urlEncode( 'Pixelindustries: ' . $post->title )
+					?><? /* &url=<?= \App\ViewHelper::urlEncode( $this->route('blog', $post->slug) )
+					?> */ ?>" class="twitter" title="Twitter" rel="no-follow" target="_blank">
+
+					T
+				</a>
+				<a href="//www.facebook.com/sharer.php?u=<?= \App\ViewHelper::urlEncode( $_baseurl . $this->route('blog', $post->slug) )
+					?>" class="facebook" title="Facebook" rel="no-follow" target="_blank">
+					F
+				</a>
+			</div>
+		</div>
 
 	</div>
 
