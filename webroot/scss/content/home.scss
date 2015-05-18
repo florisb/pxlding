@@ -18,7 +18,8 @@ section.home-video {
 	height: 0;
 	padding-top: percentage($heightVideo / $widthVideo);
 
-	background-color: $color-bg-sec;
+	// background-color: $color-bg-sec;
+	background-color: white;
 
 	&.mobile {
 		$widthVideo  : 400px;
