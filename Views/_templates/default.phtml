@@ -5,30 +5,37 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
 
-		<? if (!empty($case->slug)) : ?>
+		<meta property="og:site_name" content="Pixelindustries">
+
+		<? if ( ! empty($case->slug)) : ?>
 			<meta property="og:title" content="Pixelindustries | <?= $case->name ?>">
 			<meta property="og:type" content="website">
 			<meta property="og:url" content="<?= $_baseurl . $_language?>/cases/<?= $case->slug ?>">
 			<meta property="og:image" content="<?= $_baseurl ?>/cms_img/overview_<?= $case->file ?>">
-			<meta property="og:site_name" content="Pixelindustries">
 			<meta property="og:description" content="<?= strip_tags($case->main_description) ?>">
 		<? endif ?>
 
-		<? if(!empty($partner->slug)): ?>
+		<? if ( ! empty($post->slug)) : /* blog */ ?>
+			<meta property="og:title" content="Pixelindustries | Blog | <?= $post->title ?>">
+			<meta property="og:type" content="website">
+			<meta property="og:url" content="<?= $_baseurl . $_language?>/blog/<?= $post->slug ?>">
+			<meta property="og:image" content="<?= $_baseurl ?>/cms_img/overview_<?= $post->file ?>">
+			<meta property="og:description" content="<?= strip_tags($post->intro) ?>">
+		<? endif ?>
+
+		<? if( ! empty($partner->slug)): ?>
             <meta property="og:title" content="Pixelindustries | <?= $partner->name ?>">
             <meta property="og:type" content="website">
             <meta property="og:url" content="<?= $_baseurl . $_language?>/partners/<?= $partner->slug ?>">
             <meta property="og:image" content="<?= $_baseurl?>/cms_img/overview_<?= $partner->logo ?>">
-            <meta property="og:site_name" content="Pixelindustries">
             <meta property="og:description" content="<?= strip_tags($partner->main_description) ?>">
         <? endif; ?>
 
-        <? if(!empty($jobs)): ?>
+        <? if( ! empty($jobs)): ?>
         	<meta property="og:title" content="Pixelindustries">
             <meta property="og:type" content="website">
             <meta property="og:url" content="<?= $_baseurl . $_language ?>/jobs">
             <meta property="og:image" content="http://www.pixelindustries.com/img/jobs.png">
-            <meta property="og:site_name" content="Pixelindustries">
             <meta property="og:description" content="Werken bij een internet bureau iets voor jou? Het tofste internet bureau van Haarlem heeft nog vacatures open staan.">
 	    <? endif; ?>
 
