@@ -27,6 +27,8 @@ $bold:          700;
 $font-upshift     :  (2.5 / 14) + em;
 $font-upshift-neg :  (-2.5 / 14) + em;	// because you cannot calculate with this
 
+$fontsize-base    : 16px;
+
 // colors
 $color-pri        : #d41046;	// pixel red
 $color-pri-darker : #d31145;	// WHY!?
@@ -97,3 +99,6 @@ $speed-appear         : 0.75s;
 
 // special stuff
 $home-service-text-min-height: 9em;			// set minimum text block height for vertical lineup of service links
+
+
+$standard-dotted-border : 1px dotted #bdbdbd;

@@ -1,0 +1,441 @@
+
+// compass mixins library
+// @import "lib/_animate";
+@import "../lib/_compass";
+
+// custom imports
+@import "../inc/config";
+@import "../inc/init";
+
+
+section.jobs-banner {
+	$height: 470px;
+
+	position: relative;
+	background-color: $color-sec;
+	height: $height;
+	font-size: 0;
+	text-align: center;
+
+	&:before {
+		@include pseudo-basic;
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		font-size: $fontsize-base;
+	}
+
+	.title {
+		display: inline-block;
+		font-size: $fontsize-base;
+		vertical-align: middle;
+
+		.h1 {
+			font-size: pem(82);
+			line-height: 0.9em;
+			color: $color-txt-dark;
+		}
+	}
+
+}
+
+section.jobs-list {
+
+	margin-bottom: $margin-def * 4;
+
+	.empty {
+		margin-top: $margin-def * 4;
+
+		font-size: pem(17);
+		font-family: $font-sec;
+		font-style: italic;
+		@include adjusted-lh(1.85);
+	}
+
+	article.job {
+		$height: 160px;
+
+		$sizeImage: 160px;
+
+		$heightTitle: 50px;	// includes slider-upper prefix
+		$lineheight: 34px;
+		$fzName   : 34;
+		$fzPrefix : 24;
+
+		border-bottom: $standard-dotted-border;
+		padding-top: $margin-def * 2;
+		padding-bottom: $margin-def * 2;
+
+
+		a {
+			display: block;
+			font-size: 0;
+		}
+
+		&:before {
+			@include pseudo-basic;
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+			font-size: $fontsize-base;
+		}
+
+		.image, .text {
+			font-size: $fontsize-base;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.image {
+			width: $sizeImage;
+			height: $sizeImage;
+			margin-right: $margin-def * 2;
+			@include bg-cover;
+			background-color: $color-sec;
+		}
+
+		.text {
+			position: relative;
+			width: calc(100% - #{$sizeImage + $margin-def * 2});
+
+			.title {
+
+				position: relative;
+				display: block;
+				height: $heightTitle;
+				font-size: 0;
+
+				&:before {
+					@include pseudo-basic;
+					display: inline-block;
+					height: 100%;
+					vertical-align: middle;
+					font-size: $fontsize-base;
+				}
+
+				.name {
+					display: inline-block;
+					vertical-align: top;
+					margin-top: 0;
+					font-size: #{$fzName}px;
+					font-family: $font-pri;
+					color: $color-txt-dark;
+					// @include adjusted-lh(1);
+
+					transition: margin-top 0.35s;
+				}
+
+				.prefix {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: $lineheight;
+					display: block;
+					font-family: $font-pri;
+					font-size: #{$fzPrefix}px;
+					color: $color-pri;
+					opacity: 0;
+
+					transform: perspective(1000px) rotate3d(1,0,0,90deg);
+  					transform-origin: 50% 0%;
+					transition: opacity 0.35s,
+								transform 0.35s;
+				}
+
+			}
+
+			.info {
+				$height: 60px;
+				$sizeIcon: 26px;
+
+				display: block;
+				text-align: left;
+				font-size: $fontsize-base;
+				line-height: $height;
+
+				> span {
+					position: relative;
+					display: inline-block;
+					font-size: pem(17);
+					font-family: $font-sec;
+					color: $color-txt;
+					padding-left: $sizeIcon + $margin-def / 2;
+
+					&:first-child {
+						margin-right: $margin-def * 2;
+					}
+
+					&::before {
+						@include pseudo-basic;
+						@include bg-contain;
+						position: absolute;
+						width: $sizeIcon;
+						height: $sizeIcon;
+						left: 0;
+						top: c-off($height, $sizeIcon);
+					}
+				}
+
+				.hours {
+					&::before {
+						background-image: image-url('clock.svg');
+					}
+				}
+				.starting {
+					&::before {
+						background-image: image-url('calendar.svg');
+					}
+				}
+			}
+		}
+
+		a {
+			&:hover, &:active {
+				.text .title {
+					.name {
+						margin-top: #{$fzPrefix}px;
+					}
+					.prefix {
+						// bottom: 0;
+						opacity: 1;
+						transform: perspective(1000px) rotate3d(1,0,0,0);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+section.jobs-newsletter {
+
+	// display: none; // for now
+
+
+
+	margin-bottom: $margin-def * 4;
+
+	.intro {
+		text-align: center;
+
+		.h2 {
+			margin-bottom: $margin-def * 1.5;
+		}
+
+		p {
+			font-size: pem(17);
+			@include adjusted-lh(1.85);
+		}
+	}
+
+	.form {
+		$width: 340px;
+
+		margin-top: $margin-def * 2;
+		text-align: center;
+		width: $width;
+
+		form {
+			width: 100%;
+		}
+
+		.row {
+			margin-bottom: $margin-def / 2;
+
+			&:last-child {
+				margin-bottom: 0
+			}
+		}
+
+		input {
+			width: 100%;
+			padding-left: $margin-def * 1.5;
+		}
+
+	}
+
+}
+
+
+
+
+/*
+ * Jobs detail page
+ */
+
+section.jobs-detail-banner {
+	$height: 470px;
+
+	position: relative;
+	background-color: $color-sec;
+	height: $height;
+	font-size: 0;
+	text-align: center;
+
+	&:before {
+		@include pseudo-basic;
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		font-size: $fontsize-base;
+	}
+
+	.title {
+		display: inline-block;
+		font-size: $fontsize-base;
+		vertical-align: middle;
+
+		.h1 {
+			font-size: pem(82);
+			line-height: 0.9em;
+			color: $color-txt-dark;
+		}
+
+		.info {
+			$height: 60px;
+			$sizeIcon: 26px;
+
+			display: block;
+			text-align: center;
+			line-height: $height;
+			margin-top: $margin-def;
+
+			> span {
+				position: relative;
+				display: inline-block;
+				font-size: pem(17);
+				font-family: $font-sec;
+				color: $color-txt;
+				padding-left: $sizeIcon + $margin-def / 2;
+
+				&:first-child {
+					margin-right: $margin-def * 2;
+				}
+
+				&::before {
+					@include pseudo-basic;
+					@include bg-contain;
+					position: absolute;
+					width: $sizeIcon;
+					height: $sizeIcon;
+					left: 0;
+					top: c-off($height, $sizeIcon);
+				}
+			}
+
+			.hours {
+				&::before {
+					background-image: image-url('clock.svg');
+				}
+			}
+			.starting {
+				&::before {
+					background-image: image-url('calendar.svg');
+				}
+			}
+		}
+	}
+
+}
+
+section.jobs-detail-title {
+
+	margin-top: $margin-def * 3.5;
+	margin-bottom: $margin-def * 3.5;
+
+	.h1 {
+		text-align: center;
+	}
+}
+
+section.jobs-detail-icons {
+
+	$height     : 250px;
+	$heightLine : 135px;
+	$sizeIcon   : 120px;
+
+	@include cf;
+
+	.icon-container {
+		position: relative;
+		float: left;
+		width: percentage(1 / 3);
+		text-align: center;
+
+		.image {
+			display: inline-block;
+			@include bg-contain;
+			width: $sizeIcon;
+			height: $sizeIcon;
+			margin-bottom: $margin-def * 1.5;
+		}
+
+		.title {
+			font-size: pem(20);
+			font-family: $font-pri;
+			@include adjusted-lh(1.3);
+			margin-bottom: $margin-def * 1.5;
+			color: $color-txt-dark;
+		}
+
+		.caption {
+			font-size: pem(17);
+		}
+
+		&::after {
+			@include pseudo-basic;
+			position: absolute;
+			width: 1px;
+			height: $heightLine;
+			right: 0;
+			top: c-off($height, $heightLine);
+			border-right: $standard-dotted-border;
+		}
+
+		&:last-child::after {
+			display: none;
+		}
+	}
+
+}
+
+hr.jobs-detail {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: $margin-def * 3;
+	margin-bottom: $margin-def * 3;
+}
+
+section.jobs-detail-content {
+
+	text-align: center;
+
+	margin-bottom: $margin-def * 2;
+
+	.title {
+		margin-bottom: $margin-def * 2;
+	}
+
+	.content {
+		font-size: pem(17);
+		@include adjusted-lh(1.85);
+	}
+}
+
+section.jobs-detail-contact {
+
+	text-align: center;
+	margin-bottom: $margin-def * 4;
+
+	.title {
+		margin-bottom: $margin-def * 2;
+	}
+
+	.text {
+		font-size: pem(17);
+		@include adjusted-lh(1.85);
+	}
+
+}
+

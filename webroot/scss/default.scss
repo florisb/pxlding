@@ -73,7 +73,11 @@ body {
 	margin-left: $margin-def * 4;
 	margin-right: $margin-def * 4;
 }
-
+.standard-middle-column {
+	width: percentage(700px / ($width-main - $margin-def * 8));
+	margin-left: auto;
+	margin-right: auto;
+}
 
 
 // basic responsive
@@ -103,6 +107,10 @@ body {
 		margin-left: $margin-def * 2;
 		margin-right: $margin-def * 2;
 	}
+
+	.standard-middle-column {
+		width: percentage(900px / ($width-main - $margin-def * 4));
+	}
 }
 
 
@@ -120,5 +128,17 @@ body {
 	.large-margin-column {
 		margin-left: $margin-def * 1;
 		margin-right: $margin-def * 1;
+	}
+}
+
+
+@media (max-width: 520px) {
+
+	.standard-middle-column {
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: $margin-def;
+		padding-right: $margin-def;
 	}
 }
