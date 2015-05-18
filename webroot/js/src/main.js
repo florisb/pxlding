@@ -29,6 +29,7 @@ window.pxl._jquery._hoverdir       = require('../lib/hoverdir/jquery.hoverdir.js
 
 // import other general plugins
 window.pxl._plugin._hammer         = require('../lib/hammer/hammer.min.js');
+window.pxl._plugin._skrollr        = require('../lib/skrollr/skrollr.min.js');
 // pxl._plugin._modernizr             = require('../lib/modernizr/2.8.2/modernizr.min.js');
 // pxl._plugin._plugin_imagesloaded   = require('../lib/imagesloaded/imagesloaded.pkgd.min.js');
 
