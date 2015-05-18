@@ -340,6 +340,7 @@ SQL;
 	// Register postSave events to the updateSlugs routine for modules containing a (ML or non-ML) field called "name"
 	foreach(array(
 		4, 6, 7,
+		9,  // jobs
 		13, // services
 		15, // blog
 	) as $moduleId) {
