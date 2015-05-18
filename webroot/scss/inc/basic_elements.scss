@@ -37,6 +37,10 @@
 	clear: both;
 }
 
+.hidden {
+	display: none;
+}
+
 .no-scroll {
 	overflow: hidden;
 }
@@ -351,6 +355,11 @@ a.arrow-back-link {
 		&.right {
 			float: right;
 		}
+	}
+
+	// when floating stuff, make sure we clear at sensible spots
+	.h1, .h2, .h3, .h4, hr, .clear {
+		clear: both;
 	}
 
 }
