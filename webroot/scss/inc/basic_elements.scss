@@ -310,6 +310,7 @@ a.arrow-back-link {
 // custom text content editable through cms
 .custom-text-content {
 
+	@include cf;
 	@include link-default;
 	line-height: $lineheight-def;
 
@@ -332,6 +333,26 @@ a.arrow-back-link {
 		@include bg-contain('check.svg');
 		vertical-align: middle;
 	}
+
+	// images (for blog)
+	img {
+		&.default {
+			max-width: 100%;
+		}
+		&.centered {
+			text-align: center;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		&.left {
+			float: left;
+		}
+		&.right {
+			float: right;
+		}
+	}
+
 }
 
 

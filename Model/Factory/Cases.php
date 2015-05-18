@@ -86,7 +86,8 @@
 		public function getGalleryById($id) {
 			$q = "
 				SELECT
-					`i`.`file`
+					`i`.`file`,
+					`i`.`caption`
 				FROM
 					`cms_m6_cases` `c`
 				LEFT JOIN

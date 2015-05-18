@@ -27,7 +27,19 @@
 			// 		headers
 			// 		normal formatting
 
-			echo $post->content;
+			// build image list for placeholders
+			$imageList = array();
+
+			foreach ($gallery as $image) {
+				$imageList[] = array(
+					'src' => $_baseurl . 'cms_img/' . $image->file,
+					'alt' => $image->caption,
+				);
+			}
+
+			$content = \App\ViewHelper::formatBlogContent($post->content, $imageList);
+
+			echo $content;
 		?>
 	</div>
 

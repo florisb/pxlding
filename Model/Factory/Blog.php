@@ -85,7 +85,8 @@
 
 			$q = "
 				SELECT
-					`i`.`file`
+					`i`.`file`,
+					`i`.`caption`
 				FROM
 					`cms_m15_blog` `blg`
 				LEFT JOIN
