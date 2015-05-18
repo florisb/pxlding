@@ -3,6 +3,16 @@
 class ViewHelper {
 
 	/**
+	 * Simple urlencode DRY
+	 * @param  string $string
+	 * @return string
+	 */
+	public static function urlEncode($string)
+	{
+		return rawurlencode($string);
+	}
+
+	/**
 	 * Formats bullets for the Services page asides, so placeholders are
 	 * set accordingly
 	 *
