@@ -1,61 +1,93 @@
-<div id="page" class="jobs"> 
-	<div class="case-header-wrapper">
-		<div id="case" data-height="401" class="animatedslow fadeIn">
-			<div id="case-image" style="background-image: url('<?=$_baseurl?>img/jobs.png');"></div>
-		</div>
-		<div id="case-name"></div>
+
+<section class="jobs-banner parallax-banner no-margin-column">
+
+	<div class="title">
+		<h1 class="h1 bold-and-light">
+			<?= $pageTitle ?>
+		</h1>
 	</div>
 
-	<div class="jobs-content" id="jobs-content">
-		<div class="block">
-			<?php $color = 'dark'; ?>
-			<?php $i = 0; foreach($jobs as $j){ ?>
-				<div class="job <?=$color?>">
-					<div class="inner">
-						<h2><?=$j->name?></h2>
-						<div class="close"><img src="<?=$_baseurl;?>img/close_jobs.png"/></div>
+</section>
 
-						<div id ="intro" class="text">
-							<h3><?=ML::label('jobs description header')?></h3>
-							<?=$j->intro?>
-						</div>
-						<br/>
-						<div class="hidden" data-id="<?=$i;?>">
-							<div class="text">
-								<?=$j->description?>
-							</div>
 
-							<div class="job-items">
-								<div class="item">
-									<span class="head"><?=ML::label('jobs hours')?></span>
-									<span class="body"><?=$j->hours?></span>
-								</div>
-								<div class="item">
-									<span class="head"><?=ML::label('jobs starting')?></span>
-									<span class="body"><?=$j->starting?></span>
-								</div>
-								<div class="item">
-									<span class="head"><?=ML::label('jobs contact')?></span>
-									<span class="body"><?=$j->contact?></span>
-								</div>
-							</div>
+<section class="jobs-list large-margin-column">
 
-							<div class="text">
-								<h3><?=ML::label('jobs company profile')?></h3>
-								<?=$j->company?>
-							</div>
+	<? if ( ! empty($jobs) && count($jobs)): ?>
 
-							<a href="mailto:<?=$j->contact?>" class="btn"><?=ML::label('jobs view application')?></a>
+		<? foreach ($jobs as $job): ?>
 
-						</div>
+		<article class="job standard-middle-column">
+			<a href="<?= $this->route('jobs', $job->slug) ?>">
 
-						<a class="btn show" data-id="<?=$i;?>"><?=ML::label('jobs show application')?></a>	
+				<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $job->file ?>')"></div>
+
+				<div class="text">
+
+					<div class="title">
+						<span class="prefix">
+							<?= ML::label('jobs are you our') ?>
+						</span>
+						<span class="name">
+							<?= $job->name ?>
+						</span>
+					</div>
+
+					<div class="info">
+
+						<span class="hours" title="<?= ML::label('jobs hours') ?>">
+							<?= $job->hours ?>
+						</span>
+
+						<span class="starting" title="<?= ML::label('jobs starting') ?>">
+							<?= $job->starting ?>
+						</span>
 
 					</div>
 				</div>
-				<?php $color = $color == 'dark' ? 'light' : 'dark'; ?>
-			<?php $i++; } ?>
+
+			</a>
+		</article>
+
+		<? endforeach; ?>
+
+	<? else: ?>
+
+		<div class="empty">
+			<?= ML::label('jobs empty') ?>
 		</div>
+
+	<? endif; ?>
+
+</section>
+
+
+<section class="jobs-newsletter large-margin-column">
+
+	<div class="intro standard-middle-column">
+		<div class="h2">
+			<?= ML::label('jobs newsletter title') ?>
+		</div>
+
+		<p>
+			<?= ML::label('jobs newsletter paragraph') ?>
+		</p>
 	</div>
 
-</div>
+	<div class="form standard-middle-column">
+
+		<form id="jobs-newsletter-form" action="<?= $this->route('jobs', 'newsletter') ?>" method="post">
+
+			<div class="row">
+				<input type="text" name="name" value="" placeholder="<?= ML::label('jobs newsletter full name') ?>">
+			</div>
+
+			<div class="row">
+				<input type="email" name="email" value="" placeholder="<?= ML::label('jobs newsletter email') ?>">
+				<a id="jobs-newsletter-form-submit" class="button-submit small" title="<?= ML::label("jobs newsletter submit")?>" href="javascript:;"></a>
+			</div>
+
+		</form>
+	</div>
+
+</section>
+

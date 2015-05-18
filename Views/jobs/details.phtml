@@ -1,0 +1,125 @@
+
+<section class="jobs-detail-banner parallax-banner no-margin-column">
+
+	<div class="title">
+		<h1 class="h1 bold-and-light">
+			<?= $job->name ?>
+		</h1>
+
+		<div class="info">
+
+			<span class="hours" title="<?= ML::label('jobs hours') ?>">
+				<?= $job->hours ?>
+			</span>
+
+			<span class="starting" title="<?= ML::label('jobs starting') ?>">
+				<?= $job->starting ?>
+			</span>
+
+		</div>
+	</div>
+
+</section>
+
+<section class="jobs-detail-title large-margin-column">
+
+	<div class="title h1">
+		<?= ML::label('jobs detail general title') ?>
+	</div>
+
+</section>
+
+
+<section class="jobs-detail-icons no-margin-column">
+
+	<div class="icon-container left">
+		<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $icons->left_file ?>')"></div>
+
+		<div class="title">
+			<?= $icons->left_caption ?>
+		</div>
+
+		<div class="caption">
+			<?= $job->caption_left ?>
+		</div>
+	</div>
+
+	<div class="icon-container middle">
+		<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $icons->middle_file ?>')"></div>
+
+		<div class="title">
+			<?= $icons->middle_caption ?>
+		</div>
+
+		<div class="caption">
+			<?= $job->caption_middle ?>
+		</div>
+	</div>
+
+	<div class="icon-container right">
+		<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $icons->right_file ?>')"></div>
+
+		<div class="title">
+			<?= $icons->right_caption ?>
+		</div>
+
+		<div class="caption">
+			<?= $job->caption_right ?>
+		</div>
+	</div>
+
+</section>
+
+
+<hr class="jobs-detail">
+
+
+<section class="jobs-detail-content large-margin-column">
+
+	<div class="title h1 standard-middle-column">
+		<?= $job->name ?>
+	</div>
+
+	<? if ( ! empty($colleagues) && count($colleagues)): ?>
+
+	<div class="colleagues">
+
+		<div class="h2">
+			<?= ML::label('jobs your colleagues') ?>
+		</div>
+
+		<? foreach ($colleagues as $colleague): ?>
+
+		<div class="colleague" style="background-image: url('<?= $_baseurl . 'cms_img/' . $colleague->file ?>')" title="<?= $colleague->name ?>"></div>
+
+		<? endforeach; ?>
+
+	</div>
+
+	<? endif; ?>
+
+	<div class="content custom-text-content standard-middle-column">
+		<?
+			echo \App\ViewHelper::replaceContentPlaceHolders( $job->description );
+		?>
+	</div>
+
+</section>
+
+
+<hr class="jobs-detail">
+
+
+<section class="jobs-detail-contact large-margin-column">
+
+	<div class="title h1 standard-middle-column">
+		<?= ML::label('jobs detail contact title') ?>
+	</div>
+
+	<div class="text custom-text-content standard-middle-column">
+		<?
+			echo \App\ViewHelper::replaceContentPlaceHolders( $job->contact_description );
+		?>
+	</div>
+
+</section>
