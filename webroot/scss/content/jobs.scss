@@ -288,6 +288,7 @@ section.jobs-detail-banner {
 			font-size: pem(82);
 			line-height: 0.9em;
 			color: $color-txt-dark;
+			padding-top: $margin-def;
 		}
 
 		.info {
@@ -361,25 +362,6 @@ section.jobs-detail-icons {
 		width: percentage(1 / 3);
 		text-align: center;
 
-		.image {
-			display: inline-block;
-			@include bg-contain;
-			width: $sizeIcon;
-			height: $sizeIcon;
-			margin-bottom: $margin-def * 1.5;
-		}
-
-		.title {
-			font-size: pem(20);
-			font-family: $font-pri;
-			@include adjusted-lh(1.3);
-			margin-bottom: $margin-def * 1.5;
-			color: $color-txt-dark;
-		}
-
-		.caption {
-			font-size: pem(17);
-		}
 
 		&::after {
 			@include pseudo-basic;
@@ -394,6 +376,26 @@ section.jobs-detail-icons {
 		&:last-child::after {
 			display: none;
 		}
+	}
+
+	.image {
+		display: inline-block;
+		@include bg-contain;
+		width: $sizeIcon;
+		height: $sizeIcon;
+		margin-bottom: $margin-def * 1.5;
+	}
+
+	.title {
+		font-size: pem(20);
+		font-family: $font-pri;
+		@include adjusted-lh(1.3);
+		margin-bottom: $margin-def * 1.5;
+		color: $color-txt-dark;
+	}
+
+	.caption {
+		font-size: pem(17);
 	}
 
 }
@@ -436,4 +438,7 @@ section.jobs-detail-contact {
 	}
 
 }
+
+
+@import "../inc-content/jobs_r";
 

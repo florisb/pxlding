@@ -1,0 +1,133 @@
+
+/*
+ * Banner
+ */
+
+@media #{$media-tablet} {
+
+	section.jobs-banner,
+	section.jobs-detail-banner {
+		.title .h1 {
+			font-size: pem(62);
+		}
+	}
+}
+
+// smaller job title font sizes
+@media (max-width: 800px) {
+	section.jobs-list article.job .text .title .name {
+		font-size: 24px;
+	}
+}
+@media (max-width: 700px) {
+	section.jobs-list article.job .text .title .name {
+		font-size: 22px;
+	}
+}
+@media (max-width: 520px) {
+	section.jobs-list article.job .text .title .name {
+		font-size: 20px;
+	}
+
+	section.jobs-list article.job .text {
+		text-align: center;
+
+		.info {
+			text-align: center;
+		}
+	}
+}
+@media (max-width: 380px) {
+	section.jobs-list article.job .text .title .name {
+		font-size: 16px;
+	}
+	section.jobs-list article.job .text .info > span {
+		font-size: pem(15);
+
+		&:first-child {
+			margin-right: $margin-def;
+		}
+	}
+}
+
+
+@media (max-width: 660px) {
+
+	$height: 350px;
+
+	section.jobs-banner,
+	section.jobs-detail-banner {
+		height: $height;
+
+		.title .h1 {
+			font-size: pem(50);
+		}
+	}
+}
+
+@media (max-width: 520px) {
+
+	$height: 270px;
+
+	section.jobs-banner,
+	section.jobs-detail-banner {
+		height: $height;
+
+		.title {
+			width: 90%;
+			padding-left: $margin-def;
+			padding-right: $margin-def;
+			padding-top: $margin-def;
+
+			.h1 {
+				font-size: pem(32);
+			}
+		}
+	}
+
+	section.jobs-list {
+
+		article.job {
+			.image {
+				display: none;
+			}
+
+			.text {
+				width: 100%;
+			}
+		}
+	}
+}
+
+
+
+
+/*
+ * Detail
+ */
+
+@media (max-width: 660px) {
+	section.jobs-detail-icons {
+
+		.title {
+			font-size: pem(18);
+		}
+
+		.caption {
+			font-size: pem(15);
+		}
+	}
+}
+
+@media (max-width: 520px) {
+	section.jobs-detail-icons {
+
+		.title {
+			font-size: pem(16);
+		}
+
+		.caption {
+			display: none;
+		}
+	}
+}

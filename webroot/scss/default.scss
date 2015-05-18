@@ -134,11 +134,12 @@ body {
 }
 
 
-@media (min-width: $width-phone) and (max-width: 850px) {
+@media (min-width: 520px) and (max-width: 850px) {
 	.standard-middle-column {
 		width: 100%;
 	}
 }
+
 
 @media (max-width: 520px) {
 
