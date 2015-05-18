@@ -75,6 +75,7 @@ body {
 }
 .standard-middle-column {
 	width: percentage(700px / ($width-main - $margin-def * 8));
+	min-width: 700px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -110,6 +111,7 @@ body {
 
 	.standard-middle-column {
 		width: percentage(900px / ($width-main - $margin-def * 4));
+		min-width: 0;
 	}
 }
 
@@ -132,10 +134,17 @@ body {
 }
 
 
+@media (min-width: $width-phone) and (max-width: 850px) {
+	.standard-middle-column {
+		width: 100%;
+	}
+}
+
 @media (max-width: 520px) {
 
 	.standard-middle-column {
 		width: 100%;
+		min-width: 0;
 		margin-left: 0;
 		margin-right: 0;
 		padding-left: $margin-def;

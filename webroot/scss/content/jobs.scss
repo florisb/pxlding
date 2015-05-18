@@ -59,7 +59,7 @@ section.jobs-list {
 
 		$heightTitle: 50px;	// includes slider-upper prefix
 		$lineheight: 34px;
-		$fzName   : 34;
+		$fzName   : 28;
 		$fzPrefix : 24;
 
 		border-bottom: $standard-dotted-border;
@@ -210,9 +210,7 @@ section.jobs-list {
 
 section.jobs-newsletter {
 
-	// display: none; // for now
-
-
+	display: none; // for now
 
 	margin-bottom: $margin-def * 4;
 
