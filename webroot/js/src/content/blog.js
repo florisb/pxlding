@@ -43,19 +43,70 @@
 			return;
 		}
 
+		var nextPage  = parseInt( $(this).attr('data-current-page') , 10) + 1;
+		var finalPage = parseInt( $(this).attr('data-final-page') , 10);
+
+		// safeguard
+		if (nextPage > finalPage) {
+			_removeLoadingButton();
+			return;
+		}
+
 		// show loading indicator
 		$(loadingId).fadeIn('fast');
 		$(loadingButtonId).prop('disabled', true).addClass('disabled');
 
-		var nextPage = parseInt( $(this).attr('data-current-page') , 10) + 1;
+		// hide loading indicator
+		var removeLoadingIndicator = function(keepDisabled) {
+			// hide loading indicator
+			$(loadingId).fadeOut('fast');
+			if (!keepDisabled) {
+				$(loadingButtonId).prop('disabled', false).removeClass('disabled');
+			}
+		};
+
+		console.log( $('base').attr('href') + 'blog/' + nextPage );
 
 		// ajax call, load new content
-		// parse new content if succesful
+        $.ajax({
+            type : 'GET',
+            'url': $('base').attr('href') + 'blog/' + nextPage,
+            data : { ajax: 1 },
 
-		// hide loading indicator
-		$(loadingId).fadeOut('fast');
-		$(loadingButtonId).prop('disabled', false).removeClass('disabled');
+			// parse new content if succesful
+            success: function(data) {
+
+            	// actually show stuff
+                _parseNewBlogContent(data);
+
+                // update history for this page
+				history.pushState({}, '', $(loadingButtonId).attr('data-url-base') + nextPage);
+
+                if (nextPage < finalPage) {
+					$(loadingButtonId).attr('data-current-page', nextPage);
+					removeLoadingIndicator();
+
+				} else {
+					_removeLoadingButton();
+					removeLoadingIndicator(true);
+				}
+            },
+
+            error: function() {
+            	// do nothing
+				removeLoadingIndicator();
+            }
+        });
+
 	});
+
+	/**
+	 * When max page reached, remove the button to load pages with
+	 */
+	var _removeLoadingButton = function() {
+
+		$('#blog-next-page').slideUp('fast');
+	}
 
 	/**
 	 * When new ajax content received, load it into the container
@@ -65,22 +116,18 @@
 	 */
 	var _parseNewBlogContent = function(content) {
 
-		// do something to load new html content as actual elements
-		// otherwise masonry won't work
-
-		var data = $('<article/>', {
-		    'class': 'blog appear-effect',
-		    style: '2px solid pink; height: 200px; width: 300px;'
-		});
-		data.html('TESTING!');
-
+		// masonry needs elements to work with this
+		// so we need to parse the HTML before handing it over
+		var data = $.parseHTML(content);
 
 		$(containerId).append(data);
 
 		setTimeout(function() {
+
 			$(containerId).masonry('appended', data, true);
 			// $(containerId).masonry('reload');
+
 		}, 0);
-	}
+	};
 
 })();
