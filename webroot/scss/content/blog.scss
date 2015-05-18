@@ -149,11 +149,11 @@ section.blog-detail-banner {
 		display: inline-block;
 		height: 100%;
 		vertical-align: middle;
-		font-size: 16px;
+		font-size: $fontsize-base;
 	}
 
 	.back-link {
-		font-size: 16px;
+		font-size: $fontsize-base;
 		position: absolute;
 		top: $margin-def * 2;
 		left: $margin-def * 2.5;
@@ -170,7 +170,7 @@ section.blog-detail-banner {
 	}
 
 	.title {
-		font-size: 16px;
+		font-size: $fontsize-base;
 		display: inline-block;
 		vertical-align: middle;
 

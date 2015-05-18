@@ -6,7 +6,7 @@
 
 	class Blog extends BaseController {
 
-		const BLOG_PAGE_SIZE = 2;
+		const BLOG_PAGE_SIZE = 6;
 
 
 		public function indexAction() {
@@ -47,17 +47,24 @@
 
 		public function searchAction() {
 
-			$search = $this->getParam('search');
-			$ajax   = ($this->isXhr());
+			if (isset($_POST['search'])) {
+				$search = trim($_POST['search']);
+			} else {
+				$search = $this->getParam('search');
+			}
+
+			$ajax = ($this->isXhr());
 
 			if (empty($search)) {
+				$this->view('index');
 				$this->indexAction();
 
 			} else {
 
 				$blog = Factory\Blog::getFiltered($search);
 
-				$this->set('blog', $blog);
+				$this->set('blog',   $blog);
+				$this->set('search', $search);
 
 				// for ajax loading, only show the extra posts (for masonry)
 				if ($ajax) {
@@ -68,9 +75,11 @@
 					// masonry js stuff going on here
 					$this->set('includeJsMasonry', true, true);
 				}
-			}
 
-			$this->set('noAjaxPages', true, true);
+
+				$this->set('noAjaxPages',      true, true);
+				$this->set('alwaysFocusInput', true, true);
+			}
 		}
 
 

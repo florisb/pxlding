@@ -1,9 +1,9 @@
 
 <section class="blog-search large-margin-column">
 
-	<form id="blog-search-form" class="blog-search-form">
+	<form id="blog-search-form" class="blog-search-form" method="post" action="<?= $this->route('blog', 'search') ?>" data-always-focus="<?= $alwaysFocusInput ? 1 : 0 ?>">
 		<div class="input-container">
-			<input type="search" value="" placeholder="<?= ML::label('search for something') ?>">
+			<input id="blog-search-input" type="search" name="search" value="<?= $search ?>" placeholder="<?= ML::label('search for something') ?>">
 			<span class="input-icon"></span>
 		</div>
 	</form>
@@ -32,13 +32,14 @@
 
 
 
-<? if ( ! $noAjaxPages): ?>
+
+<? if ( ! $noAjaxPages && $currentPage < $finalPage): ?>
 
 <section id="blog-next-page" class="blog-next large-margin-column">
 
 	<hr>
 
-	<a id="blog-next-page-load" href="javascript:;" class="button default" data-current-page="<?= $currentPage ?>" data-final-page="<?= $finalPage ?>" data-url-base="<?= $_baseurl . $this->route('blog') ?>">
+	<a id="blog-next-page-load" href="<?= $_baseurl . $this->route('blog', '', array($currentPage + 1)) ?>" class="button default" data-current-page="<?= $currentPage ?>" data-final-page="<?= $finalPage ?>" data-url-base="<?= $_baseurl . $this->route('blog') ?>">
 		<?= ML::label('blog more link') ?>
 		<span id="blog-next-is-loading" class="loading-indicator"></span>
 	</a>

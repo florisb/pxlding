@@ -33,11 +33,18 @@
 			});
 		}
 
+		// or always focus if set (for search pages)
+		if ($('#blog-list-empty').css('display') == 'block' || $('#blog-search-form').attr('data-always-focus') > 0) {
+			$('#blog-search-input').focus();
+		}
+
 	});
 
 
 	// catch clicks on next page button
-	$(loadingButtonId).click(function() {
+	$(loadingButtonId).click(function(e) {
+
+		e.preventDefault();
 
 		if ($(this).prop('disabled') || $(this).hasClass('disabled')) {
 			return;
@@ -64,8 +71,6 @@
 				$(loadingButtonId).prop('disabled', false).removeClass('disabled');
 			}
 		};
-
-		console.log( $('base').attr('href') + 'blog/' + nextPage );
 
 		// ajax call, load new content
         $.ajax({
@@ -106,7 +111,7 @@
 	var _removeLoadingButton = function() {
 
 		$('#blog-next-page').slideUp('fast');
-	}
+	};
 
 	/**
 	 * When new ajax content received, load it into the container
