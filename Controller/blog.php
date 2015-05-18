@@ -6,21 +6,71 @@
 
 	class Blog extends BaseController {
 
-		public function indexAction($page = null) {
+		const BLOG_PAGE_SIZE = 2;
+
+
+		public function indexAction() {
+
+			$page = $this->getParam('page');
+			$ajax = ($this->isXhr());
 
 			if (empty($page)) {
 				$page = 1;
 			}
 
+			// remember current page for back links
 			Session::set('blog-page', $page);
 
-			$blog = Factory\Blog::getAll($page);
+			$blog  = Factory\Blog::getAll($page, self::BLOG_PAGE_SIZE, ! $ajax);
 
-			$this->set('blog', $blog);
-			$this->set('currentPage', $page);
+			$this->set('blog',         $blog);
+			$this->set('currentPage',  $page);
 
-			// masonry js stuff going on here
-			$this->set('includeJsMasonry', true, true);
+
+			// for ajax loading, only show the extra posts (for masonry)
+			if ($ajax) {
+				$this->view('_ajax_page');
+
+			} else {
+
+				// stop loader after all pages shown
+				$count     = Factory\Blog::getCount();
+				$finalPage = ceil($count / self::BLOG_PAGE_SIZE);
+
+				$this->set('finalPage', $finalPage);
+
+				// masonry js stuff going on here
+				$this->set('includeJsMasonry', true, true);
+			}
+		}
+
+
+		public function searchAction() {
+
+			$search = $this->getParam('search');
+			$ajax   = ($this->isXhr());
+
+			if (empty($search)) {
+				$this->indexAction();
+
+			} else {
+
+				$blog = Factory\Blog::getFiltered($search);
+
+				$this->set('blog', $blog);
+
+				// for ajax loading, only show the extra posts (for masonry)
+				if ($ajax) {
+					$this->view('_ajax_page');
+				} else {
+					$this->view('index');
+
+					// masonry js stuff going on here
+					$this->set('includeJsMasonry', true, true);
+				}
+			}
+
+			$this->set('noAjaxPages', true, true);
 		}
 
 

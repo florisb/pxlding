@@ -7,7 +7,11 @@
 		const IMAGES_FIELD_ID         = 73;
 		const OVERVIEW_IMAGE_FIELD_ID = 78;
 
-		public function getAll() {
+		public function getAll($page = null, $pageSize = 6, $allToCurrent = false) {
+
+			$usePages = ( ! empty($page) && $pageSize > 0);
+
+			$page = max( $page - 1, 0);
 
 			$q = "
 				%s
@@ -19,16 +23,125 @@
                     `blg`.`e_active` = 1
                 ORDER BY
 	                `blg`.`e_position` ASC
+				%s
 			";
 
-
-			$q = sprintf($q, self::_getSql());
-			$stmt = self::stmt($q, array(
+			$binds = array(
 				':language' => array(self::session('_language_id'), 'i'),
-			));
+			);
+
+			$limit = '';
+
+			if ($usePages) {
+
+				$limit = "
+					LIMIT
+						:page, :pagesize
+				";
+
+				if ($allToCurrent) {
+					// get all content up to and including that for
+					// this page
+					$binds[':page']     = array(0 , 'i');
+					$binds[':pagesize'] = array(($page + 1) * $pageSize, 'i');
+				} else {
+
+					$binds[':page']     = array($page * $pageSize , 'i');
+					$binds[':pagesize'] = array($pageSize, 'i');
+				}
+			}
+
+
+			$q = sprintf($q,
+				self::_getSql(),
+				$limit
+			);
+			$stmt = self::stmt($q, $binds);
 
 			return self::db()->matrix($stmt, 'Model\Entity\Blog');
 		}
+
+		public function getCount() {
+
+			$q = "
+				SELECT
+					COUNT(*) AS `count`
+				FROM
+					`cms_m15_blog` AS `blg`
+				WHERE
+					`blg`.`e_active` = 1
+			";
+
+			$stmt = self::stmt($q);
+
+			$result = self::db()->row($stmt);
+
+			return $result->count;
+		}
+
+
+		public function getFiltered($search = null, $page = null, $pageSize = 6, $allToCurrent = false) {
+
+			$usePages = ( ! empty($page) && $pageSize > 0);
+
+			$page = max( $page - 1, 0);
+
+			$q = "
+				%s
+                INNER JOIN
+                    `cms_m3_slugs` `s`
+                ON
+                    (`s`.`entry_id` = `blg`.`id` AND `s`.`language_id` = :language AND `s`.`ref_module_id` = 15)
+                WHERE
+                    `blg`.`e_active` = 1
+                AND
+                	(
+                			`blg_ml`.`title`   LIKE :search
+                		OR	`blg_ml`.`content` LIKE :search
+                		OR	`blg`.`author`     LIKE :search
+                	)
+                ORDER BY
+	                `blg`.`e_position` ASC
+				%s
+			";
+
+			$binds = array(
+				':language' => array(self::session('_language_id'), 'i'),
+				':search'   => array('%' . $search .'%', 's'),
+			);
+
+			$limit = '';
+
+			if ($usePages) {
+
+				$limit = "
+					LIMIT
+						:page, :pagesize
+				";
+
+				if ($allToCurrent) {
+					// get all content up to and including that for
+					// this page
+					$binds[':page']     = array(0 , 'i');
+					$binds[':pagesize'] = array(($page + 1) * $pageSize, 'i');
+				} else {
+
+					$binds[':page']     = array($page * $pageSize , 'i');
+					$binds[':pagesize'] = array($pageSize, 'i');
+				}
+			}
+
+
+			$q = sprintf($q,
+				self::_getSql(),
+				$limit
+			);
+
+			$stmt = self::stmt($q, $binds);
+
+			return self::db()->matrix($stmt, 'Model\Entity\Blog');
+		}
+
 
 		public function getLatest($amount = 3) {
 
