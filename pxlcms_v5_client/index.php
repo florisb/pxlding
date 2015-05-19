@@ -26,38 +26,8 @@
 				echo "<link rel='shortcut icon' href='config/favicon.ico' />";
 			}
 		?>
-		
-		<script type="text/javascript">
-			Aloha = {};
-			Aloha.settings = { sidebar: { disabled: true } };
-		</script>
-		
-		<!-- load the jQuery and require.js libraries -->
-		<script type="text/javascript" src="includes/aloha/lib/require.js"></script>
- 
-		<!-- load the Aloha Editor core and some plugins -->
-		<script src="includes/aloha/lib/aloha-full.min.js"
-                                   data-aloha-plugins="common/ui,
-                                                       common/format,
-                                                       common/list,
-                                                       common/link,
-                                                       common/align,
-                                                       common/autoparagraph,
-                                                       common/table,
-                                                       common/paste,
-                                                       common/undo">
-              </script>
-               
-              <!-- load the Aloha Editor CSS styles -->
-              <link href="includes/aloha/css/aloha.css" rel="stylesheet" type="text/css" />
- 
-              <!-- make all elements with class="editable" editable with Aloha Editor -->
-              <script type="text/javascript">
-                  Aloha.ready( function() {
-	                  Aloha.jQuery('.editable').aloha();
-									});
-              </script>
-		
+
+
 		<link rel="stylesheet" type="text/css" href="includes/default.css"/>
 		<!--[if lt IE 7]>
 			<link rel='stylesheet' title='IE_Only' href='includes/ie6_fixes.css' />
