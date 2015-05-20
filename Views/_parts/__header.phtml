@@ -1,38 +1,40 @@
 			<header class="main">
+				<div class="container">
 
-				<div class="top-bar">
+					<div class="top-bar" data-0="opacity: 1;" data-510="opacity: 0;">
 
-					<a class="main-logo" href="<?= $this->route('') ?>">
-						<img src="img/logo.svg" alt="PXL">
-					</a>
+						<a class="main-logo" href="<?= $this->route('') ?>">
+							<img src="img/logo.svg" alt="PXL">
+						</a>
 
-					<div class="social-buttons social-menu-floater">
+						<div class="social-buttons social-menu-floater">
 
-						<a class="facebook" target="_blank" href="https://www.facebook.com/Pixelindustries"></a>
-						<a class="twitter" target="_blank" href="https://twitter.com/pxl_nl"></a>
+							<a class="facebook" target="_blank" href="https://www.facebook.com/Pixelindustries"></a>
+							<a class="twitter" target="_blank" href="https://twitter.com/pxl_nl"></a>
 
-						<? /*
-						<a class="instagram" target="_blank" href="http://instagram.com/pixelindustries"></a>
-						*/ ?>
+							<? /*
+							<a class="instagram" target="_blank" href="http://instagram.com/pixelindustries"></a>
+							*/ ?>
+
+						</div>
 
 					</div>
 
+					<nav class="main" data-0="opacity: 1;" data-450="opacity: 0;">
+						<ul>
+							<? foreach ($headerMenu as $item): ?>
+
+							<li class="<?= $item->active ? 'active' : null ?>">
+								<a href="<?= $item->url ?>">
+									<?= $item->title ?>
+								</a>
+							</li>
+
+							<? endforeach; ?>
+						</ul>
+					</nav>
+
 				</div>
-
-				<nav class="main">
-					<ul>
-						<? foreach ($headerMenu as $item): ?>
-
-						<li class="<?= $item->active ? 'active' : null ?>">
-							<a href="<?= $item->url ?>">
-								<?= $item->title ?>
-							</a>
-						</li>
-
-						<? endforeach; ?>
-					</ul>
-				</nav>
-
 			</header>
 
 
