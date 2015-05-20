@@ -132,25 +132,31 @@ section.blog-next {
  * Blog Detail page
  */
 
-section.blog-detail-banner {
+$heightBanner: 418px;
 
-	$height: 418px;
+section.blog-detail-banner {
 
 	@include bg-cover;
 	position: relative;
-	height: $height;
-	background-color: $color-sec;
-	margin-bottom: $margin-def * 5;
-	font-size: 0;
-	text-align: center;
+	height: $heightBanner;
 
-	&:before {
-		@include pseudo-basic;
-		display: inline-block;
-		height: 100%;
-		vertical-align: middle;
-		font-size: $fontsize-base;
+	.container {
+		position: relative;
+		max-width: $width-main;
+		background-color: $color-sec;
+		font-size: 0;
+		text-align: center;
+		height: $heightBanner;
+
+		&:before {
+			@include pseudo-basic;
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+			font-size: $fontsize-base;
+		}
 	}
+
 
 	.back-link {
 		font-size: $fontsize-base;
@@ -186,6 +192,10 @@ section.blog-detail-banner {
 	}
 }
 
+.parallax-offset-filler {
+	height: $heightBanner;
+}
+
 
 // widths
 section.blog-detail-content,
@@ -197,6 +207,7 @@ section.blog-detail-content,
 }
 
 section.blog-detail-content {
+	padding-top: $margin-def * 5;
 	margin-bottom: $margin-def * 3.5;
 	@include adjusted-lh(1.85);
 }
@@ -205,7 +216,7 @@ footer.blog-detail {
 
 	$height: 90px;
 
-	margin-bottom: $margin-def * 4;
+	padding-bottom: $margin-def * 4;
 	line-height: $height;
 
 	$sizeButton : 24px;
