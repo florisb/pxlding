@@ -60,7 +60,7 @@
 		<?
 			foreach ($blog as $post) {
 
-				$this->partial('_post', array('post' => $post), 'blog');
+				$this->partial('_post', array('post' => $post, 'disableAppearEffect' => true), 'blog');
 			}
 		?>
 

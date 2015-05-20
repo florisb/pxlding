@@ -2,7 +2,7 @@
 	$url = $this->route('blog', $post->slug);
 ?>
 
-		<article class="blog appear-effect">
+		<article class="blog<?= ! $disableAppearEffect ? ' appear-effect' : null ?>">
 			<header>
 				<a href="<?= $url ?>">
 					<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->file ?>')"></div>
