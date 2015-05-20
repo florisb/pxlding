@@ -511,21 +511,13 @@ window.pxl.settings     = require('./settings.js');
 			// var fixOffset = 520;	// banner test height, nothing real
 			// body.addClass("fix-header");
 
-			// var s = window.pxl._plugin._skrollr.init(
-			// 	{
-   			//		render: function(data) {
+			var s = window.pxl._plugin._skrollr.init({
+   					render: function(data) {
 
-        				// Debugging - Log the current scroll position.
             			// console.log(data.curTop);
 
-						// if (data.curTop > fixOffset) {
-						// 	body.removeClass("fix-header").addClass('defix-header');
-						// } else {
-						// 	body.removeClass('defix-header').addClass("fix-header");
-						// }
-			//    	 	}
-			//    	}
-			// );
+			   	 	}
+			});
 		}
 
 	});
