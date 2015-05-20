@@ -70,5 +70,19 @@ window.pxl.settings     = require('./settings.js');
 		// force check, otherwise stuff stays hidden sometimes
 		$.force_appear();
 
+
+		// init skrollr for parallax (if necessary)
+		if ($('body').hasClass('has-parallax')) {
+
+
+			var s = window.pxl._plugin._skrollr.init({
+   					render: function(data) {
+
+            			// console.log(data.curTop);
+
+			   	 	}
+			});
+		}
+
 	});
 })();
