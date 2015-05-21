@@ -13,6 +13,9 @@
 
 			$this->set('pageTitle', $jobsContent->page_text);
 			$this->set('jobs',      $jobs, true);
+
+			$this->set('hasParallax',    true, true);
+			$this->set('parallaxHeight', 470,  true);
 		}
 
 
@@ -25,5 +28,8 @@
 
 			$this->set('job',   $job,   true);
 			$this->set('icons', $icons, true);
+
+			$this->set('hasParallax',    true, true);
+			$this->set('parallaxHeight', 470,  true);
 		}
 	}

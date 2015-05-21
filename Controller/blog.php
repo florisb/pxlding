@@ -96,6 +96,7 @@
 			$this->set('currentPage', Session::get('blog-page'));
 
 			// special parallax effect for this page
-			$this->set('hasParallax', true, true);
+			$this->set('hasParallax',    true, true);
+			$this->set('parallaxHeight', 418,  true);
 		}
 	}
