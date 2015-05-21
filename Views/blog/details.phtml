@@ -20,22 +20,24 @@
 	*/ ?>
 
 <section id="blog-detail-banner" class="blog-detail-banner parallax-banner no-margin-column"
-		data-0="transform: translate3d(0px, 0%, 0px);" data-418="transform: translate3d(0px, -7.5%, 0px);"
+		data-0="transform: translate3d(0px, 0%, 0px);" data-418="transform: translate3d(0px, -7.5%, 0px)"
 		<? /*
 		data-0="background-position: 50% 0px"
         data-190="background-position: 50% 100px"
         data-anchor-target="#blog-detail-banner"*/ ?>
 >
-	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')">
+	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')" data-0="opacity: 1" data-418="opacity: 0">
 
-		<div class="back-link" data-0="opacity: 1" data-418="opacity: 0">
+		<div class="back-link" data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-418="opacity: 0; transform: translate3d(0px, -15%, 0px)">
 			<a class="arrow-back-link" href="<?= $this->route('blog', '', array($currentPage)) ?>" title="<?= ML::label('blog return') ?>">
 				<?= ML::label('blog return') ?>
 				<span class="arrow"></span>
 			</a>
 		</div>
 
-		<div class="title" title="<?= $post->title ?>" data-0="opacity: 1" data-418="opacity: 0">
+		<div class="title" title="<?= $post->title ?>"
+			data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-418="opacity: 0; transform: translate3d(0px, -30%, 0px)"
+		>
 			<h1 class="h1 bold-and-light">
 				<?= $post->fancy_title ?>
 			</h1>
