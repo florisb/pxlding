@@ -6,15 +6,15 @@ header.main {
 	position: relative;
 	height: $height-header;
 
-	transition: height $speed-collapse,
-				padding-top $speed-collapse;
-
 	.container {
 		height: 100%;
 		max-width: $width-main;
 		padding-top: 30px;
 		padding-bottom: 30px;
 		background-color: $color-bg-pri;
+
+		transition: height $speed-collapse,
+					padding-top $speed-collapse;
 	}
 
 	.top-bar {

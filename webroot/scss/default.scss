@@ -92,16 +92,19 @@ body {
 
 @media #{$media-tablet-min} {
 
-	.main-container {
-		padding-top: $height-header-mobile-bar + $margin-header-mobile * 2;
-	}
+	// .main-container {
+	// 	padding-top: $height-header-mobile-bar + $margin-header-mobile * 2;
+	// }
 
 	header.main {
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: $height-header-mobile-bar + $margin-header-mobile * 2;
+
+		.container {
+			height: $height-header-mobile-bar + $margin-header-mobile * 2;
+		}
 	}
 
 	.large-margin-column {

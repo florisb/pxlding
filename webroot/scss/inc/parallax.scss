@@ -62,4 +62,11 @@
 // the header menu is always fixed here
 @media (max-width: $width-tablet) {
 
+	body.has-parallax {
+		padding-top: $height-header-mobile-bar + $margin-header-mobile * 2;
+
+		.parallax-banner {
+			top: $height-header-mobile-bar + $margin-header-mobile * 2;
+		}
+	}
 }
