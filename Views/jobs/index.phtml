@@ -1,93 +1,101 @@
 
-<section class="jobs-banner parallax-banner no-margin-column">
-
-	<div class="title">
-		<h1 class="h1 bold-and-light">
-			<?= $pageTitle ?>
-		</h1>
+<section class="jobs-banner no-margin-column <?= ($isMobile) ? ' mobile' : null ?> parallax-banner"
+	data-anchor-target="#main-parallax-end" data-0="transform: translate3d(0px, 0%, 0px);" data-<?= $headerDesktopHeight ?>-top-top="transform: translate3d(0px, -7.5%, 0px)"
+>
+	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')" data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end"
+	>
+		<div class="title">
+			<h1 class="h1 bold-and-light" data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0; transform: translate3d(0px, -30%, 0px)" data-anchor-target="#main-parallax-end">
+				<?= $pageTitle ?>
+			</h1>
+		</div>
 	</div>
 
 </section>
 
+<div class="parallax-offset-filler"></div>
 
-<section class="jobs-list large-margin-column">
+<div id="main-parallax-end" class="non-parallax-container">
 
-	<? if ( ! empty($jobs) && count($jobs)): ?>
+	<section class="jobs-list large-margin-column">
 
-		<? foreach ($jobs as $job): ?>
+		<? if ( ! empty($jobs) && count($jobs)): ?>
 
-		<article class="job standard-middle-column appear-effect">
-			<a href="<?= $this->route('jobs', $job->slug) ?>">
+			<? foreach ($jobs as $job): ?>
 
-				<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $job->file ?>')"></div>
+			<article class="job standard-middle-column appear-effect">
+				<a href="<?= $this->route('jobs', $job->slug) ?>">
 
-				<div class="text">
+					<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $job->file ?>')"></div>
 
-					<div class="title">
-						<span class="prefix">
-							<?= ML::label('jobs are you our') ?>
-						</span>
-						<span class="name">
-							<?= $job->name ?>
-						</span>
+					<div class="text">
+
+						<div class="title">
+							<span class="prefix">
+								<?= ML::label('jobs are you our') ?>
+							</span>
+							<span class="name">
+								<?= $job->name ?>
+							</span>
+						</div>
+
+						<div class="info">
+
+							<span class="hours" title="<?= ML::label('jobs hours') ?>">
+								<?= $job->hours ?>
+							</span>
+
+							<span class="starting" title="<?= ML::label('jobs starting') ?>">
+								<?= $job->starting ?>
+							</span>
+
+						</div>
 					</div>
 
-					<div class="info">
+				</a>
+			</article>
 
-						<span class="hours" title="<?= ML::label('jobs hours') ?>">
-							<?= $job->hours ?>
-						</span>
+			<? endforeach; ?>
 
-						<span class="starting" title="<?= ML::label('jobs starting') ?>">
-							<?= $job->starting ?>
-						</span>
+		<? else: ?>
 
-					</div>
+			<div class="empty">
+				<?= ML::label('jobs empty') ?>
+			</div>
+
+		<? endif; ?>
+
+	</section>
+
+
+	<section class="jobs-newsletter large-margin-column appear-effect">
+
+		<div class="intro standard-middle-column">
+			<div class="h2">
+				<?= ML::label('jobs newsletter title') ?>
+			</div>
+
+			<p>
+				<?= ML::label('jobs newsletter paragraph') ?>
+			</p>
+		</div>
+
+		<div class="form standard-middle-column">
+
+			<form id="jobs-newsletter-form" action="<?= $this->route('jobs', 'newsletter') ?>" method="post">
+
+				<div class="row">
+					<input type="text" name="name" value="" placeholder="<?= ML::label('jobs newsletter full name') ?>">
 				</div>
 
-			</a>
-		</article>
+				<div class="row">
+					<input type="email" name="email" value="" placeholder="<?= ML::label('jobs newsletter email') ?>">
+					<a id="jobs-newsletter-form-submit" class="button-submit small" title="<?= ML::label("jobs newsletter submit")?>" href="javascript:;"></a>
+				</div>
 
-		<? endforeach; ?>
-
-	<? else: ?>
-
-		<div class="empty">
-			<?= ML::label('jobs empty') ?>
+			</form>
 		</div>
 
-	<? endif; ?>
+	</section>
 
-</section>
-
-
-<section class="jobs-newsletter large-margin-column appear-effect">
-
-	<div class="intro standard-middle-column">
-		<div class="h2">
-			<?= ML::label('jobs newsletter title') ?>
-		</div>
-
-		<p>
-			<?= ML::label('jobs newsletter paragraph') ?>
-		</p>
-	</div>
-
-	<div class="form standard-middle-column">
-
-		<form id="jobs-newsletter-form" action="<?= $this->route('jobs', 'newsletter') ?>" method="post">
-
-			<div class="row">
-				<input type="text" name="name" value="" placeholder="<?= ML::label('jobs newsletter full name') ?>">
-			</div>
-
-			<div class="row">
-				<input type="email" name="email" value="" placeholder="<?= ML::label('jobs newsletter email') ?>">
-				<a id="jobs-newsletter-form-submit" class="button-submit small" title="<?= ML::label("jobs newsletter submit")?>" href="javascript:;"></a>
-			</div>
-
-		</form>
-	</div>
-
-</section>
-
+</div>

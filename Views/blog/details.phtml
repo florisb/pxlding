@@ -11,24 +11,13 @@
 </div>
 */ ?>
 
-<? /*
-<div class="parallax-image-wrapper parallax-image-wrapper-100 skrollable skrollable-between" data-anchor-target="#dragons + .gap" data-bottom-top="transform:translate3d(0px, 200%, 0px)" data-top-bottom="transform:translate3d(0px, 0%, 0px)" style="-webkit-transform: translate3d(0px, 105.44474393531%, 0px); transform: translate3d(0px, 105.44474393531%, 0px);">
-
-		<div class="parallax-image parallax-image-100 skrollable skrollable-between" style="-webkit-transform: translate3d(0px, -4.35579514824798%, 0px); transform: translate3d(0px, -4.35579514824798%, 0px); background-image: url(http://prinzhorn.github.io/skrollr/examples/images/kitteh1.jpg);" data-anchor-target="#dragons + .gap" data-bottom-top="transform: translate3d(0px, -80%, 0px);" data-top-bottom="transform: translate3d(0px, 80%, 0px);"></div>
-		<!--the +/-80% translation can be adjusted to control the speed difference of the image-->
-	</div>
-	*/ ?>
-
 <section id="blog-detail-banner" class="blog-detail-banner parallax-banner no-margin-column"
-		data-0="transform: translate3d(0px, 0%, 0px);" data-418="transform: translate3d(0px, -7.5%, 0px)"
-		<? /*
-		data-0="background-position: 50% 0px"
-        data-190="background-position: 50% 100px"
-        data-anchor-target="#blog-detail-banner"*/ ?>
+		data-anchor-target="#main-parallax-end" data-0="transform: translate3d(0px, 0%, 0px);" data-<?= $headerDesktopHeight ?>-top-top="transform: translate3d(0px, -7.5%, 0px)"
 >
-	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')" data-0="opacity: 1" data-418="opacity: 0">
+	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')" data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end">
 
-		<div class="back-link" data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-418="opacity: 0; transform: translate3d(0px, -15%, 0px)">
+		<div class="back-link" data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0; transform: translate3d(0px, -15%, 0px)" data-anchor-target="#main-parallax-end"
+		>
 			<a class="arrow-back-link" href="<?= $this->route('blog', '', array($currentPage)) ?>" title="<?= ML::label('blog return') ?>">
 				<?= ML::label('blog return') ?>
 				<span class="arrow"></span>
@@ -36,7 +25,7 @@
 		</div>
 
 		<div class="title" title="<?= $post->title ?>"
-			data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-418="opacity: 0; transform: translate3d(0px, -30%, 0px)"
+			data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0; transform: translate3d(0px, -30%, 0px)" data-anchor-target="#main-parallax-end"
 		>
 			<h1 class="h1 bold-and-light">
 				<?= $post->fancy_title ?>
@@ -48,7 +37,7 @@
 
 <div class="parallax-offset-filler"></div>
 
-<div class="non-parallax-container">
+<div id="main-parallax-end" class="non-parallax-container">
 
 	<section class="blog-detail-content large-margin-column">
 

@@ -1,8 +1,15 @@
 			<header class="main">
 				<div class="container">
 
-					<? /* <div class="top-bar" data-0="opacity: 1;" data-510="opacity: 0;"> */ ?>
-					<div class="top-bar" data-320="opacity: 1" data-510="opacity: 0">
+					<?
+						// parallax tweaks
+						$fadeOffsetLogo    = 200;
+						$fadeOffsetLogoOut = 100;
+						$fadeOffsetMenu    = 130;
+						$fadeOffsetMenuOut = 30;
+					?>
+
+					<div class="top-bar" data-anchor-target="#main-parallax-end" data-<?= $headerDesktopHeight + $fadeOffsetLogo ?>-top-top="opacity: 1" data-<?= $headerDesktopHeight - $fadeOffsetLogoOut?>-top-top="opacity: 0">
 
 						<a class="main-logo" href="<?= $this->route('') ?>">
 							<img src="img/logo.svg" alt="PXL">
@@ -22,7 +29,7 @@
 					</div>
 
 					<? /* <nav class="main" data-0="opacity: 1;" data-450="opacity: 0;"> */ ?>
-					<nav class="main" data-240="opacity: 1;" data-450="opacity: 0;">
+					<nav class="main" data-anchor-target="#main-parallax-end" data-<?= $headerDesktopHeight + $fadeOffsetMenu ?>-top-top="opacity: 1" data-<?= $headerDesktopHeight - $fadeOffsetMenuOut?>-top-top="opacity: 0">
 						<ul>
 							<? foreach ($headerMenu as $item): ?>
 

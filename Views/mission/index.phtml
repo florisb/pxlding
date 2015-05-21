@@ -1,6 +1,9 @@
 
-<section class="banner-video mission-video no-margin-column appear-effect<?= ($isMobile) ? ' mobile' : null ?> parallax-banner">
-	<div class="container">
+<section class="banner-video mission-video no-margin-column appear-effect<?= ($isMobile) ? ' mobile' : null ?> parallax-banner"
+	data-anchor-target="#main-parallax-end" data-0="transform: translate3d(0px, 0%, 0px);" data-<?= $headerDesktopHeight ?>-top-top="transform: translate3d(0px, -7.5%, 0px)"
+>
+	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')" data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end"
+	>
 		<?
 			$this->partial('mission-video-content', array(), '_parts');
 		?>
@@ -9,7 +12,7 @@
 
 <div class="parallax-offset-filler"></div>
 
-<div class="non-parallax-container">
+<div id="main-parallax-end" class="non-parallax-container">
 
 	<section class="mission large-margin-column appear-effect parallax-content-start">
 
