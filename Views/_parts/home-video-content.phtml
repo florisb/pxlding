@@ -3,9 +3,8 @@
     $videoUrl   = $_baseurl . 'cms_img/_video/' . 'home.mp4';
 
     // smaller alternative for mobile
-    if ($isMobile) {
-        //
-    }
+    // actually just a picture for now
+    if ( ! $isMobile && ! $isTablet):
 ?>
 
 <div class="video-container">
@@ -44,3 +43,16 @@
     ></video>
 
 </div>
+
+<?
+    else:
+        $videoImage = $_baseurl . 'cms_img/_video/' . 'home_mobile.png';
+?>
+
+<div class="video-container">
+
+    <img src="<?= $videoImage ?>" alt="PXL">
+
+</div>
+
+<? endif; ?>
