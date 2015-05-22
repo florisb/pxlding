@@ -78,4 +78,21 @@ class ViewHelper {
 
 		return $content;
 	}
+
+
+	/**
+	 * Determines whether field is (really) empty. Could be that there's just
+	 * your typical '&nbsp;' in there from FCK.
+	 *
+	 * @param  string $text
+	 * @return boolean
+	 */
+	public static function textFieldEmpty($text)
+	{
+		$text = trim($text);
+
+		if (empty($text)) return true;
+
+		return preg_match('#^\s*(&nbsp;)*\s*$#i', $text);
+	}
 }
