@@ -8,21 +8,29 @@
 @import "../inc/init";
 
 
+
+$heightBanner: 470px;
+
 section.jobs-banner {
-	$height: 470px;
 
 	position: relative;
-	background-color: $color-sec;
-	height: $height;
-	font-size: 0;
-	text-align: center;
+	height: $heightBanner;
 
-	&:before {
-		@include pseudo-basic;
-		display: inline-block;
-		height: 100%;
-		vertical-align: middle;
-		font-size: $fontsize-base;
+	.container {
+		position: relative;
+		max-width: $width-main;
+		background-color: $color-sec;
+		font-size: 0;
+		text-align: center;
+		height: $heightBanner;
+
+		&:before {
+			@include pseudo-basic;
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+			font-size: $fontsize-base;
+		}
 	}
 
 	.title {
@@ -37,6 +45,11 @@ section.jobs-banner {
 		}
 	}
 
+}
+
+// also used for detail!
+.parallax-offset-filler {
+	height: $heightBanner;
 }
 
 section.jobs-list {
@@ -262,21 +275,28 @@ section.jobs-newsletter {
  * Jobs detail page
  */
 
+$heightBanner: 470px;
+
 section.jobs-detail-banner {
-	$height: 470px;
 
 	position: relative;
-	background-color: $color-sec;
-	height: $height;
-	font-size: 0;
-	text-align: center;
+	height: $heightBanner;
 
-	&:before {
-		@include pseudo-basic;
-		display: inline-block;
-		height: 100%;
-		vertical-align: middle;
-		font-size: $fontsize-base;
+	.container {
+		position: relative;
+		max-width: $width-main;
+		background-color: $color-sec;
+		font-size: 0;
+		text-align: center;
+		height: $heightBanner;
+
+		&:before {
+			@include pseudo-basic;
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+			font-size: $fontsize-base;
+		}
 	}
 
 	.title {
@@ -340,7 +360,7 @@ section.jobs-detail-banner {
 
 section.jobs-detail-title {
 
-	margin-top: $margin-def * 3.5;
+	padding-top: $margin-def * 3.5;
 	margin-bottom: $margin-def * 3.5;
 
 	.h1 {

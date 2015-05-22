@@ -1,96 +1,111 @@
 
-<section class="banner-video mission-video no-margin-column appear-effect<?= ($isMobile) ? ' mobile' : null ?> parallax-banner">
-<?
-	$this->partial('mission-video-content', array(), '_parts');
-?>
+<section class="banner-video mission-video no-margin-column<?= ($isMobile) ? ' mobile' : null ?><?= ! ($isMobile || $isTablet) ? ' parallax-banner' : null ?>"
+	<? if ( ! ($isMobile || $isTablet)): ?>
+	data-anchor-target="#main-parallax-end" data-0="transform: translate3d(0px, 0%, 0px);" data-<?= $headerDesktopHeight ?>-top-top="transform: translate3d(0px, -7.5%, 0px)"
+	<? endif; ?>
+>
+	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')"
+		<? if ( ! ($isMobile || $isTablet)): ?>
+		data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end"
+		<? endif; ?>
+	>
+		<?
+			$this->partial('mission-video-content', array(), '_parts');
+		?>
+	</div>
 </section>
 
+<div class="parallax-offset-filler"></div>
 
-<section class="mission large-margin-column appear-effect">
+<div id="main-parallax-end" class="non-parallax-container">
 
-	<h1 class="h1">
-		<?= $missionContent->page_title ?>
-	</h1>
+	<section class="mission large-margin-column appear-effect parallax-content-start">
 
-	<section class="text custom-text-content">
-		<?= $missionContent->page_text ?>
+		<h1 class="h1">
+			<?= $missionContent->page_title ?>
+		</h1>
+
+		<section class="text custom-text-content">
+			<?= $missionContent->page_text ?>
+		</section>
+
 	</section>
 
-</section>
+
+	<hr class="mission">
 
 
-<hr class="mission">
+	<section class="people large-margin-column appear-effect">
 
+		<h2 class="h1">
+			<?= $peopleContent->page_title ?>
+		</h2>
 
-<section class="people large-margin-column appear-effect">
+		<section class="text custom-text-content">
+			<?= $missionContent->page_text ?>
+		</section>
 
-	<h2 class="h1">
-		<?= $peopleContent->page_title ?>
-	</h2>
-
-	<section class="text custom-text-content">
-		<?= $missionContent->page_text ?>
 	</section>
 
-</section>
 
+	<?
+		if ( ! empty($employees)):
 
-<?
-	if ( ! empty($employees)):
+			$bst = array(
+					'collega', 'chef lege dozen', 'held', 'pillaar', 'kapitein', 'diva', 'vreemdeling',
+					'work-a-holic', 'stoelendanser', 'wonderkind', 'genie', 'schuinsmarcheerder', 'money-maker',
+					'prinses-op-de-erwt', 'granol-van-de-muren', 'wizz-kid', 'krasse-knar', 'werknemer',
+			);
+	?>
 
-		$bst = array(
-				'collega', 'chef lege dozen', 'held', 'pillaar', 'kapitein', 'diva', 'vreemdeling',
-				'work-a-holic', 'stoelendanser', 'wonderkind', 'genie', 'schuinsmarcheerder', 'money-maker',
-				'prinses-op-de-erwt', 'granol-van-de-muren', 'wizz-kid', 'krasse-knar', 'werknemer',
-		);
-?>
+	<section class="people-matrix no-margin-column appear-effect">
 
-<section class="people-matrix no-margin-column appear-effect">
+		<? foreach ($employees as $employee): ?>
 
-	<? foreach ($employees as $employee): ?>
+			<div class="person bg-<?= chr(rand(97,101)) ?>">
+				<div class="<?= $bst[rand(0, count($bst) - 1)] ?>">
 
-		<div class="person bg-<?= chr(rand(97,101)) ?>">
-			<div class="<?= $bst[rand(0, count($bst) - 1)] ?>">
+					<div class="mug">
+						<img class="bot" src="<?= $_baseurl . 'cms_img/' .  ($isMobile ? 'small' : 'large')  . $employee->file ?>" alt="<?= $employee->name ?>">
+						<img class="top" src="<?= $_baseurl . 'cms_img/' .  ($isMobile ? 'small' : 'large')  . $employee->file ?>" alt="<?= $employee->name ?>">
+					</div>
 
-				<div class="mug">
-					<img class="bot" src="<?= $_baseurl . 'cms_img/' .  ($isMobile ? 'small' : 'large')  . $employee->file ?>" alt="<?= $employee->name ?>">
-					<img class="top" src="<?= $_baseurl . 'cms_img/' .  ($isMobile ? 'small' : 'large')  . $employee->file ?>" alt="<?= $employee->name ?>">
-				</div>
+					<div class="buns hoverdir">
+						<div class="text">
 
-				<div class="buns hoverdir">
-					<div class="text">
+							<div class="name">
+								<?= $employee->name ?>
+							</div>
+							<div class="role">
+								<?= $employee->role ?>
+							</div>
 
-						<div class="name">
-							<?= $employee->name ?>
 						</div>
-						<div class="role">
-							<?= $employee->role ?>
-						</div>
-
 					</div>
 				</div>
 			</div>
-		</div>
 
-	<? endforeach; ?>
+		<? endforeach; ?>
 
-</section>
+	</section>
 
-<? endif; ?>
+	<? endif; ?>
 
 
-<section class="join-us large-margin-column appear-effect">
+	<section class="join-us large-margin-column appear-effect">
 
-	<h2 class="h2">
-		<?= ML::label('join us') ?>
-	</h2>
+		<h2 class="h2">
+			<?= ML::label('join us') ?>
+		</h2>
 
-	<p>
-		<?= ML::label('zin om te joinen?') ?>
-	</p>
+		<p>
+			<?= ML::label('zin om te joinen?') ?>
+		</p>
 
-	<a href="<?= $_baseurl . $_language ?>/jobs">
-		<?= ML::label('vacatures') ?>
-	</a>
+		<a href="<?= $_baseurl . $_language ?>/jobs">
+			<?= ML::label('vacatures') ?>
+		</a>
 
-</section>
+	</section>
+
+</div>

@@ -10,8 +10,12 @@ $heightBurger : 30px;
 
 	header.main {
 		z-index: $z-menu + 5;
-		padding-top: c-off($height, $heightBar);
-		padding-bottom: c-off($height, $heightBar);
+		height: $height;
+
+		.container {
+			padding-top: c-off($height, $heightBar);
+			padding-bottom: c-off($height, $heightBar);
+		}
 
 		.top-bar {
 			height: $heightBar;
@@ -75,9 +79,13 @@ $heightBurger : 30px;
 	body.collapsed-top {
 
 		header.main {
-			padding-top: 0; //c-off($heightSmall, $heightBar);
-			padding-bottom: 0; //c-off($heightSmall, $heightBar);
 			height: $height-header-mobile-bar + $margin-def / 4;
+
+			.container {
+				padding-top: 0; //c-off($heightSmall, $heightBar);
+				padding-bottom: 0; //c-off($heightSmall, $heightBar);
+				height: $height-header-mobile-bar + $margin-def / 4;
+			}
 		}
 
 		div.mobile-menu-header-overlay {

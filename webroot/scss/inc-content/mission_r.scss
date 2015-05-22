@@ -1,4 +1,9 @@
 
+// video banner switches to 4:3 for mobile,
+// but it does not do so responsively, but based on
+// the mobile-detection php!
+
+
 // content column
 
 @media #{$media-tablet-min} {

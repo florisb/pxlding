@@ -11,85 +11,93 @@
 </div>
 */ ?>
 
-<section id="blog-detail-banner" class="blog-detail-banner parallax-banner no-margin-column" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')"
-		<? /*
-		data-0="background-position: 50% 0px"
-        data-190="background-position: 50% 100px"
-        data-anchor-target="#blog-detail-banner"*/ ?>
+<section id="blog-detail-banner" class="blog-detail-banner parallax-banner no-margin-column"
+		data-anchor-target="#main-parallax-end" data-0="transform: translate3d(0px, 0%, 0px);" data-<?= $headerDesktopHeight ?>-top-top="transform: translate3d(0px, -7.5%, 0px)"
 >
+	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')" data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end">
 
-	<div class="back-link">
-		<a class="arrow-back-link" href="<?= $this->route('blog', '', array($currentPage)) ?>" title="<?= ML::label('blog return') ?>">
-			<?= ML::label('blog return') ?>
-			<span class="arrow"></span>
-		</a>
-	</div>
-
-	<div class="title" title="<?= $post->title ?>">
-		<h1 class="h1 bold-and-light">
-			<?= $post->fancy_title ?>
-		</h1>
-	</div>
-
-</section>
-
-<section class="blog-detail-content large-margin-column">
-
-	<div class="text custom-text-content">
-		<?
-			// fix up content
-			//
-			// it may contain
-			// 		image placeholders: [[img<number>]] which should correspond to images in the gallery
-			// 		headers
-			// 		normal formatting
-
-			// build image list for placeholders
-			$imageList = array();
-
-			foreach ($gallery as $image) {
-				$imageList[] = array(
-					'src' => $_baseurl . 'cms_img/' . $image->file,
-					'alt' => $image->caption,
-				);
-			}
-
-			$content = \App\ViewHelper::formatBlogContent($post->content, $imageList);
-
-			echo $content;
-		?>
-	</div>
-
-</section>
-
-<footer class="blog-detail large-margin-column">
-
-	<div class="container">
-
-		<div class="author">
-			<?= ML::label('blog written by') ?>
-			<?= $post->author ?>
+		<div class="back-link" data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0; transform: translate3d(0px, -15%, 0px)" data-anchor-target="#main-parallax-end"
+		>
+			<a class="arrow-back-link" href="<?= $this->route('blog', '', array($currentPage)) ?>" title="<?= ML::label('blog return') ?>">
+				<?= ML::label('blog return') ?>
+				<span class="arrow"></span>
+			</a>
 		</div>
 
-		<div class="share">
-			<span class="text">
-				<?= ML::label('blog share') ?>
-			</span>
+		<div class="title" title="<?= $post->title ?>"
+			data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0; transform: translate3d(0px, -30%, 0px)" data-anchor-target="#main-parallax-end"
+		>
+			<h1 class="h1 bold-and-light">
+				<?= $post->fancy_title ?>
+			</h1>
+		</div>
 
-			<div class="share-links">
-				<a href="//twitter.com/share?text=<?= \App\ViewHelper::urlEncode( 'Pixelindustries: ' . $post->title )
-					?><? /* &url=<?= \App\ViewHelper::urlEncode( $this->route('blog', $post->slug) )
-					?> */ ?>" class="twitter" title="Twitter" rel="no-follow" target="_blank">
+	</div>
+</section>
 
-					T
-				</a>
-				<a href="//www.facebook.com/sharer.php?u=<?= \App\ViewHelper::urlEncode( $_baseurl . $this->route('blog', $post->slug) )
-					?>" class="facebook" title="Facebook" rel="no-follow" target="_blank">
-					F
-				</a>
+<div class="parallax-offset-filler"></div>
+
+<div id="main-parallax-end" class="non-parallax-container">
+
+	<section class="blog-detail-content large-margin-column">
+
+		<div class="text custom-text-content">
+			<?
+				// fix up content
+				//
+				// it may contain
+				// 		image placeholders: [[img<number>]] which should correspond to images in the gallery
+				// 		headers
+				// 		normal formatting
+
+				// build image list for placeholders
+				$imageList = array();
+
+				foreach ($gallery as $image) {
+					$imageList[] = array(
+						'src' => $_baseurl . 'cms_img/' . $image->file,
+						'alt' => $image->caption,
+					);
+				}
+
+				$content = \App\ViewHelper::formatBlogContent($post->content, $imageList);
+
+				echo $content;
+			?>
+		</div>
+
+	</section>
+
+	<footer class="blog-detail large-margin-column">
+
+		<div class="container">
+
+			<div class="author">
+				<?= ML::label('blog written by') ?>
+				<?= $post->author ?>
 			</div>
+
+			<div class="share">
+				<span class="text">
+					<?= ML::label('blog share') ?>
+				</span>
+
+				<div class="share-links">
+					<a href="//twitter.com/share?text=<?= \App\ViewHelper::urlEncode( 'Pixelindustries: ' . $post->title )
+						?><? /* &url=<?= \App\ViewHelper::urlEncode( $this->route('blog', $post->slug) )
+						?> */ ?>" class="twitter" title="Twitter" rel="no-follow" target="_blank">
+
+						T
+					</a>
+					<a href="//www.facebook.com/sharer.php?u=<?= \App\ViewHelper::urlEncode( $_baseurl . $this->route('blog', $post->slug) )
+						?>" class="facebook" title="Facebook" rel="no-follow" target="_blank">
+						F
+					</a>
+				</div>
+			</div>
+
 		</div>
 
-	</div>
+	</footer>
 
-</footer>
+</div>

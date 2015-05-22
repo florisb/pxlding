@@ -5,6 +5,8 @@ use App;
 
 class BaseController extends Controller
 {
+	// header height in pixels, for parallax calculations
+	const HEADER_HEIGHT_DESKTOP = 190;
 
 	public function preAction()
 	{
@@ -64,6 +66,8 @@ class BaseController extends Controller
 
 		$this->set('headerMenu', $headerMenu, true);
 		$this->set('footerMenu', $footerMenu, true);
+
+		$this->set('headerDesktopHeight', self::HEADER_HEIGHT_DESKTOP, true);
 	}
 
 }

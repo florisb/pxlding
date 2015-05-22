@@ -1,38 +1,49 @@
 			<header class="main">
+				<div class="container">
 
-				<div class="top-bar">
+					<?
+						// parallax tweaks
+						$fadeOffsetLogo    = 200;
+						$fadeOffsetLogoOut = 100;
+						$fadeOffsetMenu    = 130;
+						$fadeOffsetMenuOut = 30;
+					?>
 
-					<a class="main-logo" href="<?= $this->route('') ?>">
-						<img src="img/logo.svg" alt="PXL">
-					</a>
+					<div class="top-bar" data-anchor-target="#main-parallax-end" data-<?= $headerDesktopHeight + $fadeOffsetLogo ?>-top-top="opacity: 1" data-<?= $headerDesktopHeight - $fadeOffsetLogoOut?>-top-top="opacity: 0">
 
-					<div class="social-buttons social-menu-floater">
+						<a class="main-logo" href="<?= $this->route('') ?>">
+							<img src="img/logo.svg" alt="PXL">
+						</a>
 
-						<a class="facebook" target="_blank" href="https://www.facebook.com/Pixelindustries"></a>
-						<a class="twitter" target="_blank" href="https://twitter.com/pxl_nl"></a>
+						<div class="social-buttons social-menu-floater">
 
-						<? /*
-						<a class="instagram" target="_blank" href="http://instagram.com/pixelindustries"></a>
-						*/ ?>
+							<a class="facebook" target="_blank" href="https://www.facebook.com/Pixelindustries"></a>
+							<a class="twitter" target="_blank" href="https://twitter.com/pxl_nl"></a>
+
+							<? /*
+							<a class="instagram" target="_blank" href="http://instagram.com/pixelindustries"></a>
+							*/ ?>
+
+						</div>
 
 					</div>
 
+					<? /* <nav class="main" data-0="opacity: 1;" data-450="opacity: 0;"> */ ?>
+					<nav class="main" data-anchor-target="#main-parallax-end" data-<?= $headerDesktopHeight + $fadeOffsetMenu ?>-top-top="opacity: 1" data-<?= $headerDesktopHeight - $fadeOffsetMenuOut?>-top-top="opacity: 0">
+						<ul>
+							<? foreach ($headerMenu as $item): ?>
+
+							<li class="<?= $item->active ? 'active' : null ?>">
+								<a href="<?= $item->url ?>">
+									<?= $item->title ?>
+								</a>
+							</li>
+
+							<? endforeach; ?>
+						</ul>
+					</nav>
+
 				</div>
-
-				<nav class="main">
-					<ul>
-						<? foreach ($headerMenu as $item): ?>
-
-						<li class="<?= $item->active ? 'active' : null ?>">
-							<a href="<?= $item->url ?>">
-								<?= $item->title ?>
-							</a>
-						</li>
-
-						<? endforeach; ?>
-					</ul>
-				</nav>
-
 			</header>
 
 
@@ -63,7 +74,7 @@
 			<div class="mobile-menu-header-overlay">
 
 				<a class="main-logo" href="<?= $this->route('') ?>">
-					<img src="img/logo_white.svg" alt="PXL">
+					<img src="img/logo.svg" alt="PXL">
 				</a>
 
 				<div class="mobile-menu-burger">

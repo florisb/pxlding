@@ -1,0 +1,72 @@
+
+/*
+ * Parallax header
+ */
+
+// @media #{$media-desktop} {
+
+	body.has-parallax {
+		padding-top: $height-header;
+
+		// fixed header
+		header.main {
+			z-index: $z-content - 1;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+
+			.container {
+				max-width: $width-main;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+
+		// fixed banner area
+		.parallax-banner {
+			z-index: $z-content - 2;
+			position: fixed;
+			top: $height-header;
+			left: 0;
+			width: 100%;
+			height: 600px;
+
+			.container {
+				max-width: $width-main;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+
+		// filler helper to offset the content at the correct
+		// height that the (potentially responsive) parallax banner has
+		.parallax-offset-filler {
+			// margin-left: 100%;
+			width: 100%;
+			// height: 470px;	// override this
+			visibility: hidden;
+		}
+
+		// container with all the content that should sit in front of parallax
+		.non-parallax-container {
+			z-index: $z-content;
+			position: relative;
+			background-color: $color-bg-pri;
+		}
+
+	}
+// }
+
+// parallax effect is different for smaller resolution
+// the header menu is always fixed here
+@media (max-width: $width-tablet) {
+
+	body.has-parallax {
+		padding-top: $height-header-mobile-bar + $margin-header-mobile * 2;
+
+		.parallax-banner {
+			top: $height-header-mobile-bar + $margin-header-mobile * 2;
+		}
+	}
+}

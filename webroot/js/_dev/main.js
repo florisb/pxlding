@@ -479,6 +479,47 @@ window.pxl.settings     = require('./settings.js');
 		// force check, otherwise stuff stays hidden sometimes
 		$.force_appear();
 
+
+		// init skrollr for parallax (if necessary)
+		if ($('body').hasClass('has-parallax')) {
+
+			// var parallaxContent = $('.parallax-content-start');
+
+			// // console.log( $('header.main').height() );
+			// var startContentTop = parallaxContent.offset().top -
+			// 		// parseInt( $(parallaxContent).css("border-top-width") , 10) -
+   //        			// parseInt( $(parallaxContent).css("margin-top") , 10) -
+   //        			// parseInt( $(parallaxContent).css("padding-top") , 10) -
+   //        			$('header.main').outerHeight();
+
+			// console.log(startContentTop);
+
+			// $(window).scroll(function (event) {
+   // 				var scroll = $(window).scrollTop();
+
+
+   // 				console.log( scroll );
+   //  			if (scroll > startContentTop) {
+   //  				$('body').addClass('parallax-header-defix');
+   //  			} else {
+   //  				$('body').removeClass('parallax-header-defix');
+   //  			}
+			// });
+
+
+			// var body      = $('body');
+			// var fixOffset = 520;	// banner test height, nothing real
+			// body.addClass("fix-header");
+
+			var s = window.pxl._plugin._skrollr.init({
+   					render: function(data) {
+
+            			// console.log(data.curTop);
+
+			   	 	}
+			});
+		}
+
 	});
 })();
 
