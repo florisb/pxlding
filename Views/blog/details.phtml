@@ -1,22 +1,19 @@
 
-<? /*
-<div class="test-banner">
-
-	<div class="outer">
-		<div class="inner">
-			test
-		</div>
-	</div>
-
-</div>
-*/ ?>
-
-<section id="blog-detail-banner" class="blog-detail-banner parallax-banner no-margin-column"
+<section id="blog-detail-banner" class="blog-detail-banner no-margin-column <?=  ! ($isMobile || $isTablet) ? 'parallax-banner' : 'mobile' ?>"
+		<? if ( ! ($isMobile || $isTablet)): ?>
 		data-anchor-target="#main-parallax-end" data-0="transform: translate3d(0px, 0%, 0px);" data-<?= $headerDesktopHeight ?>-top-top="transform: translate3d(0px, -7.5%, 0px)"
+		<? endif; ?>
 >
-	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')" data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end">
+	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')"
+		<? if ( ! ($isMobile || $isTablet)): ?>
+		data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end"
+		<? endif; ?>
+	>
 
-		<div class="back-link" data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0; transform: translate3d(0px, -15%, 0px)" data-anchor-target="#main-parallax-end"
+		<div class="back-link" data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)"
+			<? if ( ! ($isMobile || $isTablet)): ?>
+			data-<?= $headerDesktopHeight ?>-top-top="opacity: 0; transform: translate3d(0px, -15%, 0px)" data-anchor-target="#main-parallax-end"
+			<? endif; ?>
 		>
 			<a class="arrow-back-link" href="<?= $this->route('blog', '', array($currentPage)) ?>" title="<?= ML::label('blog return') ?>">
 				<?= ML::label('blog return') ?>
@@ -25,17 +22,21 @@
 		</div>
 
 		<div class="title" title="<?= $post->title ?>"
+			<? if ( ! ($isMobile || $isTablet)): ?>
 			data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0; transform: translate3d(0px, -30%, 0px)" data-anchor-target="#main-parallax-end"
+			<? endif; ?>
 		>
 			<h1 class="h1 bold-and-light">
-				<?= $post->fancy_title ?>
+				<?= ! empty($post->fancy_title) ? $post->fancy_title : $post->title ?>
 			</h1>
 		</div>
 
 	</div>
 </section>
 
+<? if ( ! ($isMobile || $isTablet)): ?>
 <div class="parallax-offset-filler"></div>
+<? endif; ?>
 
 <div id="main-parallax-end" class="non-parallax-container">
 

@@ -1,11 +1,20 @@
 
-<section class="jobs-banner no-margin-column <?= ($isMobile) ? ' mobile' : null ?> parallax-banner"
+<section class="jobs-banner no-margin-column <?=  ! ($isMobile || $isTablet) ? 'parallax-banner' : 'mobile' ?>"
+	<? if ( ! ($isMobile || $isTablet)): ?>
 	data-anchor-target="#main-parallax-end" data-0="transform: translate3d(0px, 0%, 0px);" data-<?= $headerDesktopHeight ?>-top-top="transform: translate3d(0px, -7.5%, 0px)"
+	<? endif ?>
 >
-	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')" data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end"
+	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')"
+		<? if ( ! ($isMobile || $isTablet)): ?>
+		data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end"
+		<? endif; ?>
 	>
 		<div class="title">
-			<h1 class="h1 bold-and-light" data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0; transform: translate3d(0px, -30%, 0px)" data-anchor-target="#main-parallax-end">
+			<h1 class="h1 bold-and-light"
+				<? if ( ! ($isMobile || $isTablet)): ?>
+				data-0="opacity: 1; transform: translate3d(0px, 0%, 0px)" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0; transform: translate3d(0px, -30%, 0px)" data-anchor-target="#main-parallax-end"
+				<? endif; ?>
+			>
 				<?= $pageTitle ?>
 			</h1>
 		</div>
@@ -13,7 +22,9 @@
 
 </section>
 
+<? if ( ! ($isMobile || $isTablet)): ?>
 <div class="parallax-offset-filler"></div>
+<? endif; ?>
 
 <div id="main-parallax-end" class="non-parallax-container">
 

@@ -1,5 +1,5 @@
 
-<section class="banner-video mission-video no-margin-column<?= ($isMobile) ? ' mobile' : null ?><?= ! ($isMobile || $isTablet) ? ' parallax-banner' : null ?>"
+<section class="banner-video mission-video no-margin-column <?= ! ($isMobile || $isTablet) ? 'parallax-banner' : 'mobile' ?>"
 	<? if ( ! ($isMobile || $isTablet)): ?>
 	data-anchor-target="#main-parallax-end" data-0="transform: translate3d(0px, 0%, 0px);" data-<?= $headerDesktopHeight ?>-top-top="transform: translate3d(0px, -7.5%, 0px)"
 	<? endif; ?>
@@ -15,7 +15,9 @@
 	</div>
 </section>
 
+<? if ( ! ($isMobile || $isTablet)): ?>
 <div class="parallax-offset-filler"></div>
+<? endif; ?>
 
 <div id="main-parallax-end" class="non-parallax-container">
 
