@@ -13,6 +13,40 @@
 	}
 }
 
+/*
+ * List
+ */
+
+// disable hover effect for smaller fonts/screens
+@media (max-width: 700px) {
+
+	section.jobs-list article.job a {
+
+		.text .title {
+
+			.name {
+				transition: color $speed-fast;
+			}
+
+			.prefix {
+				display: none;
+			}
+		}
+
+
+
+		&:hover, &:active {
+
+			.text .title {
+				.name {
+					margin-top: 0;
+					color: $color-pri;
+				}
+			}
+		}
+	}
+}
+
 // smaller job title font sizes
 @media (max-width: 800px) {
 	section.jobs-list article.job .text .title .name {
@@ -94,6 +128,10 @@
 
 			.text {
 				width: 100%;
+
+				.title .name {
+					vertical-align: middle;
+				}
 			}
 		}
 	}
@@ -119,15 +157,17 @@
 	}
 }
 
+// just hide the little icons if too small to do anything useful with them
 @media (max-width: 520px) {
 	section.jobs-detail-icons {
+		display: none;
 
-		.title {
-			font-size: pem(16);
-		}
+		// .title {
+		// 	font-size: pem(16);
+		// }
 
-		.caption {
-			display: none;
-		}
+		// .caption {
+		// 	display: none;
+		// }
 	}
 }

@@ -48,6 +48,20 @@ $heightBurger : 30px;
 
 		transition: height $speed-collapse,
 				    padding-top $speed-collapse;
+
+		.main-logo {
+
+			img {
+				position: relative;
+				content: ""; // fake content to make after work
+
+				&::after {
+					@include pseudo-basic;
+					@include absolute-cover;
+					@include bg-contain('logo_white.svg');
+				}
+			}
+		}
 	}
 
 	nav.main {

@@ -33,6 +33,12 @@ section.jobs-banner {
 		}
 	}
 
+	&.mobile {
+		.container {
+			height: 100%;
+		}
+	}
+
 	.title {
 		display: inline-block;
 		font-size: $fontsize-base;
@@ -153,7 +159,8 @@ section.jobs-list {
 					transform: perspective(1000px) rotate3d(1,0,0,90deg);
   					transform-origin: 50% 0%;
 					transition: opacity 0.35s,
-								transform 0.35s;
+								transform 0.35s,
+								top 0.35s;
 				}
 
 			}
@@ -205,12 +212,14 @@ section.jobs-list {
 
 		a {
 			&:hover, &:active {
+
 				.text .title {
 					.name {
-						margin-top: #{$fzPrefix}px;
+						margin-top: #{$fzPrefix / 2}px;
 					}
 					.prefix {
 						// bottom: 0;
+						top: #{-1 * $fzPrefix / 2}px;
 						opacity: 1;
 						transform: perspective(1000px) rotate3d(1,0,0,0);
 					}
@@ -296,6 +305,12 @@ section.jobs-detail-banner {
 			height: 100%;
 			vertical-align: middle;
 			font-size: $fontsize-base;
+		}
+	}
+
+	&.mobile {
+		.container {
+			height: 100%;
 		}
 	}
 

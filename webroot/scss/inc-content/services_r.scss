@@ -1,5 +1,49 @@
 
 /*
+ * Category menu
+ */
+
+$sizeIconContainer : 38px;
+
+// remove hover effect
+@media (max-width: 820px) {
+	nav.service-categories {
+
+		a.service-cat {
+			&:hover, &:active {
+
+				> div {
+					height: $sizeIconContainer;
+				}
+
+				.h3 {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+// smaller icons
+@media (max-width: 420px) {
+
+	$sizeIcon: 24px;
+
+	nav.service-categories {
+
+		a.service-cat {
+
+			.icon {
+				line-height: $sizeIcon;
+				margin: c-off($sizeIconContainer, $sizeIcon);
+				width: $sizeIcon;
+				height: $sizeIcon;
+			}
+		}
+	}
+}
+
+/*
  * Content blocks
  */
 

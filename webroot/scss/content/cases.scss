@@ -88,5 +88,139 @@ section.cases {
 
 
 
+/*
+ * Cases Detail
+ */
+
+header.case {
+
+	$fontsizeMain: 82;
+
+	position: relative;
+	border-top: 1px solid #e8e8e8;
+	padding-top: $margin-def * 3;
+	margin-bottom: $margin-def * 3;
+
+	.title {
+		position: relative;
+	}
+
+	.h1 {
+		font-size: pem(82);
+		font-family: $font-thin;
+		color: $color-txt-dark;
+		line-height: 1em;
+		text-align: center;
+	}
+
+	.subtitle {
+		text-align: center;
+		font-size: pem(20);
+		font-family: $font-sec;
+		@include adjusted-lh(1.4);
+		margin-top: $margin-def;
+	}
+
+	.return-link {
+		position: absolute;
+		left: $margin-def * 2.5;
+		top: #{$fontsizeMain / 2 - 5}px;
+
+	}
+}
+
+section.case-focal-imagery {
+	// video or image
+	$width: 700px;
+
+	margin-bottom: $margin-def * 3;
+
+	.container {
+		max-width: $width;
+		margin-left: auto;
+		margin-right: auto;
+
+		img {
+			width: 100%;
+		}
+	}
+}
+
+section.case-introduction {
+
+	margin-bottom: $margin-def * 3;
+
+	.text {
+		text-align: center;
+	}
+
+	.case-link {
+		$widthButton: 340px;
+
+		margin-top: $margin-def * 1.5;
+		text-align: center;
+
+		a {
+			width: $widthButton;
+		}
+	}
+}
+
+// problem: we want to have vertically centered text
+// .. using inline-blocks would mean dropping css-based
+// layout..
+section.case-text {
+
+	@include cf;
+	margin-bottom: $margin-def * 4;
+
+	.text, .image {
+		width: col-width-abs(2, $margin-def * 4);
+	}
+
+	.text {
+		float: left;
+	}
+
+	.image {
+		float: right;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	// even rows have image on the left
+	&:nth-child(2n+1) {
+		.text {
+			float: right;
+		}
+		.image {
+			float: left;
+		}
+	}
+
+	&.text-only {
+		.text {
+			width: 100%;
+			text-align: center;
+		}
+	}
+}
+
+footer.case-share {
+
+	margin-bottom: $margin-def * 4;
+	text-align: center;
+}
+
+
+hr.cases {
+	margin: $margin-def * 3 auto;
+	margin-top: 0;
+}
+
+
+
 @import "../inc-content/cases_r";
 @import "../inc-content/cases-banner";

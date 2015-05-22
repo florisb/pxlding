@@ -157,6 +157,12 @@ section.blog-detail-banner {
 		}
 	}
 
+	&.mobile {
+		.container {
+			height: 100%;
+		}
+	}
+
 
 	.back-link {
 		font-size: $fontsize-base;
