@@ -1,92 +1,154 @@
-<div id="page" class="case"> 
-	<div class="case-header-wrapper">
-		<div id="case" class="animatedslow fadeIn">
-			<div id="case-image" style="background-image: url('<?=$_baseurl.'cms_img/'.$case->file?>');"></div>
+
+
+<header class="case">
+
+	<div class="title">
+
+		<div class="h1">
+			<?= $case->name ?>
 		</div>
 
-		<div id="case-name">
-			<h1 class="animatedslow fadeIn delay10"><?=$case->case_name?></h1>
-			<h2 class="animatedslow fadeIn delay12"><?=$case->name?></h2>
-
-			<a class="btn case animatedslow fadeIn delay15" href=".">Lees case</a>
+		<div class="return-link">
+			<a href="<?= $this->route('cases') ?>">
+				<?= ML::label('view all cases') ?>
+			</a>
 		</div>
-
 	</div>
-	<div id="case-content">
-		<div class="case-description">
 
-			<h2><?=$case->name?></h2>
+	<div class="subtitle">
+		<?= $case->case_name ?>
+	</div>
 
-			<div class="inner">
-				<div class="description-top">
-					<?=$case->main_description?>
-				</div>
-				<div class="description-bottom">
-					<?=$case->text?>
-				</div>
-				<div class="description-btn">
-					<a class="btn black" target="_blank" href="<?=$case->url?>">Bekijk live</a>
-				</div>
+</header>
 
-				<div class="share-btns">
-					<div class="txt"><?=ML::label('share')?></div>
-					<a href="http://twitter.com/share?url=<?=$_baseurl.$_language?>/cases/<?=$case->slug?>&text=<?=$case->name. '. '.$case->case_name?>" target="_blank" class="tw"></a>
-					<a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=<?=$_baseurl.$_language?>/cases/<?=$case->slug?>&p[images][0]=<?=$_baseurl?>/cms_img/overview_<?=$case->file?>&p[title]=<?=$case->name?>&p[summary]=<?=$case->case_name?>" target="_blank" class="fb"></a>
-				</div>
 
-			</div>
-		</div>
+<section class="case-focal-imagery">
 
-		<? if($gallery->count() > 1 && !$isMobile): ?>
-			<div id="case-gallery">
-				<div id="project-detail-slideshow">
-					<div class="project-detail-slideshow-container" style=" margin: 0 auto;">
-						<ul class="slideshow-slides cf" style="width: <?= $gallery->count() * 595; ?>px">
-						<? foreach($gallery as $key => $g): ?>
-							<li<?= (1 === $key) ? ' class="active"' : ''; ?> style="background: url('<?= "{$_baseurl}cms_img/{$g->file}"; ?>') center center no-repeat;"></li>
-						<? endforeach; unset($g); ?>
-						</ul>
-					</div>
-					<span class="slide-prev">
-						<a href="javascript:void(0);"></a>
-					</span>
-					<span class="slide-next">
-						<a href="javascript:void(0);"></a>
-					</span>
-				</div>
-			</div>
-		<? elseif($gallery->count() > 1): ?>
-			<? foreach($gallery as $key => $g): ?>
-				<div class="case-img">
-					<figure data-img="<?=$_baseurl?>cms_img/mobile_<?=$g->file?>"></figure>
-				</div>
-			<? endforeach; ?>
+	<?
+		$isVideo = ( ! empty($case->video));
+	?>
+	<div class="container <?= $isVideo ? 'video' : 'image' ?>">
+
+		<? if ($isVideo): ?>
+			<?
+				// local video file? or youtube?
+				if ( preg_match('#\.mp4$#i', trim($case->video)) ):
+
+					// video image? hmm. could just get jpg with same file name..?
+					//$videoImage
+			?>
+				<video
+			        <? /* poster="<?= $videoImage ?>" */ ?>
+			        autoplay="autoplay"
+			        src="<?= trim($case->video) ?>"
+			    ></video>
+
+			<? else: ?>
+				<?
+					$videoUrl = $case->video;
+
+					if ( ! preg_match('#^https?://#i')) {
+						$videoUrl = 'http://www.youtube.com/embed/' . $videoUrl;
+					}
+				?>
+				<iframe title="YouTube video player" class="youtube-player" type="text/html"
+					width="100%" src="<?= $videoUrl ?>"  frameborder="0" allowFullScreen></iframe>
+
+			<? endif ?>
+
+		<? else: ?>
+			<img src="<?= "{$_baseurl}cms_img/{$case->file}" ?>" alt="<?= $case->caption ?>">
 		<? endif; ?>
+	</div>
+
+</section>
 
 
-		<div id="more-cases" class="block">
-			<div class="inner">
-				<h2><?=ML::label('more cases')?></h2>
 
-				<? $i = 0; ?>
-				<? foreach($cases as $c){ ?>
-					<div class="case <?=$i%3 == '2' ? 'last' : ''?>">
-						<figure data-img="<?=$_baseurl?>cms_img/overview_<?=$c->file?>">
-				                <a class="btn" href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>">Take a look</a>
-						</figure>
-						
-						<div class="case-name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->case_name?></a></div>
-						<div class="name"><a href="<?=$_baseurl.$_language.'/cases/'.$c->slug?>"><?=$c->name?></a></div>
-					</div>
-					<? $i++; ?>
-				<? } ?>
-					
-				<div class="clear"></div>
-				
-				<a href="<?=$_baseurl.$_language?>/cases" class="btn black"><?=ML::label('view all cases')?></a>
 
-			</div>
+<section class="case-introduction appear-effect">
+
+	<div class="text custom-text-content standard-middle-column">
+		<?
+			echo \App\ViewHelper::replaceContentPlaceHolders( $case->main_description );
+		?>
+	</div>
+
+	<div class="case-link standard-middle-column">
+		<a class="button default" target="_blank" href="<?= $case->url ?>">
+			<?= ML::label('cases visit site') ?>
+		</a>
+	</div>
+
+</section>
+
+
+<?
+	// render blocks of text with images next to them.
+	//
+	// note that there should NOT be more images than text-blocks
+
+	$texts = array();
+
+	for ($x = 1; $x <= 10; $x++) {
+		if ( ! \App\ViewHelper::textFieldEmpty($case->{'text_section_' . $x})) {
+			$texts[] = $case->{'text_section_' . $x};
+		}
+	}
+
+
+	foreach ($texts as $index => $text):
+
+		try {
+			$image = $gallery->get($index);
+		} catch (\Exception $e) {
+			$image = null;
+		}
+
+?>
+
+<section class="case-text large-margin-column<?= empty($image) ? ' text-only' : null ?>">
+
+	<div class="text custom-text-content appear-effect">
+		<?
+			echo \App\ViewHelper::replaceContentPlaceHolders( $text );
+		?>
+	</div>
+
+	<? if ( ! empty($image)): ?>
+	<div class="image appear-effect">
+		<img src="<?= "{$_baseurl}cms_img/{$image->file}" ?>" alt="<?= $image->caption ?>">
+	</div>
+	<? endif; ?>
+
+</section>
+
+<? endforeach; ?>
+
+
+<hr class="cases">
+
+
+<footer class="case-share large-margin-col">
+
+	<div class="share standard-middle-column">
+
+		<span class="text">
+			<?= ML::label('share') ?>
+		</span>
+
+		<div class="share-links">
+			<a href="//twitter.com/share?text=<?= \App\ViewHelper::urlEncode( 'Pixelindustries: ' . $case->name )
+				?>" class="twitter" title="Twitter" rel="no-follow" target="_blank">
+
+				T
+			</a>
+			<a href="//www.facebook.com/sharer.php?u=<?= \App\ViewHelper::urlEncode( $_baseurl . $this->route('cases', $case->slug) )
+				?>" class="facebook" title="Facebook" rel="no-follow" target="_blank">
+				F
+			</a>
 		</div>
 
 	</div>
-</div>
+
+</footer>
