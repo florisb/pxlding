@@ -1,8 +1,13 @@
 
-<section class="banner-video mission-video no-margin-column appear-effect<?= ($isMobile) ? ' mobile' : null ?> parallax-banner"
+<section class="banner-video mission-video no-margin-column<?= ($isMobile) ? ' mobile' : null ?><?= ! ($isMobile || $isTablet) ? ' parallax-banner' : null ?>"
+	<? if ( ! ($isMobile || $isTablet)): ?>
 	data-anchor-target="#main-parallax-end" data-0="transform: translate3d(0px, 0%, 0px);" data-<?= $headerDesktopHeight ?>-top-top="transform: translate3d(0px, -7.5%, 0px)"
+	<? endif; ?>
 >
-	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')" data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end"
+	<div class="container" style="background-image: url('<?= $_baseurl . 'cms_img/' . $post->banner ?>')"
+		<? if ( ! ($isMobile || $isTablet)): ?>
+		data-0="opacity: 1" data-<?= $headerDesktopHeight ?>-top-top="opacity: 0" data-anchor-target="#main-parallax-end"
+		<? endif; ?>
 	>
 		<?
 			$this->partial('mission-video-content', array(), '_parts');
