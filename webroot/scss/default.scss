@@ -92,9 +92,9 @@ body {
 
 @media #{$media-tablet-min} {
 
-	// .main-container {
-	// 	padding-top: $height-header-mobile-bar + $margin-header-mobile * 2;
-	// }
+	body {
+		padding-top: $height-header-mobile-bar + $margin-header-mobile * 2;
+	}
 
 	header.main {
 		position: fixed;

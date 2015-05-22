@@ -11,6 +11,9 @@
 $widthVideo  : 1300px;
 $heightVideo : 470px;
 
+$widthVideoMobile  : 400px;
+$heightVideoMobile : 300px;
+
 section.mission-video {
 
 	position: relative;
@@ -32,20 +35,22 @@ section.mission-video {
 		padding-top: percentage($heightVideo / $widthVideo);
 	}
 
-	&.mobile {
-		$widthVideo  : 400px;
-		$heightVideo : 300px;
-
-		padding-top: percentage($heightVideo / $widthVideo);
-	}
-
-	video {
+	video,
+	 img {
 		@include absolute-cover;
 		z-index: $z-content - 1;
 		min-width: 100%;
 		min-height: 100%;
 	}
 
+	&.mobile {
+
+		height: auto;
+
+		.video-container {
+			padding-top: percentage($heightVideoMobile / $widthVideoMobile);
+		}
+	}
 }
 
 body.has-parallax {
@@ -53,6 +58,10 @@ body.has-parallax {
 		width: 100%;
 		height: 0;
 		padding-top: percentage($heightVideo / $widthVideo);
+
+		&.mobile {
+			padding-top: percentage($heightVideoMobile / $widthVideoMobile);
+		}
 	}
 }
 

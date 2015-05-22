@@ -21,13 +21,6 @@ section.home-video {
 	// background-color: $color-bg-sec;
 	background-color: white;
 
-	&.mobile {
-		$widthVideo  : 400px;
-		$heightVideo : 300px;
-
-		padding-top: percentage($heightVideo / $widthVideo);
-	}
-
 	.video-container {
 		@include absolute-cover;
 	}
@@ -39,6 +32,18 @@ section.home-video {
 		min-height: 100%;
 	}
 
+	// mobile is a still image with different
+	// dimensions
+	&.mobile {
+		$widthVideo  : 400px;
+		$heightVideo : 300px;
+
+		padding-top: percentage($heightVideo / $widthVideo);
+
+		img {
+			width: 100%;
+		}
+	}
 }
 
 
