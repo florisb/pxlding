@@ -244,3 +244,39 @@ $toOneColumn  : 520px;
  * Cases Detail
  */
 
+@media (max-width: 750px) {
+
+	$widthMax: 700px;
+
+	section.case-text,
+	section.case-text:nth-child(2n+1) {
+
+		.text {
+			display: block;
+			position: relative;
+			width: 100%;
+			text-align: center;
+			margin-bottom: $margin-def * 3;
+		}
+
+		.image {
+			display: block;
+			float: none;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+			max-width: $widthMax;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		&.text-only {
+			.text {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

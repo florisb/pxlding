@@ -222,6 +222,9 @@ section.case-text {
 
 	&.text-only {
 		.text {
+			position: relative;
+			left: auto;
+			right: auto;
 			width: 100%;
 			text-align: center;
 		}
