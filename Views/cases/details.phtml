@@ -109,10 +109,12 @@
 
 <section class="case-text large-margin-column<?= empty($image) ? ' text-only' : null ?>">
 
-	<div class="text custom-text-content appear-effect">
-		<?
-			echo \App\ViewHelper::replaceContentPlaceHolders( $text );
-		?>
+	<div class="text appear-effect">
+		<div class="container custom-text-content">
+			<?
+				echo \App\ViewHelper::replaceContentPlaceHolders( $text );
+			?>
+		</div>
 	</div>
 
 	<? if ( ! empty($image)): ?>
