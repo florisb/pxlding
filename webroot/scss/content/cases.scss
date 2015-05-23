@@ -173,13 +173,31 @@ section.case-text {
 
 	@include cf;
 	margin-bottom: $margin-def * 4;
+	position: relative;
 
 	.text, .image {
 		width: col-width-abs(2, $margin-def * 4);
 	}
 
 	.text {
-		float: left;
+		position: absolute;
+		height: 100%;
+		top: 0;
+		left: 0;
+		font-size: 0;
+
+		.container {
+			display: inline-block;
+			font-size: 17px;
+			vertical-align: middle;
+
+		}
+
+		&::before {
+			@include pseudo-basic;
+			vertical-align: middle;
+			height: 100%;
+		}
 	}
 
 	.image {
@@ -193,7 +211,9 @@ section.case-text {
 	// even rows have image on the left
 	&:nth-child(2n+1) {
 		.text {
-			float: right;
+			// float: right;
+			left: auto;
+			right: 0;
 		}
 		.image {
 			float: left;
@@ -210,8 +230,82 @@ section.case-text {
 
 footer.case-share {
 
+	$height: 40px;
+
 	margin-bottom: $margin-def * 4;
 	text-align: center;
+	line-height: $height;
+
+	$sizeButton : 24px;
+	$sizeIcon   : 22px;
+
+	.text {
+		display: inline-block;
+	}
+
+	.share-links {
+
+		display: inline-block;
+		margin-left: $margin-def;
+		// float: left;
+
+		a {
+			vertical-align: middle;
+			font-size: 0;
+			position: relative;
+			display: inline-block;
+			width: $sizeButton;
+			height: $sizeButton;
+			margin-right: $margin-def / 3;
+			transition: transform $speed-fast;
+
+			&::before {
+				@include pseudo-basic;
+				@include bg-contain;
+				position: absolute;
+				width: $sizeIcon;
+				height: $sizeIcon;
+				top: c-off($sizeButton, $sizeIcon);
+				left: c-off($sizeButton, $sizeIcon);
+			}
+
+			// &::after {
+			// 	opacity: 0;
+			// }
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&:hover, &:active {
+				transform: scale(1.25); /* 1/10 of the original size */
+
+				// &::before {
+				// 	opacity: 0;
+				// }
+				// &::after {
+				// 	opacity: 1;
+				// }
+			}
+		}
+
+		.twitter {
+			&::before {
+				background-image: image-url('twitter-color.svg');
+			}
+			// &::after {
+			// 	background-image: image-url('twitter-pink.svg');
+			// }
+		}
+		.facebook {
+			&::before {
+				background-image: image-url('facebook-color.svg');
+			}
+			// &::after {
+			// 	background-image: image-url('facebook-pink.svg');
+			// }
+		}
+	}
 }
 
 
