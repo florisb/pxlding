@@ -206,8 +206,8 @@ module.exports = (function() {
 
         $.each(errors, function(key, value) {
             // text += value + '<br>';
-            console.log(key);
-            console.log(value);
+            // console.log(key);
+            // console.log(value);
             // set error state for field if known
             var inputElem = $(formElement).find('input[name=' + key + ']');
 

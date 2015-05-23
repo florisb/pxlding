@@ -1,6 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /*
- * Contact
+ * Jobs
  *
  * Javascript for controller
  * Browserify
@@ -9,12 +9,13 @@
 (function() {
 	"use strict";
 
-	var contactForm = require('../modules/ContactForm.js');
+	var newsletterForm = require('../modules/NewsletterFormJobs.js');
 
 })();
-},{"../modules/ContactForm.js":2}],2:[function(require,module,exports){
+},{"../modules/NewsletterFormJobs.js":2}],2:[function(require,module,exports){
 /**
- * Contact Form
+ * Newsletter form
+ * for Jobs
  *
  * not a class; self-instantiating module
  */
@@ -32,8 +33,8 @@ module.exports = (function() {
      * PRIVATE
      */
 
-    var _formId        = '#contact-form';
-    var _formMessageId = '#contact-form-thanks';
+    var _formId        = '#jobs-newsletter-form';
+    var _formMessageId = '#jobs-newsletter-thanks';
 
 
 
@@ -61,8 +62,6 @@ module.exports = (function() {
             data.contact = 1;
             data.name    = $(this).find('input[name=name]').val();
             data.email   = $(this).find('input[name=email]').val();
-            data.website = $(this).find('input[name=website]').val();
-            data.message = $(this).find('input[name=message]').val();
 
             _doFormSubmit(this, data);
 
@@ -70,7 +69,7 @@ module.exports = (function() {
         });
 
         // clear error state on user input
-        $(_formId).find('input[type=text], input[type=email], textarea').change(function() {
+        $(_formId).find('input[type=text], input[type=email]').change(function() {
             _clearInvalidStateForField($(this));
         }).typing({
             stop: function (event, $elem) {
@@ -102,7 +101,7 @@ module.exports = (function() {
 
         $.ajax({
             type     : 'POST',
-            'url'    : $('base').attr('href') + $('html').attr('lang') + '/' + 'home/contact',
+            'url'    : $('base').attr('href') + $('html').attr('lang') + '/' + 'home/newsletterjobs',
             'data'   : data,
             dataType : 'json',
             // dataType : 'html',
@@ -163,8 +162,6 @@ module.exports = (function() {
 
         $.each(errors, function(key, value) {
             // text += value + '<br>';
-            // console.log(key);
-            // console.log(value);
             // set error state for field if known
             var inputElem = $(formElement).find('input[name=' + key + ']');
 
