@@ -1,0 +1,95 @@
+
+// header
+
+@media #{$media-tablet} {
+
+	header.contact {
+		.humongous-title .h1 {
+			font-size: pem(62);
+		}
+	}
+}
+
+@media (max-width: 660px) {
+
+	header.contact {
+		.humongous-title {
+			margin-left: percentage($margin-def * 5 / $width-main);
+			margin-right: percentage($margin-def * 5 / $width-main);
+			.h1 {
+				font-size: pem(50);
+			}
+		}
+	}
+}
+
+@media (max-width: 520px) {
+
+	header.contact {
+
+		.humongous-title {
+			margin-left: percentage($margin-def * 5 / $width-main);
+			margin-right: percentage($margin-def * 5 / $width-main);
+			// width: 90%;
+			// padding-left: $margin-def;
+			// padding-right: $margin-def;
+
+			.h1 {
+				font-size: pem(32);
+				line-height: 1em;
+			}
+		}
+	}
+}
+
+// path sections
+@media (max-width: 1050px) {
+	header.contact .paths {
+		.title {
+			font-size: pem(17);
+		}
+		.caption, .details {
+			font-size: pem(15);
+		}
+	}
+}
+
+@media (max-width: 850px) {
+	header.contact .paths {
+		.title {
+			font-size: pem(15);
+		}
+		.caption, .details {
+			font-size: pem(13);
+		}
+	}
+}
+
+
+
+// special for location/address: too small? change ratio
+@media #{$media-tablet} and (max-width: 840px) {
+
+	section.contact-form-container {
+
+		.h2 {
+			font-size: pem(24);
+		}
+
+		width: col-width-abs(2, $margin-def * 2);
+		margin-right: $margin-def * 2;
+	}
+	section.contact-address {
+		width: col-width-abs(2, $margin-def * 2);
+	}
+}
+
+@media #{$media-phone} {
+	section.contact-form-container,
+	 section.contact-address {
+		float: none;
+		margin-right: 0;
+		clear: both;
+		width: 100%;
+	}
+}

@@ -15,14 +15,16 @@ header.contact {
 
 	.humongous-title {
 		margin-bottom: $margin-def * 3;
-		margin-left: $margin-def * 10;
-		margin-right: $margin-def * 10;
+		margin-left: percentage($margin-def * 10 / $width-main); //$margin-def * 10;
+		margin-right: percentage($margin-def * 10 / $width-main); //$margin-def * 10;
+		transition: margin $speed-fast;
 
 		.h1 {
 			font-size: pem(82);
 			line-height: 0.9em;
 			color: $color-txt-dark;
 			text-align: center;
+			transition: font-size $speed-fast;
 		}
 	}
 
@@ -79,7 +81,7 @@ header.contact {
 			color: $color-txt-dark;
 		}
 
-		.caption {
+		.caption, .details {
 			font-size: pem(17);
 			@include adjusted-lh(1.85);
 
@@ -91,6 +93,10 @@ header.contact {
 					color: $color-pri;
 				}
 			}
+		}
+
+		.caption {
+			min-height: 55px;
 		}
 	}
 }
@@ -142,6 +148,15 @@ section.contact-address {
 
 	.image {
 		margin-bottom: $margin-def * 2.5;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.h2 {
+		font-size: pem(24);
+		margin-bottom: $margin-def * 1.5;
 	}
 
 	.text {
@@ -180,3 +195,5 @@ section.contact-address {
 
 
 }
+
+@import "../inc-content/contact_r";
