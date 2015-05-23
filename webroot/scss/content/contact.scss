@@ -1,0 +1,182 @@
+// compass mixins library
+// @import "lib/_animate";
+@import "../lib/_compass";
+
+// custom imports
+@import "../inc/config";
+@import "../inc/init";
+
+
+header.contact {
+
+	background-color: $color-bg-sec;
+	padding-top: $margin-def * 5;
+	padding-bottom: $margin-def * 4.5;
+
+	.humongous-title {
+		margin-bottom: $margin-def * 3;
+		margin-left: $margin-def * 10;
+		margin-right: $margin-def * 10;
+
+		.h1 {
+			font-size: pem(82);
+			line-height: 0.9em;
+			color: $color-txt-dark;
+			text-align: center;
+		}
+	}
+
+	.paths {
+		$height     : 250px;
+		$heightLine : 135px;
+		$sizeIcon   : 120px;
+
+		@include cf;
+
+		.icon-container {
+			position: relative;
+			float: left;
+			width: percentage(1 / 3);
+			text-align: center;
+
+
+			&::after {
+				@include pseudo-basic;
+				position: absolute;
+				width: 1px;
+				height: $heightLine;
+				right: 0;
+				top: c-off($height, $heightLine);
+				border-right: $standard-dotted-border;
+			}
+
+			&:last-child::after {
+				display: none;
+			}
+
+			// omhoog met die aap
+			// &:nth-child(2) {
+			// 	.image {
+			// 		margin-top: -5px;
+			// 		margin-bottom: $margin-def * 1.5 + 5;
+			// 	}
+			// }
+		}
+
+		.image {
+			display: inline-block;
+			@include bg-contain;
+			width: $sizeIcon;
+			height: $sizeIcon;
+			margin-bottom: $margin-def * 1.5;
+		}
+
+		.title {
+			font-size: pem(20);
+			font-family: $font-pri;
+			@include adjusted-lh(1.3);
+			margin-bottom: $margin-def * 1.5;
+			color: $color-txt-dark;
+		}
+
+		.caption {
+			font-size: pem(17);
+			@include adjusted-lh(1.85);
+
+			a {
+				color: $color-txt-dark;
+				transition: color $speed-fast;
+
+				&:hover, &:active {
+					color: $color-pri;
+				}
+			}
+		}
+	}
+}
+
+
+section.contact-form-and-address {
+	@include cf;
+	margin-bottom: $margin-def * 4;
+}
+
+section.contact-form-container {
+	float: left;
+	margin-top: $margin-def * 4;
+	width: col-width-abs(2, $margin-def * 4);
+	margin-right: $margin-def * 4;
+
+	.h2 {
+		font-size: pem(30);
+		margin-bottom: $margin-def;
+	}
+
+	.text {
+		font-size: pem(17);
+		// @include adjusted-lh( 30 / 17 );
+	}
+
+	hr {
+		text-align: left;
+		margin-top: $margin-def * 1.5;
+	}
+
+	#contact-form-thanks {
+		display: none;
+		font-size: pem(17);
+		@include adjusted-lh( 34 / 17 );
+		margin-bottom: $margin-def * 2;
+		max-width: 320px;
+	}
+}
+
+section.contact-address {
+
+	$widthMarker  : 30px;
+	$heightMarker : 46px;
+
+	float: left;
+	margin-top: $margin-def * 4;
+	width: col-width-abs(2, $margin-def * 4);
+
+	.image {
+		margin-bottom: $margin-def * 2.5;
+	}
+
+	.text {
+		font-size: pem(17);
+		@include adjusted-lh( 30 / 17 );
+		padding-left: 54px;
+
+		a {
+			transition: color $speed-fast;
+			color: $color-txt-dark;
+
+			&:hover, &:active {
+				color: $color-pri;
+			}
+		}
+	}
+
+	.with-marker {
+		position: relative;
+
+		&::before {
+			@include pseudo-basic;
+			@include bg-cover('map-marker.svg');
+			position: absolute;
+			top: 0.5em;
+			left: 0;
+			width: $widthMarker;
+			height: $heightMarker;
+		}
+
+	}
+}
+
+section.contact-address {
+
+
+
+}
