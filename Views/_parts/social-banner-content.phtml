@@ -1,29 +1,62 @@
 <?
 	/*
 	 * Expecting social feed data...
-	 * not sure what the plan is exactly
 	 *
-	 * ...
+	 * Only instagram posts, for now
+	 * Expecting at least 5.
 	 */
+
+	// pr($social);
+
 ?>
 
 	<div class="block-group left">
+		<?
+			$post = array_peek($social);
+			$post = (object) $post['instagram'];
+		?>
 		<div class="block large appear-effect">
+			<a href="<?= $post->url ?>" target="_blank" rel="nofollow" style="background-image: url('<?=
+				$post->image ?>');" title="<?= $post->title ?>"></a>
 		</div>
 	</div>
 
 	<div class="block-group middle">
+		<?
+			$post = array_peek($social, 1);
+			$post = (object) $post['instagram'];
+		?>
 		<div class="block wide appear-effect">
+			<a href="<?= $post->url ?>" target="_blank" rel="nofollow" style="background-image: url('<?=
+				$post->image ?>');" title="<?= $post->title ?>"></a>
 		</div>
 
+		<?
+			$post = array_peek($social, 2);
+			$post = (object) $post['instagram'];
+		?>
 		<div class="block small appear-effect">
+			<a href="<?= $post->url ?>" target="_blank" rel="nofollow" style="background-image: url('<?=
+				$post->image ?>');" title="<?= $post->title ?>"></a>
 		</div>
 
+		<?
+			$post = array_peek($social, 3);
+			$post = (object) $post['instagram'];
+		?>
 		<div class="block small appear-effect">
+			<a href="<?= $post->url ?>" target="_blank" rel="nofollow" style="background-image: url('<?=
+				$post->image ?>');" title="<?= $post->title ?>"></a>
 		</div>
 	</div>
 
 	<div class="block-group right">
+		<?
+			$post = array_peek($social, 4);
+			$post = (object) $post['instagram'];
+		?>
 		<div class="block large appear-effect">
+			<a href="<?= $post->url ?>" target="_blank" rel="nofollow" style="background-image: url('<?=
+				$post->image ?>');" title="<?= $post->title ?>"></a>
 		</div>
 	</div>
