@@ -261,8 +261,9 @@ footer.blog-detail {
 			width: $sizeButton;
 			height: $sizeButton;
 			margin-right: $margin-def / 3;
+			transition: transform $speed-fast;
 
-			&::before, &::after {
+			&::before {
 				@include pseudo-basic;
 				@include bg-contain;
 				position: absolute;
@@ -270,24 +271,25 @@ footer.blog-detail {
 				height: $sizeIcon;
 				top: c-off($sizeButton, $sizeIcon);
 				left: c-off($sizeButton, $sizeIcon);
-				transition: opacity 1s;
 			}
 
-			&::after {
-				opacity: 0;
-			}
+			// &::after {
+			// 	opacity: 0;
+			// }
 
 			&:last-child {
 				margin-right: 0;
 			}
 
 			&:hover, &:active {
-				&::before {
-					opacity: 0;
-				}
-				&::after {
-					opacity: 1;
-				}
+				transform: scale(1.25); /* 1/10 of the original size */
+
+				// &::before {
+				// 	opacity: 0;
+				// }
+				// &::after {
+				// 	opacity: 1;
+				// }
 			}
 		}
 
@@ -295,17 +297,17 @@ footer.blog-detail {
 			&::before {
 				background-image: image-url('twitter-color.svg');
 			}
-			&::after {
-				background-image: image-url('twitter-pink.svg');
-			}
+			// &::after {
+			// 	background-image: image-url('twitter-pink.svg');
+			// }
 		}
 		.facebook {
 			&::before {
 				background-image: image-url('facebook-color.svg');
 			}
-			&::after {
-				background-image: image-url('facebook-pink.svg');
-			}
+			// &::after {
+			// 	background-image: image-url('facebook-pink.svg');
+			// }
 		}
 	}
 }
