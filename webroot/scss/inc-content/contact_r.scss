@@ -107,7 +107,6 @@
 				left: $margin-def * 2;
 				top: $margin-def * 1.5;
 				margin-bottom: 0;
-
 			}
 
 			.title, .caption, .details {
@@ -131,26 +130,26 @@
 		}
 	}
 }
-// 		no icons
+// 		no icons / small icons
 @media (max-width: 630px) {
+
+	$sizeIcon : 80px;
 
 	header.contact .paths {
 		.icon-container {
-			padding-left: 0;
+			padding-left: $sizeIcon + $margin-def * 2;
 			width: 100%;
 
 			.image {
-				display: none;
-			}
-
-			.title, .caption, .details {
-				text-align: center;
+				left: 0;
+				width: $sizeIcon;
+				height: $sizeIcon;
 			}
 		}
 	}
 }
 // larger font in between
-@media (min-width: 520px) and (max-width: 630px) {
+@media (min-width: 550px) and (max-width: 630px) {
 	header.contact .paths {
 		.title {
 			font-size: pem(20);
@@ -161,14 +160,54 @@
 	}
 }
 
-// and smallest phone
-@media (max-width: 520px){
+// and smaller phone
+@media (max-width: 550px){
 	header.contact .paths {
 		.title {
 			font-size: pem(18);
 		}
 		.caption, .details {
 			font-size: pem(17);
+		}
+	}
+}
+// even smaller: smaller icons
+@media (max-width: 440px) {
+
+	$sizeIcon : 60px;
+
+	header.contact .paths {
+		.icon-container {
+			padding-left: $sizeIcon + $margin-def * 2;
+			width: 100%;
+
+			.image {
+				left: 0;
+				width: $sizeIcon;
+				height: $sizeIcon;
+			}
+		}
+		.title {
+			font-size: pem(17);
+		}
+		.caption, .details {
+			font-size: pem(15);
+		}
+	}
+}
+// smallest: no icons
+@media (max-width: 380px) {
+	header.contact .paths {
+
+		.icon-container {
+			padding-left: 0;
+
+			.image {
+				display: none;
+			}
+			.title, .caption, .details {
+				text-align: center;
+			}
 		}
 	}
 }
