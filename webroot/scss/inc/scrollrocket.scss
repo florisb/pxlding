@@ -1,0 +1,81 @@
+// scroll to top button
+
+#pxl-rocket {
+	$size: 40px;
+
+	display: none;
+	z-index: $z-overlay;
+	position: fixed;
+	width: $size;
+	height: $size;
+	right: $margin-def * 2;
+	bottom: $margin-def * 5;
+	cursor: pointer;
+	opacity: 0.65;
+
+	transition: right $speed-fast,
+	            bottom 0.5s ease-in;
+
+	&:hover {
+		opacity: 0.75;
+	}
+
+	> div {
+		position: relative;
+		width: $size;
+		height: $size;
+		@include bg-contain('rocket.svg');
+	}
+}
+
+@media (min-width: #{$width-main + 140}) {
+	#pxl-rocket {
+		right: $margin-def;
+	}
+}
+
+@media (max-width: #{$width-main + 140}) {
+	#pxl-rocket {
+		right: $margin-def * 5;
+	}
+}
+@media (max-width: #{$width-main + 120}) {
+	#pxl-rocket {
+		right: $margin-def * 4;
+	}
+}
+@media (max-width: #{$width-main + 80}) {
+	#pxl-rocket {
+		right: $margin-def * 3;
+	}
+}
+// @media (min-width: #{$width-main + 60}) and (max-width: #{$width-main + 200}) {
+// 	#pxl-rocket {
+// 		right: $margin-def;
+// 	}
+// }
+@media (max-width: #{$width-main + 50}) {
+	#pxl-rocket {
+		right: $margin-def * 2;
+	}
+}
+
+
+@media (min-width: #{$width-main + 20}) and (max-width: #{$width-main + 40}) {
+	#pxl-rocket {
+		right: $margin-def * 1.5;
+	}
+}
+
+@media (max-width: #{$width-main + 20}) {
+	#pxl-rocket {
+		right: $margin-def * 1;
+	}
+}
+
+
+@media (max-width: #{$width-tablet}) {
+	#pxl-rocket {
+		display: none;
+	}
+}
