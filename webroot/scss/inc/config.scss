@@ -100,5 +100,6 @@ $speed-appear         : 0.75s;
 // special stuff
 $home-service-text-min-height: 9em;			// set minimum text block height for vertical lineup of service links
 
-
 $standard-dotted-border : 1px dotted #bdbdbd;
+
+$transition-function-mobile-menu: cubic-bezier(0.000, 0.995, 0.990, 1.000);

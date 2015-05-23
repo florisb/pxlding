@@ -45,6 +45,7 @@ $heightBurger : 30px;
 		width: 100%;
 		height: $height;
 		padding-top: $margin-header-mobile;
+		background-color: white;
 
 		transition: height $speed-collapse,
 				    padding-top $speed-collapse;
@@ -54,6 +55,8 @@ $heightBurger : 30px;
 			img {
 				position: relative;
 				content: ""; // fake content to make after work
+
+				@include bg-contain('logo.svg');
 
 				&::after {
 					@include pseudo-basic;
