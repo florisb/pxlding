@@ -108,6 +108,7 @@ class Home extends BaseController
                         continue 2;
 
                     // may be empty (or irrelevant)
+                    case 'phone':
                     case 'website':
                         break;
 
