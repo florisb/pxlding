@@ -146,7 +146,7 @@ class ViewHelper {
 
 		$return = array('', '');
 
-		if ( ! preg_match('#^(.*)<br\s*/>\s*<br\s*/>(.*)$#i', $caption, $m)) {
+		if ( ! preg_match('#^(.*)<br\s*/>\s*<br\s*/>(.*)$#is', $caption, $m)) {
 			$return[0] = $caption;
 			return $return;
 
@@ -155,6 +155,9 @@ class ViewHelper {
 			// $return[1] = trim(trim($m[2]), '<br/>');
 			$return[0] = preg_replace('#(\s*<br\s*/>\s*)*$#i', '', $m[1]);
 			$return[1] = preg_replace('#(\s*<br\s*/>\s*)*$#i', '', $m[2]);
+
+			$return[0] = preg_replace('#^(\s*<br\s*/>\s*)*#i', '', $return[0]);
+			$return[1] = preg_replace('#^(\s*<br\s*/>\s*)*#i', '', $return[1]);
 		}
 
 
