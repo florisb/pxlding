@@ -142,6 +142,18 @@ section.jobs-list {
 					// @include adjusted-lh(1);
 
 					transition: margin-top 0.35s;
+
+				}
+
+				.question-mark {
+					opacity: 0;
+					font-size: 0.85em;
+					transform: perspective(1000px) rotate3d(1,0,0,90deg);
+  					transform-origin: 50% 0%;
+					padding-left: 0.2em;
+					// transition: opacity 0.35s 0s;
+					transition: opacity 0.35s,
+								transform 0.35s;
 				}
 
 				.prefix {
@@ -216,6 +228,12 @@ section.jobs-list {
 				.text .title {
 					.name {
 						margin-top: #{$fzPrefix / 2}px;
+					}
+					.question-mark {
+						opacity: .95;
+						// transition-delay: 0.2s;
+						transform: perspective(1000px) rotate3d(1,0,0,0);
+						// transition-delay: 0.45s;
 					}
 					.prefix {
 						// bottom: 0;
