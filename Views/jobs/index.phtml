@@ -91,7 +91,11 @@
 			</p>
 		</div>
 
-		<div class="form standard-middle-column">
+		<div id="jobs-newsletter-thanks" class="newsletter-thanks">
+			<?= ML::label('jobs newsletter thanks') ?>
+		</div>
+
+		<div class="form jobs-newsletter-form standard-middle-column">
 
 			<form id="jobs-newsletter-form" action="<?= $this->route('jobs', 'newsletter') ?>" method="post">
 
@@ -104,7 +108,9 @@
 					<a id="jobs-newsletter-form-submit" class="button-submit small" title="<?= ML::label("jobs newsletter submit")?>" href="javascript:;"></a>
 				</div>
 
+				<div class="form-errors"></div>
 			</form>
+
 		</div>
 
 	</section>
