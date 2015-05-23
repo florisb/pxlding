@@ -14,6 +14,7 @@
 			'date',
 			'likes',
 			'comments',
+			'url',
 		);
 
 		protected $_requiredFields = array(

@@ -26,11 +26,11 @@ class SocialFeeds extends BaseFactory {
         $maxItemCount = (int) $maxItemCount;
         $feed         = array();
 
-		$instagramPosts = $this->getInstagram($member_id);
+		$instagramPosts = self::getInstagram();
 
 		foreach ($instagramPosts as $instagram)
         {
-			$entry = (array) $instagram;
+			$entry = $instagram->toAssocArray();
 
 			$feed[$entry['date']][self::FEED_TYPE_INSTAGRAM] = $entry;
 		}
@@ -71,7 +71,7 @@ class SocialFeeds extends BaseFactory {
 	 * @param  int $member_id
 	 * @return map
 	 */
-	public function getInstagram()
+	public static function getInstagram()
     {
 		$q = "
 			SELECT
@@ -80,7 +80,7 @@ class SocialFeeds extends BaseFactory {
 				`cms_m17_instagram`
 		";
 
-		$stmt = $this->stmt($q);
+		$stmt = self::stmt($q);
 
 		return self::db()->matrix($stmt);
 	}
@@ -116,10 +116,36 @@ class SocialFeeds extends BaseFactory {
 
             if ( ! $exists && ! empty($data['image']))
             {
+            	// attempt to get larger version of image
+            	$image = $this->getLargerInstagramImage($data['post_id']);
+
+            	if ( ! empty($image)) {
+            		$data['image'] = $image;
+            	}
+
                 $newPost = new \Model\Entity\InstagramPost($data);
                 $newPost->save();
 			}
 		}
+	}
+
+	/**
+	 * Attempts to retrieve larger version of the image for a given
+	 * instagram 'post' ID.
+	 *
+	 * @param  int $postId
+	 * @return string
+	 */
+	public function getLargerInstagramImage($postId)
+	{
+		$instagram_feed = file_get_contents("https://api.instagram.com/v1/media/" . $postId . "?access_token=" . self::TOKEN_INSTAGRAM);
+		$instagram_feed = json_decode($instagram_feed, true);
+
+		if ( ! isset($instagram_feed['data']['images']['standard_resolution']['url'])) {
+			return null;
+		}
+
+		return $instagram_feed['data']['images']['standard_resolution']['url'];
 	}
 
 	/**

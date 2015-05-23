@@ -11,13 +11,13 @@ class Home extends BaseController
         $services = Factory\Services::getAll(true);
         $cases    = Factory\Cases::getShowCased();
         $blog     = Factory\Blog::getLatest(3);
-
-        // photo's (instagram feed)
+        $social   = Factory\SocialFeeds::getFeed(5);
 
 
         $this->set('services', $services);
 		$this->set('cases', $cases);
         $this->set('blog', $blog);
+        $this->set('social', $social);
 	}
 
 
