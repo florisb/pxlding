@@ -142,10 +142,17 @@
 
 @media (max-width: 660px) {
 
-	section.blog-detail-banner .title {
-		.h1 {
+	section.blog-detail-banner {
+		.title .h1 {
 			font-size: pem(54);
 			text-align: center;
+		}
+
+		.back-link {
+			$widthApproximate: 140px;
+
+			left: 50%;
+			margin-left: -1 * $widthApproximate / 2;
 		}
 	}
 }
