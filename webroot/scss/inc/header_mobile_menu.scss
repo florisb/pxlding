@@ -236,7 +236,9 @@ div.mobile-menu {
 
 div.mobile-menu-header-overlay {
 	user-select: none;
-	transition: background-color 300ms $transition-function-mobile-menu;
+	transition: padding-top $speed-collapse,
+				height $speed-collapse,
+				background-color 300ms $transition-function-mobile-menu;
 
 	.main-logo {
 		img::after {

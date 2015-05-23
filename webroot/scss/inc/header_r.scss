@@ -15,6 +15,12 @@ $heightBurger : 30px;
 		.container {
 			padding-top: c-off($height, $heightBar);
 			padding-bottom: c-off($height, $heightBar);
+
+			// disable transition of non-mobile menu
+			// to prevent seeing gray background when scrolling
+			// up during de-collapse animation
+			transition: height 0s,
+						padding-top 0s;
 		}
 
 		.top-bar {
