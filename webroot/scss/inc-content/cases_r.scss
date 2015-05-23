@@ -244,6 +244,84 @@ $toOneColumn  : 520px;
  * Cases Detail
  */
 
+
+// return link on top
+@media (max-width: 1150px) {
+	header.case {
+		padding-top: $margin-def * 2;
+
+		.title {
+			text-align: center;
+
+			.back-link {
+				display: inline-block;
+				top: auto;
+				left: auto;
+				margin-left: auto;
+				margin-right: auto;
+				position: relative;
+				text-align: center;
+				margin-bottom: $margin-def * 2;
+			}
+		}
+	}
+}
+
+
+// smaller title font
+@media (max-width: 700px) {
+	header.case {
+
+		.title .h1 {
+			font-size: pem(60);
+			margin-left: $margin-def;
+			margin-right: $margin-def;
+			line-height: 1.2em;
+
+			&.small      { font-size: pem(52); }
+			&.medium     { font-size: pem(48); }
+			&.large      { font-size: pem(42); }
+			&.gargantuan { font-size: pem(24); }
+		}
+
+		.subtitle {
+			font-size: pem(17);
+			margin-left: $margin-def;
+			margin-right: $margin-def;
+		}
+
+		.back-link {
+			font-size: pem(15);
+
+			a::before, a::after {
+				top: 3px;
+			}
+		}
+	}
+}
+@media (max-width: 580px) {
+	header.case .title .h1 {
+		font-size: pem(50);
+
+		&.small      { font-size: pem(42); }
+		&.medium     { font-size: pem(38); }
+		&.large      { font-size: pem(32); }
+		&.gargantuan { font-size: pem(20); }
+	}
+}
+
+
+// intro
+@media (max-width: 450px) {
+	section.case-introduction .case-link {
+		.button {
+			width: 100%;
+			min-width: 0;
+		}
+	}
+}
+
+// text sections
 @media (max-width: 750px) {
 
 	$widthMax: 700px;

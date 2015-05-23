@@ -255,6 +255,27 @@ a.arrow-back-link {
 			opacity: 1;
 		}
 	}
+
+	// black on white version
+	&.black {
+		color: $color-txt-menu;
+
+		&::before, &::after {
+			opacity: 0.175;
+			@include bg-image('arrow-left-dark.svg');
+		}
+		&::after {
+			@include bg-image('arrow-left-dark.svg');
+		}
+
+		&:hover, &:active {
+			color: $color-txt-dark;
+
+			&::before, &::after {
+				opacity: 0.75;
+			}
+		}
+	}
 }
 
 
@@ -355,6 +376,10 @@ a.arrow-back-link {
 		&.right {
 			float: right;
 		}
+	}
+
+	.h2 {
+		margin-bottom: $margin-def;
 	}
 
 	// when floating stuff, make sure we clear at sensible spots

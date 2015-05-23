@@ -111,6 +111,15 @@ header.case {
 		color: $color-txt-dark;
 		line-height: 1em;
 		text-align: center;
+		margin-left: $margin-def * 2;
+		margin-right: $margin-def * 2;
+		transition: font-size $speed-fast;
+
+		// scaled smaller for longer texts
+		&.small      { font-size: pem(62); }
+		&.medium     { font-size: pem(58); }
+		&.large      { font-size: pem(52); }
+		&.gargantuan { font-size: pem(30); }
 	}
 
 	.subtitle {
@@ -119,13 +128,26 @@ header.case {
 		font-family: $font-sec;
 		@include adjusted-lh(1.4);
 		margin-top: $margin-def;
+		color: $color-txt-menu;
+		margin-left: $margin-def * 2;
+		margin-right: $margin-def * 2;
+		transition: font-size $speed-fast;
 	}
 
-	.return-link {
+	.back-link {
 		position: absolute;
 		left: $margin-def * 2.5;
 		top: #{$fontsizeMain / 2 - 5}px;
+		font-size: $fontsize-base;
 
+		a {
+			font-size: pem(17);
+
+			// &:hover, &:active {
+			// 	color: darken(white, 5);
+			// }
+			//
+		}
 	}
 }
 
