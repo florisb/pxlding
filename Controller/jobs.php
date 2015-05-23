@@ -23,11 +23,13 @@
 
 			$slug  = $this->getParam('slug');
 
-			$job   = Factory\Jobs::getBySlug($slug);
-			$icons = Factory\Jobs::getIconsById($job->id);
+			$job        = Factory\Jobs::getBySlug($slug);
+			$icons      = Factory\Jobs::getIconsById($job->id);
+			$colleagues = Factory\Employees::getColleaguesById($job->id);
 
-			$this->set('job',   $job,   true);
-			$this->set('icons', $icons, true);
+			$this->set('job',        $job,        true);
+			$this->set('icons',      $icons,      true);
+			$this->set('colleagues', $colleagues, true);
 
 			$this->set('hasParallax',    true, true);
 			$this->set('parallaxHeight', 470,  true);
