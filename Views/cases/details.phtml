@@ -4,15 +4,16 @@
 
 	<div class="title">
 
-		<div class="h1">
-			<?= $case->name ?>
-		</div>
-
-		<div class="return-link">
-			<a href="<?= $this->route('cases') ?>">
+		<div class="back-link">
+			<a class="arrow-back-link black" href="<?= $this->route('cases') ?>">
 				<?= ML::label('view all cases') ?>
 			</a>
 		</div>
+
+		<div class="h1 <?= \App\ViewHelper::getScaleClassForHugeTitleByLength($case->name) ?>">
+			<?= $case->name ?>
+		</div>
+
 	</div>
 
 	<div class="subtitle">
@@ -22,7 +23,7 @@
 </header>
 
 
-<section class="case-focal-imagery">
+<section class="case-focal-imagery large-margin-column">
 
 	<?
 		$isVideo = ( ! empty($case->video));
@@ -66,7 +67,7 @@
 
 
 
-<section class="case-introduction appear-effect">
+<section class="case-introduction appear-effect large-margin-column">
 
 	<div class="text custom-text-content standard-middle-column">
 		<?
