@@ -250,12 +250,11 @@ section.jobs-list {
 
 section.jobs-newsletter {
 
-	display: none; // for now
-
 	margin-bottom: $margin-def * 4;
 
 	.intro {
 		text-align: center;
+		margin-bottom: $margin-def * 2;
 
 		.h2 {
 			margin-bottom: $margin-def * 1.5;
@@ -267,30 +266,16 @@ section.jobs-newsletter {
 		}
 	}
 
-	.form {
-		$width: 340px;
-
-		margin-top: $margin-def * 2;
+	.newsletter-thanks {
+		display: none;
 		text-align: center;
-		width: $width;
+		font-size: pem(17);
+		@include adjusted-lh(1.6em);
+	}
 
-		form {
-			width: 100%;
-		}
-
-		.row {
-			margin-bottom: $margin-def / 2;
-
-			&:last-child {
-				margin-bottom: 0
-			}
-		}
-
-		input {
-			width: 100%;
-			padding-left: $margin-def * 1.5;
-		}
-
+	.form {
+		text-align: center;
+		width: 100%;
 	}
 
 }

@@ -220,3 +220,74 @@ input, textarea {
 		color: $color-err;
 	}
 }
+
+
+/*
+ * Jobs newsletter signup form
+ */
+
+.jobs-newsletter-form {
+
+	$width: 340px;
+
+	.row {
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: $margin-def / 2;
+		width: $width;
+
+		&:last-child {
+			margin-bottom: 0
+		}
+	}
+
+	input {
+		width: 100%;
+		padding-left: $margin-def * 1.5;
+	}
+
+	.row:last-child input {
+		padding-right: $margin-def * 3;
+	}
+
+	// special submit button over second input field
+	.button-submit {
+		$sizeButton : 34px;
+		$sizeIcon   : 22px;
+
+		display: block;
+		position: absolute;
+		width: $sizeButton;
+		height: $sizeButton;
+		bottom: $margin-def / 3 - 1;	// optical adjustment
+		right: $margin-def / 3 - 1;
+
+		border-radius: 5px;
+		background-color: $color-pri-darker;
+		transition: background $speed-fast;
+
+		&:hover {
+			background-color: lighten($color-pri, 10);
+		}
+		&:active {
+			background-color: darken($color-pri, 5);
+		}
+
+		&::before {
+			@include pseudo-basic;
+			@include bg-cover('send.svg');
+			position: absolute;
+			width: $sizeIcon;
+			height: $sizeIcon;
+			top: c-off($sizeButton, $sizeIcon);
+			left: c-off($sizeButton, $sizeIcon) - 1;
+		}
+	}
+
+	.form-errors {
+		font-size: pem(15);
+		color: $color-err;
+		@include adjusted-lh(1.4);
+	}
+}
