@@ -95,4 +95,39 @@ class ViewHelper {
 
 		return preg_match('#^\s*(&nbsp;)*\s*$#i', $text);
 	}
+
+	/**
+	 * Special case for case detail header: long titles will not fit.
+	 * Should scale down based on how long the title is. Has several
+	 * stages of scaling down. This returns css class names for it.
+	 *
+	 * @param  string $title
+	 * @return string
+	 */
+	public static function getScaleClassForHugeTitleByLength($title)
+	{
+		$length = strlen( trim($title) );
+
+		if ($length > 32) {
+			return 'gargantuan';
+		}
+
+		if ($length > 26) {
+			return 'huge';
+		}
+
+		if ($length > 20) {
+			return 'large';
+		}
+
+		if ($length > 16) {
+			return 'medium';
+		}
+
+		if ($length > 12) {
+			return 'small';
+		}
+
+		return '';
+	}
 }
