@@ -1,46 +1,153 @@
-<div id="page" class="contact">
 
-	<div class="case-header-wrapper">
-		<div id="case" data-height="401" class="animatedslow fadeIn">
-			<div id="case-image" style="background-image: url('<?=$_baseurl?>img/pxl_contact.jpg');"></div>
-		</div>
-		<div id="case-name"></div>
+<header class="contact">
+
+	<div class="humongous-title">
+		<h1 class="h1 bold-and-light">
+			<?= $contact->fancy_title ?>
+		</h1>
 	</div>
 
-	<? $this->partial('maps', array(), '_parts'); ?>
+	<div class="paths">
+		<?
+			$leftCaption   = \App\ViewHelper::splitContactPathCaption($contact->left_text);
+			$middleCaption = \App\ViewHelper::splitContactPathCaption($contact->middle_text);
+			$rightCaption  = \App\ViewHelper::splitContactPathCaption($contact->right_text);
+		?>
 
-	<div class="block maps">
-		<div class="inner">
-			<div class="contact">
-				<h2>Contact</h2>
 
-				 <div class="address">
-		             <a href="https://maps.google.com/maps?q=Pixelindustries+B.V.,+Prinsen+Bolwerk,+Oude+Stad,+Haarlem,+Nederland&hl=en&ll=52.388235,4.64299&spn=0.003618,0.006888&sll=37.0625,-95.677068&sspn=74.440576,112.851562&oq=pixelindustries&t=h&hq=pixelindustries+bv&hnear=Prinsen+Bolwerk,+Oude+Stad,+Haarlem,+Noord-Holland,+The+Netherlands&z=18" target="_blank">Pixelindustries B.V.</a><br/>
-		            Prinsen Bolwerk 5<br/>
-		            2011MA Haarlem<br/>
-		            +31 23 532 34 32<br/>
-		            <a href="mailto:info@pixelindustries.com">info@pixelindustries.com</a>
-		        </div>
+		<div class="icon-container left">
+			<div class="image" style="background-image: url('<?= $_baseurl . 'img/contact_heart.svg' ?>')"></div>
 
-		        <form method="post" action="<?=$_baseurl.$_language?>/home/contact" id="contactform" onSubmit="_gaq.push(['_trackEvent', 'Contact', 'Submit']); return true;">
-		        	<input type="text" name="name" placeholder="<?=ML::label('contact name')?>" />
-					<input type="email" name="email" placeholder="<?=ML::label('contact mail')?>" />
-					<input type="text" name="phone" placeholder="<?=ML::label('contact phone')?>" />
-					
-					<textarea name="message" placeholder="<?=ML::label('contact message')?>"></textarea>
+			<div class="title">
+				<?= $contact->left_title ?>
+			</div>
 
-					<button type="submit" class="btn black"><?=ML::label('contact submit'); ?></button>
+			<div class="caption custom-text-content">
+				<?= $leftCaption[0] ?>
+			</div>
 
-		            <input type="hidden" name="contact" value="1" />
-		        </form>
-
-		        <div class="thanks">
-	                <?=ML::label("contact thanks")?>
-	            </div>
-		       
+			<div class="details">
+				<?= $leftCaption[1] ?>
 			</div>
 		</div>
-		<div class="thankyou"></div>
+
+		<div class="icon-container middle">
+			<div class="image" style="background-image: url('<?= $_baseurl . 'img/contact_matthijs.svg' ?>')"></div>
+
+			<div class="title">
+				<?= $contact->middle_title ?>
+			</div>
+
+			<div class="caption custom-text-content">
+				<?= $middleCaption[0] ?>
+			</div>
+
+			<div class="details">
+				<?= $middleCaption[1] ?>
+			</div>
+		</div>
+
+		<div class="icon-container right">
+			<div class="image" style="background-image: url('<?= $_baseurl . 'img/contact_rocket.svg' ?>')"></div>
+
+			<div class="title">
+				<?= $contact->right_title ?>
+			</div>
+
+			<div class="caption custom-text-content">
+				<?= $rightCaption[0] ?>
+			</div>
+
+			<div class="details">
+				<?= $rightCaption[1] ?>
+			</div>
+		</div>
+
 	</div>
 
-</div>
+</header>
+
+
+<section class="contact-form-and-address large-margin-column">
+
+	<section class="contact-form-container appear-effect">
+
+		<h3 class="h2">
+			<?= $contact->form_title ?>
+		</h3>
+
+		<div class="text custom-text-content">
+			<?
+				echo \App\ViewHelper::replaceContentPlaceHolders($contact->form_text);
+			?>
+		</div>
+
+		<hr>
+
+		<div id="contact-form-thanks">
+			<?= ML::label('contact thanks') ?>
+		</div>
+
+		<div id="contact-form-container" class="basic-form contact-form">
+
+	        <form method="post" action="<?= $_baseurl . $_language?>/home/contact" id="contact-form" <? /* onSubmit="_gaq.push(['_trackEvent', 'Contact', 'Submit']);" */ ?>>
+	            <input type="hidden" name="contact" value="1">
+
+				<div class="row">
+	        		<input type="text" name="name" placeholder="<?= ML::label('contact name') ?>">
+	        	</div>
+
+				<div class="row">
+					<input type="email" name="email" placeholder="<?= ML::label('contact mail') ?>">
+				</div>
+
+				<div class="row">
+					<!-- <input type="text" name="phone" placeholder="<?=ML::label('contact phone')?>" /> -->
+				</div>
+
+				<div class="row">
+					<input type="text" name="website" placeholder="<?= ML::label('contact website') ?>">
+				</div>
+
+				<div class="row">
+					<textarea name="message" placeholder="<?= ML::label('contact message') ?>"></textarea>
+
+					<? /*
+					<div class="custom-checkbox-wrap">
+						<input type="checkbox" name="newsletter" id="subscribe">
+						<label for="subscribe"><?= ML::label('subscribe check') ?></a></label>
+					</div>
+					*/ ?>
+
+					<a id="contact-form-submit" class="button-submit" title="<?= ML::label("contact submit")?>" href="javascript:;"></a>
+				</div>
+
+				<div class="form-errors"></div>
+
+	        </form>
+		</div>
+
+	</section>
+
+	<section class="contact-address appear-effect">
+
+		<div class="image">
+			<img src="<?= $_baseurl . 'cms_img/' . $contact->file ?>" alt="<?= $contact->caption ?>">
+		</div>
+
+		<div class="address">
+			<h3 class="h2">
+				<?= $contact->address_title ?>
+			</h3>
+
+			<div class="text with-marker custom-text-content">
+				<?
+					echo \App\ViewHelper::replaceContentPlaceHolders($contact->address_text);
+				?>
+			</div>
+		</div>
+
+	</section>
+
+</section>
+
