@@ -42,8 +42,9 @@
 	}
 }
 
-// path sections
-@media (max-width: 1050px) {
+// path sections (for last horizontal stage)
+@media (min-width: 900px) and (max-width: 1050px)
+{
 	header.contact .paths {
 		.title {
 			font-size: pem(17);
@@ -54,17 +55,123 @@
 	}
 }
 
-@media (max-width: 850px) {
+// @media (max-width: 850px) {
+// 	header.contact .paths {
+// 		.title {
+// 			font-size: pem(15);
+// 		}
+// 		.caption, .details {
+// 			font-size: pem(13);
+// 		}
+// 	}
+// }
+
+//		onder elkaar
+@media (max-width: 900px) {
+	header.contact .paths {
+
+		$heightLine : 135px;
+		$sizeIcon   : 120px;
+
+		margin-left: $margin-def * 2;
+		margin-right: $margin-def * 2;
+		text-align: center;
+
+		.icon-container {
+			display: inline-block;
+			float: none;
+			clear: both;
+			width: 520px;
+			margin-bottom: $margin-def * 2;
+			padding-bottom: $margin-def * 2;
+			padding-left: $sizeIcon + $margin-def * 4;
+
+			&:last-child {
+				margin-bottom: 0;
+				padding-bottom: 0;
+			}
+
+			&::after {
+				border-right: 0;
+				border-bottom: $standard-dotted-border;
+				width: $heightLine;
+				height: 1px;
+				bottom: 0;
+				left: calc(50% - #{$heightLine / 2});
+				top: auto;
+				right: auto;
+			}
+
+			.image {
+				position: absolute;
+				left: $margin-def * 2;
+				top: $margin-def * 1.5;
+				margin-bottom: 0;
+
+			}
+
+			.title, .caption, .details {
+				text-align: left;
+			}
+
+
+			.caption {
+				min-height: 0;
+				padding-bottom: $margin-def;
+			}
+
+			// donder die aap iets naar boven
+			&:nth-child(2) .image {
+				top: $margin-def;
+			}
+		}
+
+		.caption, .details {
+			font-size: pem(17);
+		}
+	}
+}
+// 		no icons
+@media (max-width: 660px) {
+
+	header.contact .paths {
+		.icon-container {
+			padding-left: 0;
+			width: 100%;
+
+			.image {
+				display: none;
+			}
+
+			.title, .caption, .details {
+				text-align: center;
+			}
+		}
+	}
+}
+// larger font in between
+@media (min-width: 520px) and (max-width: 660px) {
 	header.contact .paths {
 		.title {
-			font-size: pem(15);
+			font-size: pem(20);
 		}
 		.caption, .details {
-			font-size: pem(13);
+			font-size: pem(17);
 		}
 	}
 }
 
+// and smallest phone
+@media (max-width: 520px){
+	header.contact .paths {
+		.title {
+			font-size: pem(18);
+		}
+		.caption, .details {
+			font-size: pem(17);
+		}
+	}
+}
 
 
 // special for location/address: too small? change ratio

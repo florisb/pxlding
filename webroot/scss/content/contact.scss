@@ -41,7 +41,6 @@ header.contact {
 			width: percentage(1 / 3);
 			text-align: center;
 
-
 			&::after {
 				@include pseudo-basic;
 				position: absolute;
@@ -147,7 +146,7 @@ section.contact-address {
 	width: col-width-abs(2, $margin-def * 4);
 
 	.image {
-		margin-bottom: $margin-def * 2.5;
+		margin-bottom: $margin-def * 2;
 
 		img {
 			width: 100%;
@@ -190,10 +189,5 @@ section.contact-address {
 	}
 }
 
-section.contact-address {
-
-
-
-}
 
 @import "../inc-content/contact_r";
