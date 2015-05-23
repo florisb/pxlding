@@ -48,6 +48,8 @@ section.social-banner {
 			z-index: $z-content + 1;
 			display: block;
 			overflow: hidden;
+
+			@include bg-cover;
 		}
 	}
 
