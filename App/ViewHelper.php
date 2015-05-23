@@ -130,4 +130,34 @@ class ViewHelper {
 
 		return '';
 	}
+
+	/**
+	 * Splits captions into a text and the phone/contact info, for
+	 * better view rendering.
+	 *
+	 * @param  string $caption
+	 * @return array() 		0 => paragraph, 1 => contact details
+	 */
+	public static function splitContactPathCaption($caption)
+	{
+		$caption = trim($caption);
+
+		if (empty($caption)) return $caption;
+
+		$return = array('', '');
+
+		if ( ! preg_match('#^(.*)<br\s*/>\s*<br\s*/>(.*)$#i', $caption, $m)) {
+			$return[0] = $caption;
+			return $return;
+
+		} else {
+			// $return[0] = trim(trim($m[1]), '<br/>');
+			// $return[1] = trim(trim($m[2]), '<br/>');
+			$return[0] = preg_replace('#(\s*<br\s*/>\s*)*$#i', '', $m[1]);
+			$return[1] = preg_replace('#(\s*<br\s*/>\s*)*$#i', '', $m[2]);
+		}
+
+
+		return $return;
+	}
 }
