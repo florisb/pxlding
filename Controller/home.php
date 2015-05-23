@@ -8,24 +8,16 @@ class Home extends BaseController
 
 	public function indexAction() {
 
-        // main video
-
         $services = Factory\Services::getAll(true);
         $cases    = Factory\Cases::getShowCased();
         $blog     = Factory\Blog::getLatest(3);
 
-        // photo's
-
-        // $employees = Factory\Employees::getAll(true);
-        // $partners  = Factory\Partners::getAll(true);
-
+        // photo's (instagram feed)
 
 
         $this->set('services', $services);
 		$this->set('cases', $cases);
         $this->set('blog', $blog);
-        // $this->set('employees', $employees);
-        // $this->set('partners', $partners);
 	}
 
 
