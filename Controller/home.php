@@ -102,10 +102,14 @@ class Home extends BaseController
 
                 switch ($key) {
 
-                    // may be empty (or irrelevant)
+                    // overhead
                     case 'contact':
-                    case 'website':
+                    case 'ajax':
                         continue 2;
+
+                    // may be empty (or irrelevant)
+                    case 'website':
+                        break;
 
                     case 'email':
                         if (filter_var($value, FILTER_VALIDATE_EMAIL) == true) {
