@@ -470,6 +470,30 @@ section.jobs-detail-content {
 		margin-bottom: $margin-def * 2;
 	}
 
+	.colleagues {
+		$sizeBlock: 50px;
+
+		margin-bottom: $margin-def * 2;
+
+		.h2 {
+			margin-bottom: $margin-def * 1.25;
+		}
+
+		li {
+			display: inline-block;
+			margin-right: $margin-def / 2;
+			width: $sizeBlock;
+			height: $sizeBlock;
+
+			@include bg-contain;
+			background-color: $color-bg-sec;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+
 	.content {
 		font-size: pem(17);
 		@include adjusted-lh(1.85);

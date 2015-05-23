@@ -59,7 +59,8 @@
 	<section class="jobs-detail-icons no-margin-column appear-effect">
 
 		<div class="icon-container left">
-			<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $icons->left_file ?>')"></div>
+			<div class="image" style="background-image: url('<?=
+				$_baseurl . 'cms_img/' . $icons->left_file ?>')"></div>
 
 			<div class="title">
 				<?= $icons->left_caption ?>
@@ -71,7 +72,8 @@
 		</div>
 
 		<div class="icon-container middle">
-			<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $icons->middle_file ?>')"></div>
+			<div class="image" style="background-image: url('<?=
+				$_baseurl . 'cms_img/' . $icons->middle_file ?>')"></div>
 
 			<div class="title">
 				<?= $icons->middle_caption ?>
@@ -83,7 +85,8 @@
 		</div>
 
 		<div class="icon-container right">
-			<div class="image" style="background-image: url('<?= $_baseurl . 'cms_img/' . $icons->right_file ?>')"></div>
+			<div class="image" style="background-image: url('<?=
+				$_baseurl . 'cms_img/' . $icons->right_file ?>')"></div>
 
 			<div class="title">
 				<?= $icons->right_caption ?>
@@ -114,11 +117,14 @@
 				<?= ML::label('jobs your colleagues') ?>
 			</div>
 
-			<? foreach ($colleagues as $colleague): ?>
+			<ul>
+				<? foreach ($colleagues as $colleague): ?>
 
-			<div class="colleague" style="background-image: url('<?= $_baseurl . 'cms_img/' . $colleague->file ?>')" title="<?= $colleague->name ?>"></div>
+				<li class="colleague" style="background-image: url('<?=
+					$_baseurl . 'cms_img/' . $colleague->file ?>')" title="<?= $colleague->name ?>"></li>
 
-			<? endforeach; ?>
+				<? endforeach; ?>
+			</ul>
 
 		</div>
 
