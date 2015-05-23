@@ -490,6 +490,48 @@ window.pxl.settings     = require('./settings.js');
 			});
 		}
 
+		/*
+		 * Handle rocket
+		 */
+		var rocketOffset = parseInt( $('body').attr('data-rocket-offset') , 10);
+		var rocketBottom = parseInt( $('body').attr('data-rocket-bottom') , 10);
+
+		$('#pxl-rocket').addClass('shake').addClass('shake-little');
+
+		if (rocketOffset) {
+
+			$('#pxl-rocket').click(function() {
+
+				// rumbles
+				$('#pxl-rocket').addClass('shake-constant').removeClass('shake-little');
+
+				// shoots up
+				setTimeout(function() {
+					$('#pxl-rocket').css('bottom', '1500px');
+				}, 350);
+
+				setTimeout(function() {
+	            	$("html, body").animate({ scrollTop: 0 }, { duration: 500 });
+	            	$('#pxl-rocket').css('bottom', rocketBottom + 'px');
+	            }, 650);
+
+	            setTimeout(function() {
+	            	$('#pxl-rocket').removeClass('shake-constant').addClass('shake-little');
+	            }, 750);
+
+			});
+
+			$(document).scroll(function() {
+				var pos = $(window).scrollTop();
+
+				if (pos >= rocketOffset){
+					$('#pxl-rocket').fadeIn('fast');
+				} else {
+					$('#pxl-rocket').fadeOut('fast');
+				}
+			});
+		}
+
 	});
 })();
 
