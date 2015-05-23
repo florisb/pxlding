@@ -73,7 +73,7 @@
 		?>
 
 	</head>
-	<body<?= $hasParallax && ! ($isMobile || $isTablet) ? ' class="has-parallax"' : null ?>>
+	<body<?= $hasParallax && ! ($isMobile || $isTablet) ? ' class="has-parallax"' : null ?> data-rocket-offset="2000" data-rocket-bottom="100">
 
 		<div class="main-container">
 
@@ -85,6 +85,8 @@
 				<?
 					$this->contents();
 				?>
+
+				<div id="pxl-rocket" class="scroll-to-top"><div></div></div>
 			</div>
 
 			<?
