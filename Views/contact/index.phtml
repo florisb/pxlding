@@ -137,7 +137,10 @@
 		</div>
 
 		<div class="address">
-			<h3 class="h2">
+
+			<h3 id="distance-from-us-title" class="h2" data-with-location="<?= ML::label('We are just %DISTANCE% away')
+				?>" data-without-location="<?= $contact->address_title
+				?>">
 				<?= $contact->address_title ?>
 			</h3>
 

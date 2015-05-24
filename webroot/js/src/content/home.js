@@ -9,11 +9,7 @@
 	"use strict";
 
 	var contactForm     = require('../modules/ContactForm.js'),
-		DistanceFromPXL = require('../modules/DistanceFromPXL.js'),
 		homeVideo       = require('../modules/HomeExtraVideo.js');
-
-	// for distance shower
-	var _distanceFromWhichToIgnoreDecimals = 3;
 
 
 	$(function() {
@@ -41,37 +37,12 @@
 		});
 
 
-		/*
-         * Get location and set correct distance
-         */
-        var distancer = new DistanceFromPXL();
-
-        if (distancer.locationAvailable()) {
-        	distancer.getLocation(function(position) {
-
-        		if (position === false) {
-        			// console.log('no position available')
-        			return;
-        		}
-
-        		var distance = distancer.getDistanceFromPXL(position.latitude, position.longitude);
-
-        		// don't allow absurd distances to be listed
-        		if (distance > 100) {
-        			// console.log('distance to us too great')
-        			return;
-        		}
-
-        		_showDistanceToUs(distance);
-        	} );
-        }
-
         /*
          * Preroll
          *
          * Only if present (if it is, doPreroll was true)
          */
-        if (('#preroll-container').length) {
+        if ($('#preroll-container').length) {
 
         	// prevent scrolling
 			$('body').addClass('no-scroll-any');
@@ -82,38 +53,16 @@
         	// fade site in
 	        setTimeout(function() {
 	        	$('#preroll-container').fadeOut('slow');
-	        	$('body').removeClass('no-scroll-any');
 	        }, 2900);
 
 	        // start video
 	        setTimeout(function() {
 				$('#home-main-video').get(0).play();
+	        	$('body').removeClass('no-scroll-any');
 	        }, 3500);
 
 		}
 
 	});
-
-	/**
-	 * Display a distance with the placeholder helper
-	 *
-	 * @param  {float} distance 	in km
-	 */
-	var _showDistanceToUs = function(distance) {
-
-		var title = $('#home-distance-from-us-title');
-
-		var text = title.attr('data-with-location');
-
-		if (distance > _distanceFromWhichToIgnoreDecimals) {
-			distance = Math.round(distance);
-		} else {
-			distance = distance.toFixed(1);
-		}
-
-		text = text.replace('%DISTANCE%', distance + 'km');
-
-		title.html(text);
-	};
 
 })();

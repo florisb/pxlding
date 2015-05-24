@@ -20,12 +20,6 @@ class Home extends BaseController
         $this->set('blog', $blog);
         $this->set('social', $social);
 
-        // set this for the 'we are just X km away' hipster thingy
-        $this->set('pxlLocation', (object) array(
-            'latitude'  => 52.38828,
-            'longitude' => 4.64306
-        ));
-
 
         if ( ! Session::get('preroll_done') || $_GET['preroll']) {
             $this->set('doPreroll', true, true);
