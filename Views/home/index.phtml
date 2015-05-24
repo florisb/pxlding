@@ -145,12 +145,14 @@
 	<section class="home-location appear-effect">
 
 		<?
-			// get distance if avaible... how?
+			// gets distance if available.. default is the 'fallback'
 		?>
 		<section class="home-location-address">
 
-			<h3 class="h2">
-				<?= ML::label('We are just %DISTANCE% away') ?>
+			<h3 id="home-distance-from-us-title" class="h2" data-with-location="<?= ML::label('We are just %DISTANCE% away')
+				?>" data-without-location="<?= ML::label('home no location available header')
+				?>">
+				<?= ML::label('home no location available header') ?>
 			</h3>
 
 			<div class="address">
