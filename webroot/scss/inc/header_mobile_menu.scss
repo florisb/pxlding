@@ -9,7 +9,7 @@
 /*
  * Mixin for gradual menu buildup
  */
-@mixin menu-li-animation($nth, $total: 7, $delayStep: 0.05, $delayBase: 0.2) {
+@mixin menu-li-animation($nth, $total: 7, $delayStep: 0.05, $delayBase: 0.1) {
 
 	li:nth-of-type(#{$nth}) {
 		transition-delay: #{ ($total - $nth) * $delayStep }s;
@@ -174,16 +174,12 @@ div.mobile-menu {
 			letter-spacing: 0;
 			// transform: perspective(1000px) rotate3d(1,0,0,0);
 			transition: letter-spacing 0.5s cubic-bezier(0,.01,.17,1),
-						opacity 1s 0.5s;
+						opacity 1s 0.25s;
 
 			// this breaks everything somehow
 			// transition: all 1s $transition-function-mobile-menu;
 		}
 	}
-
-	$delayBase    : 0.25;
-	$delayInUnit  : 0.05;
-	$delayOutUnit : 0.05;
 
 	// fade in one from top to bottom and back
 	@include menu-li-animation(1);
@@ -194,39 +190,6 @@ div.mobile-menu {
 	@include menu-li-animation(6);
 	@include menu-li-animation(7);
 
-
-	// fancy split animation thing that won't work
-	// @include menu-split-animation('L', 1, $widthMenuItem, 6 * $delayInUnit, 0);
-	// @include menu-split-animation('L', 2, $widthMenuItem, 5 * $delayInUnit, 1 * $delayOutUnit);
-	// @include menu-split-animation('L', 3, $widthMenuItem, 4 * $delayInUnit, 2 * $delayOutUnit);
-	// @include menu-split-animation('L', 4, $widthMenuItem, 3 * $delayInUnit, 3 * $delayOutUnit);
-	// @include menu-split-animation('L', 5, $widthMenuItem, 2 * $delayInUnit, 4 * $delayOutUnit);
-	// @include menu-split-animation('L', 6, $widthMenuItem, 1 * $delayInUnit, 5 * $delayOutUnit);
-	// @include menu-split-animation('L', 7, $widthMenuItem, 0,                6 * $delayOutUnit);
-
-	// @include menu-split-animation('R', 1, $widthMenuItem, 6 * $delayInUnit, 0);
-	// @include menu-split-animation('R', 2, $widthMenuItem, 5 * $delayInUnit, 1 * $delayOutUnit);
-	// @include menu-split-animation('R', 3, $widthMenuItem, 4 * $delayInUnit, 2 * $delayOutUnit);
-	// @include menu-split-animation('R', 4, $widthMenuItem, 3 * $delayInUnit, 3 * $delayOutUnit);
-	// @include menu-split-animation('R', 5, $widthMenuItem, 2 * $delayInUnit, 4 * $delayOutUnit);
-	// @include menu-split-animation('R', 6, $widthMenuItem, 1 * $delayInUnit, 5 * $delayOutUnit);
-	// @include menu-split-animation('R', 7, $widthMenuItem, 0,                6 * $delayOutUnit);
-
-
-	// .splitR li:nth-of-type(1) { margin-left: -201px; transition-delay: 0.12s; }
-	// .splitR li.animate:nth-of-type(1) { margin-left: -160px; transition-delay: 0.0s; }
-	// .splitR li:nth-of-type(2) { margin-left: -203px; transition-delay: 0.069s; }
-	// .splitR li.animate:nth-of-type(2) { margin-left: -160px; transition-delay: 0.05s; }
-	// .splitR li:nth-of-type(3) { margin-left: -214px; transition-delay: 0.06s; }
-	// .splitR li.animate:nth-of-type(3) { margin-left: -160px; transition-delay: 0.1s; }
-	// .splitR li:nth-of-type(4) { margin-left: -217px;transition-delay: 0.03s; }
-	// .splitR li.animate:nth-of-type(4) { margin-left: -160px; transition-delay: 0.15s; }
-	// .splitR li:nth-of-type(5) { margin-left: -217px; transition-delay: 0.0s; }
-	// .splitR li.animate:nth-of-type(5) { margin-left:-160px; transition-delay: 0.2s; }
-	// .splitR li:nth-of-type(6) { margin-left: -217px; transition-delay: 0.0s; }
-	// .splitR li.animate:nth-of-type(4) { margin-left: -160px; transition-delay: 0.25s; }
-	// .splitR li:nth-of-type(7) { margin-left: -217px; transition-delay: 0.0s; }
-	// .splitR li.animate:nth-of-type(5) { margin-left: -160px; transition-delay: 0.3s; }
 }
 
 div.mobile-menu-header-overlay {
