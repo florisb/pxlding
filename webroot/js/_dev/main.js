@@ -823,13 +823,18 @@ module.exports = (function() {
 
         var openMenu = function () {
 
+
             $('body').addClass('no-scroll');
             $('div.mobile-menu').addClass('animate');
-            $('div.mobile-menu-bg').addClass('animate');
-            $('div.mobile-menu-header-overlay').addClass('animate');
-            $('div.mobile-menu-burger').addClass('open');
-            $('div.mobile-menu-burger div.x, div.mobile-menu-burger div.z').addClass('collapse');
-            $('.mobile-menu li').addClass('animate');
+            // this must be done after timeout, or for some bizarre reason
+            // the animation on li items will not work
+            setTimeout(function() {
+                $('div.mobile-menu-bg').addClass('animate');
+                $('div.mobile-menu-header-overlay').addClass('animate');
+                $('div.mobile-menu-burger').addClass('open');
+                $('div.mobile-menu-burger div.x, div.mobile-menu-burger div.z').addClass('collapse');
+                $('.mobile-menu li').addClass('animate');
+            }, 10);
 
             setTimeout(function() {
                 $('div.mobile-menu-burger div.y').hide();
@@ -865,7 +870,7 @@ module.exports = (function() {
                     $('div.mobile-menu-burger div.y').show();
                     $('div.mobile-menu-burger div.x, div.mobile-menu-burger div.z').removeClass('collapse');
                 }, 70);
-            }, 100);
+            }, 300);
         };
     };
 
