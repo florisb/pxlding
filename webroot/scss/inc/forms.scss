@@ -238,7 +238,7 @@ input, textarea {
 		width: $width;
 
 		&:last-child {
-			margin-bottom: 0
+			margin-bottom: 0;
 		}
 	}
 
@@ -247,7 +247,7 @@ input, textarea {
 		padding-left: $margin-def * 1.5;
 	}
 
-	.row:last-child input {
+	.row:nth-child(2) input {
 		padding-right: $margin-def * 3;
 	}
 

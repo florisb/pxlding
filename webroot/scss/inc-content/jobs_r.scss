@@ -135,6 +135,14 @@
 	}
 }
 
+// newsletter form: 340px form does not fit anymore
+@media (max-width: 440px) {
+	section.jobs-newsletter {
+		.row {
+			width: 100%;
+		}
+	}
+}
 
 
 
