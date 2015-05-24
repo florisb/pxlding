@@ -3,7 +3,8 @@
 
 	<form id="blog-search-form" class="blog-search-form" method="post" action="<?= $this->route('blog', 'search') ?>" data-always-focus="<?= $alwaysFocusInput ? 1 : 0 ?>">
 		<div class="input-container">
-			<input id="blog-search-input" type="search" name="search" value="<?= $search ?>" placeholder="<?= ML::label('search for something') ?>">
+			<input id="blog-search-input" type="search" name="search" value="<?= $search ?>" placeholder="<?=
+				ML::label('search for something') ?>" autocomplete="off">
 			<span class="input-icon"></span>
 			<span id="blog-search-is-loading" class="loading-indicator dark in-input-container"></span>
 		</div>
