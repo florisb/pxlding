@@ -125,7 +125,9 @@ body {
 }
 
 
-@media #{$media-tablet}, #{$media-desktop-small} {
+// needs a little offset to prevent horizontal scrollbar
+// was: 	#{$media-tablet}, #{$media-desktop-small}
+@media (max-width: $width-main + 16) {
 	.main-container {
 		width: 100%;
 	}
