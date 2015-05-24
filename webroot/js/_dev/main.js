@@ -482,16 +482,17 @@ window.pxl._plugin._skrollr        = require('../lib/skrollr/skrollr.min.js');
 		var rocketOffset = parseInt( $('body').attr('data-rocket-offset') , 10);
 		var rocketBottom = parseInt( $('body').attr('data-rocket-bottom') , 10);
 
+		// rumbles on hover, a little
 		$('#pxl-rocket').addClass('shake').addClass('shake-little');
 
 		if (rocketOffset) {
 
 			$('#pxl-rocket').click(function() {
 
-				// rumbles
+				// rumbles more
 				$('#pxl-rocket').addClass('shake-constant').removeClass('shake-little');
 
-				// shoots up
+				// shoots up (css has sweet bezier curve)
 				setTimeout(function() {
 					$('#pxl-rocket').css('bottom', '1500px');
 				}, 350);

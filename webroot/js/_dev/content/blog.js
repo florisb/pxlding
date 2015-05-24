@@ -29,27 +29,34 @@
 			$(containerId + ' article.blog').css('margin-right', 0);
 
 			_initMasonry();
+
+	        // scroll down to latest posts if we were loading a page beyond the first
+	        if ( parseInt( $(containerId).attr('data-page-on-open') , 10) > 1) {
+	        	$("html, body").animate({ scrollTop: $(document).height() }, 'slow');
+	        }
+
+			// store what we're currently looking for, if anything
+			currentlySearchingFor = $.trim( $('#blog-search-input').val() );
+
+			// or always focus if set (for search pages)
+			if ($('#blog-list-empty').css('display') == 'block' || $('#blog-search-form').attr('data-always-focus') > 0) {
+				$('#blog-search-input').focus();
+			}
+
+	    	// initialize automatic searching
+	        $('#blog-search-input').change(function(e) {
+	        	// allow reloading page if empty
+	            _doSearch(true);
+	        });
+
+	        $('#blog-search-input').typing({
+	            stop: function (event, $elem) {
+	                _doSearch();
+	            },
+	            delay: 200
+	        });
 		}
 
-		// or always focus if set (for search pages)
-		if ($('#blog-list-empty').css('display') == 'block' || $('#blog-search-form').attr('data-always-focus') > 0) {
-			$('#blog-search-input').focus();
-		}
-
-		// store what we're currently looking for, if anything
-		currentlySearchingFor = $.trim( $('#blog-search-input').val() );
-
-    	// initialize automatic searching
-        $('#blog-search-input').change(function(e) {
-        	// allow reloading page if empty
-            _doSearch(true);
-        });
-
-        $('#blog-search-input').typing({
-            stop: function (event, $elem) {
-                _doSearch();
-            },
-        });
 
 	});
 
