@@ -111,6 +111,8 @@ section.jobs-list {
 			margin-right: $margin-def * 2;
 			@include bg-cover;
 			background-color: $color-sec;
+			opacity: 0.85;
+			transition: opacity 0.35s;
 		}
 
 		.text {
@@ -224,6 +226,10 @@ section.jobs-list {
 
 		a {
 			&:hover, &:active {
+
+				.image {
+					opacity: 1;
+				}
 
 				.text .title {
 					.name {
