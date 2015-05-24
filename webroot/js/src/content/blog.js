@@ -52,7 +52,7 @@
 	            stop: function (event, $elem) {
 	                _doSearch();
 	            },
-	            // delay: 400
+	            delay: 200
 	        });
 		}
 
