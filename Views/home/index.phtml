@@ -176,7 +176,10 @@
 			</h3>
 
 			<div class="video">
-
+				<?
+					$this->partial('home-extra-video-content', array('videoId' => 'home-extra-video'), '_parts');
+				?>
+				<div id="home-extra-video-play" class="video-play-button"></div>
 			</div>
 
 		</section>
