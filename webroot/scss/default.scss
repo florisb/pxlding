@@ -89,6 +89,10 @@ body {
 	// make sure we can scroll if no menu set
 	body.no-scroll {
 		overflow: visible;
+		// plus fix for iOS undone
+		position: relative;
+		width: auto;
+		height: auto;
 	}
 }
 
