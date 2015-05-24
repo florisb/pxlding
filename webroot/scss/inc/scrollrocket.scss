@@ -78,5 +78,6 @@
 @media (max-width: #{$width-tablet}) {
 	#pxl-rocket {
 		display: none;
+		visibility: hidden;
 	}
 }
