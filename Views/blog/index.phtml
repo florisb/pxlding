@@ -13,7 +13,8 @@
 
 
 <div id="blog-list-gutter-size">&nbsp;</div>
-<section id="blog-list-container" class="blog-list large-margin-column"<?= (empty($blog) || !count($blog)) ? ' style="display: none;"' : null ?>>
+<section id="blog-list-container" class="blog-list large-margin-column"<?=
+	(empty($blog) || !count($blog)) ? ' style="display: none;"' : null ?> data-page-on-open="<?= $currentPage ?>">
 
 	<?
 		foreach ($blog as $post) {
