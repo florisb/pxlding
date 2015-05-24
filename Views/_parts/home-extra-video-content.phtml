@@ -2,9 +2,6 @@
     $videoImage = $_baseurl . 'cms_img/_video/' . 'team.jpg';
     $videoUrl   = $_baseurl . 'cms_img/_video/' . 'team.mp4';
 
-    // smaller alternative for mobile
-    // actually just a picture for now
-    if ( ! $isMobile && ! $isTablet):
 ?>
 
 <div class="video-container">
@@ -12,19 +9,7 @@
     <video id="<?= $videoId ?>"
         poster="<?= $videoImage ?>"
         src="<?= $videoUrl ?>"
+        data-is-mobile="<?= $isMobile ?>"
     ></video>
 
 </div>
-
-<?
-    else:
-        $videoImage = $_baseurl . 'cms_img/_video/' . 'team_mobile.png';
-?>
-
-<div class="video-container">
-
-    <img src="<?= $videoImage ?>" alt="PXL Team">
-
-</div>
-
-<? endif; ?>
