@@ -10,11 +10,7 @@
 	"use strict";
 
 	var contactForm     = require('../modules/ContactForm.js'),
-		DistanceFromPXL = require('../modules/DistanceFromPXL.js'),
 		homeVideo       = require('../modules/HomeExtraVideo.js');
-
-	// for distance shower
-	var _distanceFromWhichToIgnoreDecimals = 3;
 
 
 	$(function() {
@@ -42,37 +38,12 @@
 		});
 
 
-		/*
-         * Get location and set correct distance
-         */
-        var distancer = new DistanceFromPXL();
-
-        if (distancer.locationAvailable()) {
-        	distancer.getLocation(function(position) {
-
-        		if (position === false) {
-        			// console.log('no position available')
-        			return;
-        		}
-
-        		var distance = distancer.getDistanceFromPXL(position.latitude, position.longitude);
-
-        		// don't allow absurd distances to be listed
-        		if (distance > 100) {
-        			// console.log('distance to us too great')
-        			return;
-        		}
-
-        		_showDistanceToUs(distance);
-        	} );
-        }
-
         /*
          * Preroll
          *
          * Only if present (if it is, doPreroll was true)
          */
-        if (('#preroll-container').length) {
+        if ($('#preroll-container').length) {
 
         	// prevent scrolling
 			$('body').addClass('no-scroll-any');
@@ -83,42 +54,20 @@
         	// fade site in
 	        setTimeout(function() {
 	        	$('#preroll-container').fadeOut('slow');
-	        	$('body').removeClass('no-scroll-any');
 	        }, 2900);
 
 	        // start video
 	        setTimeout(function() {
 				$('#home-main-video').get(0).play();
+	        	$('body').removeClass('no-scroll-any');
 	        }, 3500);
 
 		}
 
 	});
 
-	/**
-	 * Display a distance with the placeholder helper
-	 *
-	 * @param  {float} distance 	in km
-	 */
-	var _showDistanceToUs = function(distance) {
-
-		var title = $('#home-distance-from-us-title');
-
-		var text = title.attr('data-with-location');
-
-		if (distance > _distanceFromWhichToIgnoreDecimals) {
-			distance = Math.round(distance);
-		} else {
-			distance = distance.toFixed(1);
-		}
-
-		text = text.replace('%DISTANCE%', distance + 'km');
-
-		title.html(text);
-	};
-
 })();
-},{"../modules/ContactForm.js":2,"../modules/DistanceFromPXL.js":3,"../modules/HomeExtraVideo.js":4}],2:[function(require,module,exports){
+},{"../modules/ContactForm.js":2,"../modules/HomeExtraVideo.js":3}],2:[function(require,module,exports){
 /**
  * Contact Form
  *
@@ -300,107 +249,6 @@ module.exports = (function() {
 
 })();
 },{}],3:[function(require,module,exports){
-/**
- * Show distance to PXL, if possible
- */
-module.exports = (function() {
-    "use strict";
-
-    var _location = false;
-    var _pxlLocation = {
-    	'latitude'  : 0,
-    	'longitude' : 0
-    };
-
-    // initialize everything
-    $(function() {
-    	_pxlLocation.latitude  = parseFloat( $('body').attr('data-pxl-latitude') );
-    	_pxlLocation.longitude = parseFloat( $('body').attr('data-pxl-longitude') );
-    });
-
-    /**
-     * Real calculation
-     *
-     * @param  {[type]} lat1
-     * @param  {[type]} lon1
-     * @param  {[type]} lat2
-     * @param  {[type]} lon2
-     * @return in km
-     */
-    var _distanceInKilometers = function(lat1, lon1, lat2, lon2) {
-
-		var radlat1  = Math.PI * lat1 / 180;
-		var radlat2  = Math.PI * lat2 / 180;
-		var radlon1  = Math.PI * lon1 / 180;
-		var radlon2  = Math.PI * lon2 / 180;
-		var theta    = lon1-lon2;
-		var radtheta = Math.PI * theta / 180;
-
-	    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-
-	    dist = Math.acos(dist);
-	    dist = dist * 180 / Math.PI;
-	    dist = dist * 60 * 1.1515;
-
-	    dist = dist * 1.609344; // km
-
-	    return dist;
-    };
-
-
-    return {
-
-    	/**
-    	 * Whether geo-location is available
-    	 */
-    	locationAvailable: function() {
-    		return (navigator.geolocation);
-    	},
-
-    	/**
-    	 * Get position and send it to a callback
-    	 *
-    	 * @param  {Function} callback
-    	 */
-    	getLocation: function(callback) {
-
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(function(position) {
-
-					if (!position || typeof position === 'undefined') {
-						_location = false;
-						return;
-					}
-
-					_location = {
-						'latitude'  : position.coords.latitude,
-						'longitude' : position.coords.longitude
-					};
-
-					if (typeof callback === 'function') {
-						callback(_location);
-					}
-				});
-			}
-    	},
-
-    	/**
-    	 * Get the distance to PXL from a given lat/long combination
-    	 * in km.
-    	 *
-    	 * @param  {float} latitude
-    	 * @param  {float} longitude
-    	 * @return {float}
-    	 */
-    	getDistanceFromPXL: function(latitude, longitude) {
-
-    		return _distanceInKilometers(_pxlLocation.latitude, _pxlLocation.longitude, latitude, longitude);
-    	}
-    };
-
-});
-
-},{}],4:[function(require,module,exports){
 /**
  * Handle home video (the extra one)
  *
