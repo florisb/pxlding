@@ -9,29 +9,14 @@
 	"use strict";
 
 	var contactForm     = require('../modules/ContactForm.js'),
-		DistanceFromPXL = require('../modules/DistanceFromPXL.js');
+		DistanceFromPXL = require('../modules/DistanceFromPXL.js'),
+		homeVideo       = require('../modules/HomeExtraVideo.js');
 
 	// for distance shower
 	var _distanceFromWhichToIgnoreDecimals = 3;
 
 
 	$(function() {
-
-		// swipe for slider
-		// $('#home-slider').swipe({
-
-		// 	allowPageScroll: 'vertical',
-
-	 //        swipe: function(event, direction) {
-	 //        	// only left + right for slider
-	 //        	if (direction == 'left' || direction == 'up') {
-	 //        		slider.slide(-1);
-	 //        	} else if (direction == 'right' /*|| direction == 'down'*/) {
-	 //        		slider.slide(1);
-	 //        	}
-	 //        }
-
-		// });
 
 		$('section.home-blog > div').owlCarousel({
 			// stagePadding      : 40,
