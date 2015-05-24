@@ -21,22 +21,16 @@ window.pxl._jquery._dotdotdot      = require('../lib/dotdotdot/jquery.dotdotdot.
 window.pxl._jquery._owlcarousel    = require('../lib/owl-carousel/owl.carousel.min.js');
 window.pxl._jquery._appear         = require('../lib/appear/jquery.appear.js');
 window.pxl._jquery._hoverdir       = require('../lib/hoverdir/jquery.hoverdir.js');
-// window.pxl._jquery._scrollintoview = require('../lib/scrollintoview/jquery.scrollintoview.min.js');
-// window.pxl._jquery._touchswipe     = require('../lib/touchswipe/touchswipe.min.js');
-// window.pxl._jquery._popupoverlay   = require('../lib/popupoverlay/popupoverlay.js');
-// window.pxl._jquery._featherlight   = require('../lib/featherlight/featherlight.min.js');
-
 
 // import other general plugins
-window.pxl._plugin._hammer         = require('../lib/hammer/hammer.min.js');
+// window.pxl._plugin._hammer         = require('../lib/hammer/hammer.min.js');
 window.pxl._plugin._skrollr        = require('../lib/skrollr/skrollr.min.js');
 // pxl._plugin._modernizr             = require('../lib/modernizr/2.8.2/modernizr.min.js');
 // pxl._plugin._plugin_imagesloaded   = require('../lib/imagesloaded/imagesloaded.pkgd.min.js');
 
 
 // set global scoped re-used app modules
-window.pxl.settings     = require('./settings.js');
-// window.pxl.loadingState = require('../_tools/LoadingState.js');
+// window.pxl.settings     = require('./settings.js');
 
 
 
@@ -101,14 +95,17 @@ window.pxl.settings     = require('./settings.js');
 					$('#pxl-rocket').css('bottom', '1500px');
 				}, 350);
 
+				// scroll up and reset the rocket to bottom
 				setTimeout(function() {
 	            	$("html, body").animate({ scrollTop: 0 }, { duration: 500 });
-	            	$('#pxl-rocket').css('bottom', rocketBottom + 'px');
-	            }, 650);
 
-	            setTimeout(function() {
-	            	$('#pxl-rocket').removeClass('shake-constant').addClass('shake-little');
 	            }, 750);
+
+				// reset rocket
+	            setTimeout(function() {
+	            	$('#pxl-rocket').css('bottom', rocketBottom + 'px');
+	            	$('#pxl-rocket').removeClass('shake-constant').addClass('shake-little');
+	            }, 900);
 
 			});
 
