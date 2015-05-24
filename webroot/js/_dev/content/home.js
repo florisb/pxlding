@@ -389,30 +389,35 @@ module.exports = (function() {
     // initialize everything
     $(function() {
 
-        // reset after video is done
-        $(_videoId).on('ended', function(e) {
+        // only do this for non-mobile,
+        // since this breaks playback on iPhone
+        if ( ! $(_videoId).attr('data-is-mobile')) {
 
-            if (!e) {
-                e = window.event;
-            }
+            // reset after video is done
+            $(_videoId).on('ended', function(e) {
 
-            _showPlayButton();
-        });
-    });
+                if (!e) {
+                    e = window.event;
+                }
 
-    $(document).on('click', _videoId + ', ' + _videoButtonId, function(e) {
+                _showPlayButton();
+            });
 
-        var video = $(_videoId).get(0);
+            $(document).on('click', _videoId + ', ' + _videoButtonId, function(e) {
 
-        if (video.paused === false) {
-            _showPlayButton();
-            video.pause();
-        } else {
-            _hidePlayButton();
-            video.play();
+                var video = $(_videoId).get(0);
+
+                if (video.paused === false) {
+                    _showPlayButton();
+                    video.pause();
+                } else {
+                    _hidePlayButton();
+                    video.play();
+                }
+
+                return false;
+            });
         }
-
-        return false;
     });
 
 
@@ -423,7 +428,6 @@ module.exports = (function() {
     var _hidePlayButton = function() {
         $(_videoButtonId).fadeOut('fast');
     };
-
 
 
 })();
