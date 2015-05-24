@@ -64,7 +64,7 @@
 			<link rel="stylesheet" href="<?= $_baseurl . 'css/ie/ie7.css'; ?>">
 		<![endif]-->
 		*/ ?>
-<?
+		<?
 			if (file_exists(APPLICATION_PATH . 'webroot/css/' . $controllerName . '.css')) {
 				$this->includeCss('css/' . $controllerName . '.css');
 			}
@@ -73,7 +73,8 @@
 		?>
 
 	</head>
-	<body<?= $hasParallax && ! ($isMobile || $isTablet) ? ' class="has-parallax"' : null ?> data-rocket-offset="1500" data-rocket-bottom="100">
+	<body<?= $hasParallax && ! ($isMobile || $isTablet) ? ' class="has-parallax"' : null ?> data-rocket-offset="1500" data-rocket-bottom="100"<?=
+		! empty($pxlLocation) ? ' data-pxl-latitude="' . $pxlLocation->latitude . '" data-pxl-longitude="' . $pxlLocation->longitude . '"' : null ?>>
 
 		<div class="main-container">
 
