@@ -37,7 +37,7 @@ $heightBurger : 30px;
 		$widthLogo  : 66px;
 		$heightLogo : 25px;
 
-		img, &::after {
+		img, .logo, &::after {
 			top: c-off($heightBar, $heightLogo);
 		}
 	}
@@ -58,7 +58,7 @@ $heightBurger : 30px;
 
 		.main-logo {
 
-			img {
+			img, .logo {
 				position: relative;
 				content: ""; // fake content to make after work
 

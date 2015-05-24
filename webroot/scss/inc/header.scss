@@ -52,7 +52,7 @@ header.main {
 	margin-right: auto;
 	text-align: center;
 
-	img {
+	img, .logo {
 		position: absolute;
 		display: block;
 		top: ($heightTop - $heightLogo) / 2;
