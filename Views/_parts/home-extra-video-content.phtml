@@ -9,7 +9,8 @@
     <video id="<?= $videoId ?>"
         poster="<?= $videoImage ?>"
         src="<?= $videoUrl ?>"
-        data-is-mobile="<?= $isMobile ?>"
+        <? if ($isMobile): ?>autoplay="autoplay"<? endif; ?>
+        data-is-mobile="<?= ($isMobile) ? 1 : null ?>"
     ></video>
 
 </div>
