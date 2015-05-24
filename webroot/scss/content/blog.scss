@@ -11,10 +11,12 @@
 section.blog-search {
 
 	$widthInput: 380px;
+	$height: 44px;
 
 	margin-bottom: $margin-def * 2.5;
 
 	.input-container {
+		position: relative;
 		min-width: $widthInput;
 		width: $widthInput;
 		margin-left: auto;
@@ -27,6 +29,9 @@ section.blog-search {
 		text-align: center;
 	}
 
+	// see basic elements
+	// .loading-indicator {
+	// }
 }
 
 #blog-list-gutter-size {
@@ -42,6 +47,7 @@ section.blog-list {
 
 	$heightLink: 20px;
 	font-size: 0;
+	transition: opacity 0.25s;
 
 	article.blog {
 		font-size: 16px;

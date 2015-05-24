@@ -139,6 +139,18 @@ $sizeLoadingIndicator: 20px;
 	@include bg-contain('loading-spin.svg');
 	width: $sizeLoadingIndicator;
 	height: $sizeLoadingIndicator;
+
+	&.dark {
+		background-image: image-url('loading-spin-dark.svg');
+	}
+
+	&.in-input-container {
+		$heightInput: 44px;
+
+		position: absolute;
+		top: c-off($heightInput, $sizeLoadingIndicator);
+		right: $margin-def;
+	}
 }
 
 
