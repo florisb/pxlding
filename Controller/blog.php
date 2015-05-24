@@ -3,6 +3,7 @@
 
 	use Model\Factory;
 	use PXL\Core\Session\Session;
+	use PXL\Hornet\Seo\Seo;
 
 	class Blog extends BaseController {
 
@@ -43,6 +44,9 @@
 
 				// masonry js stuff going on here
 				$this->set('includeJsMasonry', true, true);
+
+				// make sure canonical is without page number
+				Seo::setCanonical($this->route('blog'));
 			}
 		}
 
