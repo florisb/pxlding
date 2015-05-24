@@ -282,18 +282,62 @@ section.home-location-address {
 }
 
 section.home-location-video {
+
 	margin-top: $margin-def * 3;
 
 	$widthVideo  : 530px;
 	$heightVideo : 265px;
-	$sizeIcon    : 90px; // play icon
+	$sizeIcon    : 91px; // play icon
+	$sizeArrow   : 36px;
 
 	div.video {
+		position: relative;
 		width: 100%;
 		height: 0;
 		padding-top: percentage($heightVideo / $widthVideo);
 		background-color: $color-sec;
 		border-radius: 6px;
+	}
+
+	.video-container {
+		@include absolute-cover;
+		overflow: hidden;
+	}
+
+	video {
+		@include absolute-cover;
+		z-index: $z-content - 1;
+		min-width: 100%;
+		min-height: 100%;
+	}
+
+	img {
+		width: 100%;
+	}
+
+	.video-play-button {
+		position: absolute;
+		z-index: $z-content + 1;
+		left: 50%;
+		top: 50%;
+		margin-left: -1 * $sizeIcon / 2;
+		margin-top: -1 * $sizeIcon / 2;
+		width: $sizeIcon;
+		height: $sizeIcon;
+		border-radius: 50% 50%;
+		border: 3px solid white;
+		cursor: pointer;
+
+		&::after {
+			@include pseudo-basic;
+			position: absolute;
+			width: $sizeArrow;
+			height: $sizeArrow;
+			top: c-off($sizeIcon, $sizeArrow);
+			left: c-off($sizeIcon, $sizeArrow);
+			@include bg-cover('playbutton.svg');
+		}
+		// ...
 	}
 }
 
