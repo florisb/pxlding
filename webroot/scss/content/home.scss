@@ -335,7 +335,7 @@ section.home-location-video {
 			height: $sizeArrow;
 			top: c-off($sizeIcon, $sizeArrow);
 			left: c-off($sizeIcon, $sizeArrow);
-			@include bg-cover('playbutton.svg');
+			@include bg-contain('playbutton.svg');
 		}
 		// ...
 	}
