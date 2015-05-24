@@ -10,29 +10,14 @@
 	"use strict";
 
 	var contactForm     = require('../modules/ContactForm.js'),
-		DistanceFromPXL = require('../modules/DistanceFromPXL.js');
+		DistanceFromPXL = require('../modules/DistanceFromPXL.js'),
+		homeVideo       = require('../modules/HomeExtraVideo.js');
 
 	// for distance shower
 	var _distanceFromWhichToIgnoreDecimals = 3;
 
 
 	$(function() {
-
-		// swipe for slider
-		// $('#home-slider').swipe({
-
-		// 	allowPageScroll: 'vertical',
-
-	 //        swipe: function(event, direction) {
-	 //        	// only left + right for slider
-	 //        	if (direction == 'left' || direction == 'up') {
-	 //        		slider.slide(-1);
-	 //        	} else if (direction == 'right' /*|| direction == 'down'*/) {
-	 //        		slider.slide(1);
-	 //        	}
-	 //        }
-
-		// });
 
 		$('section.home-blog > div').owlCarousel({
 			// stagePadding      : 40,
@@ -107,7 +92,7 @@
 	};
 
 })();
-},{"../modules/ContactForm.js":2,"../modules/DistanceFromPXL.js":3}],2:[function(require,module,exports){
+},{"../modules/ContactForm.js":2,"../modules/DistanceFromPXL.js":3,"../modules/HomeExtraVideo.js":4}],2:[function(require,module,exports){
 /**
  * Contact Form
  *
@@ -388,5 +373,59 @@ module.exports = (function() {
     };
 
 });
+
+},{}],4:[function(require,module,exports){
+/**
+ * Handle home video (the extra one)
+ *
+ * Not a class
+ */
+module.exports = (function() {
+    "use strict";
+
+    var _videoId       = '#home-extra-video';
+    var _videoButtonId = '#home-extra-video-play';
+
+    // initialize everything
+    $(function() {
+
+        // reset after video is done
+        $(_videoId).on('ended', function(e) {
+
+            if (!e) {
+                e = window.event;
+            }
+
+            _showPlayButton();
+        });
+    });
+
+    $(document).on('click', _videoId + ', ' + _videoButtonId, function(e) {
+
+        var video = $(_videoId).get(0);
+
+        if (video.paused === false) {
+            _showPlayButton();
+            video.pause();
+        } else {
+            _hidePlayButton();
+            video.play();
+        }
+
+        return false;
+    });
+
+
+    var _showPlayButton = function() {
+        $(_videoButtonId).fadeIn('fast');
+    };
+
+    var _hidePlayButton = function() {
+        $(_videoButtonId).fadeOut('fast');
+    };
+
+
+
+})();
 
 },{}]},{},[1])

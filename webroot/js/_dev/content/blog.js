@@ -221,6 +221,7 @@
 
 		// show loading indicator
 		$(searchLoadingId).fadeIn('fast');
+		$(containerId).css('opacity', 0);
 
 		// hide loading indicator
 		var removeLoadingIndicator = function() {
@@ -251,16 +252,17 @@
 				history.pushState({}, '', $('base').attr('href') + 'blog/search');
 
 				_removeLoadingButton();
-				removeLoadingIndicator();
 
 				// check if we got any items, if none, show empty state
 				if ( $(containerId).find('article.blog').length ) {
-					$('#blog-list-empty').fadeOut('fast');
+					$('#blog-list-empty').slideUp('fast');
 					$(containerId).fadeIn('fast');
 				} else {
 					$(containerId).fadeOut('fast');
-					$('#blog-list-empty').fadeIn('fast');
+					$('#blog-list-empty').slideDown('fast');
 				}
+
+				removeLoadingIndicator();
             },
 
             error: function() {
