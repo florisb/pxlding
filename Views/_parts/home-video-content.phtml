@@ -36,9 +36,9 @@
     </p>
     */ ?>
 
-    <video
+    <video id="home-main-video"
         poster="<?= $videoImage ?>"
-        autoplay="autoplay"
+        <? if ( ! $doPreroll): ?>autoplay="autoplay"<? endif; ?>
         src="<?= $videoUrl ?>"
     ></video>
 

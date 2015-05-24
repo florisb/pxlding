@@ -96,6 +96,16 @@
 
 		</div>
 
+		<? if ($doPreroll): ?>
+
+		<div id="preroll-container">
+			<div class="pxl">
+				<img src="<?= $_baseurl .'img/logo.svg' ?>" alt=".PXL">
+			</div>
+		</div>
+
+		<? endif; ?>
+
 		<?
 			$this->partial('__javascript_end', array(), '_parts');
 		?>

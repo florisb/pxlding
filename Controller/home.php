@@ -1,6 +1,7 @@
 <?php namespace Controller;
 
 use Model\Factory;
+use PXL\Core\Session\Session;
 use PXL\Core\Tools;
 
 class Home extends BaseController
@@ -24,6 +25,12 @@ class Home extends BaseController
             'latitude'  => 52.38828,
             'longitude' => 4.64306
         ));
+
+
+        if ( ! Session::get('preroll_done') || $_GET['preroll']) {
+            $this->set('doPreroll', true, true);
+            Session::set('preroll_done', true);
+        }
 	}
 
 
