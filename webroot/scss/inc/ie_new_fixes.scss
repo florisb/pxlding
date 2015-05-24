@@ -1,0 +1,16 @@
+/*
+ * IE fixes for IE10 + 11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+	// ugly transform
+	section.cases-banner .background {
+		transform: none !important;
+	}
+
+	// textarea's have scrollbar, so button must shift
+	.contact-form .button-submit {
+		right: $margin-def;
+	}
+
+}
