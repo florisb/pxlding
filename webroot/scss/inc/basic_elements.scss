@@ -41,7 +41,7 @@
 	display: none;
 }
 
-.no-scroll {
+.no-scroll, .no-scroll-any {
 	overflow: hidden;
 	// this is necessary for it to work on iOS(6)
 	width: 100%;
