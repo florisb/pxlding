@@ -1,19 +1,25 @@
 
 // animation css for
 // http://codepen.io/virgilpana/pen/wBXNJM
+// but .. not anymore. silly approach for real-world
+// situations
 
 
-@mixin menu-split-animation($RL, $nth, $width, $delayIn, $delayOut) {
 
-	.split#{$RL} li:nth-of-type(#{$nth}) {
-		margin-left: #{$width / 2}px;
-		transition-delay: #{$delayIn}s;
+/*
+ * Mixin for gradual menu buildup
+ */
+@mixin menu-li-animation($nth, $total: 7, $delayStep: 0.05, $delayBase: 0.2) {
+
+	li:nth-of-type(#{$nth}) {
+		transition-delay: #{ ($total - $nth) * $delayStep }s;
 	}
-	.split#{$RL} li.animate:nth-of-type(#{$nth}) {
-		margin-left: 0;
-		transition-delay: #{$delayOut}s;
+	li.animate:nth-of-type(#{$nth}) {
+		transition-delay: #{ ($nth - 1) * $delayStep + $delayBase }s;
 	}
 }
+
+
 
 /*
 content
@@ -131,33 +137,19 @@ div.mobile-menu {
 		margin-right: auto;
 	}
 
-	// .splitL, .splitR {
-	// 	overflow: hidden;
-	// 	position: absolute;
-	// 	z-index: $z-menu + 10;
-	// 	top: 0;
-	// 	left: calc(50% - #{$widthMenuItem});
-
-	// 	li {
-	// 		text-align: right;
-	// 	}
-	// }
-
-	// .splitR {
-	// 	left: 50%;
-
-	// 	li {
-	// 		text-align: left;
-	// 	}
-	// }
-
 	li {
 		list-style: none;
+		font-size: pem($fontSizeMenu);
 		width: 100%;
 		margin-bottom: $margin-def * 1.5;
 		text-align: center;
-		font-size: pem($fontSizeMenu);
-		transition: all 150ms $transition-function-mobile-menu;
+		// transition: all 150ms ;
+		transition: letter-spacing 0.3s cubic-bezier(0,.01,.75,-0.03),
+					opacity 0.2s 0.1s;
+		opacity: 0;
+		// transform: perspective(1000px) rotate3d(1,0,0,90deg);
+  		// transform-origin: 50% 0%;
+		letter-spacing: -20px;
 
 		a {
 			display: inline-block;
@@ -166,7 +158,6 @@ div.mobile-menu {
 			text-decoration: none;
 			font-family: $font-pri;
 			margin-top: $font-upshift;
-			// letter-spacing: 3px;
 			transition: color $speed-menu;
 
 			&:hover, &:active {
@@ -178,26 +169,30 @@ div.mobile-menu {
 			color: $color-pri;
 		}
 
-		&.animate{
-			font-size: pem($fontSizeMenu);
+		&.animate {
 			opacity: 1;
-			transition: all 200ms $transition-function-mobile-menu;
+			letter-spacing: 0;
+			// transform: perspective(1000px) rotate3d(1,0,0,0);
+			transition: letter-spacing 0.5s cubic-bezier(0,.01,.17,1),
+						opacity 1s 0.5s;
+
+			// this breaks everything somehow
+			// transition: all 1s $transition-function-mobile-menu;
 		}
 	}
 
-	$delayBase    : 0.5;
-	$delayInUnit  : 0.03;
+	$delayBase    : 0.25;
+	$delayInUnit  : 0.05;
 	$delayOutUnit : 0.05;
 
 	// fade in one from top to bottom and back
-	// li:nth-of-type(1)         { opacity: 0; transition-delay: #{6 * $delayInUnit + $delayBase}s; }
-	// li.animate:nth-of-type(1) { opacity: 1; transition-delay: 0.0s; }
-
-	// li:nth-of-type(2)         { opacity: 0; transition-delay: #{5 * $delayInUnit + $delayBase}s; }
-	// li.animate:nth-of-type(2) { opacity: 1; transition-delay: 0.0s; }
-
-	// li:nth-of-type(2)         { opacity: 0; transition-delay: #{4 * $delayInUnit + $delayBase}s; }
-	// li.animate:nth-of-type(2) { opacity: 1; transition-delay: 0.0s; }
+	@include menu-li-animation(1);
+	@include menu-li-animation(2);
+	@include menu-li-animation(3);
+	@include menu-li-animation(4);
+	@include menu-li-animation(5);
+	@include menu-li-animation(6);
+	@include menu-li-animation(7);
 
 
 	// fancy split animation thing that won't work
@@ -288,12 +283,21 @@ div.mobile-menu-header-overlay {
 	}
 }
 
+@media (max-device-height: 500px) {
+	div.mobile-menu {
+
+		li {
+			font-size: pem($fontSizeMenu - 4);
+		}
+	}
+}
+
 // landscape ugliness
 @media (max-device-width: 540px) and (orientation: landscape) {
 	div.mobile-menu {
 
 		li {
-			font-size: pem($fontSizeMenu * 0.75);
+			font-size: pem($fontSizeMenu * 0.5);
 		}
 	}
 }
