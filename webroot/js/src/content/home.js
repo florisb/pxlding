@@ -66,6 +66,32 @@
         	} );
         }
 
+        /*
+         * Preroll
+         *
+         * Only if present (if it is, doPreroll was true)
+         */
+        if (('#preroll-container').length) {
+
+        	// prevent scrolling
+			$('body').addClass('no-scroll-any');
+
+        	// fill PXL
+        	$('#preroll-container').addClass('animate');
+
+        	// fade site in
+	        setTimeout(function() {
+	        	$('#preroll-container').fadeOut('slow');
+	        	$('body').removeClass('no-scroll-any');
+	        }, 2900);
+
+	        // start video
+	        setTimeout(function() {
+				$('#home-main-video').get(0).play();
+	        }, 3500);
+
+		}
+
 	});
 
 	/**
