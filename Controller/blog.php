@@ -19,7 +19,9 @@
 			}
 
 			// remember current page for back links
-			Session::set('blog-page', $page);
+			Session::set('blog-page',   $page);
+			// remember whether we were searching before
+			Session::set('blog-search', null);
 
 			$blog  = Factory\Blog::getAll($page, self::BLOG_PAGE_SIZE, ! $ajax);
 
@@ -61,6 +63,9 @@
 
 			} else {
 
+				// remember that we were searching
+				Session::set('blog-search', $search);
+
 				$blog = Factory\Blog::getFiltered($search);
 
 				$this->set('blog',   $blog);
@@ -87,12 +92,22 @@
 
 			$slug    = $this->getParam('slug');
 
+			$searchingFor = Session::get('blog-search');
+
+			if ( ! empty($searchingFor)) {
+				$returnLink = $this->route( 'blog', 'search', array($searchingFor) );
+			} else {
+				$returnLink = $this->route( 'blog', '', array(Session::get('blog-page')) );
+			}
+
+
 			$post    = Factory\Blog::getBySlug($slug);
 			$gallery = Factory\Blog::getGalleryById($post->bid);
 
 			$this->set('post',     $post);
 			$this->set('gallery',  $gallery);
 
+			$this->set('returnLink',  $returnLink);
 			$this->set('currentPage', Session::get('blog-page'));
 
 			// special parallax effect for this page
