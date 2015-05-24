@@ -28,7 +28,7 @@
 		</h1>
 
 		<section class="text custom-text-content">
-			<?= $missionContent->page_text ?>
+			<?= \App\ViewHelper::trimFckField($missionContent->page_text) ?>
 		</section>
 
 	</section>
@@ -44,7 +44,7 @@
 		</h2>
 
 		<section class="text custom-text-content">
-			<?= $missionContent->page_text ?>
+			<?= \App\ViewHelper::trimFckField($missionContent->page_text) ?>
 		</section>
 
 	</section>

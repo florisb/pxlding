@@ -27,7 +27,9 @@
 			<? endif; ?>
 		>
 			<h1 class="h1 bold-and-light">
-				<?= ! empty($post->fancy_title) ? $post->fancy_title : $post->title ?>
+				<?= ! empty($post->fancy_title)
+					?	\App\ViewHelper::trimFckField($post->fancy_title)
+					:	$post->title ?>
 			</h1>
 		</div>
 

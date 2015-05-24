@@ -14,7 +14,7 @@
 			</header>
 
 			<section class="custom-text-content">
-				<?= $post->intro ?>
+				<?= \App\ViewHelper::trimFckField($post->intro) ?>
 			</section>
 
 			<footer>

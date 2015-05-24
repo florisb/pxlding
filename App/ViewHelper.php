@@ -76,6 +76,8 @@ class ViewHelper {
 		// add h# classes to header tags
 		$content = preg_replace('#<h(\d+)#', '<h\\1 class="h\\1"', $content);
 
+		$content = self::trimFckField($content);
+
 		return $content;
 	}
 
@@ -142,12 +144,14 @@ class ViewHelper {
 	{
 		$caption = trim($caption);
 
-		if (empty($caption)) return $caption;
+		if (empty($caption)) {
+			return self::trimFckField($caption);
+		}
 
 		$return = array('', '');
 
 		if ( ! preg_match('#^(.*)<br\s*/>\s*<br\s*/>(.*)$#is', $caption, $m)) {
-			$return[0] = $caption;
+			$return[0] = self::trimFckField($caption);
 			return $return;
 
 		} else {
@@ -158,9 +162,31 @@ class ViewHelper {
 
 			$return[0] = preg_replace('#^(\s*<br\s*/>\s*)*#i', '', $return[0]);
 			$return[1] = preg_replace('#^(\s*<br\s*/>\s*)*#i', '', $return[1]);
+
+			$return[0] = self::trimFckField($return[0]);
+			$return[1] = self::trimFckField($return[1]);
 		}
 
 
 		return $return;
+	}
+
+	/**
+	 * Trims crap that tends to accumulate in FCK fields, such as
+	 * ending <br> or starting &nbsp;'s
+	 *
+	 * @param  string $text
+	 * @return string
+	 */
+	public static function trimFckField($text)
+	{
+		$text = preg_replace(array(
+			'#^\s*(<p>)?(\s*&nbsp;\s*)*#i',
+			'#(\s*<br\s*/?>\s*)*$#i',
+			),
+			array('\\1',''),
+			$text);
+
+		return $text;
 	}
 }

@@ -39,7 +39,7 @@
 		</div>
 
 		<div class="super bold-and-light">
-			<?= $service->banner_text ?>
+			<?= \App\ViewHelper::trimFckField($service->banner_text) ?>
 		</div>
 
 		<div class="caption">
@@ -60,7 +60,9 @@
 		</h1>
 
 		<div class="text custom-text-content">
-			<?= $service->content ?>
+			<?
+				echo \App\ViewHelper::replaceContentPlaceHolders($service->content);
+			?>
 		</div>
 
 	</section>
@@ -73,7 +75,7 @@
 
 		<div class="bullet-list custom-text-content">
 			<?=
-				App\ViewHelper::formatServiceAsideBullets( $service->aside_bullets )
+				\App\ViewHelper::formatServiceAsideBullets( $service->aside_bullets )
 			?>
 		</div>
 
