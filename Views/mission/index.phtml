@@ -54,7 +54,7 @@
 		if ( ! empty($employees)):
 
 			$bst = array(
-					'collega', 'chef lege dozen', 'held', 'pillaar', 'kapitein', 'diva', 'vreemdeling',
+					'collega', 'chef lege dozen', 'held', 'pilaar', 'kapitein', 'diva', 'vreemdeling',
 					'work-a-holic', 'stoelendanser', 'wonderkind', 'genie', 'schuinsmarcheerder', 'money-maker',
 					'prinses-op-de-erwt', 'granol-van-de-muren', 'wizz-kid', 'krasse-knar', 'werknemer',
 			);
@@ -104,7 +104,7 @@
 			<?= ML::label('zin om te joinen?') ?>
 		</p>
 
-		<a href="<?= $_baseurl . $_language ?>/jobs">
+		<a href="<?= $this->route('jobs') ?>">
 			<?= ML::label('vacatures') ?>
 		</a>
 
