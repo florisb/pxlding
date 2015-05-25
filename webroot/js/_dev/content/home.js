@@ -58,8 +58,10 @@
 
 	        // start video
 	        setTimeout(function() {
-				$('#home-main-video').get(0).play();
 	        	$('body').removeClass('no-scroll-any');
+	        	if ($('#home-main-video').length) {
+					$('#home-main-video').get(0).play();
+				}
 	        }, 3500);
 
 		}
