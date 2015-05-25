@@ -1,7 +1,6 @@
 <?php namespace Controller;
 
 use Model\Factory;
-use PXL\Core\Session\Session;
 use PXL\Core\Tools;
 
 class Home extends BaseController
@@ -19,12 +18,6 @@ class Home extends BaseController
 		$this->set('cases', $cases);
         $this->set('blog', $blog);
         $this->set('social', $social);
-
-
-        if ( ! Session::get('preroll_done') || $_GET['preroll']) {
-            $this->set('doPreroll', true, true);
-            Session::set('preroll_done', true);
-        }
 	}
 
 

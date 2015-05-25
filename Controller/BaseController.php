@@ -1,7 +1,9 @@
 <?php namespace Controller;
 
-use PXL\Hornet\Controller\Controller;
 use App;
+use PXL\Hornet\Controller\Controller;
+use PXL\Core\Session\Session;
+
 
 class BaseController extends Controller
 {
@@ -17,6 +19,17 @@ class BaseController extends Controller
 		$this->set('isTablet', $detect->isTablet(), true);
 
 		$this->set('controllerName', $this->getControllerName(), true);
+
+		// always set preroll true, but only show preroll on loading home page
+		if ( ! Session::get('preroll_done') || $_GET['preroll']) {
+            Session::set('preroll_done', true);
+
+            if (	$this->getControllerName() == 'home'
+            	&&	$this->getActionName() == 'index'
+            ) {
+            	$this->set('doPreroll', true, true);
+            }
+        }
 	}
 
 	public function postAction()
