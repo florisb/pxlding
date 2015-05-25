@@ -65,6 +65,7 @@ div.mobile-menu-burger {
 		margin: auto;
 		background-color: $colorBurger;
 		// border-radius: 2px;
+		// transition: all 200ms ease-out;
 		transition: all 200ms ease-out;
 		height: $heightBurgerRows;
 		width: $widthBurger;	// 26px
@@ -75,24 +76,29 @@ div.mobile-menu-burger {
 	div.collapse {
 		top: 20px;
 		transition: all 70ms ease-out;
+		// transition: all 200ms ease-out;
 	}
 
 	div.rotate30 {
 		transform: rotate(30deg);
-		transition: all 50ms ease-out;
+		// transition: all 50ms ease-out;
+		transition: all 200ms ease-out;
 	}
 	div.rotate150 {
 	    transform: rotate(150deg);
-		transition: all 50ms ease-out;
+		// transition: all 50ms ease-out;
+		transition: all 200ms ease-out;
 	}
 
 	div.rotate45 {
 	    transform: rotate(45deg);
-		transition: all 100ms ease-out;
+		// transition: all 100ms ease-out;
+		transition: all 200ms ease-out;
 	}
 	div.rotate135 {
 	    transform: rotate(135deg);
-		transition: all 100ms ease-out;
+		// transition: all 100ms ease-out;
+		transition: all 200ms ease-out;
 	}
 }
 
