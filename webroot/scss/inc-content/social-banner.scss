@@ -44,12 +44,43 @@ section.social-banner {
 
 		// contains titles
 		> a {
+			$sizeIcon: 24px;
+
 			@include absolute-cover;
 			z-index: $z-content + 1;
 			display: block;
 			overflow: hidden;
 
 			@include bg-cover;
+
+			&::before {
+				@include pseudo-basic;
+				@include absolute-cover;
+				background-color: black;
+				opacity: 0.05;
+				transition: opacity 0.4s;
+			}
+
+			&::after {
+				@include pseudo-basic;
+				position: absolute;
+				right: $margin-def;
+				bottom: $margin-def;
+				width: $sizeIcon;
+				height: $sizeIcon;
+				@include bg-contain('instagram.svg');
+				opacity: 0;
+				transition: opacity 0.3s;
+			}
+
+			&:hover, &:active {
+				&::before {
+					opacity: 0;
+				}
+				&::after {
+					opacity: 0.75
+				}
+			}
 		}
 	}
 
