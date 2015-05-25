@@ -25,7 +25,8 @@ section.home-video {
 		@include absolute-cover;
 	}
 
-	video {
+	video,
+	 img {
 		@include absolute-cover;
 		z-index: $z-content - 1;
 		min-width: 100%;
@@ -42,6 +43,7 @@ section.home-video {
 
 		img {
 			width: 100%;
+			height: 100%;
 		}
 	}
 }
