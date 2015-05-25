@@ -834,6 +834,7 @@ module.exports = (function() {
                 $('div.mobile-menu-burger').addClass('open');
                 $('div.mobile-menu-burger div.x, div.mobile-menu-burger div.z').addClass('collapse');
                 $('.mobile-menu li').addClass('animate');
+                $('.mobile-menu .phone-number').addClass('animate');
             }, 10);
 
             setTimeout(function() {
@@ -852,6 +853,7 @@ module.exports = (function() {
 
             $('body').removeClass('no-scroll');
             $('.mobile-menu li').removeClass('animate');
+            $('.mobile-menu .phone-number').removeClass('animate');
 
             setTimeout(function(){
                 $('div.mobile-menu-burger').removeClass('open');
