@@ -76,6 +76,13 @@
 	<body<?= $hasParallax && ! ($isMobile || $isTablet) ? ' class="has-parallax"' : null ?> data-rocket-offset="1500" data-rocket-bottom="100"<?=
 		! empty($pxlLocation) ? ' data-pxl-latitude="' . $pxlLocation->latitude . '" data-pxl-longitude="' . $pxlLocation->longitude . '"' : null ?>>
 
+		<!--[if lt IE 9]>
+		<div id="old-browser-warning" class="top-notification-bar">
+			Je browser is een leuk stukje antiek. Probeer eens een nieuwere, dat zou je webgaande leven een stuk prettiger maken
+			&mdash; en dan werkt deze site ook lekker.
+		</div>
+		<![endif]-->
+
 		<div class="main-container">
 
 			<?
