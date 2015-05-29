@@ -178,7 +178,8 @@ section.blog-detail-banner {
 
 		a {
 			font-size: pem(17);
-			color: white;
+			color: $color-txt;
+			
 
 			// &:hover, &:active {
 			// 	color: darken(white, 5);
@@ -195,7 +196,7 @@ section.blog-detail-banner {
 		width: percentage(700px / ($width-main - $margin-def * 8));
 
 		.h1 {
-			color: white;
+			color: #212121;
 			font-size: pem(82);
 			line-height: 0.96em;
 			transition: font-size $speed-fast;
