@@ -191,7 +191,8 @@
 					*,
 					`c`.`id` AS `cid`,
 					`i`.`file` AS `file`,
-					`i2`.`file` AS `blur`
+					`i2`.`file` AS `blur`,
+					`i3`.`file` AS `overview`
 					%s
 				FROM
 					`cms_m6_cases` `c`
@@ -207,6 +208,10 @@
 					`cms_m_images` `i2`
 				ON
 					(`c`.`id` = `i2`.`entry_id` AND `i2`.`field_id` = '22')
+				LEFT JOIN
+                                        `cms_m_images` `i3`
+                                ON
+                                        (`c`.`id` = `i3`.`entry_id` AND `i3`.`field_id` = '119')
 			";
 
 			if ( ! empty($extra)) $extra = ',' . $extra;
