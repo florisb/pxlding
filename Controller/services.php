@@ -2,6 +2,7 @@
 	namespace Controller;
 
 	use Model\Factory;
+	use PXL\Hornet\Seo\Seo;
 
 	class Services extends BaseController {
 
@@ -11,7 +12,7 @@
 
 			$slug = $this->getParam('slug');
 
-			if (empty($slug)) {
+			if (empty($slug) || $slug == "services") {
 				$slug = self::DEFAULT_SERVICE_SLUG;
 			}
 
@@ -22,6 +23,8 @@
 			$this->set('services', $services);
 			$this->set('service', $service);
 			$this->set('cases', $cases);
+
+			Seo::addTitle($service->title);
 		}
 
 	}
