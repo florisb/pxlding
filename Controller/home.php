@@ -266,6 +266,19 @@ class Home extends BaseController
 
                 //     curl_close($ch);
 
+                $email = new Tools\Emailer();
+
+                if (APPLICATION_ENV !== 'production') {
+                    $email->addressee('coen@pixelindustries.com');
+                } else {
+                    $email->addressee('floris@pixelindustries.com');
+                }
+
+                $email->sender('info@pixelindustries.com');
+                $email->subject('Pixelindustries website contact');
+                $email->messageHtml($msg);
+                $email->send();
+
 
                 $response['result'] = true;
 
