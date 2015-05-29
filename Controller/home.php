@@ -271,11 +271,11 @@ class Home extends BaseController
                 if (APPLICATION_ENV !== 'production') {
                     $email->addressee('coen@pixelindustries.com');
                 } else {
-                    $email->addressee('floris@pixelindustries.com');
+                    $email->addressee('work@pixelindustries.com');
                 }
 
                 $email->sender('info@pixelindustries.com');
-                $email->subject('Pixelindustries website contact');
+                $email->subject('Pixelindustries work newsletter');
                 $email->messageHtml($msg);
                 $email->send();
 
