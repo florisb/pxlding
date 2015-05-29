@@ -15,10 +15,15 @@ $sizeIconContainer : 38px;
 				> div {
 					height: $sizeIconContainer;
 				}
+				
+			}
 
-				.h3 {
-					display: none;
-				}
+			.h3 {
+				display: none;
+			}
+
+			> div {
+				height: $sizeIconContainer;
 			}
 		}
 	}
@@ -33,11 +38,19 @@ $sizeIconContainer : 38px;
 
 		a.service-cat {
 
+			> div {
+				height: $sizeIconContainer;
+			}
+
 			.icon {
 				line-height: $sizeIcon;
 				margin: c-off($sizeIconContainer, $sizeIcon);
 				width: $sizeIcon;
 				height: $sizeIcon;
+			}
+
+			.h3 {
+				display: none;
 			}
 		}
 	}

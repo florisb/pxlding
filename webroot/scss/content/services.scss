@@ -37,7 +37,7 @@ nav.service-categories {
 		> div {
 			position: relative;
 			width: 100%;
-			height: $sizeIconContainer;
+			height: $sizeIconContainer + $heightTitle;
 			display: inline-block;
 			text-align: center;
 			vertical-align: middle;
@@ -50,7 +50,7 @@ nav.service-categories {
 		&:hover, &:active {
 
 			> div {
-				height: $sizeIconContainer + $heightTitle;
+				//height: $sizeIconContainer + $heightTitle;
 			}
 
 			.icon {
@@ -125,8 +125,8 @@ nav.service-categories {
 		font-weight: $normal;
 		color: $color-txt-menu;
 
-		bottom: -1 * $heightTitle;
-		opacity: 0;
+		bottom: $font-upshift-neg;
+		opacity: 1;
 
 		transition: bottom $speed-menu,
 		            opacity $speed-menu / 3;
